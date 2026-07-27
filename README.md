@@ -41,9 +41,10 @@ $out = ($parts | ForEach-Object { [System.IO.File]::ReadAllText($_.FullName,[Sys
 ## What's on the page
 
 Nav · Hero · Trust band · Product showcase (4 tabs) · Why FilePak (bento) ·
-Features (4 editorial rows) · How it works (6-step scroll journey) · AI Tax Intelligence ·
-Designed for everyone (8 cards) · Dashboard showcase (4 views) · Security ·
+**Tax calculators (5)** · Features (4 editorial rows) · How it works (6-step scroll journey) ·
+AI Tax Intelligence · Designed for everyone (8 cards) · Dashboard showcase (4 views) · Security ·
 Professional practice · Testimonials · Pricing (4 plans) · FAQ · Final CTA · Footer.
+Plus a persistent WhatsApp button on every screen.
 
 Every product image is live HTML/CSS, not a screenshot — so the mockups restyle
 themselves in dark mode and stay sharp at any resolution.
@@ -71,6 +72,59 @@ Accessibility: skip link, semantic landmarks, one `h1`, ARIA tabs/accordion,
 visible focus rings, keyboard-operable everywhere, and a full
 `prefers-reduced-motion` path. Verified: no duplicate IDs, no unlabelled controls,
 no horizontal overflow at 390 / 834 / 1440 px.
+
+## Tax calculators
+
+Five live calculators in the `#calculators` section: **salary**, **rental income**,
+**capital gain — property**, **capital gain — securities**, **business & freelance**.
+All vanilla JS, all recompute as you type.
+
+**Rates are tax year 2026 (Finance Act 2025)**, verified against
+[PwC Worldwide Tax Summaries — Pakistan](https://taxsummaries.pwc.com/pakistan/individual/taxes-on-personal-income).
+They are **not** the backend's `seeds.py` slabs, which are explicitly marked
+`PLACEHOLDER — NOT REAL LAW`. The tables live at the top of the calculator script
+(`_build/08-whatsapp-calc-script.html`):
+
+| Table | Contents |
+|---|---|
+| `SAL_SLABS` | Salaried: 0 / 1% / 11% / 23% / 30% / 35%, plus 9% surcharge above Rs 10m |
+| `NONSAL_SLABS` | Non-salaried & AOP: 0 / 15% / 20% / 30% / 40% / 45%, plus 10% surcharge above Rs 10m |
+| `CGT_PROP_TAPER` | s.37 holding-period taper by property type, pre-1-Jul-2024 acquisitions |
+| `CGT_SEC_TAPER` | s.37A securities taper |
+
+Every result was hand-checked against the slab arithmetic before shipping, including the
+surcharge, the taper, and the non-filer "slab rates but not less than 15%" floor.
+
+**When the Finance Act changes, edit those four tables and nothing else.**
+
+Deliberately not modelled, and flagged on-page: tax credits, allowances, exempt income,
+minimum tax u/s 113, and the concessional final rate on IT/IT-enabled exports. The
+securities calculator shows the 15% ceiling for pre-July-2024 acquisitions rather than
+guessing the taper step, and says so.
+
+## Brand
+
+The nav and footer render a `BIG1` wordmark in the site's own typography as a fallback.
+To use the real artwork, drop the logo file at:
+
+```
+C:\bfiler\website\assets\big1-logo.png
+```
+
+It appears automatically — the markup already references it, and the text fallback hides
+itself when the image loads (and reappears if the file is missing, so nothing ever breaks).
+An SVG is better than a PNG if you have one; change the `src` in
+`_build/02-nav-hero.html` and `_build/07-testimonials-pricing-faq-cta-footer.html`.
+
+**Open question:** the site is currently branded BIG1 (company) in the logo with FilePak
+(product) in all the copy. If FilePak is being retired in favour of BIG1, the body copy
+needs a rename pass.
+
+## WhatsApp
+
+`+92 339 9999611` → `https://wa.me/923399999611`, in three places: the floating button
+(collapses to icon-only under 560px), the footer social row, and a visible number under the
+footer blurb. To change it, search the file for `923399999611`.
 
 ## Before this goes live — needs your sign-off
 

@@ -1,0 +1,478 @@
+
+<style>
+/* ============================================================
+   FREE TAX CALCULATORS
+   ============================================================ */
+.calc-sec{position:relative;overflow:clip}
+.calc-sec::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(54% 40% at 50% 0%,rgba(16,185,129,.1),transparent 62%),
+             radial-gradient(44% 38% at 88% 60%,rgba(37,99,235,.08),transparent 66%)}
+.calc-sec > .wrap{position:relative;z-index:1}
+
+/* picker cards */
+.calc-pick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:34px}
+.cpick{
+  position:relative;text-align:left;padding:20px 18px;border-radius:var(--r-lg);
+  border:1px solid var(--border);background:var(--surface-solid);cursor:pointer;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+  display:flex;flex-direction:column;gap:10px;min-height:150px;
+}
+.cpick:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+.cpick[aria-pressed="true"]{border-color:transparent;box-shadow:var(--shadow-lg)}
+.cpick[aria-pressed="true"]::before{
+  content:"";position:absolute;inset:0;padding:1.5px;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(140deg,var(--emerald-500),var(--cyan-400) 48%,var(--blue-600));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.cpick .cic{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(37,99,235,.1));
+  color:var(--accent);border:1px solid var(--border);transition:.4s var(--ease)}
+.cpick[aria-pressed="true"] .cic{
+  background:linear-gradient(135deg,var(--emerald-700),var(--blue-700));color:#fff;border-color:transparent}
+.cpick b{font-size:.95rem;letter-spacing:-.018em;font-weight:620;display:block}
+.cpick span{font-size:.78rem;color:var(--text-2);line-height:1.5}
+.cpick .go{margin-top:auto;font-size:.73rem;font-weight:640;color:var(--accent);display:flex;align-items:center;gap:5px}
+.cpick .go svg{transition:transform .35s var(--ease)}
+.cpick:hover .go svg{transform:translateX(3px)}
+@media (max-width:1080px){.calc-pick{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:680px){.calc-pick{grid-template-columns:repeat(2,minmax(0,1fr))}.cpick{min-height:0}}
+@media (max-width:420px){.calc-pick{grid-template-columns:1fr}}
+
+/* calculator body */
+.calc-body{border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface-solid);
+  box-shadow:var(--shadow-lg);overflow:hidden}
+.calc-head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--border);
+  background:var(--bg-sub);flex-wrap:wrap}
+.calc-head h3{font-size:1.06rem;letter-spacing:-.022em}
+.calc-head .sub{font-size:.78rem;color:var(--text-3)}
+.calc-grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.86fr)}
+.calc-in{padding:22px;display:grid;gap:15px;align-content:start}
+.calc-out{padding:22px;background:var(--bg-sub);border-left:1px solid var(--border);display:grid;gap:14px;align-content:start}
+@media (max-width:840px){.calc-grid2{grid-template-columns:1fr}.calc-out{border-left:0;border-top:1px solid var(--border)}}
+
+.fld label{display:block;font-size:.78rem;font-weight:600;color:var(--text-2);margin-bottom:6px;letter-spacing:-.005em}
+.fld .hint{font-size:.71rem;color:var(--text-3);font-weight:400;margin-left:4px}
+.inwrap{position:relative;display:flex;align-items:center}
+.inwrap .pfx{position:absolute;left:13px;font-size:.82rem;color:var(--text-3);font-weight:600;pointer-events:none}
+.fld input[type=number],.fld input[type=text],.fld select{
+  width:100%;height:44px;padding:0 13px 0 40px;border-radius:var(--r-sm);
+  border:1px solid var(--border);background:var(--bg);color:var(--text);
+  font-size:.95rem;font-variant-numeric:tabular-nums;font-weight:560;
+  transition:border-color .25s,box-shadow .25s;-moz-appearance:textfield}
+.fld select{padding-left:13px;cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237B8798' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 13px center}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(16,185,129,.14)}
+.fld input[type=number]::-webkit-outer-spin-button,
+.fld input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.fld.nopfx input{padding-left:13px}
+
+.seg{display:flex;gap:4px;padding:4px;border-radius:100px;background:var(--bg-deep);border:1px solid var(--border)}
+.seg button{flex:1;height:34px;border-radius:100px;font-size:.8rem;font-weight:560;color:var(--text-2);transition:.28s var(--ease);white-space:nowrap;padding:0 10px}
+.seg button[aria-pressed="true"]{background:var(--surface-solid);color:var(--text);box-shadow:var(--shadow-xs);font-weight:620}
+
+.res-hero{padding:18px;border-radius:var(--r-md);
+  background:linear-gradient(140deg,rgba(6,95,70,.1),rgba(37,99,235,.07));
+  border:1px solid rgba(16,185,129,.26)}
+.res-hero .rl{font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--text-2)}
+.res-hero .rv{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.15rem);font-weight:660;
+  letter-spacing:-.042em;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1}
+.res-hero .rs{font-size:.78rem;color:var(--text-2);margin-top:7px}
+.res-rows{border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;background:var(--bg)}
+.res-rows .rr{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:9px 13px;border-bottom:1px solid var(--border);font-size:.83rem}
+.res-rows .rr:last-child{border-bottom:0}
+.res-rows .rr b{font-variant-numeric:tabular-nums;font-weight:620}
+.res-rows .rr.em{background:var(--bg-sub);font-weight:640}
+.res-rows .rr span{color:var(--text-2)}
+.res-rows .rr.em span{color:var(--text)}
+.slabtrace{font-size:.75rem;color:var(--text-3);line-height:1.6}
+.slabtrace code{font-family:var(--mono);font-size:.72rem;color:var(--text-2)}
+.calc-note{display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:var(--r-sm);
+  background:rgba(233,185,73,.09);border:1px solid rgba(233,185,73,.28);font-size:.75rem;line-height:1.55;color:var(--text-2)}
+.calc-note svg{color:var(--gold-600);flex-shrink:0;margin-top:2px}
+.calc-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:16px 22px;border-top:1px solid var(--border);background:var(--bg-sub)}
+.calc-cta p{font-size:.85rem;color:var(--text-2);margin-right:auto}
+.calc-view{display:none}
+.calc-view[data-on]{display:block;animation:panelIn .5s var(--ease)}
+
+/* ============================================================
+   WHATSAPP
+   ============================================================ */
+.wa-fab{
+  position:fixed;right:20px;bottom:20px;z-index:80;
+  display:flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 16px;
+  border-radius:100px;background:#25D366;color:#04140A;font-weight:620;font-size:.92rem;
+  box-shadow:0 16px 40px -12px rgba(37,211,102,.6),0 2px 8px rgba(0,0,0,.18);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  text-decoration:none;
+}
+.wa-fab:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 22px 54px -14px rgba(37,211,102,.72)}
+.wa-fab svg{flex-shrink:0}
+.wa-fab .lbl{white-space:nowrap}
+.wa-fab::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #25D366;
+  animation:waPulse 2.6s var(--ease) infinite;pointer-events:none}
+@keyframes waPulse{0%{opacity:.7;transform:scale(1)}70%{opacity:0;transform:scale(1.18)}100%{opacity:0}}
+@media (max-width:560px){
+  .wa-fab{height:52px;padding:0 16px;right:14px;bottom:14px}
+  .wa-fab .lbl{display:none}
+  .wa-fab{padding:0 15px}
+}
+@media (prefers-reduced-motion:reduce){.wa-fab::after{display:none}}
+.wa-inline{display:inline-flex;align-items:center;gap:8px;font-weight:560;color:#128C7E}
+html[data-theme="dark"] .wa-inline{color:#4AE68A}
+@media (prefers-color-scheme:dark){html[data-theme="auto"] .wa-inline{color:#4AE68A}}
+.btn-wa{background:#25D366;color:#04140A}
+.btn-wa:hover{background:#20BD5A}
+</style>
+
+<!-- ============================== CALCULATORS ============================== -->
+<section class="sec calc-sec" id="calculators">
+  <div class="wrap wrap-wide">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>Free tools &middot; No sign-up</span>
+      <h2 class="h1">Know the number<br /><span class="serif">before you file.</span></h2>
+      <p class="lede">Five calculators built on the Finance Act 2025 rates for tax year 2026. Pick the one that
+        matches your situation &mdash; the answer updates as you type.</p>
+    </div>
+
+    <!-- picker -->
+    <div class="calc-pick" role="group" aria-label="Choose a calculator" id="calcPick">
+      <button class="cpick" aria-pressed="true" data-calc="salary">
+        <span class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.4"/><circle cx="12" cy="12.5" r="2.6"/><path d="M6 10v5M18 10v5"/></svg></span>
+        <b>Salary tax</b>
+        <span>Monthly or annual salary &rarr; tax, take-home and slab.</span>
+        <span class="go">Open <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </button>
+
+      <button class="cpick" aria-pressed="false" data-calc="property">
+        <span class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9.5L12 4l8 5.5V20"/><path d="M9.5 20v-6h5v6"/></svg></span>
+        <b>Rental income</b>
+        <span>Property rent, allowable deductions and the tax on it.</span>
+        <span class="go">Open <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </button>
+
+      <button class="cpick" aria-pressed="false" data-calc="cgtprop">
+        <span class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 20V10l6-4.5L18 10v10"/><path d="M10 20v-4h4v4"/><path d="M20 4l-3 3M20 4h-3M20 4v3"/></svg></span>
+        <b>Capital gain &mdash; property</b>
+        <span>Plot, house or flat. Holding-period taper handled.</span>
+        <span class="go">Open <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </button>
+
+      <button class="cpick" aria-pressed="false" data-calc="cgtsec">
+        <span class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg></span>
+        <b>Capital gain &mdash; shares</b>
+        <span>Listed securities, mutual funds and Sukuk.</span>
+        <span class="go">Open <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </button>
+
+      <button class="cpick" aria-pressed="false" data-calc="business">
+        <span class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v12H3z"/><path d="M8 8V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V8"/><path d="M3 13h18"/></svg></span>
+        <b>Business &amp; freelance</b>
+        <span>Net profit after expenses, at non-salaried rates.</span>
+        <span class="go">Open <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </button>
+    </div>
+
+    <!-- body -->
+    <div class="calc-body" data-reveal="scale" id="calcBody">
+
+      <!-- ============ SALARY ============ -->
+      <div class="calc-view" data-on data-calc="salary">
+        <div class="calc-head">
+          <div><h3>Salary tax calculator</h3><div class="sub">Tax year 2026 &middot; salaried individual slabs</div></div>
+          <span class="pill pill-g" style="margin-left:auto">Finance Act 2025</span>
+        </div>
+        <div class="calc-grid2">
+          <div class="calc-in">
+            <div class="fld nopfx">
+              <label for="sal_period">I&rsquo;ll enter my salary as</label>
+              <div class="seg" role="group" id="sal_period">
+                <button type="button" aria-pressed="true" data-per="12">Monthly</button>
+                <button type="button" aria-pressed="false" data-per="1">Annual</button>
+              </div>
+            </div>
+            <div class="fld">
+              <label for="sal_amt">Gross salary <span class="hint">before any deduction</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="sal_amt" value="250000" min="0" step="1000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="sal_exempt">Exempt allowances <span class="hint">annual &middot; optional</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="sal_exempt" value="0" min="0" step="1000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="sal_wht">Tax already deducted by employer <span class="hint">annual &middot; optional</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="sal_wht" value="0" min="0" step="1000" inputmode="numeric" /></div>
+            </div>
+          </div>
+          <div class="calc-out">
+            <div class="res-hero">
+              <div class="rl">Annual tax</div>
+              <div class="rv" id="sal_tax">Rs 0</div>
+              <div class="rs" id="sal_month">Rs 0 per month</div>
+            </div>
+            <div class="res-rows">
+              <div class="rr"><span>Taxable income</span><b id="sal_taxable">0</b></div>
+              <div class="rr"><span>Tax before surcharge</span><b id="sal_base">0</b></div>
+              <div class="rr"><span>Surcharge <span class="hint">9% above Rs 10m</span></span><b id="sal_sur">0</b></div>
+              <div class="rr em"><span>Total tax</span><b id="sal_total">0</b></div>
+              <div class="rr"><span>Take-home per month</span><b id="sal_net">0</b></div>
+              <div class="rr"><span>Effective rate</span><b id="sal_eff">0%</b></div>
+            </div>
+            <div class="slabtrace" id="sal_trace"></div>
+            <div id="sal_recon"></div>
+          </div>
+        </div>
+        <div class="calc-cta">
+          <p>Employer deducting the wrong amount is the single most common reason for a refund.</p>
+          <a class="btn btn-primary btn-sm" href="#cta">File and claim it <svg class="arw" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- ============ PROPERTY ============ -->
+      <div class="calc-view" data-calc="property">
+        <div class="calc-head">
+          <div><h3>Rental income calculator</h3><div class="sub">Tax year 2026 &middot; net income basis at normal slab rates</div></div>
+          <span class="pill pill-g" style="margin-left:auto">Finance Act 2025</span>
+        </div>
+        <div class="calc-grid2">
+          <div class="calc-in">
+            <div class="fld">
+              <label for="pr_rent">Gross annual rent received</label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="pr_rent" value="1800000" min="0" step="10000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld nopfx">
+              <label>Repairs allowance <span class="hint">one-fifth of rent</span></label>
+              <div class="seg" role="group" id="pr_rep">
+                <button type="button" aria-pressed="true" data-rep="1">Claim 1/5</button>
+                <button type="button" aria-pressed="false" data-rep="0">Don&rsquo;t claim</button>
+              </div>
+            </div>
+            <div class="fld">
+              <label for="pr_other">Other allowable expenses <span class="hint">property tax, insurance, interest</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="pr_other" value="0" min="0" step="5000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="pr_salary">Other taxable income <span class="hint">e.g. your salary &middot; optional</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="pr_salary" value="0" min="0" step="10000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld nopfx">
+              <label>Is salary more than 75% of your total income?</label>
+              <div class="seg" role="group" id="pr_mode">
+                <button type="button" aria-pressed="false" data-sal="1">Yes &mdash; salaried</button>
+                <button type="button" aria-pressed="true" data-sal="0">No</button>
+              </div>
+            </div>
+          </div>
+          <div class="calc-out">
+            <div class="res-hero">
+              <div class="rl">Tax on total income</div>
+              <div class="rv" id="pr_tax">Rs 0</div>
+              <div class="rs" id="pr_sub">&mdash;</div>
+            </div>
+            <div class="res-rows">
+              <div class="rr"><span>Gross rent</span><b id="pr_g">0</b></div>
+              <div class="rr"><span>Less: repairs allowance</span><b id="pr_r">0</b></div>
+              <div class="rr"><span>Less: other expenses</span><b id="pr_o">0</b></div>
+              <div class="rr em"><span>Net property income</span><b id="pr_net">0</b></div>
+              <div class="rr"><span>Plus: other income</span><b id="pr_oi">0</b></div>
+              <div class="rr em"><span>Total taxable income</span><b id="pr_tt">0</b></div>
+              <div class="rr"><span>Effective rate</span><b id="pr_eff">0%</b></div>
+            </div>
+            <div class="calc-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+              <span>Rent is now taxed on a <b>net income basis at normal rates</b> &mdash; the old separate property slabs are gone. Tax deducted by your tenant under s.155 is adjustable against this.</span>
+            </div>
+          </div>
+        </div>
+        <div class="calc-cta">
+          <p>Landlords routinely miss deductions they were entitled to claim.</p>
+          <a class="btn btn-primary btn-sm" href="#cta">Start my return <svg class="arw" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- ============ CGT PROPERTY ============ -->
+      <div class="calc-view" data-calc="cgtprop">
+        <div class="calc-head">
+          <div><h3>Capital gain &mdash; immovable property</h3><div class="sub">Section 37 &middot; tax year 2026</div></div>
+          <span class="pill pill-g" style="margin-left:auto">Finance Act 2025</span>
+        </div>
+        <div class="calc-grid2">
+          <div class="calc-in">
+            <div class="fld">
+              <label for="cp_sale">Sale consideration</label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="cp_sale" value="25000000" min="0" step="100000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="cp_cost">Cost of acquisition <span class="hint">plus improvements</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="cp_cost" value="18000000" min="0" step="100000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld nopfx">
+              <label>When did you acquire it?</label>
+              <div class="seg" role="group" id="cp_era">
+                <button type="button" aria-pressed="true" data-era="new">On / after 1 Jul 2024</button>
+                <button type="button" aria-pressed="false" data-era="old">On / before 30 Jun 2024</button>
+              </div>
+            </div>
+            <div class="fld nopfx" id="cp_oldwrap" hidden>
+              <label for="cp_type">Property type</label>
+              <select id="cp_type">
+                <option value="plot">Open plot</option>
+                <option value="built">Constructed property</option>
+                <option value="flat">Flat</option>
+              </select>
+            </div>
+            <div class="fld" id="cp_holdwrap" hidden>
+              <label for="cp_hold">Holding period <span class="hint">completed years</span></label>
+              <div class="inwrap" style="--x:0"><input type="number" id="cp_hold" value="3" min="0" max="30" step="1" style="padding-left:13px" inputmode="numeric" /></div>
+            </div>
+            <div class="fld nopfx">
+              <label>Are you on the Active Taxpayers List?</label>
+              <div class="seg" role="group" id="cp_atl">
+                <button type="button" aria-pressed="true" data-atl="1">Yes &mdash; filer</button>
+                <button type="button" aria-pressed="false" data-atl="0">No</button>
+              </div>
+            </div>
+          </div>
+          <div class="calc-out">
+            <div class="res-hero">
+              <div class="rl">Capital gains tax</div>
+              <div class="rv" id="cp_tax">Rs 0</div>
+              <div class="rs" id="cp_rate">&mdash;</div>
+            </div>
+            <div class="res-rows">
+              <div class="rr"><span>Sale consideration</span><b id="cp_s">0</b></div>
+              <div class="rr"><span>Less: cost</span><b id="cp_c">0</b></div>
+              <div class="rr em"><span>Capital gain</span><b id="cp_gain">0</b></div>
+              <div class="rr"><span>Applicable rate</span><b id="cp_r2">0%</b></div>
+              <div class="rr em"><span>Tax payable</span><b id="cp_t2">0</b></div>
+            </div>
+            <div class="calc-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+              <span id="cp_note">Advance tax under s.236C on the sale, and s.236K on a purchase, is separate from this and is adjustable against your final liability.</span>
+            </div>
+          </div>
+        </div>
+        <div class="calc-cta">
+          <p>Property disposals are the most-queried line on any return.</p>
+          <a class="btn btn-primary btn-sm" href="#cta">Get it computed properly <svg class="arw" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- ============ CGT SECURITIES ============ -->
+      <div class="calc-view" data-calc="cgtsec">
+        <div class="calc-head">
+          <div><h3>Capital gain &mdash; listed securities</h3><div class="sub">Section 37A &middot; tax year 2026</div></div>
+          <span class="pill pill-g" style="margin-left:auto">Finance Act 2025</span>
+        </div>
+        <div class="calc-grid2">
+          <div class="calc-in">
+            <div class="fld">
+              <label for="cs_proceeds">Sale proceeds</label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="cs_proceeds" value="3400000" min="0" step="10000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="cs_cost">Cost of acquisition</label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="cs_cost" value="2600000" min="0" step="10000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld nopfx">
+              <label>When did you acquire them?</label>
+              <div class="seg" role="group" id="cs_era">
+                <button type="button" aria-pressed="true" data-era="new">On / after 1 Jul 2024</button>
+                <button type="button" aria-pressed="false" data-era="old">Before 1 Jul 2024</button>
+              </div>
+            </div>
+            <div class="fld nopfx">
+              <label>Are you on the Active Taxpayers List?</label>
+              <div class="seg" role="group" id="cs_atl">
+                <button type="button" aria-pressed="true" data-atl="1">Yes &mdash; filer</button>
+                <button type="button" aria-pressed="false" data-atl="0">No</button>
+              </div>
+            </div>
+          </div>
+          <div class="calc-out">
+            <div class="res-hero">
+              <div class="rl">Capital gains tax</div>
+              <div class="rv" id="cs_tax">Rs 0</div>
+              <div class="rs" id="cs_rate">&mdash;</div>
+            </div>
+            <div class="res-rows">
+              <div class="rr"><span>Sale proceeds</span><b id="cs_p">0</b></div>
+              <div class="rr"><span>Less: cost</span><b id="cs_c">0</b></div>
+              <div class="rr em"><span>Capital gain</span><b id="cs_gain">0</b></div>
+              <div class="rr"><span>Applicable rate</span><b id="cs_r2">0%</b></div>
+              <div class="rr em"><span>Tax payable</span><b id="cs_t2">0</b></div>
+            </div>
+            <div class="calc-note" id="cs_note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+              <span>CGT on listed securities is collected by NCCPL. Your broker&rsquo;s statement is the evidence &mdash; FilePak reads it directly.</span>
+            </div>
+          </div>
+        </div>
+        <div class="calc-cta">
+          <p>Import your CDC statement and every trade is classified for you.</p>
+          <a class="btn btn-primary btn-sm" href="#cta">Start my return <svg class="arw" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- ============ BUSINESS ============ -->
+      <div class="calc-view" data-calc="business">
+        <div class="calc-head">
+          <div><h3>Business &amp; freelance calculator</h3><div class="sub">Tax year 2026 &middot; non-salaried individual / AOP slabs</div></div>
+          <span class="pill pill-g" style="margin-left:auto">Finance Act 2025</span>
+        </div>
+        <div class="calc-grid2">
+          <div class="calc-in">
+            <div class="fld">
+              <label for="bz_rev">Annual turnover / receipts</label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="bz_rev" value="6000000" min="0" step="50000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="bz_exp">Allowable business expenses</label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="bz_exp" value="2400000" min="0" step="50000" inputmode="numeric" /></div>
+            </div>
+            <div class="fld">
+              <label for="bz_wht">Tax already deducted <span class="hint">by clients &middot; optional</span></label>
+              <div class="inwrap"><span class="pfx">Rs</span><input type="number" id="bz_wht" value="0" min="0" step="10000" inputmode="numeric" /></div>
+            </div>
+          </div>
+          <div class="calc-out">
+            <div class="res-hero">
+              <div class="rl">Annual tax</div>
+              <div class="rv" id="bz_tax">Rs 0</div>
+              <div class="rs" id="bz_sub">&mdash;</div>
+            </div>
+            <div class="res-rows">
+              <div class="rr"><span>Turnover</span><b id="bz_r">0</b></div>
+              <div class="rr"><span>Less: expenses</span><b id="bz_e">0</b></div>
+              <div class="rr em"><span>Net profit</span><b id="bz_np">0</b></div>
+              <div class="rr"><span>Tax before surcharge</span><b id="bz_base">0</b></div>
+              <div class="rr"><span>Surcharge <span class="hint">10% above Rs 10m</span></span><b id="bz_sur">0</b></div>
+              <div class="rr em"><span>Total tax</span><b id="bz_total">0</b></div>
+              <div class="rr"><span>Effective rate</span><b id="bz_eff">0%</b></div>
+            </div>
+            <div class="slabtrace" id="bz_trace"></div>
+            <div class="calc-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+              <span>Minimum tax under s.113 and the concessional final rate on IT / IT-enabled <b>exports</b> are not modelled here &mdash; both can change the answer materially. FilePak applies them in your return.</span>
+            </div>
+          </div>
+        </div>
+        <div class="calc-cta">
+          <p>Freelancers exporting services are taxed very differently. Worth checking.</p>
+          <a class="btn btn-primary btn-sm" href="#cta">Check my position <svg class="arw" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="small" style="text-align:center;margin-top:20px;max-width:76ch;margin-inline:auto">
+      These calculators give an <b>estimate</b> for tax year 2026 using the Finance Act 2025 rates. They do not
+      account for tax credits, allowances, exempt income, minimum or final tax regimes, or your wealth statement.
+      They are not tax advice. Your actual liability is computed in full when you file with FilePak.
+    </p>
+  </div>
+</section>
