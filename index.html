@@ -3410,18 +3410,18 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
       at(8200, run); // loop
     }
 
-    // Start when the hero is visible; pause the loop when off-screen.
+    // Hero is above the fold: start immediately (robust), then use IO only to
+    // pause the loop when scrolled away and resume when it returns.
+    var running = true;
+    run();
     if ("IntersectionObserver" in window) {
-      var running = false;
       var io = new IntersectionObserver(function (ents) {
         ents.forEach(function (e) {
-          if (e.isIntersecting && !running) { running = true; run(); }
-          else if (!e.isIntersecting && running) { running = false; clearAll(); }
+          if (e.isIntersecting) { if (!running) { running = true; run(); } }
+          else if (running) { running = false; clearAll(); }
         });
-      }, { threshold: 0.25 });
+      }, { threshold: 0 });
       io.observe(root);
-    } else {
-      run();
     }
   })();
 
