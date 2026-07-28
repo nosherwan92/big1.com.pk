@@ -549,7 +549,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
     </a>
 
     <nav class="nav-links" id="navlinks" aria-label="Primary">
-      <a href="#product">Product</a>
+      <a href="#features">Product</a>
       <a href="#calculators">Calculators</a>
       <a href="#intelligence">AI Intelligence</a>
       <a href="#how">How it works</a>
@@ -601,7 +601,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
           <a class="btn btn-primary btn-lg" href="#cta">File my return
             <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
           </a>
-          <a class="btn btn-glass btn-lg" href="#product">
+          <a class="btn btn-glass btn-lg" href="#features">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
             See the product
           </a>
@@ -782,230 +782,6 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Immutable audit log</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> ICAP-qualified review</li>
     </ul>
-  </div>
-</section>
-
-<!-- ============================== PRODUCT SHOWCASE ============================== -->
-<section class="sec" id="product">
-  <div class="wrap wrap-wide">
-    <div class="sec-head center" data-reveal>
-      <span class="eyebrow"><span class="dot"></span>The product</span>
-      <h2 class="h1">One platform. Two ways to work.</h2>
-      <p class="lede">Answer plain questions and let FilePak do the tax. Or open the professional workspace and
-        drive the computation line by line. Same engine, same audit trail &mdash; different altitude.</p>
-    </div>
-
-    <div class="tabbar" role="tablist" aria-label="Product views" id="tabbar">
-      <span class="glider" aria-hidden="true"></span>
-      <button role="tab" id="tab-simple" aria-controls="p-simple" aria-selected="true">Guided mode</button>
-      <button role="tab" id="tab-pro" aria-controls="p-pro" aria-selected="false">Professional mode</button>
-      <button role="tab" id="tab-wealth" aria-controls="p-wealth" aria-selected="false">Wealth statement</button>
-      <button role="tab" id="tab-assist" aria-controls="p-assist" aria-selected="false">AI assistant</button>
-    </div>
-
-    <div class="panels">
-      <!-- Guided -->
-      <div class="panel" data-active id="p-simple" role="tabpanel" aria-labelledby="tab-simple" tabindex="0">
-        <div class="panel-grid">
-          <div class="panel-copy">
-            <span class="pill pill-g">For individuals</span>
-            <h3 style="margin-top:14px">Questions in. Return out.</h3>
-            <p class="body-2">A three-zone walkthrough that never shows you an IRIS field code. FilePak asks what
-              applies to you, pulls what FBR already knows, and writes the return behind the glass.</p>
-            <ul class="feat-list">
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Intelligent sidebar that explains every number as it changes</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Salary certificate, bank profit and utility deductions read automatically</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Live tax position updates with every answer &mdash; no submit-and-pray</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Plain-language summary you can actually check before you sign</li>
-            </ul>
-            <a class="link-arrow" href="#how" style="margin-top:26px">See the filing journey <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          </div>
-          <div class="stage">
-            <div class="app">
-              <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">app.filepak.pk / guided</span></div>
-              <div class="app-body" style="grid-template-columns:1fr">
-                <div class="app-main" style="gap:16px">
-                  <div style="display:flex;gap:8px;align-items:center">
-                    <span class="pill pill-b">Step 3 of 7</span>
-                    <div style="flex:1;height:5px;border-radius:5px;background:var(--bg-deep);overflow:hidden">
-                      <span style="display:block;height:100%;width:43%;border-radius:5px;background:linear-gradient(90deg,var(--emerald-500),var(--blue-600))"></span>
-                    </div>
-                    <span class="small tnum">43%</span>
-                  </div>
-                  <h4 style="font-size:1.15rem">Did you earn rent from any property this year?</h4>
-                  <div style="display:grid;gap:9px">
-                    <label class="q-opt on"><span class="rd"></span><span><b>Yes, I rented out property</b><span class="small" style="display:block">We&rsquo;ll compute income under Section 15 and apply the property tax slabs.</span></span></label>
-                    <label class="q-opt"><span class="rd"></span><span><b>No rental income</b><span class="small" style="display:block">Skip this section entirely.</span></span></label>
-                  </div>
-                  <div class="hintbox">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
-                    <span><b>From your Maloomat profile:</b> FBR shows Rs 660,000 of withholding on rent collected under Section 155. We&rsquo;ve pre-filled it &mdash; confirm or correct.</span>
-                  </div>
-                  <div class="rowlist">
-                    <div class="r hd"><span>Running tax position</span><span>TY2026</span><span></span></div>
-                    <div class="r"><span>Taxable income so far</span><span class="n">4,620,000</span><span></span></div>
-                    <div class="r"><span>Tax withheld so far</span><span class="n">850,900</span><span></span></div>
-                    <div class="r tot"><span>Estimated refund</span><span class="n">138,400</span><span class="pill pill-g">Good</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Professional -->
-      <div class="panel" id="p-pro" role="tabpanel" aria-labelledby="tab-pro" tabindex="0" hidden>
-        <div class="panel-grid">
-          <div class="panel-copy">
-            <span class="pill pill-b">For practitioners</span>
-            <h3 style="margin-top:14px">The computation, uncovered.</h3>
-            <p class="body-2">Every schedule, every code, every override &mdash; on one dense, keyboard-first
-              surface built for people who file two hundred returns a season.</p>
-            <ul class="feat-list">
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Direct IRIS field mapping with the schema version pinned to the return</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Manual overrides that demand a reason &mdash; and keep it forever</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Prior-year comparatives beside every line</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Bulk import from payroll and bank statements</li>
-            </ul>
-            <a class="link-arrow" href="#practice" style="margin-top:26px">Explore practice management <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          </div>
-          <div class="stage">
-            <div class="app">
-              <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">app.filepak.pk / pro / computation</span></div>
-              <div class="app-body">
-                <aside class="app-side" aria-hidden="true">
-                  <div class="side-h">Schedules</div>
-                  <div class="side-i on">Income</div>
-                  <div class="side-i">Deductible allowances</div>
-                  <div class="side-i">Tax credits <span class="badge">2</span></div>
-                  <div class="side-i">Adjustable tax</div>
-                  <div class="side-i">Final / fixed tax</div>
-                  <div class="side-i">Assets &amp; liabilities</div>
-                  <div class="side-i">Personal expenses</div>
-                </aside>
-                <div class="app-main">
-                  <div class="app-head">
-                    <div><h4>Schedule &mdash; Income</h4><p class="small">Ruleset FA-2025 &middot; IRIS schema v4.2</p></div>
-                    <span class="pill pill-a" style="margin-left:auto">2 overrides</span>
-                  </div>
-                  <div class="rowlist">
-                    <div class="r hd" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span>Code</span><span>Description</span><span>TY2025</span><span>TY2026</span></div>
-                    <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n" style="color:var(--text-3)">1009</span><span>Salary &mdash; total</span><span class="n" style="color:var(--text-3)">3,540,000</span><span class="n">3,960,000</span></div>
-                    <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n" style="color:var(--text-3)">2001</span><span>Property income</span><span class="n" style="color:var(--text-3)">600,000</span><span class="n">660,000</span></div>
-                    <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n" style="color:var(--text-3)">5028</span><span>Profit on debt &mdash; 7B</span><span class="n" style="color:var(--text-3)">142,000</span><span class="n">200,000</span></div>
-                    <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n" style="color:var(--text-3)">9099</span><span>Taxable income</span><span class="n" style="color:var(--text-3)">4,282,000</span><span class="n" style="font-weight:700">4,820,000</span></div>
-                  </div>
-                  <div class="hintbox amber">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17h.01"/></svg>
-                    <span><b>Override on 5028.</b> Bank certificate shows 200,000; Maloomat shows 186,400. Reason recorded: &ldquo;Certificate supersedes &mdash; Q4 credit posted after cut-off.&rdquo;</span>
-                  </div>
-                  <div class="kpis">
-                    <div class="kpi"><div class="l">Tax chargeable</div><div class="v tnum">712,500</div></div>
-                    <div class="kpi"><div class="l">Credits</div><div class="v tnum">41,000</div></div>
-                    <div class="kpi accent"><div class="l">Net payable</div><div class="v tnum">0</div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Wealth -->
-      <div class="panel" id="p-wealth" role="tabpanel" aria-labelledby="tab-wealth" tabindex="0" hidden>
-        <div class="panel-grid">
-          <div class="panel-copy">
-            <span class="pill pill-a">Wealth intelligence</span>
-            <h3 style="margin-top:14px">The statement that has to tie.</h3>
-            <p class="body-2">Most notices start with an unexplained increase in wealth. FilePak treats the wealth
-              statement as an equation, not a form &mdash; and refuses to let it go out unbalanced.</p>
-            <ul class="feat-list">
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Opening wealth + income &minus; expenses = closing wealth, enforced</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Asset register carried forward year to year with cost history</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Unexplained movements flagged with the exact shortfall</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Foreign assets and inheritances handled as first-class entries</li>
-            </ul>
-          </div>
-          <div class="stage">
-            <div class="app">
-              <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">app.filepak.pk / wealth</span></div>
-              <div class="app-body" style="grid-template-columns:1fr">
-                <div class="app-main">
-                  <div class="app-head"><div><h4>Wealth reconciliation</h4><p class="small">As at 30 June 2026</p></div><span class="pill pill-g" style="margin-left:auto">Reconciled</span></div>
-                  <div class="rowlist">
-                    <div class="r"><span>Net assets &mdash; opening</span><span class="n">28,410,000</span><span></span></div>
-                    <div class="r"><span>Income declared</span><span class="n">4,820,000</span><span></span></div>
-                    <div class="r"><span>Exempt income &amp; gifts</span><span class="n">350,000</span><span></span></div>
-                    <div class="r"><span>Personal expenses</span><span class="n">(2,180,000)</span><span></span></div>
-                    <div class="r"><span>Tax paid</span><span class="n">(712,500)</span><span></span></div>
-                    <div class="r tot"><span>Net assets &mdash; closing</span><span class="n">30,687,500</span><span></span></div>
-                    <div class="r tot"><span>Unreconciled difference</span><span class="n" style="color:var(--emerald-600)">0</span><span class="chk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
-                  </div>
-                  <div class="donutwrap">
-                    <svg viewBox="0 0 42 42" class="donut" aria-hidden="true">
-                      <circle class="dring" cx="21" cy="21" r="15.9"/>
-                      <circle class="dseg s1" cx="21" cy="21" r="15.9"/>
-                      <circle class="dseg s2" cx="21" cy="21" r="15.9"/>
-                      <circle class="dseg s3" cx="21" cy="21" r="15.9"/>
-                      <circle class="dseg s4" cx="21" cy="21" r="15.9"/>
-                    </svg>
-                    <ul class="legend">
-                      <li><i style="background:#065F46"></i> Immovable property <b class="tnum">54%</b></li>
-                      <li><i style="background:#109E7D"></i> Listed securities <b class="tnum">21%</b></li>
-                      <li><i style="background:#2DD4BF"></i> Cash &amp; bank <b class="tnum">15%</b></li>
-                      <li><i style="background:#E9B949"></i> Vehicles &amp; other <b class="tnum">10%</b></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI assistant -->
-      <div class="panel" id="p-assist" role="tabpanel" aria-labelledby="tab-assist" tabindex="0" hidden>
-        <div class="panel-grid">
-          <div class="panel-copy">
-            <span class="pill pill-g">Always on</span>
-            <h3 style="margin-top:14px">An assistant that reads the Ordinance.</h3>
-            <p class="body-2">Ask in Urdu or English. Every answer is grounded in the ruleset version applied to
-              your return and cites the section it came from &mdash; so you can check it.</p>
-            <ul class="feat-list">
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Cited answers &mdash; section, sub-section, tax year</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Never invents a figure: it reads your return, not the internet</li>
-              <li><span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Suggests, never submits &mdash; a human always approves</li>
-            </ul>
-          </div>
-          <div class="stage">
-            <div class="app">
-              <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">app.filepak.pk / assistant</span></div>
-              <div class="app-body" style="grid-template-columns:1fr">
-                <div class="app-main chatwrap">
-                  <div class="msg you">Why is my refund lower than last year?</div>
-                  <div class="msg ai">
-                    <span class="aihdr"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.2 6.1 6.1 2.2-6.1 2.2L12 19.1 9.8 13 3.7 10.8l6.1-2.2z"/></svg> FilePak Intelligence</span>
-                    Three drivers. Your salary rose 11.9%, which pushed Rs 420,000 into the next slab. Bank
-                    withholding fell because two term deposits matured in October. And your investment tax credit
-                    is Rs 41,000 lower &mdash; the pension contribution stopped in March.
-                    <span class="cites"><b>Sources</b> Section 149 &middot; Section 7B &middot; Section 63 &middot; Ruleset FA-2025</span>
-                  </div>
-                  <div class="msg you">Can I still claim anything?</div>
-                  <div class="msg ai">
-                    Yes &mdash; contributing Rs 300,000 to an approved pension fund before 30 June would restore
-                    roughly Rs 45,000 of credit under Section 63. I&rsquo;ve modelled it in a draft scenario for
-                    your review.
-                    <span class="cites"><b>Suggestion only</b> &middot; requires your approval before it touches the return</span>
-                  </div>
-                  <div class="typing"><span></span><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2712,9 +2488,9 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
 
       <div class="fcol">
         <h4>Product</h4>
-        <a href="#product">Guided filing</a>
-        <a href="#product">Professional mode</a>
-        <a href="#product">Wealth statement</a>
+        <a href="#features">Guided filing</a>
+        <a href="#features">Professional mode</a>
+        <a href="#features">Wealth statement</a>
         <a href="#intelligence">AI intelligence</a>
         <a href="#dashboard">Dashboard</a>
         <a href="#calculators">Tax calculators</a>
