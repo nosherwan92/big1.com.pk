@@ -3410,19 +3410,16 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
       at(8200, run); // loop
     }
 
-    // Hero is above the fold: start immediately (robust), then use IO only to
-    // pause the loop when scrolled away and resume when it returns.
-    var running = true;
-    run();
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (ents) {
-        ents.forEach(function (e) {
-          if (e.isIntersecting) { if (!running) { running = true; run(); } }
-          else if (running) { running = false; clearAll(); }
-        });
-      }, { threshold: 0 });
-      io.observe(root);
-    }
+    // Hero is above the fold, so it always runs. Pause only when the browser
+    // tab is hidden (reliable), not via element-level IO (which proved flaky
+    // here and could kill the loop's pending timers).
+    var running = false;
+    function start() { if (running) return; running = true; run(); }
+    function stop() { running = false; clearAll(); }
+    start();
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stop(); else start();
+    });
   })();
 
   /* ---------------- Theme ---------------- */
