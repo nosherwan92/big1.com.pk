@@ -226,12 +226,19 @@
         selectTab(tabs[(i + d + tabs.length) % tabs.length], true);
       });
     });
-    requestAnimationFrame(function () {
+    function syncGlider() {
       moveGlider(tabbar.querySelector('[aria-selected="true"]'));
-    });
-    window.addEventListener("resize", function () {
-      moveGlider(tabbar.querySelector('[aria-selected="true"]'));
-    }, { passive: true });
+    }
+    requestAnimationFrame(syncGlider);
+    window.addEventListener("load", syncGlider);
+    window.addEventListener("resize", syncGlider, { passive: true });
+    // The section sits far below the fold; measure once it is actually laid out on screen.
+    if ("IntersectionObserver" in window) {
+      var glObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { syncGlider(); } });
+      }, { threshold: 0.1 });
+      glObs.observe(tabbar);
+    }
   }
 
   /* ---------------- Dashboard views ---------------- */
