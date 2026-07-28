@@ -2,6 +2,7 @@
 <style>
 /* ---------- Audience cards ---------- */
 .aud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.aud.aud-3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1000px;margin-inline:auto}
 .aud-card{position:relative;padding:22px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface-solid);
   overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
 .aud-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;transform:scaleX(0);transform-origin:left;
@@ -115,70 +116,29 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Who it&rsquo;s for</span>
       <h2 class="h1">One platform.<br /><span class="serif">Every kind of taxpayer.</span></h2>
-      <p class="lede">The same engine underneath &mdash; a different surface depending on how complicated your
-        year was.</p>
+      <p class="lede">Same engine underneath &mdash; a different surface for how complicated your year was.</p>
     </div>
 
-    <div class="aud">
+    <div class="aud aud-3">
       <article class="aud-card" data-reveal>
         <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span>
-        <h3>Salaried individuals</h3>
-        <p>One employer, a bank account, maybe a car. Answer seven questions and you&rsquo;re done.</p>
-        <div class="need"><b>Solves</b> &middot; slab changes, unclaimed withholding, wealth statement</div>
+        <h3>Individuals</h3>
+        <p>Salary, property, investments and foreign income &mdash; answered in plain questions.</p>
+        <div class="need"><b>Solves</b> &middot; unclaimed withholding, capital gains, wealth statement</div>
       </article>
 
-      <article class="aud-card" data-reveal style="--d:60ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.6"/><path d="M8 9h8M8 13h5"/></svg></span>
-        <h3>Freelancers &amp; consultants</h3>
-        <p>Foreign remittances, export of services, multiple clients, no payroll. Handled as a business, not a
-          salary afterthought.</p>
-        <div class="need"><b>Solves</b> &middot; s.154A treatment, PSEB registration, expense schedules</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:120ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></span>
-        <h3>Property owners</h3>
-        <p>Rent, capital gains, advance tax on purchase and sale &mdash; each with its own section and its own
-          rate table.</p>
-        <div class="need"><b>Solves</b> &middot; s.15 / s.37 / s.236C &amp; K interaction</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:180ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/></svg></span>
-        <h3>Investors</h3>
-        <p>Listed securities, mutual funds, Sukuk, dividends and profit on debt &mdash; final tax, adjustable tax
-          and CGT kept straight.</p>
-        <div class="need"><b>Solves</b> &middot; CDC statement import, s.37A gains, s.5 dividends</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:240ms">
+      <article class="aud-card" data-reveal style="--d:80ms">
         <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l6-4 6 4v13"/><path d="M15 21V12h6v9"/><path d="M3 21h18"/></svg></span>
-        <h3>Businesses &amp; AOPs</h3>
-        <p>Trading accounts, depreciation schedules, partner allocations and minimum tax under s.113.</p>
-        <div class="need"><b>Solves</b> &middot; multi-source computation, carry-forward losses</div>
+        <h3>Businesses &amp; freelancers</h3>
+        <p>Trading accounts, export of services, expenses and minimum tax &mdash; handled as a business.</p>
+        <div class="need"><b>Solves</b> &middot; multi-source computation, s.113, PSEB / s.154A</div>
       </article>
 
-      <article class="aud-card" data-reveal style="--d:300ms">
+      <article class="aud-card" data-reveal style="--d:160ms">
         <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L16 8"/><rect x="3" y="4" width="18" height="17" rx="2.6"/></svg></span>
-        <h3>Chartered accountants</h3>
-        <p>A workspace built for someone who files two hundred returns between July and September &mdash; and has
-          to stand behind every one.</p>
-        <div class="need"><b>Solves</b> &middot; review queues, overrides with reasons, audit packs</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:360ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19a6 6 0 0 1 12 0M15.5 19a5 5 0 0 1 5.5-4.9"/></svg></span>
-        <h3>Tax firms</h3>
-        <p>Multi-user practice management with roles, task tracking, client portals and partner-level oversight.</p>
-        <div class="need"><b>Solves</b> &middot; capacity planning, deadline risk, staff review</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:420ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span>
-        <h3>Enterprises</h3>
-        <p>Bulk employee filing as a benefit, with an HR-side dashboard, SSO and a signed data-processing
-          agreement.</p>
-        <div class="need"><b>Solves</b> &middot; employee compliance at scale, s.149 reconciliation</div>
+        <h3>Tax firms &amp; CAs</h3>
+        <p>A practice workspace for hundreds of returns a season &mdash; every one defensible.</p>
+        <div class="need"><b>Solves</b> &middot; review queues, audit packs, client portals</div>
       </article>
     </div>
   </div>
