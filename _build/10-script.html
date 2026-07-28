@@ -67,16 +67,17 @@
     }
 
     function countUp(to, ms) {
-      if (reduced) { refundEl.textContent = "Rs " + to.toLocaleString("en-US"); return; }
-      var start = null;
-      function frame(t) {
-        if (start === null) start = t;
-        var p = Math.min(1, (t - start) / ms);
+      if (reduced || ms <= 0) { refundEl.textContent = "Rs " + to.toLocaleString("en-US"); return; }
+      // setInterval (not rAF) so the count also completes when the tab is
+      // backgrounded; smooth when visible, throttled-but-correct when hidden.
+      var startT = +new Date();
+      var iv = setInterval(function () {
+        var p = Math.min(1, (+new Date() - startT) / ms);
         var eased = 1 - Math.pow(1 - p, 3);
         refundEl.textContent = "Rs " + Math.round(to * eased).toLocaleString("en-US");
-        if (p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
+        if (p >= 1) clearInterval(iv);
+      }, 33);
+      timers.push(iv);
     }
 
     function run() {
