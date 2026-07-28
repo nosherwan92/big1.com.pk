@@ -472,8 +472,35 @@ html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"
 }
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
 .chip .ico{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;color:#fff}
-.chip .t{font-size:.62rem;color:var(--text-3);font-weight:700;letter-spacing:.07em;text-transform:uppercase}
-.chip .v{font-size:.87rem;font-weight:640;letter-spacing:-.02em}
+.chip .t{display:block;font-size:.62rem;color:var(--text-3);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1px}
+.chip .v{display:block;font-size:.87rem;font-weight:640;letter-spacing:-.02em}
+
+/* ---------- Hero dashboard (faithful product screen) ---------- */
+.hd-body{display:block;padding:20px;overflow:hidden}
+.hd-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.hd-top h4{font-size:1rem;letter-spacing:-.015em}
+.hd-sub{font-size:.72rem;color:var(--text-3);margin-top:3px}
+.hd-main{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}
+.hd-l{font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
+.hd-health{padding:15px 16px;border-radius:14px;border:1px solid var(--border);background:var(--surface-solid)}
+.hd-hh{display:flex;align-items:center;justify-content:space-between}
+.hd-grade{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.85rem;color:#fff;background:linear-gradient(135deg,var(--gold-600),var(--gold-500))}
+.hd-score{display:flex;align-items:baseline;gap:3px;margin:8px 0 13px}
+.hd-score b{font-family:var(--display);font-size:2rem;font-weight:680;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.hd-score span{font-size:.8rem;color:var(--text-3)}
+.hd-bars{display:grid;gap:8px}
+.hd-bar{display:flex;align-items:center;gap:9px;font-size:.7rem;color:var(--text-2)}
+.hd-bar > span{width:82px;flex-shrink:0}
+.hd-bar > i{flex:1;height:5px;border-radius:3px;background:var(--bg-deep);position:relative;overflow:hidden}
+.hd-bar > i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);border-radius:3px;background:linear-gradient(90deg,var(--emerald-700),var(--emerald-500))}
+.hd-bar > em{width:20px;text-align:right;font-style:normal;font-variant-numeric:tabular-nums;font-weight:640;color:var(--text)}
+.hd-side{display:grid;gap:12px;align-content:start}
+.hd-tile{padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--surface-solid);display:flex;flex-direction:column;gap:4px}
+.hd-tile .hd-v{font-family:var(--display);font-size:1.4rem;font-weight:660;letter-spacing:-.03em;line-height:1.05;margin-top:2px}
+.hd-tile .hd-d{font-size:.68rem;color:var(--text-3)}
+.hd-gold{background:linear-gradient(135deg,rgba(233,185,73,.1),rgba(233,185,73,.03));border-color:rgba(233,185,73,.3)}
+.hd-gold .hd-v{background:linear-gradient(120deg,var(--gold-600),var(--gold-500));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:520px){.hd-main{grid-template-columns:1fr}}
 .chip-ai{top:8%;right:-4%;animation-delay:-1.4s}
 .chip-fbr{bottom:16%;left:-7%;animation-delay:-3.4s}
 .chip-ref{bottom:-3%;right:6%;animation-delay:-5s}
@@ -620,43 +647,37 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
             <span class="dots"><i></i><i></i><i></i></span>
             <span class="app-url">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-              app.filepak.pk / return / TY2026
+              app.big1.com.pk / dashboard
             </span>
           </div>
-          <div class="app-body hs-body">
-            <div class="hero-story" id="heroStory">
-              <div class="hs-top">
-                <span class="hs-live"><i></i><span id="hsStep">Reading your documents&hellip;</span></span>
-                <span class="hs-yr">TY&nbsp;2026</span>
-              </div>
-
-              <div class="hs-sources" aria-hidden="true">
-                <div class="hs-src" data-s="0"><span class="hs-si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><span class="hs-sl">Salary certificate</span><span class="hs-sc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
-                <div class="hs-src" data-s="1"><span class="hs-si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20V9.5L12 4l8 5.5V20"/><path d="M9.5 20v-6h5v6"/></svg></span><span class="hs-sl">Property income</span><span class="hs-sc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
-                <div class="hs-src" data-s="2"><span class="hs-si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h9"/></svg></span><span class="hs-sl">Withholding &middot; Maloomat</span><span class="hs-sc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
-                <span class="hs-scan"></span>
-              </div>
-
-              <div class="hs-found" id="hsFound">
-                <span class="hs-fi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.2 6.1 6.1 2.2-6.1 2.2L12 19.1 9.8 13 3.7 10.8l6.1-2.2z"/></svg></span>
-                <span>Matched <b>Rs&nbsp;41,000</b> of withholding you never claimed</span>
-              </div>
-
-              <div class="hs-refund">
-                <div class="hs-rwrap">
-                  <span class="hs-rl">Refund due</span>
-                  <span class="hs-rv" id="hsRefund">Rs 0</span>
+          <div class="app-body hd-body">
+            <div class="hd-top">
+              <div><h4>Good evening, Ayesha</h4><p class="hd-sub">Tax Year 2026 &middot; 41 days to file</p></div>
+              <span class="pill pill-g">Active filer</span>
+            </div>
+            <div class="hd-main">
+              <div class="hd-health">
+                <div class="hd-hh"><span class="hd-l">Tax health score</span><span class="hd-grade">C</span></div>
+                <div class="hd-score"><b>60</b><span>/100</span></div>
+                <div class="hd-bars">
+                  <div class="hd-bar"><span>Reconciliation</span><i style="--w:30%"></i><em>30</em></div>
+                  <div class="hd-bar"><span>Data checks</span><i style="--w:80%"></i><em>80</em></div>
+                  <div class="hd-bar"><span>Documents</span><i style="--w:75%"></i><em>75</em></div>
+                  <div class="hd-bar"><span>Audit risk</span><i style="--w:60%"></i><em>60</em></div>
+                  <div class="hd-bar"><span>Timeliness</span><i style="--w:78%"></i><em>78</em></div>
                 </div>
-                <span class="hs-badge" id="hsReady">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  Ready to file
-                </span>
               </div>
-
-              <div class="hs-checks">
-                <span class="hs-chk" data-c="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Withholding matched</span>
-                <span class="hs-chk" data-c="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wealth reconciled</span>
-                <span class="hs-chk" data-c="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>CA reviewed</span>
+              <div class="hd-side">
+                <div class="hd-tile hd-gold">
+                  <span class="hd-l">Found money &middot; Maloomat</span>
+                  <span class="hd-v">Rs 24,058</span>
+                  <span class="hd-d">unclaimed withholding</span>
+                </div>
+                <div class="hd-tile">
+                  <span class="hd-l">Return status</span>
+                  <span class="hd-v" style="font-size:1.05rem">CA review</span>
+                  <span class="hd-d">Assigned to S. Rehman, ACA</span>
+                </div>
               </div>
             </div>
           </div>

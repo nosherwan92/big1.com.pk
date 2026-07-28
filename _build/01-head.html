@@ -472,8 +472,35 @@ html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"
 }
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
 .chip .ico{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;color:#fff}
-.chip .t{font-size:.62rem;color:var(--text-3);font-weight:700;letter-spacing:.07em;text-transform:uppercase}
-.chip .v{font-size:.87rem;font-weight:640;letter-spacing:-.02em}
+.chip .t{display:block;font-size:.62rem;color:var(--text-3);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1px}
+.chip .v{display:block;font-size:.87rem;font-weight:640;letter-spacing:-.02em}
+
+/* ---------- Hero dashboard (faithful product screen) ---------- */
+.hd-body{display:block;padding:20px;overflow:hidden}
+.hd-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.hd-top h4{font-size:1rem;letter-spacing:-.015em}
+.hd-sub{font-size:.72rem;color:var(--text-3);margin-top:3px}
+.hd-main{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}
+.hd-l{font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
+.hd-health{padding:15px 16px;border-radius:14px;border:1px solid var(--border);background:var(--surface-solid)}
+.hd-hh{display:flex;align-items:center;justify-content:space-between}
+.hd-grade{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.85rem;color:#fff;background:linear-gradient(135deg,var(--gold-600),var(--gold-500))}
+.hd-score{display:flex;align-items:baseline;gap:3px;margin:8px 0 13px}
+.hd-score b{font-family:var(--display);font-size:2rem;font-weight:680;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.hd-score span{font-size:.8rem;color:var(--text-3)}
+.hd-bars{display:grid;gap:8px}
+.hd-bar{display:flex;align-items:center;gap:9px;font-size:.7rem;color:var(--text-2)}
+.hd-bar > span{width:82px;flex-shrink:0}
+.hd-bar > i{flex:1;height:5px;border-radius:3px;background:var(--bg-deep);position:relative;overflow:hidden}
+.hd-bar > i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);border-radius:3px;background:linear-gradient(90deg,var(--emerald-700),var(--emerald-500))}
+.hd-bar > em{width:20px;text-align:right;font-style:normal;font-variant-numeric:tabular-nums;font-weight:640;color:var(--text)}
+.hd-side{display:grid;gap:12px;align-content:start}
+.hd-tile{padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--surface-solid);display:flex;flex-direction:column;gap:4px}
+.hd-tile .hd-v{font-family:var(--display);font-size:1.4rem;font-weight:660;letter-spacing:-.03em;line-height:1.05;margin-top:2px}
+.hd-tile .hd-d{font-size:.68rem;color:var(--text-3)}
+.hd-gold{background:linear-gradient(135deg,rgba(233,185,73,.1),rgba(233,185,73,.03));border-color:rgba(233,185,73,.3)}
+.hd-gold .hd-v{background:linear-gradient(120deg,var(--gold-600),var(--gold-500));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:520px){.hd-main{grid-template-columns:1fr}}
 .chip-ai{top:8%;right:-4%;animation-delay:-1.4s}
 .chip-fbr{bottom:16%;left:-7%;animation-delay:-3.4s}
 .chip-ref{bottom:-3%;right:6%;animation-delay:-5s}
