@@ -983,9 +983,10 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .jstep{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
 .jdot{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;position:relative;z-index:2;
   background:var(--surface-solid);border:1px solid var(--border);box-shadow:var(--shadow-sm);
-  color:var(--text-3);transition:.55s var(--ease)}
-.jstep.on .jdot{border-color:transparent;color:#fff;transform:scale(1.08);
-  background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));box-shadow:0 14px 34px -12px rgba(6,95,70,.6)}
+  color:var(--text-3);transition:transform .4s var(--ease),background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.jstep:hover .jdot{border-color:transparent;color:#fff;transform:scale(1.08) translateY(-2px);
+  background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));box-shadow:0 16px 36px -12px rgba(6,95,70,.62)}
+.jstep:hover .jbody h3{color:var(--accent)}
 .jbody .jn{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase}
 .jbody h3{font-size:1rem;margin:6px 0 6px;letter-spacing:-.02em;line-height:1.25}
 .jbody p{font-size:.82rem;color:var(--text-2);line-height:1.55}
