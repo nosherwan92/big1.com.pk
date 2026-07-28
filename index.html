@@ -694,18 +694,19 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
   background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(16,158,125,.12));color:var(--accent);border:1px solid var(--border)}
 @media (max-width:960px){.panel-grid{grid-template-columns:1fr;gap:34px}}
 
-/* ---------- Bento / why ---------- */
-.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-.bento .card{grid-column:span 3}
-.bento .card.wide{grid-column:span 6}
-.bento .card.tall{grid-column:span 6;min-height:280px}
-.b-num{position:absolute;right:18px;top:14px;font-family:var(--mono);font-size:.68rem;color:var(--text-3);opacity:.55;letter-spacing:.08em}
-.card p{font-size:.9rem;color:var(--text-2);line-height:1.62}
-.card .kicker{font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
-.mini-chart{margin-top:18px;display:flex;align-items:flex-end;gap:5px;height:58px}
-.mini-chart i{flex:1;border-radius:3px;background:linear-gradient(180deg,var(--emerald-500),rgba(16,185,129,.18));display:block}
-@media (max-width:1000px){.bento .card{grid-column:span 6}.bento .card.wide,.bento .card.tall{grid-column:span 12}}
-@media (max-width:640px){.bento .card{grid-column:span 12}}
+/* ---------- Why: clean uniform grid ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.why-card{position:relative;padding:28px 26px;border-radius:var(--r-lg);border:1px solid var(--border);
+  background:var(--surface-solid);transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+.why-ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--accent);
+  background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(16,158,125,.09));border:1px solid var(--border);
+  margin-bottom:20px;transition:.4s var(--ease)}
+.why-card:hover .why-ic{background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));color:#fff;border-color:transparent}
+.why-card h3{font-size:1.12rem;letter-spacing:-.022em;line-height:1.25;margin-bottom:10px}
+.why-card p{font-size:.9rem;color:var(--text-2);line-height:1.62;max-width:34ch}
+@media (max-width:900px){.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.why-grid{grid-template-columns:1fr}}
 
 /* ---------- Section frame ---------- */
 .frame-sub{background:var(--bg-sub);border-block:1px solid var(--border)}
@@ -989,76 +990,41 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
         an auditor would ask for &mdash; then made it feel effortless.</p>
     </div>
 
-    <div class="bento" id="whyGrid">
-      <article class="card wide tilt-card" data-reveal>
-        <span class="b-num">01</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"/><path d="M19 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></div>
-        <span class="kicker">Computation</span>
-        <h3 class="h3">AI-powered, rules-governed</h3>
-        <p>The AI reads your documents and proposes. A deterministic, versioned rules engine decides. Nothing
-          reaches your return on a language model&rsquo;s word alone &mdash; every figure traces to a rule, and every
-          rule traces to a tax year.</p>
-        <div class="mini-chart" aria-hidden="true">
-          <i style="height:34%"></i><i style="height:52%"></i><i style="height:46%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:64%"></i><i style="height:94%"></i>
-        </div>
+    <div class="why-grid" id="whyGrid">
+      <article class="why-card" data-reveal>
+        <span class="why-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"/><path d="M19 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></span>
+        <h3>AI-powered, rules-governed</h3>
+        <p>The AI drafts; a versioned rules engine decides. Every figure traces to a rule &mdash; and every rule to a tax year.</p>
       </article>
 
-      <article class="card tilt-card" data-reveal style="--d:70ms">
-        <span class="b-num">02</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h9"/><circle cx="18.5" cy="17" r="3"/><path d="M20.8 19.3 23 21.5"/></svg></div>
-        <span class="kicker">Reconciliation</span>
-        <h3 class="h3">Withholding, matched</h3>
-        <p>Every deduction you suffered &mdash; salary, bank, utilities, vehicle, property &mdash; matched line by
-          line against what FBR holds. Differences are surfaced, not swallowed.</p>
+      <article class="why-card" data-reveal style="--d:60ms">
+        <span class="why-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h9"/><circle cx="18.5" cy="17" r="3"/><path d="M20.8 19.3 23 21.5"/></svg></span>
+        <h3>Withholding, matched</h3>
+        <p>Salary, bank, utility and property deductions checked line-by-line against FBR records. Gaps surfaced, not swallowed.</p>
       </article>
 
-      <article class="card tilt-card" data-reveal style="--d:140ms">
-        <span class="b-num">03</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.6-3.1 7.9-7.5 9-4.4-1.1-7.5-4.4-7.5-9V6z"/><path d="M9 12.2l2 2 4-4.2"/></svg></div>
-        <span class="kicker">Filing</span>
-        <h3 class="h3">Lawful by construction</h3>
-        <p>We file as your authorized representative through the FBR e-intermediary channel. Your IRIS password
-          is never requested, never stored, never scripted.</p>
+      <article class="why-card" data-reveal style="--d:120ms">
+        <span class="why-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.6-3.1 7.9-7.5 9-4.4-1.1-7.5-4.4-7.5-9V6z"/><path d="M9 12.2l2 2 4-4.2"/></svg></span>
+        <h3>Lawful by construction</h3>
+        <p>Filed as your authorized representative via the FBR e-intermediary. Your IRIS password is never requested or stored.</p>
       </article>
 
-      <article class="card tilt-card" data-reveal style="--d:210ms">
-        <span class="b-num">04</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></div>
-        <span class="kicker">Evidence</span>
-        <h3 class="h3">An audit trail that holds</h3>
-        <p>Who changed what, when, why, and which ruleset was in force. Immutable, exportable, and ready the day
-          a notice arrives &mdash; three years later.</p>
+      <article class="why-card" data-reveal style="--d:180ms">
+        <span class="why-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span>
+        <h3>An audit trail that holds</h3>
+        <p>Immutable and exportable: who changed what, when, and under which ruleset &mdash; ready the day a notice arrives.</p>
       </article>
 
-      <article class="card tilt-card" data-reveal style="--d:280ms">
-        <span class="b-num">05</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/></svg></div>
-        <span class="kicker">Wealth</span>
-        <h3 class="h3">Wealth that reconciles</h3>
-        <p>Assets, liabilities and expenses tie to declared income before the return can be submitted. The
-          equation is the gate.</p>
+      <article class="why-card" data-reveal style="--d:240ms">
+        <span class="why-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/></svg></span>
+        <h3>Wealth that reconciles</h3>
+        <p>Assets, liabilities and expenses must tie to declared income before you can submit. The equation is the gate.</p>
       </article>
 
-      <article class="card tilt-card" data-reveal style="--d:350ms">
-        <span class="b-num">06</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></div>
-        <span class="kicker">Assurance</span>
-        <h3 class="h3">Reviewed by a CA</h3>
-        <p>A chartered accountant signs off before anything is filed. Not a call-centre agent &mdash; a named
-          professional whose review is on the record.</p>
-      </article>
-
-      <article class="card wide tilt-card" data-reveal style="--d:420ms">
-        <span class="b-num">07</span>
-        <div class="ic-box"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v6h6M9 13h6M9 17h4"/></svg></div>
-        <span class="kicker">Governance</span>
-        <h3 class="h3">Version-controlled tax rules</h3>
-        <p>Finance Act 2025 changed the slabs. Your TY2024 return still computes on TY2024 law, because rulesets
-          are versioned, dated and immutable once published. Reopen any prior year and get the same answer you
-          got then &mdash; or model it under today&rsquo;s law, deliberately.</p>
-        <div class="verstrip" aria-hidden="true">
-          <span class="v-chip">FA-2022</span><span class="v-chip">FA-2023</span><span class="v-chip">FA-2024</span><span class="v-chip on">FA-2025 &middot; in force</span>
-        </div>
+      <article class="why-card" data-reveal style="--d:300ms">
+        <span class="why-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span>
+        <h3>Reviewed by a CA</h3>
+        <p>A named chartered accountant signs off before filing &mdash; a professional on the record, not a call-centre agent.</p>
       </article>
     </div>
   </div>
@@ -1102,9 +1068,6 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
 .typing span{width:6px;height:6px;border-radius:50%;background:var(--text-3);animation:tdot 1.3s var(--ease) infinite}
 .typing span:nth-child(2){animation-delay:.16s}.typing span:nth-child(3){animation-delay:.32s}
 @keyframes tdot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
-.verstrip{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.v-chip{font-size:.7rem;font-family:var(--mono);padding:5px 11px;border-radius:100px;border:1px solid var(--border);color:var(--text-3);background:var(--bg-sub)}
-.v-chip.on{border-color:rgba(16,185,129,.4);color:var(--accent);background:rgba(16,185,129,.09);font-weight:600}
 </style>
 
 
