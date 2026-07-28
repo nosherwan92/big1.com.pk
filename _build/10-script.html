@@ -40,6 +40,83 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var doc = document.documentElement;
 
+  /* ---------------- Hero story loop (single animated narrative) ---------------- */
+  (function heroStory() {
+    var root = document.getElementById("heroStory");
+    if (!root) return;
+    var stepEl = document.getElementById("hsStep");
+    var refundEl = document.getElementById("hsRefund");
+    var foundEl = document.getElementById("hsFound");
+    var readyEl = document.getElementById("hsReady");
+    var srcs = [].slice.call(root.querySelectorAll(".hs-src"));
+    var chks = [].slice.call(root.querySelectorAll(".hs-chk"));
+    var timers = [];
+    var TARGET = 41000;
+
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    function clearAll() { timers.forEach(clearTimeout); timers = []; }
+
+    function reset() {
+      srcs.forEach(function (s) { s.classList.remove("lit"); });
+      chks.forEach(function (c) { c.classList.remove("show", "done"); });
+      root.classList.remove("scanning");
+      foundEl.classList.remove("show");
+      readyEl.classList.remove("show");
+      refundEl.textContent = "Rs 0";
+      if (stepEl) stepEl.textContent = "Reading your documents...";
+    }
+
+    function countUp(to, ms) {
+      if (reduced) { refundEl.textContent = "Rs " + to.toLocaleString("en-US"); return; }
+      var start = null;
+      function frame(t) {
+        if (start === null) start = t;
+        var p = Math.min(1, (t - start) / ms);
+        var eased = 1 - Math.pow(1 - p, 3);
+        refundEl.textContent = "Rs " + Math.round(to * eased).toLocaleString("en-US");
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function run() {
+      reset();
+      if (reduced) {
+        srcs.forEach(function (s) { s.classList.add("lit"); });
+        foundEl.classList.add("show");
+        countUp(TARGET, 0);
+        readyEl.classList.add("show");
+        chks.forEach(function (c) { c.classList.add("show", "done"); });
+        return;
+      }
+      root.classList.add("scanning");
+      srcs.forEach(function (s, i) { at(400 + i * 460, function () { s.classList.add("lit"); }); });
+      at(1750, function () { if (stepEl) stepEl.textContent = "Matching withholding..."; });
+      at(2200, function () { foundEl.classList.add("show"); });
+      at(2700, function () { if (stepEl) stepEl.textContent = "Computing your refund..."; countUp(TARGET, 1500); });
+      chks.forEach(function (c, i) {
+        at(3100 + i * 420, function () { c.classList.add("show"); });
+        at(3300 + i * 420, function () { c.classList.add("done"); });
+      });
+      at(4700, function () { if (stepEl) stepEl.textContent = "Reconciled, validated"; readyEl.classList.add("show"); });
+      at(8200, run); // loop
+    }
+
+    // Start when the hero is visible; pause the loop when off-screen.
+    if ("IntersectionObserver" in window) {
+      var running = false;
+      var io = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) {
+          if (e.isIntersecting && !running) { running = true; run(); }
+          else if (!e.isIntersecting && running) { running = false; clearAll(); }
+        });
+      }, { threshold: 0.25 });
+      io.observe(root);
+    } else {
+      run();
+    }
+  })();
+
   /* ---------------- Theme ---------------- */
   var THEME_KEY = "filepak-theme";
   var themeBtn = document.getElementById("themeBtn");

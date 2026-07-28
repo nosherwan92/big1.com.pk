@@ -1,0 +1,75 @@
+
+<style>
+/* ---------- Comparison: the old way vs FilePak ---------- */
+.cmp-sec{position:relative;overflow:clip}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin-inline:auto}
+.cmp-col{border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;background:var(--surface-solid)}
+.cmp-col.old{background:var(--bg-sub)}
+.cmp-col.new{position:relative;box-shadow:var(--shadow-lg);border-color:transparent}
+.cmp-col.new::before{content:"";position:absolute;inset:0;padding:1.5px;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(150deg,var(--emerald-500),var(--emerald-700));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cmp-h{display:flex;align-items:center;gap:11px;padding:20px 22px;border-bottom:1px solid var(--border)}
+.cmp-col.new .cmp-h{background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(16,158,125,.04))}
+.cmp-h .lbl{font-size:.7rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--text-3)}
+.cmp-col.new .cmp-h .lbl{color:var(--emerald-600)}
+html[data-theme="dark"] .cmp-col.new .cmp-h .lbl{color:var(--emerald-300)}
+.cmp-h h3{font-size:1.06rem;letter-spacing:-.02em;margin-top:2px}
+.cmp-h .cmp-mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.cmp-col.old .cmp-mark{background:var(--bg-deep);color:var(--text-3);border:1px solid var(--border)}
+.cmp-col.new .cmp-mark{background:linear-gradient(135deg,var(--emerald-600),var(--emerald-700));color:#fff}
+.cmp-row{display:flex;align-items:center;gap:11px;padding:15px 22px;font-size:.9rem;border-bottom:1px solid var(--border);line-height:1.4}
+.cmp-row:last-child{border-bottom:0}
+.cmp-col.old .cmp-row{color:var(--text-3)}
+.cmp-col.new .cmp-row{color:var(--text);font-weight:520}
+.cmp-ic{width:20px;height:20px;border-radius:6px;flex-shrink:0;display:grid;place-items:center}
+.cmp-col.old .cmp-ic{color:var(--text-3);background:var(--bg-deep)}
+.cmp-col.new .cmp-ic{color:var(--emerald-600);background:rgba(16,185,129,.14)}
+html[data-theme="dark"] .cmp-col.new .cmp-ic{color:var(--emerald-300)}
+.cmp-ic svg{width:12px;height:12px}
+/* mobile: stack, and pair rows visually */
+@media (max-width:680px){
+  .cmp{grid-template-columns:1fr;gap:12px}
+  .cmp-col.old{opacity:.85}
+  .cmp-row{padding:13px 18px;font-size:.86rem}
+  .cmp-h{padding:16px 18px}
+}
+</style>
+
+<section class="sec cmp-sec frame-sub" id="compare">
+  <div class="wrap wrap-wide">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>The difference</span>
+      <h2 class="h1">Filing, the old way &mdash;<br /><span class="serif">and the FilePak way.</span></h2>
+      <p class="lede">Same return, same law. A completely different experience of getting it right.</p>
+    </div>
+
+    <div class="cmp" data-reveal="scale">
+      <div class="cmp-col old">
+        <div class="cmp-h">
+          <span class="cmp-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
+          <div><span class="lbl">Traditional filing</span><h3>Forms &amp; guesswork</h3></div>
+        </div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Manual calculations on a spreadsheet</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Raw IRIS field codes to decipher</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Trial and error, hope it&rsquo;s right</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Overpaid withholding, never claimed back</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Wealth statement reconciled by hand</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>No idea if a notice is coming</div>
+      </div>
+
+      <div class="cmp-col new">
+        <div class="cmp-h">
+          <span class="cmp-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><span class="lbl">With FilePak</span><h3>Computed &amp; assured</h3></div>
+        </div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Automatic computation from your documents</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Plain language &mdash; codes handled for you</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Live validation as you go</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Withholding matched to FBR automatically</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Wealth ties to income before you submit</div>
+        <div class="cmp-row"><span class="cmp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>A chartered accountant signs it off</div>
+      </div>
+    </div>
+  </div>
+</section>
