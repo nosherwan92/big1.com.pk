@@ -9,7 +9,7 @@
 .aud-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
 .aud-card:hover::after{transform:scaleX(1)}
 .aud-card .ai2{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:16px;
-  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(37,99,235,.1));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
 .aud-card h3{font-size:1.02rem;letter-spacing:-.02em;margin-bottom:7px}
 .aud-card p{font-size:.85rem;color:var(--text-2);line-height:1.6}
 .aud-card .need{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:.75rem;color:var(--text-3)}
@@ -21,7 +21,7 @@
 .dash-sec{overflow:clip;position:relative}
 .dash-sec::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(58% 42% at 50% 0%,rgba(16,185,129,.11),transparent 62%),
-             radial-gradient(48% 40% at 84% 34%,rgba(37,99,235,.1),transparent 66%)}
+             radial-gradient(48% 40% at 84% 34%,rgba(16,158,125,.1),transparent 66%)}
 .dash-wrap{position:relative;z-index:1}
 .dash-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
 .dash-tabs button{padding:9px 17px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
@@ -62,7 +62,7 @@
   background:#04070B;color:#EAF0F6;position:relative;overflow:clip;isolation:isolate}
 .sec-dark::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(60% 50% at 12% 0%,rgba(16,185,129,.16),transparent 62%),
-             radial-gradient(60% 50% at 88% 90%,rgba(37,99,235,.18),transparent 64%)}
+             radial-gradient(60% 50% at 88% 90%,rgba(16,158,125,.18),transparent 64%)}
 .sec-dark .eyebrow{background:rgba(255,255,255,.04);border-color:#1D2733;color:#9AA9BB}
 .shield-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(30px,4.4vw,64px);align-items:center}
 .shield-vis{position:relative;display:grid;place-items:center;min-height:330px}
@@ -72,7 +72,7 @@
 .r3{width:320px;height:320px;animation:pulseRing 4s var(--ease) infinite 1.2s}
 @keyframes pulseRing{0%{opacity:.9;transform:scale(.92)}70%{opacity:0;transform:scale(1.12)}100%{opacity:0}}
 .shield-core{position:relative;width:118px;height:118px;border-radius:34px;display:grid;place-items:center;
-  background:linear-gradient(140deg,#065F46,#0B7A5B 40%,#1E40AF);color:#fff;
+  background:linear-gradient(140deg,#065F46,#0B7A5B 40%,#0D6E5A);color:#fff;
   box-shadow:0 30px 70px -24px rgba(16,185,129,.6),0 0 0 1px rgba(255,255,255,.1) inset}
 .sec-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .sec-item{padding:17px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
@@ -81,7 +81,7 @@
 .sec-item .sh svg{color:#34D399;flex-shrink:0}
 .sec-item p{font-size:.79rem;color:#8695A8;line-height:1.58}
 .pledge{margin-top:26px;padding:18px 20px;border-radius:var(--r-md);border:1px solid rgba(16,185,129,.25);
-  background:linear-gradient(120deg,rgba(16,185,129,.09),rgba(37,99,235,.06));font-size:.88rem;line-height:1.62;color:#C7D3E1}
+  background:linear-gradient(120deg,rgba(16,185,129,.09),rgba(16,158,125,.06));font-size:.88rem;line-height:1.62;color:#C7D3E1}
 .pledge b{color:#fff}
 @media (max-width:960px){.shield-grid{grid-template-columns:1fr;gap:40px}}
 @media (max-width:560px){.sec-list{grid-template-columns:1fr}}
@@ -102,7 +102,7 @@
 .cname b{font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stbadge{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .st-done{background:rgba(16,185,129,.14);color:var(--emerald-600)}
-.st-rev{background:rgba(37,99,235,.13);color:var(--blue-600)}
+.st-rev{background:rgba(16,158,125,.13);color:var(--blue-600)}
 .st-wait{background:rgba(233,185,73,.16);color:var(--gold-600)}
 html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark"] .st-rev{color:var(--blue-400)}
 @media (max-width:960px){.prac-grid{grid-template-columns:1fr;gap:38px}}
@@ -240,7 +240,7 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
                         <stop offset="0" stop-color="#10B981" stop-opacity=".28"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/>
                       </linearGradient>
                       <linearGradient id="linegrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0" stop-color="#065F46"/><stop offset="55%" stop-color="#10B981"/><stop offset="100%" stop-color="#2563EB"/>
+                        <stop offset="0" stop-color="#065F46"/><stop offset="55%" stop-color="#10B981"/><stop offset="100%" stop-color="#109E7D"/>
                       </linearGradient>
                     </defs>
                     <line class="gl" x1="0" y1="30" x2="320" y2="30"/><line class="gl" x1="0" y1="60" x2="320" y2="60"/><line class="gl" x1="0" y1="90" x2="320" y2="90"/>
@@ -419,9 +419,9 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
               <div class="rowlist">
                 <div class="r hd" style="grid-template-columns:minmax(0,1fr) auto auto"><span>Client</span><span>Stage</span><span>Owner</span></div>
                 <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#065F46,#10B981)">AK</span><b>Ahmed Karim</b></span><span class="stbadge st-done">Filed</span><span class="small">SR</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#1E40AF,#60A5FA)">MT</span><b>Mehreen Tariq</b></span><span class="stbadge st-rev">Review</span><span class="small">FA</span></div>
+                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0D6E5A,#34D399)">MT</span><b>Mehreen Tariq</b></span><span class="stbadge st-rev">Review</span><span class="small">FA</span></div>
                 <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#C9971C,#E9B949)">HS</span><b>Hassan Steel (AOP)</b></span><span class="stbadge st-wait">Docs due</span><span class="small">SR</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0B7A5B,#22D3EE)">NZ</span><b>Nadia Zafar</b></span><span class="stbadge st-rev">Review</span><span class="small">IY</span></div>
+                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0B7A5B,#2DD4BF)">NZ</span><b>Nadia Zafar</b></span><span class="stbadge st-rev">Review</span><span class="small">IY</span></div>
                 <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#4B5563,#9CA3AF)">RB</span><b>Rehan Bashir</b></span><span class="stbadge st-done">Filed</span><span class="small">FA</span></div>
               </div>
             </div>

@@ -26,8 +26,8 @@
   /* Brand */
   --emerald-950:#032018; --emerald-900:#052E23; --emerald-800:#064E3B;
   --emerald-700:#065F46; --emerald-600:#0B7A5B; --emerald-500:#10B981; --emerald-300:#6EE7B7;
-  --blue-900:#16277A; --blue-800:#1E3A8A; --blue-700:#1E40AF; --blue-600:#2563EB; --blue-400:#60A5FA;
-  --cyan-400:#22D3EE; --cyan-300:#67E8F9;
+  --blue-900:#0A3D33; --blue-800:#0C5046; --blue-700:#0D6E5A; --blue-600:#109E7D; --blue-400:#34D399;
+  --cyan-400:#2DD4BF; --cyan-300:#5EEAD4;
   --gold-600:#C9971C; --gold-500:#E9B949; --gold-300:#F6D67E;
   --graphite:#05070A;
 
@@ -46,7 +46,7 @@
   --accent:var(--emerald-700);
   --accent-ink:#FFFFFF;
   --link:var(--blue-700);
-  --ring:rgba(37,99,235,.45);
+  --ring:rgba(16,158,125,.45);
 
   --shadow-xs:0 1px 2px rgba(8,13,19,.05);
   --shadow-sm:0 2px 6px rgba(8,13,19,.06), 0 1px 2px rgba(8,13,19,.04);
@@ -83,7 +83,7 @@ html[data-theme="dark"]{
   --accent:var(--emerald-500);
   --accent-ink:#03150F;
   --link:var(--blue-400);
-  --ring:rgba(96,165,250,.5);
+  --ring:rgba(52,211,153,.5);
   --shadow-sm:0 2px 6px rgba(0,0,0,.5);
   --shadow-md:0 16px 40px -16px rgba(0,0,0,.7);
   --shadow-lg:0 48px 96px -40px rgba(0,0,0,.85), 0 8px 24px -12px rgba(0,0,0,.6);
@@ -97,7 +97,7 @@ html[data-theme="dark"]{
     --surface:rgba(16,22,30,.62); --surface-solid:#0C1219; --elevated:#10171F;
     --border:#1B2430; --border-strong:#27333F;
     --text:#EAF0F6; --text-2:#9CABBC; --text-3:#6B7A8C;
-    --accent:#10B981; --accent-ink:#03150F; --link:#60A5FA; --ring:rgba(96,165,250,.5);
+    --accent:#10B981; --accent-ink:#03150F; --link:#34D399; --ring:rgba(52,211,153,.5);
     --shadow-sm:0 2px 6px rgba(0,0,0,.5);
     --shadow-md:0 16px 40px -16px rgba(0,0,0,.7);
     --shadow-lg:0 48px 96px -40px rgba(0,0,0,.85), 0 8px 24px -12px rgba(0,0,0,.6);
@@ -288,10 +288,10 @@ html[data-theme="dark"] .theme-btn .moon{display:block}
   background:radial-gradient(circle at 34% 34%,rgba(16,185,129,.62),rgba(16,185,129,0) 66%);
   animation:float1 22s ease-in-out infinite alternate}
 .a2{width:46vw;height:46vw;min-width:460px;min-height:460px;right:-10vw;top:-6vw;
-  background:radial-gradient(circle at 62% 40%,rgba(37,99,235,.5),rgba(37,99,235,0) 66%);
+  background:radial-gradient(circle at 62% 40%,rgba(16,158,125,.5),rgba(16,158,125,0) 66%);
   animation:float2 26s ease-in-out infinite alternate}
 .a3{width:40vw;height:40vw;min-width:380px;min-height:380px;left:34vw;bottom:-22vw;
-  background:radial-gradient(circle at 50% 50%,rgba(34,211,238,.36),rgba(34,211,238,0) 68%);
+  background:radial-gradient(circle at 50% 50%,rgba(45,212,191,.36),rgba(45,212,191,0) 68%);
   animation:float3 30s ease-in-out infinite alternate}
 .a4{width:22vw;height:22vw;min-width:260px;min-height:260px;right:16vw;bottom:2vw;
   background:radial-gradient(circle at 50% 50%,rgba(233,185,73,.3),rgba(233,185,73,0) 68%);
@@ -373,7 +373,7 @@ html[data-theme="dark"] .theme-btn .moon{display:block}
 .app-head h4{font-size:1rem;letter-spacing:-.02em}
 .pill{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.02em;white-space:nowrap}
 .pill-g{background:rgba(16,185,129,.14);color:var(--emerald-600);border:1px solid rgba(16,185,129,.24)}
-.pill-b{background:rgba(37,99,235,.12);color:var(--blue-600);border:1px solid rgba(37,99,235,.22)}
+.pill-b{background:rgba(16,158,125,.12);color:var(--blue-600);border:1px solid rgba(16,158,125,.22)}
 .pill-a{background:rgba(233,185,73,.16);color:var(--gold-600);border:1px solid rgba(233,185,73,.3)}
 html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"] .pill-b{color:var(--blue-400)} html[data-theme="dark"] .pill-a{color:var(--gold-500)}
 @media (prefers-color-scheme:dark){
@@ -386,7 +386,7 @@ html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"
 .kpi .l{font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);font-weight:700}
 .kpi .v{font-size:1.16rem;font-weight:660;letter-spacing:-.03em;margin-top:5px;font-variant-numeric:tabular-nums}
 .kpi .d{font-size:.66rem;color:var(--emerald-600);font-weight:600;margin-top:2px}
-.kpi.accent{background:linear-gradient(135deg,rgba(6,95,70,.1),rgba(37,99,235,.07));border-color:rgba(16,185,129,.28)}
+.kpi.accent{background:linear-gradient(135deg,rgba(6,95,70,.1),rgba(16,158,125,.07));border-color:rgba(16,185,129,.28)}
 .rowlist{border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden}
 .rowlist .r{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--border);font-size:.78rem}
 .rowlist .r:last-child{border-bottom:0}
@@ -446,7 +446,7 @@ html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"
 .card h3{margin-bottom:10px}
 .card .ic-box{
   width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
-  background:linear-gradient(135deg,rgba(6,95,70,.12),rgba(37,99,235,.1));
+  background:linear-gradient(135deg,rgba(6,95,70,.12),rgba(16,158,125,.1));
   border:1px solid var(--border);color:var(--accent);
   transition:transform .45s var(--ease)
 }
@@ -498,7 +498,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
       <a href="#how">How it works</a>
       <a href="#practice">For professionals</a>
       <a href="#security">Security</a>
-      <a href="#pricing">Pricing</a>
+<!-- DEV: Pricing link hidden during application development. -->
     </nav>
 
     <div class="nav-right">
@@ -628,7 +628,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
         </div>
 
         <div class="chip chip-ai">
-          <span class="ico" style="background:linear-gradient(135deg,#0B7A5B,#1E40AF)">
+          <span class="ico" style="background:linear-gradient(135deg,#0B7A5B,#0D6E5A)">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.2 6.1 6.1 2.2-6.1 2.2L12 19.1 9.8 13 3.7 10.8l6.1-2.2z"/></svg>
           </span>
           <span><span class="t">AI found</span><span class="v">Rs 41,000 unclaimed credit</span></span>
@@ -691,7 +691,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
 .feat-list{margin-top:22px;display:grid;gap:13px}
 .feat-list li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem;color:var(--text-2);line-height:1.55}
 .feat-list .tick{width:21px;height:21px;border-radius:7px;flex-shrink:0;margin-top:1px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(37,99,235,.12));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(16,158,125,.12));color:var(--accent);border:1px solid var(--border)}
 @media (max-width:960px){.panel-grid{grid-template-columns:1fr;gap:34px}}
 
 /* ---------- Bento / why ---------- */
@@ -922,8 +922,8 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
                     </svg>
                     <ul class="legend">
                       <li><i style="background:#065F46"></i> Immovable property <b class="tnum">54%</b></li>
-                      <li><i style="background:#2563EB"></i> Listed securities <b class="tnum">21%</b></li>
-                      <li><i style="background:#22D3EE"></i> Cash &amp; bank <b class="tnum">15%</b></li>
+                      <li><i style="background:#109E7D"></i> Listed securities <b class="tnum">21%</b></li>
+                      <li><i style="background:#2DD4BF"></i> Cash &amp; bank <b class="tnum">15%</b></li>
                       <li><i style="background:#E9B949"></i> Vehicles &amp; other <b class="tnum">10%</b></li>
                     </ul>
                   </div>
@@ -1074,7 +1074,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
 .q-opt.on .rd{border-color:var(--emerald-500)}
 .q-opt.on .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--emerald-500)}
 .hintbox{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:var(--r-sm);font-size:.79rem;line-height:1.55;
-  background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);color:var(--text-2)}
+  background:rgba(16,158,125,.07);border:1px solid rgba(16,158,125,.2);color:var(--text-2)}
 .hintbox svg{color:var(--blue-600);flex-shrink:0;margin-top:2px}
 .hintbox.amber{background:rgba(233,185,73,.1);border-color:rgba(233,185,73,.3)}
 .hintbox.amber svg{color:var(--gold-600)}
@@ -1084,8 +1084,8 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
 .dring{stroke:var(--bg-deep)}
 .dseg{stroke-linecap:butt;stroke-dasharray:0 100;animation:dgrow 1.4s var(--ease) forwards}
 .s1{stroke:#065F46;--dv:54;animation-delay:.1s}
-.s2{stroke:#2563EB;--dv:21;stroke-dashoffset:-54;animation-delay:.25s}
-.s3{stroke:#22D3EE;--dv:15;stroke-dashoffset:-75;animation-delay:.4s}
+.s2{stroke:#109E7D;--dv:21;stroke-dashoffset:-54;animation-delay:.25s}
+.s3{stroke:#2DD4BF;--dv:15;stroke-dashoffset:-75;animation-delay:.4s}
 .s4{stroke:#E9B949;--dv:10;stroke-dashoffset:-90;animation-delay:.55s}
 @keyframes dgrow{to{stroke-dasharray:var(--dv) 100}}
 .legend{display:grid;gap:8px;font-size:.8rem;color:var(--text-2)}
@@ -1115,7 +1115,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
 .calc-sec{position:relative;overflow:clip}
 .calc-sec::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(54% 40% at 50% 0%,rgba(16,185,129,.1),transparent 62%),
-             radial-gradient(44% 38% at 88% 60%,rgba(37,99,235,.08),transparent 66%)}
+             radial-gradient(44% 38% at 88% 60%,rgba(16,158,125,.08),transparent 66%)}
 .calc-sec > .wrap{position:relative;z-index:1}
 
 /* picker cards */
@@ -1135,7 +1135,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
   -webkit-mask-composite:xor;mask-composite:exclude}
 .cpick .cic{
   width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
-  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(37,99,235,.1));
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));
   color:var(--accent);border:1px solid var(--border);transition:.4s var(--ease)}
 .cpick[aria-pressed="true"] .cic{
   background:linear-gradient(135deg,var(--emerald-700),var(--blue-700));color:#fff;border-color:transparent}
@@ -1182,7 +1182,7 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
 .seg button[aria-pressed="true"]{background:var(--surface-solid);color:var(--text);box-shadow:var(--shadow-xs);font-weight:620}
 
 .res-hero{padding:18px;border-radius:var(--r-md);
-  background:linear-gradient(140deg,rgba(6,95,70,.1),rgba(37,99,235,.07));
+  background:linear-gradient(140deg,rgba(6,95,70,.1),rgba(16,158,125,.07));
   border:1px solid rgba(16,185,129,.26)}
 .res-hero .rl{font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--text-2)}
 .res-hero .rv{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.15rem);font-weight:660;
@@ -1621,7 +1621,7 @@ html[data-theme="dark"] .wa-inline{color:#4AE68A}
   animation:slideUp .8s var(--ease) both;animation-delay:var(--dd,0s)}
 @keyframes slideUp{from{opacity:0;transform:translateY(14px)}}
 .doccard .fic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;
-  background:linear-gradient(135deg,rgba(6,95,70,.14),rgba(37,99,235,.12));color:var(--accent)}
+  background:linear-gradient(135deg,rgba(6,95,70,.14),rgba(16,158,125,.12));color:var(--accent)}
 .doccard .meta{flex:1;min-width:0}
 .doccard .meta b{display:block;font-weight:600;font-size:.85rem;letter-spacing:-.01em}
 .doccard .meta span{font-size:.72rem;color:var(--text-3)}
@@ -1640,7 +1640,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
   background:var(--bg-deep);color:var(--text-2);flex-shrink:0;font-family:var(--mono)}
 .elayer b{font-weight:600}
 .elayer span{color:var(--text-3);font-size:.75rem;display:block}
-.elayer.hi{border-color:rgba(16,185,129,.4);background:linear-gradient(120deg,rgba(16,185,129,.08),rgba(37,99,235,.05))}
+.elayer.hi{border-color:rgba(16,185,129,.4);background:linear-gradient(120deg,rgba(16,185,129,.08),rgba(16,158,125,.05))}
 .earrow{display:grid;place-items:center;color:var(--text-3)}
 
 /* ---------- How it works ---------- */
@@ -1671,8 +1671,8 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .ai-sec::before{content:"";position:absolute;inset:0;z-index:-1;
   background:
     radial-gradient(70% 46% at 18% 8%,rgba(16,185,129,.2),transparent 62%),
-    radial-gradient(58% 44% at 86% 24%,rgba(37,99,235,.22),transparent 64%),
-    radial-gradient(64% 50% at 52% 108%,rgba(34,211,238,.15),transparent 64%)}
+    radial-gradient(58% 44% at 86% 24%,rgba(16,158,125,.22),transparent 64%),
+    radial-gradient(64% 50% at 52% 108%,rgba(45,212,191,.15),transparent 64%)}
 .ai-sec::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
   background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
   background-size:56px 56px;
@@ -1685,7 +1685,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow:hidden}
 .ai-phdr{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #161F29;font-size:.76rem;color:#8C9BAE}
 .ai-orb{width:26px;height:26px;border-radius:50%;flex-shrink:0;position:relative;
-  background:conic-gradient(from 0deg,#10B981,#22D3EE,#2563EB,#10B981);animation:spin 5.5s linear infinite}
+  background:conic-gradient(from 0deg,#10B981,#2DD4BF,#109E7D,#10B981);animation:spin 5.5s linear infinite}
 .ai-orb::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#0A1016}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ai-pbody{padding:18px}
@@ -1696,14 +1696,14 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .scanrow .sic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;font-size:.7rem;font-weight:700}
 .sic.ok{background:rgba(16,185,129,.14);color:#34D399}
 .sic.warn{background:rgba(233,185,73,.14);color:#F0C75E}
-.sic.info{background:rgba(37,99,235,.16);color:#7BA5F8}
+.sic.info{background:rgba(16,158,125,.16);color:#7BA5F8}
 .scanrow .txt{flex:1;min-width:0}
 .scanrow .txt b{display:block;font-weight:600;letter-spacing:-.012em;color:#E7EEF6}
 .scanrow .txt span{font-size:.75rem;color:#8695A8;display:block;margin-top:1px}
 .scanrow .amt{font-family:var(--mono);font-size:.8rem;color:#34D399;white-space:nowrap;font-variant-numeric:tabular-nums}
 .ai-foot{display:flex;align-items:center;gap:12px;padding:14px 18px;border-top:1px solid #161F29;font-size:.75rem;color:#7C8B9E}
 .progress-tiny{flex:1;height:4px;border-radius:4px;background:#111922;overflow:hidden}
-.progress-tiny i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#10B981,#22D3EE);animation:tinyfill 3.4s var(--ease) forwards .3s}
+.progress-tiny i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#10B981,#2DD4BF);animation:tinyfill 3.4s var(--ease) forwards .3s}
 @keyframes tinyfill{to{width:100%}}
 .ai-caps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
 .ai-cap{padding:15px 16px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
@@ -1876,7 +1876,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
             <span class="small">Tax chargeable &middot; TY2026</span>
             <div class="bars" style="height:64px"><span class="b" style="--bd:.1s;height:100%"></span><span class="b" style="--bd:.16s;height:78%"></span><span class="b" style="--bd:.22s;height:88%"></span></div>
           </div>
-          <div style="padding:16px;border-radius:var(--r-md);border:1px solid rgba(16,185,129,.4);background:linear-gradient(140deg,rgba(16,185,129,.09),rgba(37,99,235,.05))">
+          <div style="padding:16px;border-radius:var(--r-md);border:1px solid rgba(16,185,129,.4);background:linear-gradient(140deg,rgba(16,185,129,.09),rgba(16,158,125,.05))">
             <span class="small" style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Scenario A</span>
             <div style="font-family:var(--display);font-size:1.5rem;font-weight:660;letter-spacing:-.03em;margin-top:8px" class="tnum">Rs 667,500</div>
             <span class="small" style="color:var(--emerald-600)">&minus; Rs 45,000 &middot; pension credit s.63</span>
@@ -2061,7 +2061,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .aud-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
 .aud-card:hover::after{transform:scaleX(1)}
 .aud-card .ai2{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:16px;
-  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(37,99,235,.1));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
 .aud-card h3{font-size:1.02rem;letter-spacing:-.02em;margin-bottom:7px}
 .aud-card p{font-size:.85rem;color:var(--text-2);line-height:1.6}
 .aud-card .need{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:.75rem;color:var(--text-3)}
@@ -2073,7 +2073,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .dash-sec{overflow:clip;position:relative}
 .dash-sec::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(58% 42% at 50% 0%,rgba(16,185,129,.11),transparent 62%),
-             radial-gradient(48% 40% at 84% 34%,rgba(37,99,235,.1),transparent 66%)}
+             radial-gradient(48% 40% at 84% 34%,rgba(16,158,125,.1),transparent 66%)}
 .dash-wrap{position:relative;z-index:1}
 .dash-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
 .dash-tabs button{padding:9px 17px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
@@ -2114,7 +2114,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
   background:#04070B;color:#EAF0F6;position:relative;overflow:clip;isolation:isolate}
 .sec-dark::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(60% 50% at 12% 0%,rgba(16,185,129,.16),transparent 62%),
-             radial-gradient(60% 50% at 88% 90%,rgba(37,99,235,.18),transparent 64%)}
+             radial-gradient(60% 50% at 88% 90%,rgba(16,158,125,.18),transparent 64%)}
 .sec-dark .eyebrow{background:rgba(255,255,255,.04);border-color:#1D2733;color:#9AA9BB}
 .shield-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(30px,4.4vw,64px);align-items:center}
 .shield-vis{position:relative;display:grid;place-items:center;min-height:330px}
@@ -2124,7 +2124,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .r3{width:320px;height:320px;animation:pulseRing 4s var(--ease) infinite 1.2s}
 @keyframes pulseRing{0%{opacity:.9;transform:scale(.92)}70%{opacity:0;transform:scale(1.12)}100%{opacity:0}}
 .shield-core{position:relative;width:118px;height:118px;border-radius:34px;display:grid;place-items:center;
-  background:linear-gradient(140deg,#065F46,#0B7A5B 40%,#1E40AF);color:#fff;
+  background:linear-gradient(140deg,#065F46,#0B7A5B 40%,#0D6E5A);color:#fff;
   box-shadow:0 30px 70px -24px rgba(16,185,129,.6),0 0 0 1px rgba(255,255,255,.1) inset}
 .sec-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .sec-item{padding:17px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
@@ -2133,7 +2133,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .sec-item .sh svg{color:#34D399;flex-shrink:0}
 .sec-item p{font-size:.79rem;color:#8695A8;line-height:1.58}
 .pledge{margin-top:26px;padding:18px 20px;border-radius:var(--r-md);border:1px solid rgba(16,185,129,.25);
-  background:linear-gradient(120deg,rgba(16,185,129,.09),rgba(37,99,235,.06));font-size:.88rem;line-height:1.62;color:#C7D3E1}
+  background:linear-gradient(120deg,rgba(16,185,129,.09),rgba(16,158,125,.06));font-size:.88rem;line-height:1.62;color:#C7D3E1}
 .pledge b{color:#fff}
 @media (max-width:960px){.shield-grid{grid-template-columns:1fr;gap:40px}}
 @media (max-width:560px){.sec-list{grid-template-columns:1fr}}
@@ -2154,7 +2154,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .cname b{font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stbadge{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .st-done{background:rgba(16,185,129,.14);color:var(--emerald-600)}
-.st-rev{background:rgba(37,99,235,.13);color:var(--blue-600)}
+.st-rev{background:rgba(16,158,125,.13);color:var(--blue-600)}
 .st-wait{background:rgba(233,185,73,.16);color:var(--gold-600)}
 html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark"] .st-rev{color:var(--blue-400)}
 @media (max-width:960px){.prac-grid{grid-template-columns:1fr;gap:38px}}
@@ -2292,7 +2292,7 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
                         <stop offset="0" stop-color="#10B981" stop-opacity=".28"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/>
                       </linearGradient>
                       <linearGradient id="linegrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0" stop-color="#065F46"/><stop offset="55%" stop-color="#10B981"/><stop offset="100%" stop-color="#2563EB"/>
+                        <stop offset="0" stop-color="#065F46"/><stop offset="55%" stop-color="#10B981"/><stop offset="100%" stop-color="#109E7D"/>
                       </linearGradient>
                     </defs>
                     <line class="gl" x1="0" y1="30" x2="320" y2="30"/><line class="gl" x1="0" y1="60" x2="320" y2="60"/><line class="gl" x1="0" y1="90" x2="320" y2="90"/>
@@ -2471,9 +2471,9 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
               <div class="rowlist">
                 <div class="r hd" style="grid-template-columns:minmax(0,1fr) auto auto"><span>Client</span><span>Stage</span><span>Owner</span></div>
                 <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#065F46,#10B981)">AK</span><b>Ahmed Karim</b></span><span class="stbadge st-done">Filed</span><span class="small">SR</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#1E40AF,#60A5FA)">MT</span><b>Mehreen Tariq</b></span><span class="stbadge st-rev">Review</span><span class="small">FA</span></div>
+                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0D6E5A,#34D399)">MT</span><b>Mehreen Tariq</b></span><span class="stbadge st-rev">Review</span><span class="small">FA</span></div>
                 <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#C9971C,#E9B949)">HS</span><b>Hassan Steel (AOP)</b></span><span class="stbadge st-wait">Docs due</span><span class="small">SR</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0B7A5B,#22D3EE)">NZ</span><b>Nadia Zafar</b></span><span class="stbadge st-rev">Review</span><span class="small">IY</span></div>
+                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0B7A5B,#2DD4BF)">NZ</span><b>Nadia Zafar</b></span><span class="stbadge st-rev">Review</span><span class="small">IY</span></div>
                 <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#4B5563,#9CA3AF)">RB</span><b>Rehan Bashir</b></span><span class="stbadge st-done">Filed</span><span class="small">FA</span></div>
               </div>
             </div>
@@ -2554,8 +2554,8 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
   --text:#EAF0F6;--text-2:#9AA9BB;--text-3:#65748A;--border:#1B2430}
 .cta-sec::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(62% 60% at 50% 8%,rgba(16,185,129,.28),transparent 62%),
-             radial-gradient(52% 52% at 14% 88%,rgba(37,99,235,.26),transparent 64%),
-             radial-gradient(48% 48% at 88% 78%,rgba(34,211,238,.18),transparent 64%)}
+             radial-gradient(52% 52% at 14% 88%,rgba(16,158,125,.26),transparent 64%),
+             radial-gradient(48% 48% at 88% 78%,rgba(45,212,191,.18),transparent 64%)}
 .cta-sec::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.42;
   background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:64px 64px;
@@ -2624,7 +2624,7 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
         <p>What sold me was the override trail. When a client asks in 2029 why a figure was what it was, I can
           show them the note I wrote, the document behind it and the ruleset in force. That is the whole job.</p>
         <figcaption class="qwho">
-          <span class="av" style="background:linear-gradient(135deg,#1E40AF,#60A5FA)">SR</span>
+          <span class="av" style="background:linear-gradient(135deg,#0D6E5A,#34D399)">SR</span>
           <span><b>Practising chartered accountant</b><span>Lahore &middot; 200+ returns a season</span></span>
         </figcaption>
       </figure>
@@ -2644,7 +2644,8 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
 </section>
 
 <!-- ============================== PRICING ============================== -->
-<section class="sec" id="pricing">
+<!-- DEV: pricing hidden during application development. To restore, delete style="display:none" below. -->
+<section class="sec" id="pricing" style="display:none" aria-hidden="true">
   <div class="wrap wrap-wide">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Pricing</span>
@@ -2864,7 +2865,7 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
         <a href="#product">Wealth statement</a>
         <a href="#intelligence">AI intelligence</a>
         <a href="#dashboard">Dashboard</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#calculators">Tax calculators</a>
       </div>
 
       <div class="fcol">

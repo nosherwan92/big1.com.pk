@@ -37,7 +37,7 @@
 .feat-list{margin-top:22px;display:grid;gap:13px}
 .feat-list li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem;color:var(--text-2);line-height:1.55}
 .feat-list .tick{width:21px;height:21px;border-radius:7px;flex-shrink:0;margin-top:1px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(37,99,235,.12));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(16,158,125,.12));color:var(--accent);border:1px solid var(--border)}
 @media (max-width:960px){.panel-grid{grid-template-columns:1fr;gap:34px}}
 
 /* ---------- Bento / why ---------- */
@@ -268,8 +268,8 @@
                     </svg>
                     <ul class="legend">
                       <li><i style="background:#065F46"></i> Immovable property <b class="tnum">54%</b></li>
-                      <li><i style="background:#2563EB"></i> Listed securities <b class="tnum">21%</b></li>
-                      <li><i style="background:#22D3EE"></i> Cash &amp; bank <b class="tnum">15%</b></li>
+                      <li><i style="background:#109E7D"></i> Listed securities <b class="tnum">21%</b></li>
+                      <li><i style="background:#2DD4BF"></i> Cash &amp; bank <b class="tnum">15%</b></li>
                       <li><i style="background:#E9B949"></i> Vehicles &amp; other <b class="tnum">10%</b></li>
                     </ul>
                   </div>
@@ -420,7 +420,7 @@
 .q-opt.on .rd{border-color:var(--emerald-500)}
 .q-opt.on .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--emerald-500)}
 .hintbox{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:var(--r-sm);font-size:.79rem;line-height:1.55;
-  background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);color:var(--text-2)}
+  background:rgba(16,158,125,.07);border:1px solid rgba(16,158,125,.2);color:var(--text-2)}
 .hintbox svg{color:var(--blue-600);flex-shrink:0;margin-top:2px}
 .hintbox.amber{background:rgba(233,185,73,.1);border-color:rgba(233,185,73,.3)}
 .hintbox.amber svg{color:var(--gold-600)}
@@ -430,8 +430,8 @@
 .dring{stroke:var(--bg-deep)}
 .dseg{stroke-linecap:butt;stroke-dasharray:0 100;animation:dgrow 1.4s var(--ease) forwards}
 .s1{stroke:#065F46;--dv:54;animation-delay:.1s}
-.s2{stroke:#2563EB;--dv:21;stroke-dashoffset:-54;animation-delay:.25s}
-.s3{stroke:#22D3EE;--dv:15;stroke-dashoffset:-75;animation-delay:.4s}
+.s2{stroke:#109E7D;--dv:21;stroke-dashoffset:-54;animation-delay:.25s}
+.s3{stroke:#2DD4BF;--dv:15;stroke-dashoffset:-75;animation-delay:.4s}
 .s4{stroke:#E9B949;--dv:10;stroke-dashoffset:-90;animation-delay:.55s}
 @keyframes dgrow{to{stroke-dasharray:var(--dv) 100}}
 .legend{display:grid;gap:8px;font-size:.8rem;color:var(--text-2)}
