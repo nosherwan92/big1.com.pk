@@ -426,6 +426,12 @@ html[data-theme="dark"] .hs-chk.done{color:var(--emerald-300)}
 .side-i .ic{width:16px;height:16px;flex-shrink:0;opacity:.85}
 .side-i .badge{margin-left:auto;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:20px;background:rgba(16,185,129,.14);color:var(--emerald-600)}
 .app-main{padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+/* App mock: on phones drop the desktop sidebar so the main panel gets full width */
+@media (max-width:680px){
+  .app-body{grid-template-columns:1fr}
+  .app-side{display:none}
+  .app-main{padding:14px}
+}
 .app-head{display:flex;align-items:flex-start;gap:12px}
 .app-head h4{font-size:1rem;letter-spacing:-.02em}
 .pill{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.02em;white-space:nowrap}
@@ -1310,7 +1316,14 @@ html[data-theme="dark"] .fm-tot b{background:linear-gradient(120deg,var(--emeral
 .cpick[aria-pressed="true"] .cic{background:rgba(255,255,255,.18);color:#fff;border-color:transparent}
 .cpick b{font-size:.85rem;letter-spacing:-.012em;font-weight:560}
 .cpick > span:not(.cic){display:none}
-@media (max-width:520px){.cpick b{font-size:.8rem}.cpick{padding:8px 13px}}
+/* Phones: long labels wrapped to a ragged 4-row block; make it one swipeable strip instead */
+@media (max-width:560px){
+  .calc-pick{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;
+    padding-bottom:8px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .calc-pick::-webkit-scrollbar{display:none}
+  .cpick{flex:0 0 auto;scroll-snap-align:start;padding:8px 13px}
+  .cpick b{font-size:.8rem}
+}
 
 /* calculator body */
 .calc-body{border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface-solid);

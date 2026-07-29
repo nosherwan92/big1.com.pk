@@ -27,7 +27,14 @@
 .cpick[aria-pressed="true"] .cic{background:rgba(255,255,255,.18);color:#fff;border-color:transparent}
 .cpick b{font-size:.85rem;letter-spacing:-.012em;font-weight:560}
 .cpick > span:not(.cic){display:none}
-@media (max-width:520px){.cpick b{font-size:.8rem}.cpick{padding:8px 13px}}
+/* Phones: long labels wrapped to a ragged 4-row block; make it one swipeable strip instead */
+@media (max-width:560px){
+  .calc-pick{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;
+    padding-bottom:8px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .calc-pick::-webkit-scrollbar{display:none}
+  .cpick{flex:0 0 auto;scroll-snap-align:start;padding:8px 13px}
+  .cpick b{font-size:.8rem}
+}
 
 /* calculator body */
 .calc-body{border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface-solid);
