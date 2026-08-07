@@ -82,7 +82,8 @@ def standalone(src, cls, wrap_inner):
     if wrap_inner:
         inner = '<div class="wrap">' + inner + "</div>"
     jm = re.search(r"<script>(.*?)</script>", t, re.S)
-    return css, '<div class="%s">%s</div>' % (cls, inner), (jm.group(1) if jm else "")
+    body = ('<div class="%s">%s</div>' % (cls, inner)).replace("{{APP}}", APP_URL)
+    return css, body, (jm.group(1) if jm else "")
 
 def section(text, start_sub, end="</section>"):
     """Extract from the FULL opening tag containing start_sub through the first `end` after it.
@@ -194,6 +195,10 @@ def nav_for(active):
 # ---- interim "start" target: app not deployed yet -> WhatsApp ----
 WA = "https://wa.me/923399999611"
 WA_START = WA + "?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20get%20started."
+
+# ---- the FilePak application URL. PLACEHOLDER: app.big1.com.pk is the intended home but is NOT
+#      deployed yet (runs local-only). Pages use the {{APP}} token; swap this one line when the app is live.
+APP_URL = "https://app.big1.com.pk"
 
 # ---- shared footer + whatsapp float + scripts ----
 FOOTER = section(F08, '<footer class="foot">', "</footer>")
