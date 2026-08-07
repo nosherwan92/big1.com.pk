@@ -4,20 +4,20 @@
 <style>
 /* services page - compact cards, collapsed doc lists (scoped under .pgsvc at build) */
 .wrap{max-width:1760px;margin-inline:auto;padding-inline:clamp(18px,3vw,40px)}
-.phead{padding:clamp(38px,6vw,72px) 0 clamp(18px,2.5vw,28px);text-align:center}
+.phead{padding:clamp(22px,3vw,40px) 0 clamp(10px,1.4vw,16px);text-align:center}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald-500)}
-.phead h1{font-size:clamp(1.9rem,4.4vw,2.9rem);letter-spacing:-.035em;line-height:1.08;margin:15px 0 13px}
+.phead h1{font-size:clamp(1.6rem,3vw,2.15rem);letter-spacing:-.035em;line-height:1.06;margin:11px 0 9px}
 .phead h1 .serif{font-family:var(--serif);font-weight:400;font-style:italic}
-.lede{max-width:640px;margin-inline:auto;font-size:clamp(.95rem,1.6vw,1.04rem);color:var(--text-2)}
+.lede{max-width:600px;margin-inline:auto;font-size:clamp(.9rem,1.4vw,.98rem);color:var(--text-2);line-height:1.5}
 /* process - one slim row */
-.proc{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;margin:22px auto 4px;max-width:900px}
-.proc .p{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-2);
-  padding:8px 14px;border:1px solid var(--border);border-radius:100px;background:var(--surface)}
+.proc{display:flex;flex-wrap:wrap;justify-content:center;gap:7px 9px;margin:15px auto 2px;max-width:900px}
+.proc .p{display:inline-flex;align-items:center;gap:7px;font-size:.77rem;color:var(--text-2);
+  padding:6px 13px;border:1px solid var(--border);border-radius:100px;background:var(--surface)}
 .proc .n{width:19px;height:19px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-size:.66rem;font-weight:800;
   background:linear-gradient(135deg,rgba(6,95,70,.14),rgba(16,158,125,.1));color:var(--accent)}
 /* filter */
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:26px 0 18px}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:16px 0 16px}
 .tabs button{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);
   font-family:var(--sans);font-size:.82rem;font-weight:600;cursor:pointer;transition:.25s}
 .tabs button:hover{border-color:var(--border-strong);color:var(--text)}
@@ -52,8 +52,7 @@ html[data-theme="dark"] .cat.tax{color:var(--emerald-300)} html[data-theme="dark
     <div class="phead">
       <span class="eyebrow"><span class="dot"></span>Services</span>
       <h1>Registrations &amp; filings,<br /><span class="serif">handled for you.</span></h1>
-      <p class="lede">Tax, intellectual property and corporate services. Start in the app to file your details, or reach us on
-        WhatsApp &mdash; we confirm exactly what your case needs, and the fee, before you pay.</p>
+      <p class="lede">Tax, IP and corporate services. Start in the app or message us on WhatsApp &mdash; we confirm what your case needs, and the fee, before you pay.</p>
       <div class="proc" aria-label="How it works">
         <span class="p"><span class="n">1</span> Tell us what you need</span>
         <span class="p"><span class="n">2</span> We confirm what your case needs</span>
