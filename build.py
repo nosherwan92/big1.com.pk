@@ -415,7 +415,7 @@ def page(title, desc, canonical, active, body, calc=False, extra_css="", extra_j
     parts.append(GEN_SCRIPT)
     return "\n".join(parts)
 
-TAX_BODY = "\n\n".join([HERO_TAX, TRUST, COMPARE, FEATURES, HOW, INTEL, BEYOND, WHO, DASH, SECURITY, FAQ, CTA])
+TAX_BODY = "\n\n".join([HERO_TAX, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 

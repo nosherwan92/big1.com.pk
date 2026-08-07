@@ -675,8 +675,8 @@ html[data-theme="dark"] .cmp-col.new .cmp-ic{color:var(--emerald-300)}
 
 
 /* ---------- Editorial feature rows ---------- */
-.frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(32px,5vw,80px);align-items:center;
-  padding-block:clamp(52px,6vw,86px);border-top:1px solid var(--border)}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(28px,4vw,60px);align-items:center;
+  padding-block:clamp(30px,3.4vw,50px);border-top:1px solid var(--border)}
 .frow:first-of-type{border-top:0}
 .frow.rev .fcopy{order:2}
 .frow h3{font-size:clamp(1.55rem,2.6vw,2.15rem);letter-spacing:-.032em;margin:16px 0 16px}
@@ -695,7 +695,7 @@ html[data-theme="dark"] .cmp-col.new .cmp-ic{color:var(--emerald-300)}
 /* illustration canvas */
 .illo{position:relative;border-radius:var(--r-xl);border:1px solid var(--border);overflow:hidden;
   background:linear-gradient(150deg,var(--bg-sub),color-mix(in srgb,var(--bg-sub) 40%, transparent));
-  box-shadow:var(--shadow-md);padding:22px;min-height:300px;display:grid;align-content:center;gap:12px}
+  box-shadow:var(--shadow-md);padding:20px;min-height:250px;display:grid;align-content:center;gap:12px}
 .illo::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
   background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
   background-size:34px 34px;
@@ -1650,63 +1650,6 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
   </div>
 </section>
 
-<section class="sec ai-sec" id="intelligence">
-  <div class="wrap wrap-wide">
-    <div class="ai-grid">
-      <div data-reveal="left">
-        <span class="eyebrow"><span class="dot"></span>FilePak Intelligence</span>
-        <h2 class="h1" style="margin:22px 0 18px">The return<br /><span class="grad-text">reviews itself first.</span></h2>
-        <p class="lede" style="color:#9AA9BB">Before you file, sixty-one deterministic checks written from
-          Pakistani tax law read every figure &mdash; find what you missed, question what looks wrong, and show
-          their working. No black box: every flag cites the rule behind it.</p>
-      </div>
-
-      <div class="stage" data-reveal="scale">
-        <div class="ai-panel">
-          <div class="ai-phdr">
-            <span class="ai-orb" aria-hidden="true"></span>
-            <b style="color:#E7EEF6;font-weight:600">Intelligent review</b>
-            <span style="margin-left:auto;font-family:var(--mono);font-size:.7rem">TY2026 &middot; FA-2025</span>
-          </div>
-          <div class="ai-pbody">
-            <div class="scanrow" style="--ad:.15s">
-              <span class="sic ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="txt"><b>Income sources complete</b><span>3 sources reconciled to FBR profile &middot; no gaps</span></span>
-            </div>
-            <div class="scanrow" style="--ad:.5s">
-              <span class="sic info"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg></span>
-              <span class="txt"><b>Unclaimed investment tax credit</b><span>Approved pension contribution eligible under s.63</span></span>
-              <span class="amt">+41,000</span>
-            </div>
-            <div class="scanrow" style="--ad:.9s">
-              <span class="sic ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="txt"><b>Withholding recovered</b><span>Electricity s.235 and vehicle s.234 not in FBR profile</span></span>
-              <span class="amt">+112,900</span>
-            </div>
-            <div class="scanrow" style="--ad:1.35s">
-              <span class="sic warn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17h.01"/></svg></span>
-              <span class="txt"><b>Wealth movement to explain</b><span>Vehicle acquired Rs 4.2m &middot; funding source not yet declared</span></span>
-            </div>
-            <div class="scanrow" style="--ad:1.8s">
-              <span class="sic ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="txt"><b>Wealth statement reconciles</b><span>Difference Rs 0 after gift declaration attached</span></span>
-            </div>
-            <div class="scanrow" style="--ad:2.25s">
-              <span class="sic info"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.2 6.1 6.1 2.2-6.1 2.2L12 19.1 9.8 13 3.7 10.8l6.1-2.2z"/></svg></span>
-              <span class="txt"><b>Planning opportunity for next year</b><span>Instalments under s.147 can be reduced on current run-rate</span></span>
-            </div>
-          </div>
-          <div class="ai-foot">
-            <span>Reviewing 61 rules</span>
-            <span class="progress-tiny" aria-hidden="true"><i></i></span>
-            <b style="color:#34D399">Net benefit Rs 153,900</b>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="beyond">
   <div class="wrap wrap-wide">
     <div class="sec-head center" data-reveal>
@@ -1749,39 +1692,6 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
         <span class="bic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.6-3.1 7.9-7.5 9-4.4-1.1-7.5-4.4-7.5-9V6z"/><path d="M9 12.2l2 2 4-4.2"/></svg></span>
         <h3>Filed, or refunded</h3>
         <p>If we cannot file your return, you get your money back. Change your mind within 48 hours of paying &mdash; before completion &mdash; and you also get it back.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="who">
-  <div class="wrap wrap-wide">
-    <div class="sec-head center" data-reveal>
-      <span class="eyebrow"><span class="dot"></span>Who it&rsquo;s for</span>
-      <h2 class="h1">One platform.<br /><span class="serif">Every kind of taxpayer.</span></h2>
-      <p class="lede">Same engine underneath &mdash; a different surface for how complicated your year was.</p>
-    </div>
-
-    <div class="aud aud-3">
-      <article class="aud-card" data-reveal>
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span>
-        <h3>Individuals</h3>
-        <p>Salary, property, investments and foreign income &mdash; answered in plain questions.</p>
-        <div class="need"><b>Solves</b> &middot; unclaimed withholding, capital gains, wealth statement</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:80ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l6-4 6 4v13"/><path d="M15 21V12h6v9"/><path d="M3 21h18"/></svg></span>
-        <h3>Businesses &amp; freelancers</h3>
-        <p>Trading accounts, export of services, expenses and minimum tax &mdash; handled as a business.</p>
-        <div class="need"><b>Solves</b> &middot; multi-source computation, s.113, PSEB / s.154A</div>
-      </article>
-
-      <article class="aud-card" data-reveal style="--d:160ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l-3.5 3.5"/></svg></span>
-        <h3>Non-filers &amp; late filers</h3>
-        <p>Missed a year &mdash; or five? File any year back to 2016 and get on the Active Taxpayer List.</p>
-        <div class="need"><b>Solves</b> &middot; prior-year rulesets, ATL status, surcharge quoted upfront</div>
       </article>
     </div>
   </div>
@@ -1990,15 +1900,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
           </div>
           <div class="sec-item">
             <span class="sh"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg> Least-privilege access</span>
-            <p>Role-based, per-client access; a reason is logged before any file is opened.</p>
-          </div>
-          <div class="sec-item">
-            <span class="sh"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.6-3.1 7.9-7.5 9-4.4-1.1-7.5-4.4-7.5-9V6z"/></svg> Data residency &amp; retention</span>
-            <p>Defined retention, export on demand, and deletion you can prove happened.</p>
-          </div>
-          <div class="sec-item">
-            <span class="sh"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L16 8"/><rect x="3" y="4" width="18" height="17" rx="2.6"/></svg> Independent review</span>
-            <p>Penetration-tested and control-reviewed before every filing season.</p>
+            <p>Role-based, per-client access; a reason is logged before any file is opened, and it&rsquo;s retained on demand.</p>
           </div>
         </div>
 
@@ -2147,7 +2049,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
         <a href="tax-filing.html#features">Guided filing</a>
         <a href="tax-filing.html#beyond">Prior-year filing</a>
         <a href="tax-filing.html#beyond">Wealth statement</a>
-        <a href="tax-filing.html#intelligence">Automated checks</a>
+        <a href="tax-filing.html#how">Automated checks</a>
         <a href="tax-filing.html#dashboard">Dashboard</a>
       </div>
 
