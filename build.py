@@ -288,6 +288,50 @@ CTA_HOME = '''<!-- ============================== HOME CTA =====================
   </div>
 </section>'''
 
+TRUST_HOME = '''<!-- ============================== HOME TRUST BAND ============================== -->
+<section class="trust" aria-label="BIG1 at a glance">
+  <div class="wrap wrap-wide">
+    <div class="trust-in">
+      <div class="stat" data-reveal>
+        <div class="v tnum" data-count="20" data-suffix="+">0</div>
+        <div class="l">Services across tax, registration &amp; corporate &mdash; handled under one roof.</div>
+      </div>
+      <div class="stat" data-reveal style="--d:80ms">
+        <div class="v tnum" data-count="3">0</div>
+        <div class="l">Authorities we file with &mdash; FBR, IPO&nbsp;Pakistan and SECP.</div>
+      </div>
+      <div class="stat" data-reveal style="--d:160ms">
+        <div class="v tnum" data-count="10" data-suffix=" yrs">0</div>
+        <div class="l">Of prior income-tax returns you can still file &mdash; back to 2016.</div>
+      </div>
+      <div class="stat" data-reveal style="--d:240ms">
+        <div class="v tnum" style="font-size:clamp(1.6rem,3vw,2.1rem)">EN&nbsp;/&nbsp;&#1575;&#1585;&#1583;&#1608;</div>
+        <div class="l">Every step available in English and Urdu.</div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <ul>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Income-tax filing</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> NTN registration</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sales tax (GST) &amp; PST</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &mdash; IPO Pakistan</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &mdash; SECP</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorized FBR e-intermediary</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> AES-256 encryption</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> English &amp; &#1575;&#1585;&#1583;&#1608;</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Income-tax filing</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> NTN registration</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sales tax (GST) &amp; PST</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &mdash; IPO Pakistan</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &mdash; SECP</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorized FBR e-intermediary</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> AES-256 encryption</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> English &amp; &#1575;&#1585;&#1583;&#1608;</li>
+    </ul>
+  </div>
+</section>'''
+
 CALC_HERO = '''<!-- ============================== CALC HERO ============================== -->
 <section class="page-hero">
   <div class="wrap">
@@ -307,7 +351,7 @@ def page(title, desc, canonical, active, body, calc=False):
     parts.append(GEN_SCRIPT)
     return "\n".join(parts)
 
-TAX_BODY = "\n\n".join([HERO_TAX, COMPARE, FEATURES, HOW, INTEL, BEYOND, WHO, DASH, SECURITY, FAQ, CTA])
+TAX_BODY = "\n\n".join([HERO_TAX, TRUST, COMPARE, FEATURES, HOW, INTEL, BEYOND, WHO, DASH, SECURITY, FAQ, CTA])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 
@@ -316,7 +360,7 @@ PAGES = {
         "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
         "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
         "", "home",
-        "\n\n".join([HOME_HERO, PILLARS, TRUST, STORIES, FAQ_HOME, CTA_HOME])),
+        "\n\n".join([HOME_HERO, PILLARS, TRUST_HOME, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
         "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
