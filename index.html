@@ -316,6 +316,11 @@ html[data-theme="dark"] .theme-btn .moon{display:block}
 .hero h1{margin:22px 0 20px}
 .hero .lede{font-size:clamp(1.08rem,1.35vw,1.24rem);max-width:52ch}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;align-items:center}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;align-items:center}
+.hero-chips .cl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-right:2px}
+.hero-chips a{font-size:.8rem;font-weight:560;color:var(--text-2);padding:6px 13px;border-radius:100px;
+  border:1px solid var(--border);background:var(--surface);transition:.25s}
+.hero-chips a:hover{border-color:var(--emerald-500);color:var(--text);transform:translateY(-1px)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
 .hero-meta div{display:flex;align-items:center;gap:8px;font-size:.845rem;color:var(--text-2);font-weight:500}
 .hero-meta svg{color:var(--emerald-500);flex-shrink:0}
@@ -631,9 +636,9 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow" data-reveal><span class="dot"></span>Audit-grade tax intelligence &middot; Tax Year 2025&ndash;26</span>
+        <span class="eyebrow" data-reveal><span class="dot"></span>Tax, registration &amp; corporate services &middot; Pakistan</span>
         <h1 class="h-display" data-reveal style="--d:90ms">
-          File correctly.<br /><span class="grad-text">Down to the last rupee.</span>
+          File correctly.<br /><span class="grad-text">Register. Comply. Grow.</span>
         </h1>
         <p class="lede" data-reveal style="--d:180ms">
           FilePak reads your documents, finds the tax you overpaid, reconciles your wealth, and files it
@@ -647,6 +652,14 @@ html[data-theme="dark"] .bmark{background:linear-gradient(132deg,#3E9A79 0%,#54B
           <a class="btn btn-glass btn-lg" href="#services">
             Explore services
           </a>
+        </div>
+        <div class="hero-chips" data-reveal style="--d:300ms">
+          <span class="cl">Also handling</span>
+          <a href="services.html#taxation">NTN registration</a>
+          <a href="services.html#taxation">Sales tax / GST</a>
+          <a href="services.html#ip">Trademark</a>
+          <a href="services.html#corporate">Company incorporation</a>
+          <a href="services.html">See all &rarr;</a>
         </div>
         <div class="hero-meta" data-reveal style="--d:340ms">
           <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Filed via authorized e-intermediary</div>
