@@ -27,6 +27,63 @@ def pull_style(text):
     m = re.search(r"<style>(.*?)</style>", text, re.S)
     return m.group(1) if m else ""
 
+def _scope_sel(sel, P):
+    """Scope a single selector under .P; drop bare global resets (:root,*,html,body,a)."""
+    sel = sel.strip()
+    if not sel:
+        return None
+    if sel in (":root", "*", "html", "body", "a"):
+        return None
+    if re.match(r"^(a|body|html)([:\s]|$)", sel) and not sel.startswith(("html[", "a.", "a#", "a[")):
+        return None  # a{}, a:hover, body ..., html ... — global resets, shared head already has them
+    if sel.startswith("html"):                     # html[data-theme=..] .x  ->  html[..] .P .x
+        parts = sel.split(None, 1)
+        return parts[0] + " " + P + " " + parts[1] if len(parts) == 2 else None
+    return P + " " + sel
+
+def scope_css(css, P):
+    """Prefix every selector in `css` with `P` so it can't touch the shared nav/footer.
+    Keeps @media/@supports (recurses) and @keyframes/@font-face (verbatim); drops global resets."""
+    def block(s):
+        out, i, n = "", 0, len(s)
+        while i < n:
+            at, br = s.find("@", i), s.find("{", i)
+            if br == -1:
+                break
+            if at != -1 and at < br:                 # at-rule
+                pre = s[at:br]; name = pre.split()[0] if pre.split() else pre
+                depth, j = 1, br + 1
+                while j < n and depth:
+                    depth += (s[j] == "{") - (s[j] == "}"); j += 1
+                inner = s[br + 1:j - 1]
+                if name.startswith(("@keyframes", "@-webkit-keyframes", "@font-face")):
+                    out += s[at:j]
+                else:
+                    out += pre + "{" + block(inner) + "}"
+                i = j
+            else:                                    # normal rule
+                sel = s[i:br]
+                depth, j = 1, br + 1
+                while j < n and depth:
+                    depth += (s[j] == "{") - (s[j] == "}"); j += 1
+                decls = s[br + 1:j - 1]
+                scoped = [x for x in (_scope_sel(p, P) for p in sel.split(",")) if x]
+                if scoped:
+                    out += ",".join(scoped) + "{" + decls + "}"
+                i = j
+        return out
+    return block(css)
+
+def standalone(src, cls, wrap_inner):
+    """Import a standalone page: return (scoped_css, body, page_js) for build.py assembly."""
+    t = read(src)
+    css = scope_css(re.search(r"<style>(.*?)</style>", t, re.S).group(1), "." + cls)
+    inner = re.search(r"<main[^>]*>(.*?)</main>", t, re.S).group(1)
+    if wrap_inner:
+        inner = '<div class="wrap">' + inner + "</div>"
+    jm = re.search(r"<script>(.*?)</script>", t, re.S)
+    return css, '<div class="%s">%s</div>' % (cls, inner), (jm.group(1) if jm else "")
+
 def section(text, start_sub, end="</section>"):
     """Extract from the FULL opening tag containing start_sub through the first `end` after it.
     start_sub may be a full tag ('<section class=\"hero\">') or an attribute fragment ('id=\"faq\"');
@@ -87,7 +144,7 @@ NEW_CSS = """
 HEAD_RAW = F01[:F01.index("</head>") + len("</head>")]
 BODY_OPEN = F01[F01.index("</head>") + len("</head>"):].strip("\n")  # <body> + skip + scrollbar
 
-def head_for(title, desc, canonical):
+def head_for(title, desc, canonical, extra_css=""):
     h = HEAD_RAW
     h = re.sub(r"<title>.*?</title>", "<title>%s</title>" % title, h, flags=re.S)
     h = re.sub(r'(<meta name="description" content=").*?(" />)', lambda m: m.group(1)+desc+m.group(2), h, flags=re.S)
@@ -95,7 +152,7 @@ def head_for(title, desc, canonical):
     h = re.sub(r'(<meta property="og:description" content=").*?(" />)', lambda m: m.group(1)+desc+m.group(2), h, flags=re.S)
     h = re.sub(r'(<meta property="og:url" content=").*?(" />)', lambda m: m.group(1)+"https://big1.com.pk/"+canonical+m.group(2), h, flags=re.S)
     h = re.sub(r'(<link rel="canonical" href=").*?(" />)', lambda m: m.group(1)+"https://big1.com.pk/"+canonical+m.group(2), h, flags=re.S)
-    h = re.sub(r"<style>.*?</style>", "<style>\n" + CSS + "\n" + NEW_CSS + "\n</style>", h, flags=re.S, count=1)
+    h = re.sub(r"<style>.*?</style>", "<style>\n" + CSS + "\n" + NEW_CSS + "\n" + extra_css + "\n</style>", h, flags=re.S, count=1)
     return h
 
 # ---- shared nav (cross-page links + active state) ----
@@ -343,11 +400,13 @@ CALC_HERO = '''<!-- ============================== CALC HERO ===================
 </section>'''
 
 # ---- page assembly ----
-def page(title, desc, canonical, active, body, calc=False):
-    parts = [head_for(title, desc, canonical), BODY_OPEN, nav_for(active), body,
+def page(title, desc, canonical, active, body, calc=False, extra_css="", extra_js=""):
+    parts = [head_for(title, desc, canonical, extra_css), BODY_OPEN, nav_for(active), body,
              "</main>", FOOTER, WA_FAB]
     if calc:
         parts.append(CALC_ENGINE)
+    if extra_js:
+        parts.append("<script>\n" + extra_js + "\n</script>")
     parts.append(GEN_SCRIPT)
     return "\n".join(parts)
 
@@ -371,6 +430,18 @@ PAGES = {
         "calculators.html", "calc",
         "\n\n".join([CALC_HERO, CALC]), calc=True),
 }
+
+# ---- standalone content pages, now sharing the same head/nav/footer ----
+_SVC_CSS, _SVC_BODY, _SVC_JS = standalone("services-src.html", "pgsvc", wrap_inner=True)
+_ABT_CSS, _ABT_BODY, _ABT_JS = standalone("about-src.html", "pgabout", wrap_inner=False)
+PAGES["services.html"] = page(
+    "Services &mdash; NTN, Sales Tax, Trademark &amp; Company Registration in Pakistan | BIG1",
+    "Assisted tax, IP and corporate services in Pakistan with the exact documents each one needs: NTN, sales tax (GST) and PST registration, IRIS updates, FBR notices, trademark, copyright, patent, design, SECP incorporation and compliance.",
+    "services.html", "services", _SVC_BODY, extra_css=_SVC_CSS, extra_js=_SVC_JS)
+PAGES["about.html"] = page(
+    "About &amp; Contact &mdash; BIG1 / FilePak",
+    "BIG1 is a Pakistani tax and corporate-services firm behind FilePak: income-tax filing, registrations, IP and SECP compliance. What we do, how we work, and how to reach us.",
+    "about.html", "about", _ABT_BODY, extra_css=_ABT_CSS, extra_js=_ABT_JS)
 
 def build():
     for name, html in PAGES.items():
