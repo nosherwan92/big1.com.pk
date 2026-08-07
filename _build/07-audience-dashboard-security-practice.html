@@ -87,27 +87,29 @@
 @media (max-width:960px){.shield-grid{grid-template-columns:1fr;gap:40px}}
 @media (max-width:560px){.sec-list{grid-template-columns:1fr}}
 
-/* ---------- Practice ---------- */
-.prac-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(30px,4.4vw,64px);align-items:center}
-.prac-feats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
-.prac-f{padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface-solid);transition:.4s var(--ease)}
-.prac-f:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
-.prac-f b{display:flex;align-items:center;gap:8px;font-size:.9rem;letter-spacing:-.015em;margin-bottom:5px}
-.prac-f b svg{color:var(--accent);flex-shrink:0}
-.prac-f span{font-size:.78rem;color:var(--text-2);line-height:1.55}
-.clientrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:11px 13px;
-  border-bottom:1px solid var(--border);font-size:.8rem}
-.clientrow:last-child{border-bottom:0}
-.avatar{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:.66rem;font-weight:700;color:#fff;flex-shrink:0}
-.cname{display:flex;align-items:center;gap:9px;min-width:0}
-.cname b{font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stbadge{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .st-done{background:rgba(16,185,129,.14);color:var(--emerald-600)}
 .st-rev{background:rgba(16,158,125,.13);color:var(--blue-600)}
 .st-wait{background:rgba(233,185,73,.16);color:var(--gold-600)}
 html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark"] .st-rev{color:var(--blue-400)}
-@media (max-width:960px){.prac-grid{grid-template-columns:1fr;gap:38px}}
-@media (max-width:520px){.prac-feats{grid-template-columns:1fr}}
+
+/* ---------- Services hub ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1440px;margin-inline:auto}
+.svc-card{position:relative;padding:24px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface-solid);transition:.4s var(--ease)}
+.svc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+.svc-card .sic2{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:15px;
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
+.svc-card h3{font-size:1.04rem;letter-spacing:-.02em;margin-bottom:4px}
+.svc-card .ssub{display:block;font-size:.72rem;color:var(--text-3);margin-bottom:13px}
+.svc-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.svc-list li{display:flex;align-items:flex-start;gap:9px;font-size:.82rem;color:var(--text-2);line-height:1.5}
+.svc-list li .t2{width:16px;height:16px;border-radius:5px;display:grid;place-items:center;flex-shrink:0;margin-top:1px;
+  background:rgba(16,185,129,.13);color:var(--emerald-600)}
+html[data-theme="dark"] .svc-list li .t2{color:var(--emerald-300)}
+.svc-list li em{font-style:normal;color:var(--text-3);font-size:.74rem}
+.svc-note{max-width:760px;margin:26px auto 0;text-align:center;font-size:.8rem;color:var(--text-3);line-height:1.6}
+.svc-note b{color:var(--text-2);font-weight:600}
+@media (max-width:1000px){.svc-grid{grid-template-columns:1fr;max-width:640px}}
 
 /* ---------- Analytics widgets (faithful to the real product) ---------- */
 .an-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -176,10 +178,10 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
       </article>
 
       <article class="aud-card" data-reveal style="--d:160ms">
-        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L16 8"/><rect x="3" y="4" width="18" height="17" rx="2.6"/></svg></span>
-        <h3>Tax firms &amp; CAs</h3>
-        <p>A practice workspace for hundreds of returns a season &mdash; every one defensible.</p>
-        <div class="need"><b>Solves</b> &middot; review queues, audit packs, client portals</div>
+        <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l-3.5 3.5"/></svg></span>
+        <h3>Non-filers &amp; late filers</h3>
+        <p>Missed a year &mdash; or five? File any year back to 2016 and get on the Active Taxpayer List.</p>
+        <div class="need"><b>Solves</b> &middot; prior-year rulesets, ATL status, surcharge quoted upfront</div>
       </article>
     </div>
   </div>
@@ -410,51 +412,57 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
   </div>
 </section>
 
-<!-- ============================== PROFESSIONAL PRACTICE ============================== -->
-<section class="sec" id="practice">
+<!-- ============================== SERVICES ============================== -->
+<section class="sec" id="services">
   <div class="wrap wrap-wide">
-    <div class="prac-grid">
-      <div data-reveal="left">
-        <span class="eyebrow"><span class="dot"></span>For practices</span>
-        <h2 class="h1" style="margin:22px 0 18px">Run the season,<br /><span class="serif">not the spreadsheet.</span></h2>
-        <p class="lede">FilePak Practice turns a filing season into a managed workflow &mdash; every client visible, every return staged, every review recorded.</p>
-
-        <div class="prac-feats">
-          <div class="prac-f"><b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 19a5 5 0 0 0-3-4.6"/></svg> Client management</b><span>Every taxpayer, their history, their documents and their outstanding queries in one record.</span></div>
-          <div class="prac-f"><b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg> Workflow &amp; stages</b><span>Data collection, preparation, review, sign-off, filing &mdash; with owners and due dates on each.</span></div>
-          <div class="prac-f"><b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2.5 2.5L16 8"/><rect x="3" y="4" width="18" height="17" rx="2.6"/></svg> Review &amp; approvals</b><span>Preparer and reviewer are always distinct. Sign-off is a recorded act, not a checkbox.</span></div>
-          <div class="prac-f"><b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg> Version history</b><span>Every draft retained. Compare any two versions of a return line by line.</span></div>
-          <div class="prac-f"><b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M9 19v-8M14 19v-5M19 19V8"/></svg> Portfolio dashboard</b><span>Capacity, deadline exposure and fee realisation across the whole book.</span></div>
-          <div class="prac-f"><b><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg> Audit packs</b><span>One click produces the complete evidence file for any client, any year.</span></div>
-        </div>
-      </div>
-
-      <div class="stage" data-reveal="right">
-        <div class="app">
-          <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">practice.big1.com.pk / clients</span></div>
-          <div class="app-body" style="grid-template-columns:1fr">
-            <div class="app-main">
-              <div class="app-head">
-                <div><h4>Season board &mdash; TY2026</h4><p class="small">184 clients &middot; 41 days remaining</p></div>
-                <span class="pill pill-b" style="margin-left:auto">3 partners</span>
-              </div>
-              <div class="kpis">
-                <div class="kpi"><div class="l">Filed</div><div class="v tnum" data-count="126">0</div><div class="d">68% of book</div></div>
-                <div class="kpi"><div class="l">In review</div><div class="v tnum" data-count="31">0</div><div class="d">Avg 1.4 days</div></div>
-                <div class="kpi accent"><div class="l">At risk</div><div class="v tnum" data-count="7">0</div><div class="d">Docs outstanding</div></div>
-              </div>
-              <div class="rowlist">
-                <div class="r hd" style="grid-template-columns:minmax(0,1fr) auto auto"><span>Client</span><span>Stage</span><span>Owner</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#065F46,#10B981)">AK</span><b>Ahmed Karim</b></span><span class="stbadge st-done">Filed</span><span class="small">SR</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0D6E5A,#34D399)">MT</span><b>Mehreen Tariq</b></span><span class="stbadge st-rev">Review</span><span class="small">FA</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#C9971C,#E9B949)">HS</span><b>Hassan Steel (AOP)</b></span><span class="stbadge st-wait">Docs due</span><span class="small">SR</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#0B7A5B,#2DD4BF)">NZ</span><b>Nadia Zafar</b></span><span class="stbadge st-rev">Review</span><span class="small">IY</span></div>
-                <div class="clientrow"><span class="cname"><span class="avatar" style="background:linear-gradient(135deg,#4B5563,#9CA3AF)">RB</span><b>Rehan Bashir</b></span><span class="stbadge st-done">Filed</span><span class="small">FA</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>Services</span>
+      <h2 class="h1">Filing is where it starts.<br /><span class="serif">Not where it ends.</span></h2>
+      <p class="lede">Registrations, filings and advisory &mdash; requested in the app, documents listed up front,
+        tracked on a reference until it is done. The same team behind your return handles the rest.</p>
     </div>
+
+    <div class="svc-grid">
+      <article class="svc-card" data-reveal>
+        <span class="sic2"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 14.5h5M9.5 17.5h5"/></svg></span>
+        <h3>Taxation</h3>
+        <span class="ssub">FBR &amp; provincial authorities</span>
+        <ul class="svc-list">
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>NTN registration <em>&mdash; individual &middot; business &middot; AOP &middot; company &middot; NPO</em></span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Sales tax (GST) registration</span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Provincial sales tax (PST) registration</span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>IRIS profile update</span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>FBR notice &amp; audit response</span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Tax advisory</span></li>
+        </ul>
+      </article>
+
+      <article class="svc-card" data-reveal style="--d:80ms">
+        <span class="sic2"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 9.3a4 4 0 1 0 0 5.4"/></svg></span>
+        <h3>Intellectual property</h3>
+        <span class="ssub">Filed with IPO Pakistan</span>
+        <ul class="svc-list">
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Trademark registration <em>&mdash; your brand name or logo</em></span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copyright registration <em>&mdash; literary &middot; artistic &middot; software</em></span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Patent registration</span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Industrial design registration</span></li>
+        </ul>
+      </article>
+
+      <article class="svc-card" data-reveal style="--d:160ms">
+        <span class="sic2"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h6"/></svg></span>
+        <h3>Corporate</h3>
+        <span class="ssub">SECP formation &amp; compliance</span>
+        <ul class="svc-list">
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Company incorporation <em>&mdash; private &middot; SMC &middot; public, with name reservation</em></span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Business &amp; AOP registration</span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>SECP filings &amp; compliance <em>&mdash; annual returns &middot; Form 29 &middot; changes</em></span></li>
+          <li><span class="t2"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Corporate advisory <em>&mdash; structuring &middot; agreements &middot; governance</em></span></li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="svc-note" data-reveal>Every request gets a <b>tracked reference</b> and a <b>document checklist up front</b> &mdash;
+      you know exactly what is needed and where it stands, from request to completion.</p>
   </div>
 </section>
