@@ -2,11 +2,11 @@
 <html lang="en">
 <head><meta charset="utf-8" /><title>services-src</title>
 <style>
-/* services page - icon tiles (scoped under .pgsvc at build) */
+/* services page - icon tiles + guided detail modal (scoped under .pgsvc at build) */
 .wrap{max-width:1760px;margin-inline:auto;padding-inline:clamp(18px,3vw,40px)}
 .phead{padding:clamp(20px,2.4vw,32px) 0 clamp(8px,1.2vw,14px);text-align:center}
 .phead h1{font-size:clamp(1.4rem,2.3vw,1.8rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 8px}
-.lede{max-width:600px;margin-inline:auto;font-size:clamp(.9rem,1.4vw,.98rem);color:var(--text-2);line-height:1.5}
+.lede{max-width:620px;margin-inline:auto;font-size:clamp(.9rem,1.4vw,.98rem);color:var(--text-2);line-height:1.5}
 /* filter */
 .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:18px 0 18px}
 .tabs button{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);
@@ -18,7 +18,8 @@
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding-bottom:18px}
 .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:15px;
   min-height:168px;padding:28px 18px;border:1px solid var(--border);border-radius:18px;background:var(--surface);
-  color:var(--text);text-decoration:none;position:relative;overflow:hidden;box-shadow:var(--shadow-sm);
+  color:var(--text);text-decoration:none;position:relative;overflow:hidden;box-shadow:var(--shadow-sm);cursor:pointer;
+  font-family:var(--sans);width:100%;
   transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s var(--ease)}
 .tile::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;transform:scaleX(0);transform-origin:left;
   background:linear-gradient(90deg,var(--emerald-600),var(--emerald-500));transition:transform .3s var(--ease)}
@@ -31,17 +32,62 @@
 .tile:hover .ti{transform:scale(1.08) rotate(-4deg)}
 .tile .ti svg{width:30px;height:30px}
 .tile .tl{font-size:.95rem;font-weight:600;letter-spacing:-.012em;line-height:1.25}
-.tile .wa{position:absolute;top:12px;right:13px;color:var(--text-3);opacity:0;transition:opacity .26s}
-.tile:hover .wa{opacity:.9;color:var(--emerald-500)}
+.tile .more{position:absolute;bottom:12px;font-size:.7rem;font-weight:650;color:var(--accent);opacity:0;transition:opacity .26s}
+.tile:hover .more{opacity:.9}
 .fine{max-width:760px;margin:14px auto 0;text-align:center;font-size:.78rem;color:var(--text-3);line-height:1.6}
 .fine a{color:var(--accent);font-weight:600}
+
+/* ---- guided detail modal ---- */
+.svc-modal{position:fixed;inset:0;z-index:120;display:grid;place-items:end center;padding:0}
+.svc-modal[hidden]{display:none}
+.svc-back{position:absolute;inset:0;background:rgba(8,13,19,.55);backdrop-filter:blur(3px);animation:svcFade .25s ease}
+@keyframes svcFade{from{opacity:0}}
+.svc-dialog{position:relative;width:min(560px,100%);max-height:92vh;overflow:auto;background:var(--bg);
+  border:1px solid var(--border);border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);padding:26px 26px 30px;
+  animation:svcUp .32s var(--ease)}
+@media (min-width:640px){.svc-modal{place-items:center;padding:20px}.svc-dialog{border-radius:22px}}
+@keyframes svcUp{from{opacity:0;transform:translateY(40px)}}
+.svc-x{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);
+  background:var(--surface);color:var(--text-2);font-size:1.05rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+.svc-x:hover{color:var(--text);border-color:var(--border-strong)}
+.svc-head{display:flex;align-items:center;gap:14px;margin-bottom:13px;padding-right:34px}
+.svc-head .ti{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;color:#fff;flex-shrink:0;
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70,.5)}
+.svc-head .ti svg{width:27px;height:27px}
+.svc-head h3{font-size:1.16rem;letter-spacing:-.02em;line-height:1.2}
+.svc-head .sub{font-size:.72rem;color:var(--text-3)}
+.svc-desc{font-size:.9rem;color:var(--text-2);line-height:1.55;margin-bottom:18px}
+.svc-opts-l{display:block;font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin-bottom:9px}
+.svc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.svc-chip{padding:8px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
+  font-family:var(--sans);font-size:.81rem;font-weight:600;color:var(--text-2);cursor:pointer;transition:.2s}
+.svc-chip:hover{border-color:var(--border-strong);color:var(--text)}
+.svc-chip[aria-pressed="true"]{border-color:transparent;color:#fff;background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600))}
+.svc-detail{border-top:1px solid var(--border);padding-top:16px;animation:svcFade .25s ease}
+.svc-dh{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:11px}
+.svc-docs{list-style:none;display:grid;gap:8px;margin:0}
+.svc-docs li{display:flex;gap:9px;align-items:flex-start;font-size:.85rem;color:var(--text-2);line-height:1.45}
+.svc-docs .tk{width:16px;height:16px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
+  background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
+html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
+.svc-note2{margin-top:13px;font-size:.78rem;color:var(--text-2);background:var(--bg-sub);border:1px solid var(--border);
+  border-radius:12px;padding:10px 12px;line-height:1.45;display:flex;gap:8px}
+.svc-note2 b{font-weight:650;color:var(--text)}
+.svc-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.svc-act{flex:1;min-width:150px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:12px 16px;border-radius:100px;font-size:.85rem;font-weight:650;text-decoration:none;transition:.2s}
+.svc-act.primary{background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600));color:#fff;box-shadow:var(--shadow-sm)}
+.svc-act.primary:hover{filter:brightness(1.08)}
+.svc-act.ghost{border:1px solid var(--border-strong);color:var(--text-2)}
+.svc-act.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.svc-foot-note{width:100%;text-align:center;font-size:.72rem;color:var(--text-3);margin-top:10px}
 </style></head>
 <body>
 <main>
   <div class="wrap">
     <div class="phead">
       <h1>Our services</h1>
-      <p class="lede">Tap a service to start it on WhatsApp &mdash; we confirm exactly what your case needs, and the fee, before you pay.</p>
+      <p class="lede">Tap a service to see what&rsquo;s involved and what you&rsquo;ll need for your case &mdash; then start on WhatsApp. We confirm the fee before you pay.</p>
     </div>
 
     <div class="tabs" role="group" aria-label="Filter services">
@@ -54,111 +100,250 @@
     <div class="grid" id="grid">
 
       <!-- ===== TAXATION ===== -->
-      <a class="tile" data-cat="tax" href="https://wa.me/923399999611?text=I%20need%20NTN%20registration." target="_blank" rel="noopener noreferrer">
+      <button class="tile" data-svc="ntn" data-cat="tax">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><circle cx="8" cy="11" r="2.1"/><path d="M4.8 16a3.2 3.2 0 0 1 6.4 0"/><path d="M14.5 9.5h4M14.5 12.5h4M14.5 15.5h2.5"/></svg></span>
-        <span class="tl">NTN Registration</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="tax" href="https://wa.me/923399999611?text=I%20need%20sales%20tax%20(GST)%20registration." target="_blank" rel="noopener noreferrer">
+        <span class="tl">NTN Registration</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="gst" data-cat="tax">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9.5 7.5h5M9.5 11h5M9.5 14.5h3"/></svg></span>
-        <span class="tl">Sales Tax (GST)</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="tax" href="https://wa.me/923399999611?text=I%20need%20PST%20registration." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Sales Tax (GST)</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="pst" data-cat="tax">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg></span>
-        <span class="tl">Provincial Sales Tax</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="tax" href="https://wa.me/923399999611?text=I%20need%20an%20IRIS%20profile%20update." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Provincial Sales Tax</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="iris" data-cat="tax">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
-        <span class="tl">IRIS Profile Update</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="tax" href="https://wa.me/923399999611?text=I%20received%20an%20FBR%20notice%20and%20need%20help." target="_blank" rel="noopener noreferrer">
+        <span class="tl">IRIS Profile Update</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="notice" data-cat="tax">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M11 12v3M11 18h.01"/></svg></span>
-        <span class="tl">Notice &amp; Audit Response</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="tax" href="https://wa.me/923399999611?text=I%20need%20tax%20advisory." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Notice &amp; Audit Response</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="taxadv" data-cat="tax">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.8L3 20l.9-4.9a8.4 8.4 0 1 1 17.1-3.6z"/><path d="M9 10h6M9 13h4"/></svg></span>
-        <span class="tl">Tax Advisory</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
+        <span class="tl">Tax Advisory</span><span class="more">View details</span>
+      </button>
 
       <!-- ===== INTELLECTUAL PROPERTY ===== -->
-      <a class="tile" data-cat="ip" href="https://wa.me/923399999611?text=I%20need%20trademark%20registration." target="_blank" rel="noopener noreferrer">
+      <button class="tile" data-svc="trademark" data-cat="ip">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/><path d="M9.5 9h5M12 9v-2.5"/></svg></span>
-        <span class="tl">Trademark</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="ip" href="https://wa.me/923399999611?text=I%20need%20copyright%20registration." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Trademark</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="copyright" data-cat="ip">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.6 9.4a4 4 0 1 0 0 5.2"/></svg></span>
-        <span class="tl">Copyright</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="ip" href="https://wa.me/923399999611?text=I%20need%20patent%20registration." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Copyright</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="patent" data-cat="ip">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.9 1 1 1.7l.1.5h5l.1-.5c.1-.7.5-1.3 1-1.7A6 6 0 0 0 12 3z"/></svg></span>
-        <span class="tl">Patent</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="ip" href="https://wa.me/923399999611?text=I%20need%20industrial%20design%20registration." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Patent</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="design" data-cat="ip">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.6"/><circle cx="17.5" cy="7" r="3.8"/><path d="M7 14l-4 7h8z"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span>
-        <span class="tl">Industrial Design</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
+        <span class="tl">Industrial Design</span><span class="more">View details</span>
+      </button>
 
       <!-- ===== CORPORATE ===== -->
-      <a class="tile" data-cat="corp" href="https://wa.me/923399999611?text=I%20need%20company%20incorporation%20(SECP)." target="_blank" rel="noopener noreferrer">
+      <button class="tile" data-svc="incorp" data-cat="corp">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></svg></span>
-        <span class="tl">Company Incorporation</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="corp" href="https://wa.me/923399999611?text=I%20need%20business%2FAOP%20registration." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Company Incorporation</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="bizreg" data-cat="corp">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.6-5h14.8L21 9"/><path d="M4.5 9.5V20h15V9.5"/><path d="M9.5 20v-5h5v5"/><path d="M3 9h18"/></svg></span>
-        <span class="tl">Business Registration</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="corp" href="https://wa.me/923399999611?text=I%20need%20SECP%20filings%2Fcompliance." target="_blank" rel="noopener noreferrer">
+        <span class="tl">Business Registration</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="secp" data-cat="corp">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8.5 13l2.2 2.2L15 11"/></svg></span>
-        <span class="tl">SECP Compliance</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
-
-      <a class="tile" data-cat="corp" href="https://wa.me/923399999611?text=I%20need%20corporate%20advisory." target="_blank" rel="noopener noreferrer">
+        <span class="tl">SECP Compliance</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="corpadv" data-cat="corp">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.2A2.2 2.2 0 0 1 10.2 3h3.6A2.2 2.2 0 0 1 16 5.2V7"/><path d="M3 12.5h18"/></svg></span>
-        <span class="tl">Corporate Advisory</span>
-        <span class="wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>
-      </a>
+        <span class="tl">Corporate Advisory</span><span class="more">View details</span>
+      </button>
 
     </div>
 
-    <p class="fine">Every case is different &mdash; we confirm the exact documents and the fee for your situation before
-      you pay. Income-tax return filing is on the <a href="tax-filing.html">tax&nbsp;filing</a> page.</p>
+    <p class="fine">Requirements and fees depend on your specific case &mdash; we confirm both before you pay. Income-tax
+      return filing is on the <a href="tax-filing.html">tax&nbsp;filing</a> page.</p>
+  </div>
+
+  <!-- guided detail modal -->
+  <div class="svc-modal" id="svcModal" hidden>
+    <div class="svc-back" data-close></div>
+    <div class="svc-dialog" role="dialog" aria-modal="true" aria-labelledby="svcTitle">
+      <button class="svc-x" data-close aria-label="Close">&times;</button>
+      <div class="svc-head">
+        <span class="ti" id="svcIcon" aria-hidden="true"></span>
+        <div><h3 id="svcTitle"></h3><span class="sub" id="svcSub"></span></div>
+      </div>
+      <p class="svc-desc" id="svcDesc"></p>
+      <div id="svcOptWrap" hidden>
+        <span class="svc-opts-l">Which applies to you?</span>
+        <div class="svc-chips" id="svcChips"></div>
+      </div>
+      <div class="svc-detail" id="svcDetail"></div>
+      <div class="svc-foot">
+        <a class="svc-act primary" id="svcWa" href="#" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          Start on WhatsApp
+        </a>
+        <a class="svc-act ghost" id="svcApp" href="{{APP}}" target="_blank" rel="noopener noreferrer">Start in the app</a>
+        <span class="svc-foot-note">We confirm the exact documents and fee for your case before you pay.</span>
+      </div>
+    </div>
   </div>
 </main>
 
 <script>
 (function(){
-  var tabs=document.querySelectorAll('.tabs button');
+  var WA='https://wa.me/923399999611?text=';
+  var SVC={
+    ntn:{cat:'tax',title:'NTN Registration',sub:'FBR &middot; National Tax Number',
+      desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer. Pick the type that fits you.',
+      wa:'NTN registration',
+      options:[
+        {id:'individual',label:'Individual / salaried',docs:['CNIC &mdash; front &amp; back','A mobile number registered in your own name','Email address'],note:'FBR sends a verification PIN to your own mobile and email to complete IRIS enrolment.'},
+        {id:'business',label:'Business (sole proprietor)',docs:['CNIC &mdash; front &amp; back','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement or ownership proof of premises']},
+        {id:'aop',label:'Partnership / AOP',docs:['Partnership deed &amp; registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Office premises proof, letterhead &amp; electricity bill']},
+        {id:'company',label:'Company',docs:['Incorporation certificate','Memorandum &amp; Articles of Association','Authorisation of the principal officer','Colour CNICs of all directors','Office premises proof, letterhead &amp; electricity bill']},
+        {id:'npo',label:'NPO / trust',docs:['NTNs of all members','Registration certificate &amp; constitution','Authorisation of the principal officer','Colour CNICs of all members','Office premises proof, letterhead &amp; electricity bill']}
+      ]},
+    gst:{cat:'tax',title:'Sales Tax (GST) Registration',sub:'FBR &middot; STRN',
+      desc:'A Sales Tax Registration Number (STRN) for your business, start to finish.',
+      wa:'sales tax (GST) registration',
+      docs:['Colour CNICs of proprietor / partners','Bank account certificate','Authorisation of the principal officer','Rent agreement or ownership proof of premises','Latest electricity bill &amp; pictures of the meters','GPS-tagged photos of the premises','GPS-tagged photos of machinery &amp; industrial meter (manufacturers)'],
+      note:'Includes biometric verification at a NADRA e-Sahulat centre within 30 days; manufacturers also get an FBR post-verification visit of the premises.'},
+    pst:{cat:'tax',title:'Provincial Sales Tax (PST)',sub:'PRA &middot; SRB &middot; KPRA &middot; BRA',
+      desc:'Provincial sales tax on services. Pick the type that fits you.',
+      wa:'PST registration',
+      options:[
+        {id:'individual',label:'Individual',docs:['Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Premises proof, letterhead &amp; electricity bill','Signed application form']},
+        {id:'aop',label:'Partnership / AOP',docs:['Partnership certificate &amp; deed','Colour CNIC &amp; bank account certificate','Authorisation of the principal officer','Premises proof, letterhead &amp; electricity bill','Signed application form']},
+        {id:'company',label:'Company',docs:['Incorporation certificate, MoA &amp; AoA, Form A/29','Colour CNIC &amp; bank account certificate','Authorisation of the principal officer','Premises proof, letterhead &amp; electricity bill','Signed application form']}
+      ]},
+    iris:{cat:'tax',title:'IRIS Profile Update',sub:'FBR',
+      desc:'Change of address, bank account, business activity or contacts &mdash; kept current so notices reach you.',
+      wa:'an IRIS profile update',
+      docs:['CNIC &mdash; front &amp; back','A line on what needs updating']},
+    notice:{cat:'tax',title:'FBR Notice &amp; Audit Response',sub:'FBR',
+      desc:'Received a notice? We read it, tell you what it actually means, and draft the response with the evidence attached.',
+      wa:'help with an FBR notice',
+      docs:['The FBR notice (PDF or photo)','CNIC &mdash; front side']},
+    taxadv:{cat:'tax',title:'Tax Advisory',sub:'Planning &middot; structuring &middot; second opinions',
+      desc:'Talk to a tax expert before you act &mdash; salary structuring, capital gains, property or business setup.',
+      wa:'tax advisory',
+      docs:[],note:'Just bring your question &mdash; documents only if the matter needs them.'},
+    trademark:{cat:'ip',title:'Trademark Registration',sub:'IPO Pakistan',
+      desc:'Register your brand name or logo as a trademark &mdash; before someone else does.',
+      wa:'trademark registration',
+      docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image','The goods or services the mark covers']},
+    copyright:{cat:'ip',title:'Copyright Registration',sub:'IPO Pakistan',
+      desc:'Register an original work. Pick the kind of work.',
+      wa:'copyright registration',
+      options:[
+        {id:'artistic',label:'Artistic (logo, art, photo)',docs:['CNIC &mdash; front &amp; back','A copy of the artwork (image / PDF)','Affidavit of original creativity','Two newspaper advertisements (we can arrange)','NOC from the creator (if made for you)']},
+        {id:'literary',label:'Literary / software',docs:['CNIC &mdash; front &amp; back','A copy of the work (source code for software)','Affidavit of original creativity','NOC from the writer / owner (if made for you)']},
+        {id:'film',label:'Film / drama / game',docs:['CNIC &mdash; front &amp; back','A copy of the work on USB / DVD','Affidavit of original creativity','NOC from all contributors']},
+        {id:'music',label:'Music / sound',docs:['CNIC &mdash; front &amp; back','Audio copy on USB / DVD','Affidavit of original creativity','NOC from all contributors']}
+      ]},
+    patent:{cat:'ip',title:'Patent Registration',sub:'IPO Pakistan',
+      desc:'Protect an invention with a patent.',
+      wa:'patent registration',
+      docs:['CNIC &mdash; front &amp; back','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application (if filed abroad first)']},
+    design:{cat:'ip',title:'Industrial Design Registration',sub:'IPO Pakistan',
+      desc:'Register the look of a product &mdash; its shape, pattern or ornamentation.',
+      wa:'industrial design registration',
+      docs:['CNIC &mdash; front &amp; back','Images of the design &mdash; front, back, sides, top &amp; angled','What is new about it, and the product it applies to']},
+    incorp:{cat:'corp',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
+      desc:'Incorporate your company with SECP, from name reservation to certificate.',
+      wa:'company incorporation (SECP)',
+      docs:['Colour CNICs of all directors / subscribers','Registered office proof (rent / ownership)','Proposed company name &amp; principal activity','Draft Memorandum &amp; Articles (we can draft)'],
+      note:'SECP reserves the company name first, and directors obtain an SECP e-signature PIN to sign the incorporation filing.'},
+    bizreg:{cat:'corp',title:'Business / AOP Registration',sub:'Sole proprietorship &middot; partnership',
+      desc:'Register a sole proprietorship, partnership or AOP and start operating formally.',
+      wa:'business / AOP registration',
+      docs:['CNIC &mdash; front &amp; back','Business proof / partnership deed','Utility bill &amp; premises proof']},
+    secp:{cat:'corp',title:'SECP Filings &amp; Compliance',sub:'Annual returns &middot; Form 29 / A &middot; changes',
+      desc:'Annual returns, director changes, charges and every other SECP filing &mdash; on time, every time.',
+      wa:'SECP filings / compliance',
+      docs:['Company name and the filing required','Supporting documents for that filing']},
+    corpadv:{cat:'corp',title:'Corporate Advisory',sub:'Structuring &middot; agreements &middot; governance',
+      desc:'Company structuring, mergers, shareholder agreements, governance &mdash; talk to an expert before you commit.',
+      wa:'corporate advisory',
+      docs:[],note:'Just bring your question &mdash; no documents needed to start.'}
+  };
+
+  var modal=document.getElementById('svcModal');
+  var elIcon=document.getElementById('svcIcon'), elTitle=document.getElementById('svcTitle'),
+      elSub=document.getElementById('svcSub'), elDesc=document.getElementById('svcDesc'),
+      elOptWrap=document.getElementById('svcOptWrap'), elChips=document.getElementById('svcChips'),
+      elDetail=document.getElementById('svcDetail'), elWa=document.getElementById('svcWa');
+  var cur=null;
+
+  function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
+  function renderDetail(docs,note){
+    var h='';
+    if(docs&&docs.length){
+      h+='<div class="svc-dh">Documents you&rsquo;ll need</div><ul class="svc-docs">';
+      for(var i=0;i<docs.length;i++){h+='<li>'+tk()+'<span>'+docs[i]+'</span></li>';}
+      h+='</ul>';
+    }
+    if(note){h+='<div class="svc-note2"><b>Good to know:</b>&nbsp;'+note+'</div>';}
+    elDetail.innerHTML=h;
+  }
+  function setWa(extra){
+    var t='I need '+cur.wa+(extra?' ('+extra+')':'')+'.';
+    elWa.setAttribute('href', WA+encodeURIComponent(t));
+  }
+  function selectOpt(idx){
+    var opts=cur.options;
+    var chips=elChips.querySelectorAll('.svc-chip');
+    for(var i=0;i<chips.length;i++){chips[i].setAttribute('aria-pressed', i===idx?'true':'false');}
+    renderDetail(opts[idx].docs, opts[idx].note);
+    setWa(opts[idx].label);
+  }
+  function open(key, iconHtml){
+    cur=SVC[key]; if(!cur) return;
+    elIcon.innerHTML=iconHtml;
+    elTitle.innerHTML=cur.title; elSub.innerHTML=cur.sub||''; elDesc.innerHTML=cur.desc;
+    if(cur.options){
+      elOptWrap.hidden=false;
+      var c='';
+      for(var i=0;i<cur.options.length;i++){c+='<button class="svc-chip" type="button" data-i="'+i+'">'+cur.options[i].label+'</button>';}
+      elChips.innerHTML=c;
+      var btns=elChips.querySelectorAll('.svc-chip');
+      for(var j=0;j<btns.length;j++){(function(k){btns[k].addEventListener('click',function(){selectOpt(k);});})(j);}
+      selectOpt(0);
+    } else {
+      elOptWrap.hidden=true;
+      renderDetail(cur.docs, cur.note);
+      setWa('');
+    }
+    modal.hidden=false;
+    document.body.style.overflow='hidden';
+    modal.querySelector('.svc-dialog').scrollTop=0;
+  }
+  function close(){modal.hidden=true; document.body.style.overflow='';}
+
   var tiles=document.querySelectorAll('.tile');
-  function setCat(cat){
-    tabs.forEach(function(b){b.setAttribute('aria-pressed', b.getAttribute('data-cat')===cat ? 'true':'false');});
-    tiles.forEach(function(c){
-      var show = cat==='all' || c.getAttribute('data-cat')===cat;
-      if(show){c.removeAttribute('hidden');}else{c.setAttribute('hidden','');}
+  for(var t=0;t<tiles.length;t++){
+    tiles[t].addEventListener('click',function(){
+      open(this.getAttribute('data-svc'), this.querySelector('.ti').innerHTML);
     });
   }
-  tabs.forEach(function(b){b.addEventListener('click',function(){setCat(b.getAttribute('data-cat'));});});
+  modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close();});
+
+  // category filter
+  var tabs=document.querySelectorAll('.tabs button');
+  function setCat(cat){
+    for(var i=0;i<tabs.length;i++){tabs[i].setAttribute('aria-pressed', tabs[i].getAttribute('data-cat')===cat?'true':'false');}
+    for(var k=0;k<tiles.length;k++){
+      var show = cat==='all' || tiles[k].getAttribute('data-cat')===cat;
+      if(show){tiles[k].removeAttribute('hidden');}else{tiles[k].setAttribute('hidden','');}
+    }
+  }
+  for(var b=0;b<tabs.length;b++){(function(btn){btn.addEventListener('click',function(){setCat(btn.getAttribute('data-cat'));});})(tabs[b]);}
   var h=(location.hash||'').replace('#','');
   if(h==='taxation')setCat('tax'); else if(h==='ip')setCat('ip'); else if(h==='corporate')setCat('corp');
 })();
