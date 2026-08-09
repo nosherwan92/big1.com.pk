@@ -1254,11 +1254,17 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 
 
 /* ---------- Home: hero + pillars (multi-page) ---------- */
-.home-hero{position:relative;padding:clamp(56px,9vw,120px) 0 clamp(30px,5vw,60px);text-align:center;overflow:clip}
-.home-hero .eyebrow{margin-bottom:20px}
-.home-hero h1{font-size:clamp(2.1rem,5.4vw,3.7rem);letter-spacing:-.04em;line-height:1.04;max-width:16ch;margin:0 auto 20px}
-.home-hero .lede{max-width:640px;margin:0 auto 30px}
-.home-hero .hero-cta{justify-content:center}
+/* home hero: reuses the shared .hero/.hero-grid; a generic compliance-overview mock on the right */
+.hrow{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--bg-sub)}
+.hrow .hi{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;color:var(--accent);
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));border:1px solid var(--border)}
+.hrow .hi svg{width:16px;height:16px}
+.hrow .hl{flex:1;min-width:0}
+.hrow .hl b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em}
+.hrow .hl span{font-size:.67rem;color:var(--text-3)}
+.hnext{margin-top:13px;padding:10px 13px;border-radius:12px;font-size:.77rem;color:var(--emerald-700);line-height:1.4;
+  background:linear-gradient(120deg,rgba(16,185,129,.1),rgba(16,158,125,.06));border:1px solid rgba(16,185,129,.22)}
+html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
   border:1px solid var(--border);background:var(--surface-solid);text-decoration:none;color:inherit;overflow:hidden;

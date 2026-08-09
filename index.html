@@ -1254,11 +1254,17 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 
 
 /* ---------- Home: hero + pillars (multi-page) ---------- */
-.home-hero{position:relative;padding:clamp(56px,9vw,120px) 0 clamp(30px,5vw,60px);text-align:center;overflow:clip}
-.home-hero .eyebrow{margin-bottom:20px}
-.home-hero h1{font-size:clamp(2.1rem,5.4vw,3.7rem);letter-spacing:-.04em;line-height:1.04;max-width:16ch;margin:0 auto 20px}
-.home-hero .lede{max-width:640px;margin:0 auto 30px}
-.home-hero .hero-cta{justify-content:center}
+/* home hero: reuses the shared .hero/.hero-grid; a generic compliance-overview mock on the right */
+.hrow{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--bg-sub)}
+.hrow .hi{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;color:var(--accent);
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));border:1px solid var(--border)}
+.hrow .hi svg{width:16px;height:16px}
+.hrow .hl{flex:1;min-width:0}
+.hrow .hl b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em}
+.hrow .hl span{font-size:.67rem;color:var(--text-3)}
+.hnext{margin-top:13px;padding:10px 13px;border-radius:12px;font-size:.77rem;color:var(--emerald-700);line-height:1.4;
+  background:linear-gradient(120deg,rgba(16,185,129,.1),rgba(16,158,125,.06));border:1px solid rgba(16,185,129,.22)}
+html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
   border:1px solid var(--border);background:var(--surface-solid);text-decoration:none;color:inherit;overflow:hidden;
@@ -1321,19 +1327,48 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 <main id="main">
 <span id="top"></span>
 <!-- ============================== HOME HERO ============================== -->
-<section class="home-hero">
+<section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="grid-lines"></div>
+    <div class="aurora a1" data-par="0.035"></div><div class="aurora a2" data-par="-0.028"></div>
+    <div class="aurora a3" data-par="0.02"></div><div class="grid-lines"></div>
   </div>
   <div class="wrap">
-    <span class="eyebrow" data-reveal><span class="dot"></span>Tax, registration &amp; corporate services &middot; Pakistan</span>
-    <h1 class="h-display" data-reveal style="--d:80ms">Your tax and compliance,<br /><span class="grad-text">handled end to end.</span></h1>
-    <p class="lede" data-reveal style="--d:160ms">BIG1 helps individuals and businesses across Pakistan file their taxes,
-      register with the authorities, and stay compliant &mdash; a real team behind an intelligent platform, in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
-    <div class="hero-cta" data-reveal style="--d:240ms">
-      <a class="btn btn-primary btn-lg" href="tax-filing.html">File your taxes
-        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-      <a class="btn btn-glass btn-lg" href="services.html">Explore all services</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-reveal><span class="dot"></span>Tax, registration &amp; corporate services &middot; Pakistan</span>
+        <h1 class="h-display" data-reveal style="--d:80ms">Your tax and compliance,<br /><span class="grad-text">handled end to end.</span></h1>
+        <p class="lede" data-reveal style="--d:160ms">BIG1 helps individuals and businesses across Pakistan file their taxes,
+          register with the authorities, and stay compliant &mdash; a real team behind an intelligent platform, in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
+        <div class="hero-cta" data-reveal style="--d:240ms">
+          <a class="btn btn-primary btn-lg" href="tax-filing.html">File your taxes
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-glass btn-lg" href="services.html">Explore all services</a>
+        </div>
+        <div class="hero-meta" data-reveal style="--d:340ms">
+          <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Filed via an authorized FBR e-intermediary</div>
+          <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> One team for FBR, SECP &amp; IPO Pakistan</div>
+          <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Available in English &amp; &#1575;&#1585;&#1583;&#1608;</div>
+        </div>
+      </div>
+
+      <div class="stage" data-reveal="scale" style="--d:220ms">
+        <div class="app tilt" id="heroApp">
+          <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">app.big1.com.pk</span></div>
+          <div class="app-body" style="display:block;padding:22px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:15px">
+              <div><div style="font-weight:640;letter-spacing:-.02em;font-size:1.02rem">Compliance overview</div><div style="font-size:.72rem;color:var(--text-3)">Everything in one place</div></div>
+              <span class="pill pill-g">All on track</span>
+            </div>
+            <div style="display:grid;gap:9px">
+              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="hl"><b>Income tax return</b><span>Tax Year 2026</span></span><span class="pill pill-g">Filed</span></div>
+              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><circle cx="8" cy="11" r="2"/><path d="M14.5 10h4M14.5 14h4"/></svg></span><span class="hl"><b>NTN</b><span>Active Taxpayer List</span></span><span class="pill pill-g">Active</span></div>
+              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8h5M9.5 12h5"/></svg></span><span class="hl"><b>Sales tax (GST)</b><span>STRN issued</span></span><span class="pill pill-g">Registered</span></div>
+              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M3 21h18"/></svg></span><span class="hl"><b>Company &middot; SECP</b><span>Annual return</span></span><span class="pill pill-a">Due soon</span></div>
+            </div>
+            <div class="hnext">Next: SECP annual return due in 24 days &mdash; we&rsquo;ll handle it for you.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
