@@ -459,7 +459,7 @@ PAGES = {
         "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
         "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
         "", "home",
-        "\n\n".join([HOME_HERO, PILLARS, TRUST_HOME, STORIES, FAQ_HOME, CTA_HOME])),
+        "\n\n".join([HOME_HERO, PILLARS, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
         "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
