@@ -205,13 +205,13 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer. Pick the type that fits you.',
       wa:'NTN registration',
       options:[
-        {id:'individual',label:'Individual / salaried',
+        {id:'individual',label:'Individual / salaried',fee:'Rs. 500',
           docs:['CNIC &mdash; front &amp; back'],
-          info:['A mobile number registered in your own name','Email address'],
-          note:'FBR sends a verification PIN to your own mobile and email to complete IRIS enrolment.'},
-        {id:'business',label:'Business (sole proprietor)',
+          info:['A mobile number registered on your own CNIC','Email address'],
+          note:'FBR sends a verification PIN to the mobile registered on your CNIC and to your email to complete IRIS enrolment.'},
+        {id:'business',label:'Business (sole proprietor)',fee:'Rs. 1,500',
           docs:['CNIC &mdash; front &amp; back','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
-          info:['Business name']},
+          info:['Business name','Principal line of business','Business address']},
         {id:'aop',label:'Partnership / AOP',
           docs:['Partnership deed','Partnership registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
           info:['AOP / firm name']},
@@ -318,8 +318,9 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   var cur=null;
 
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
-  function renderDetail(docs,info,note){
+  function renderDetail(docs,info,note,fee){
     var h='';
+    if(fee){h+='<div class="svc-fee" style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#ecfdf3;border:1px solid #d1fae5;border-radius:10px;padding:10px 14px;margin-bottom:14px"><span style="color:#475569;font-weight:600;font-size:13px">Our professional fee</span><b style="color:#0f172a;font-size:17px">'+fee+'</b></div>';}
     if(docs&&docs.length){
       h+='<div class="svc-dh">Documents you&rsquo;ll need</div><ul class="svc-docs">';
       for(var i=0;i<docs.length;i++){h+='<li>'+tk()+'<span>'+docs[i]+'</span></li>';}
@@ -341,7 +342,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     var opts=cur.options;
     var chips=elChips.querySelectorAll('.svc-chip');
     for(var i=0;i<chips.length;i++){chips[i].setAttribute('aria-pressed', i===idx?'true':'false');}
-    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note);
+    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note, opts[idx].fee);
     setWa(opts[idx].label);
   }
   function open(key, iconHtml){
@@ -358,7 +359,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       selectOpt(0);
     } else {
       elOptWrap.hidden=true;
-      renderDetail(cur.docs, cur.info, cur.note);
+      renderDetail(cur.docs, cur.info, cur.note, cur.fee);
       setWa('');
     }
     modal.hidden=false;
