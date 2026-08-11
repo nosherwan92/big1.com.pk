@@ -70,6 +70,9 @@
 .svc-docs .tk{width:16px;height:16px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
   background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
 html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
+.svc-info{list-style:none;display:grid;gap:6px;margin:0}
+.svc-info li{position:relative;padding-left:15px;font-size:.82rem;color:var(--text-2);line-height:1.45}
+.svc-info li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--text-3)}
 .svc-note2{margin-top:13px;font-size:.78rem;color:var(--text-2);background:var(--bg-sub);border:1px solid var(--border);
   border-radius:12px;padding:10px 12px;line-height:1.45;display:flex;gap:8px}
 .svc-note2 b{font-weight:650;color:var(--text)}
@@ -202,29 +205,48 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer. Pick the type that fits you.',
       wa:'NTN registration',
       options:[
-        {id:'individual',label:'Individual / salaried',docs:['CNIC &mdash; front &amp; back','A mobile number registered in your own name','Email address'],note:'FBR sends a verification PIN to your own mobile and email to complete IRIS enrolment.'},
-        {id:'business',label:'Business (sole proprietor)',docs:['CNIC &mdash; front &amp; back','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement or ownership proof of premises']},
-        {id:'aop',label:'Partnership / AOP',docs:['Partnership deed &amp; registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Office premises proof, letterhead &amp; electricity bill']},
-        {id:'company',label:'Company',docs:['Incorporation certificate','Memorandum &amp; Articles of Association','Authorisation of the principal officer','Colour CNICs of all directors','Office premises proof, letterhead &amp; electricity bill']},
-        {id:'npo',label:'NPO / trust',docs:['NTNs of all members','Registration certificate &amp; constitution','Authorisation of the principal officer','Colour CNICs of all members','Office premises proof, letterhead &amp; electricity bill']}
+        {id:'individual',label:'Individual / salaried',
+          docs:['CNIC &mdash; front &amp; back'],
+          info:['A mobile number registered in your own name','Email address'],
+          note:'FBR sends a verification PIN to your own mobile and email to complete IRIS enrolment.'},
+        {id:'business',label:'Business (sole proprietor)',
+          docs:['CNIC &mdash; front &amp; back','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
+          info:['Business name']},
+        {id:'aop',label:'Partnership / AOP',
+          docs:['Partnership deed','Partnership registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
+          info:['AOP / firm name']},
+        {id:'company',label:'Company',
+          docs:['Incorporation certificate','Memorandum &amp; Articles of Association','Authorisation of the principal officer','Colour CNICs of all directors','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
+          info:['Company name']},
+        {id:'npo',label:'NPO / trust',
+          docs:['NTNs of all members','Registration certificate','Constitution of the NPO','Authorisation of the principal officer','Colour CNICs of all members','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Any other document the authority asks for'],
+          info:['NPO / trust / society name']}
       ]},
     gst:{cat:'tax',title:'Sales Tax (GST) Registration',sub:'FBR &middot; STRN',
       desc:'A Sales Tax Registration Number (STRN) for your business, start to finish.',
       wa:'sales tax (GST) registration',
-      docs:['Colour CNICs of proprietor / partners','Bank account certificate','Authorisation of the principal officer','Rent agreement or ownership proof of premises','Latest electricity bill &amp; pictures of the meters','GPS-tagged photos of the premises','GPS-tagged photos of machinery &amp; industrial meter (manufacturers)'],
+      docs:['Colour CNICs of proprietor / partners','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of premises','NOC from the landlord (if the premises are rented)','Latest paid electricity bill','Pictures of the gas &amp; electricity meters','GPS-tagged photographs of the premises','Particulars of all branches (if any)','GPS-tagged photos of machinery &amp; the industrial meter (manufacturers only)'],
+      info:['Business name &amp; activity','Commencement date','Gas / electricity consumer number','Production capacity (manufacturers)'],
       note:'Includes biometric verification at a NADRA e-Sahulat centre within 30 days; manufacturers also get an FBR post-verification visit of the premises.'},
     pst:{cat:'tax',title:'Provincial Sales Tax (PST)',sub:'PRA &middot; SRB &middot; KPRA &middot; BRA',
       desc:'Provincial sales tax on services. Pick the type that fits you.',
       wa:'PST registration',
       options:[
-        {id:'individual',label:'Individual',docs:['Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Premises proof, letterhead &amp; electricity bill','Signed application form']},
-        {id:'aop',label:'Partnership / AOP',docs:['Partnership certificate &amp; deed','Colour CNIC &amp; bank account certificate','Authorisation of the principal officer','Premises proof, letterhead &amp; electricity bill','Signed application form']},
-        {id:'company',label:'Company',docs:['Incorporation certificate, MoA &amp; AoA, Form A/29','Colour CNIC &amp; bank account certificate','Authorisation of the principal officer','Premises proof, letterhead &amp; electricity bill','Signed application form']}
+        {id:'individual',label:'Individual',
+          docs:['Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Particulars of all branches (if any)','Signed application form'],
+          info:['Full name (as per CNIC)','Business / service activity','Commencement date']},
+        {id:'aop',label:'Partnership / AOP',
+          docs:['Partnership certificate','Partnership deed','Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Signed application form'],
+          info:['AOP / firm name','Business / service activity']},
+        {id:'company',label:'Company',
+          docs:['Incorporation certificate','Memorandum of Association','Articles of Association','Incorporation Form / Form A &amp; 29','Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Signed application form'],
+          info:['Company name','Business / service activity']}
       ]},
     iris:{cat:'tax',title:'IRIS Profile Update',sub:'FBR',
       desc:'Change of address, bank account, business activity or contacts &mdash; kept current so notices reach you.',
       wa:'an IRIS profile update',
-      docs:['CNIC &mdash; front &amp; back','A line on what needs updating']},
+      docs:['CNIC &mdash; front &amp; back'],
+      info:['What needs updating']},
     notice:{cat:'tax',title:'FBR Notice &amp; Audit Response',sub:'FBR',
       desc:'Received a notice? We read it, tell you what it actually means, and draft the response with the evidence attached.',
       wa:'help with an FBR notice',
@@ -232,45 +254,60 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     taxadv:{cat:'tax',title:'Tax Advisory',sub:'Planning &middot; structuring &middot; second opinions',
       desc:'Talk to a tax expert before you act &mdash; salary structuring, capital gains, property or business setup.',
       wa:'tax advisory',
-      docs:[],note:'Just bring your question &mdash; documents only if the matter needs them.'},
+      docs:[],info:['Your question or situation'],note:'No documents needed to start &mdash; just bring your question.'},
     trademark:{cat:'ip',title:'Trademark Registration',sub:'IPO Pakistan',
       desc:'Register your brand name or logo as a trademark &mdash; before someone else does.',
       wa:'trademark registration',
-      docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image','The goods or services the mark covers']},
+      docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image'],
+      info:['Applicant name','Brand / mark name','Class of goods / services','The goods or services it covers']},
     copyright:{cat:'ip',title:'Copyright Registration',sub:'IPO Pakistan',
       desc:'Register an original work. Pick the kind of work.',
       wa:'copyright registration',
       options:[
-        {id:'artistic',label:'Artistic (logo, art, photo)',docs:['CNIC &mdash; front &amp; back','A copy of the artwork (image / PDF)','Affidavit of original creativity','Two newspaper advertisements (we can arrange)','NOC from the creator (if made for you)']},
-        {id:'literary',label:'Literary / software',docs:['CNIC &mdash; front &amp; back','A copy of the work (source code for software)','Affidavit of original creativity','NOC from the writer / owner (if made for you)']},
-        {id:'film',label:'Film / drama / game',docs:['CNIC &mdash; front &amp; back','A copy of the work on USB / DVD','Affidavit of original creativity','NOC from all contributors']},
-        {id:'music',label:'Music / sound',docs:['CNIC &mdash; front &amp; back','Audio copy on USB / DVD','Affidavit of original creativity','NOC from all contributors']}
+        {id:'artistic',label:'Artistic (logo, art, photo)',
+          docs:['CNIC &mdash; front &amp; back','A copy of the artistic work (image / PDF)','Affidavit of original creativity','Two newspaper advertisements of the work','NOC from the artist / creator (if someone else made it)'],
+          info:['Applicant name','Title of the work'],
+          note:'Don&rsquo;t have the newspaper advertisements? We can arrange them for you.'},
+        {id:'literary',label:'Literary / software',
+          docs:['CNIC &mdash; front &amp; back','A copy of the work (source code, for software)','Affidavit of original creativity','NOC from the writer / owner (if someone else made it)'],
+          info:['Applicant name','Title of the work','Literary work or software']},
+        {id:'film',label:'Film / drama / game',
+          docs:['CNIC &mdash; front &amp; back','A copy of the work on USB / DVD','Affidavit of original creativity','NOC from all contributors (performers, singer, lyricist, musician)'],
+          info:['Applicant name','Title of the work']},
+        {id:'music',label:'Music / sound',
+          docs:['CNIC &mdash; front &amp; back','Audio copy on USB / DVD','Affidavit of original creativity','NOC from all contributors (singer, composer, lyricist, musician)'],
+          info:['Applicant name','Title of the song / work']}
       ]},
     patent:{cat:'ip',title:'Patent Registration',sub:'IPO Pakistan',
       desc:'Protect an invention with a patent.',
       wa:'patent registration',
-      docs:['CNIC &mdash; front &amp; back','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application (if filed abroad first)']},
+      docs:['CNIC &mdash; front &amp; back','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application document (if you filed abroad first)','Assignment (if you are not the inventor)','NOC from your institution (students / employees of a university or research institute)'],
+      info:['Applicant / inventor name','Title of the invention']},
     design:{cat:'ip',title:'Industrial Design Registration',sub:'IPO Pakistan',
       desc:'Register the look of a product &mdash; its shape, pattern or ornamentation.',
       wa:'industrial design registration',
-      docs:['CNIC &mdash; front &amp; back','Images of the design &mdash; front, back, sides, top &amp; angled','What is new about it, and the product it applies to']},
+      docs:['CNIC &mdash; front &amp; back','Images of the design &mdash; front, back, sides, top and an angled view','Earlier foreign application document (if you filed abroad first)'],
+      info:['Applicant name','Title of the design','The product it applies to','What is new about it']},
     incorp:{cat:'corp',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
       desc:'Incorporate your company with SECP, from name reservation to certificate.',
       wa:'company incorporation (SECP)',
-      docs:['Colour CNICs of all directors / subscribers','Registered office proof (rent / ownership)','Proposed company name &amp; principal activity','Draft Memorandum &amp; Articles (we can draft)'],
+      docs:['Colour CNICs of all directors / subscribers','Registered office proof (rent / ownership)','Draft Memorandum of Association (we can draft)','Draft Articles of Association (we can draft)'],
+      info:['Proposed company name','Principal business activity','Number of directors / subscribers'],
       note:'SECP reserves the company name first, and directors obtain an SECP e-signature PIN to sign the incorporation filing.'},
     bizreg:{cat:'corp',title:'Business / AOP Registration',sub:'Sole proprietorship &middot; partnership',
       desc:'Register a sole proprietorship, partnership or AOP and start operating formally.',
       wa:'business / AOP registration',
-      docs:['CNIC &mdash; front &amp; back','Business proof / partnership deed','Utility bill &amp; premises proof']},
+      docs:['CNIC &mdash; front &amp; back','Business proof / partnership deed','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
+      info:['Business / firm name']},
     secp:{cat:'corp',title:'SECP Filings &amp; Compliance',sub:'Annual returns &middot; Form 29 / A &middot; changes',
       desc:'Annual returns, director changes, charges and every other SECP filing &mdash; on time, every time.',
       wa:'SECP filings / compliance',
-      docs:['Company name and the filing required','Supporting documents for that filing']},
+      docs:['Supporting documents for the filing'],
+      info:['Company name','The filing you need (annual return, Form 29, change of directors&hellip;)']},
     corpadv:{cat:'corp',title:'Corporate Advisory',sub:'Structuring &middot; agreements &middot; governance',
       desc:'Company structuring, mergers, shareholder agreements, governance &mdash; talk to an expert before you commit.',
       wa:'corporate advisory',
-      docs:[],note:'Just bring your question &mdash; no documents needed to start.'}
+      docs:[],info:['What you need help with'],note:'No documents needed to start &mdash; just bring your question.'}
   };
 
   var modal=document.getElementById('svcModal');
@@ -281,11 +318,16 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   var cur=null;
 
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
-  function renderDetail(docs,note){
+  function renderDetail(docs,info,note){
     var h='';
     if(docs&&docs.length){
       h+='<div class="svc-dh">Documents you&rsquo;ll need</div><ul class="svc-docs">';
       for(var i=0;i<docs.length;i++){h+='<li>'+tk()+'<span>'+docs[i]+'</span></li>';}
+      h+='</ul>';
+    }
+    if(info&&info.length){
+      h+='<div class="svc-dh" style="margin-top:'+(docs&&docs.length?'16px':'0')+'">We&rsquo;ll also ask you for</div><ul class="svc-info">';
+      for(var j=0;j<info.length;j++){h+='<li>'+info[j]+'</li>';}
       h+='</ul>';
     }
     if(note){h+='<div class="svc-note2"><b>Good to know:</b>&nbsp;'+note+'</div>';}
@@ -299,7 +341,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     var opts=cur.options;
     var chips=elChips.querySelectorAll('.svc-chip');
     for(var i=0;i<chips.length;i++){chips[i].setAttribute('aria-pressed', i===idx?'true':'false');}
-    renderDetail(opts[idx].docs, opts[idx].note);
+    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note);
     setWa(opts[idx].label);
   }
   function open(key, iconHtml){
@@ -316,7 +358,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       selectOpt(0);
     } else {
       elOptWrap.hidden=true;
-      renderDetail(cur.docs, cur.note);
+      renderDetail(cur.docs, cur.info, cur.note);
       setWa('');
     }
     modal.hidden=false;
