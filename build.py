@@ -132,7 +132,7 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .hcard-h .s{font-size:.72rem;color:var(--text-3)}
 .hcard-h .pill{margin-left:auto}
 /* ---------- Rotating full-bleed hero (home) ---------- */
-.rhero{position:relative;min-height:clamp(560px,78svh,720px);display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--emerald-900)}
+.rhero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--emerald-900)}
 .rhero-slides{position:absolute;inset:0;z-index:-2}
 .rslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.03);
   transition:opacity 1s ease;will-change:opacity,transform}
