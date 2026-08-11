@@ -466,6 +466,7 @@
 (function () {
   var hero = document.querySelector('.rhero');
   if (!hero) return;
+  document.documentElement.classList.add('has-hero');
   var slides = hero.querySelectorAll('.rslide'),
       texts = hero.querySelectorAll('.rtext'),
       dots = hero.querySelectorAll('.rdot');
@@ -477,7 +478,7 @@
     cur = i;
     slides[cur].classList.add('on'); texts[cur].classList.add('on'); dots[cur].classList.add('on');
   }
-  function start() { if (reduce) return; stop(); timer = setInterval(function () { go(cur + 1); }, 6000); }
+  function start() { if (reduce) return; stop(); timer = setInterval(function () { go(cur + 1); }, 4200); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
   for (var d = 0; d < dots.length; d++) {
     (function (k) { dots[k].addEventListener('click', function () { go(k); start(); }); })(d);

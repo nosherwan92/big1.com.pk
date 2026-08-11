@@ -132,11 +132,12 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .hcard-h .s{font-size:.72rem;color:var(--text-3)}
 .hcard-h .pill{margin-left:auto}
 /* ---------- Rotating full-bleed hero (home) ---------- */
-.rhero{position:relative;min-height:clamp(600px,84svh,780px);display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--emerald-900)}
+.rhero{position:relative;min-height:clamp(560px,78svh,720px);display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--emerald-900)}
 .rhero-slides{position:absolute;inset:0;z-index:-2}
-.rslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.05);
-  transition:opacity 1.4s ease, transform 1.4s ease;will-change:opacity,transform}
-.rslide.on{opacity:1;transform:scale(1.13);transition:opacity 1.4s ease, transform 8s ease-out}
+.rslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.03);
+  transition:opacity 1s ease;will-change:opacity,transform}
+.rslide.on{opacity:1;animation:kenburns 5s ease-out forwards}
+@keyframes kenburns{0%{transform:scale(1.03)}100%{transform:scale(1.15)}}
 .rhero-ov{position:absolute;inset:0;z-index:-1;
   background:linear-gradient(100deg,rgba(3,24,18,.92) 0%,rgba(4,40,30,.76) 42%,rgba(4,30,22,.42) 78%,rgba(4,30,22,.24) 100%)}
 .rhero-inner{position:relative;z-index:1;color:#fff;padding-top:calc(var(--nav-h) + 24px);padding-bottom:46px}
@@ -153,7 +154,14 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .rdots{display:flex;gap:9px;margin-top:34px}
 .rdot{width:30px;height:4px;border-radius:4px;background:rgba(255,255,255,.35);border:0;padding:0;cursor:pointer;transition:.3s}
 .rdot.on{background:#fff;width:46px}
-@media (prefers-reduced-motion:reduce){.rslide,.rslide.on{transition:opacity .5s ease;transform:none}}
+/* light nav while over the dark hero (home, before scroll) */
+html.has-hero .nav:not(.stuck) .nav-links a{color:rgba(255,255,255,.85)}
+html.has-hero .nav:not(.stuck) .nav-links a:hover{color:#fff;background:rgba(255,255,255,.15)}
+html.has-hero .nav:not(.stuck) .brand .tag{color:#fff;border-color:rgba(255,255,255,.45)}
+html.has-hero .nav:not(.stuck) .bmark{background:none;-webkit-text-fill-color:#fff;color:#fff}
+html.has-hero .nav:not(.stuck) .theme-btn{color:#fff;border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.12)}
+html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,255,.45)}
+@media (prefers-reduced-motion:reduce){.rslide,.rslide.on{animation:none;transition:opacity .5s ease;transform:none}}
 @media (max-width:640px){.rtexts{min-height:300px}}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
@@ -322,7 +330,7 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
 </section>'''
 
 PILLARS = '''<!-- ============================== PILLARS ============================== -->
-<section class="sec" id="what">
+<section class="sec" id="what" style="padding-top:clamp(34px,3.8vw,54px)">
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>What we do</span>
