@@ -2181,7 +2181,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   function closeM() { m.hidden = true; document.body.style.overflow = ""; }
   var trigs = document.querySelectorAll("[data-start]");
   for (var i = 0; i < trigs.length; i++) {
-    trigs[i].addEventListener("click", function (e) { e.preventDefault(); openM(); });
+    trigs[i].addEventListener("click", function (e) { if (!this.hasAttribute("data-start")) return; e.preventDefault(); openM(); });
   }
   m.addEventListener("click", function (e) { if (e.target.hasAttribute("data-sclose")) closeM(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !m.hidden) closeM(); });
@@ -2195,23 +2195,31 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   var slides = hero.querySelectorAll('.rslide'),
       texts = hero.querySelectorAll('.rtext'),
       dots = hero.querySelectorAll('.rdot');
-  var n = slides.length, cur = 0, timer = null;
+  var n = slides.length, cur = 0;
+  var cta = document.getElementById('rheroCta');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function syncCta(t) {
+    if (!cta || !t) return;
+    var label = t.getAttribute('data-cta'), href = t.getAttribute('data-href');
+    if (label) {
+      cta.innerHTML = label + ' <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>';
+    }
+    if (href) cta.setAttribute('href', href);
+    if (t.getAttribute('data-start') === '1') { cta.setAttribute('data-start', ''); }
+    else { cta.removeAttribute('data-start'); }
+  }
   function go(i) {
     i = (i + n) % n;
+    if (i === cur) return;
     slides[cur].classList.remove('on'); texts[cur].classList.remove('on'); dots[cur].classList.remove('on');
     cur = i;
     slides[cur].classList.add('on'); texts[cur].classList.add('on'); dots[cur].classList.add('on');
+    syncCta(texts[cur]);
   }
-  function start() { if (reduce) return; stop(); timer = setInterval(function () { go(cur + 1); }, 4200); }
-  function stop() { if (timer) { clearInterval(timer); timer = null; } }
   for (var d = 0; d < dots.length; d++) {
-    (function (k) { dots[k].addEventListener('click', function () { go(k); start(); }); })(d);
+    (function (k) { dots[k].addEventListener('click', function () { go(k); }); })(d);
   }
-  hero.addEventListener('mouseenter', stop);
-  hero.addEventListener('mouseleave', start);
-  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
-  start();
+  if (!reduce) { setInterval(function () { go(cur + 1); }, 4500); }
 })();
 </script>
 </body>

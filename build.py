@@ -298,25 +298,25 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
   <div class="wrap rhero-inner">
     <span class="eyebrow"><span class="dot"></span>Tax, registration &amp; corporate services &middot; Pakistan</span>
     <div class="rtexts">
-      <div class="rtext on">
+      <div class="rtext on" data-cta="File your taxes" data-href="tax-filing.html" data-start="1">
         <h1>File correctly.<br />Down to the last rupee.</h1>
         <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorized FBR e-intermediary.</p>
       </div>
-      <div class="rtext">
+      <div class="rtext" data-cta="Start a registration" data-href="services.html" data-start="0">
         <h1>Register, incorporate,<br />comply.</h1>
         <p>NTN, sales tax, trademark and company registration &mdash; the exact documents listed up front.</p>
       </div>
-      <div class="rtext">
+      <div class="rtext" data-cta="Explore corporate services" data-href="services.html" data-start="0">
         <h1>Built for<br />Pakistani business.</h1>
         <p>From company formation to SECP compliance &mdash; handled end to end.</p>
       </div>
-      <div class="rtext">
+      <div class="rtext" data-cta="Get started" data-href="services.html" data-start="0">
         <h1>A real team behind<br />an intelligent platform.</h1>
         <p>Filed by people who know Pakistani tax &mdash; in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
       </div>
     </div>
     <div class="rhero-cta">
-      <a class="btn btn-primary btn-lg" href="tax-filing.html" data-start>File your taxes
+      <a class="btn btn-primary btn-lg" id="rheroCta" href="tax-filing.html" data-start>File your taxes
         <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
       <a class="btn btn-glass btn-lg" href="services.html">Explore all services</a>
     </div>
