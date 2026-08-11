@@ -461,6 +461,32 @@
   m.addEventListener("click", function (e) { if (e.target.hasAttribute("data-sclose")) closeM(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !m.hidden) closeM(); });
 })();
+
+/* ---------- Rotating home hero ---------- */
+(function () {
+  var hero = document.querySelector('.rhero');
+  if (!hero) return;
+  var slides = hero.querySelectorAll('.rslide'),
+      texts = hero.querySelectorAll('.rtext'),
+      dots = hero.querySelectorAll('.rdot');
+  var n = slides.length, cur = 0, timer = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function go(i) {
+    i = (i + n) % n;
+    slides[cur].classList.remove('on'); texts[cur].classList.remove('on'); dots[cur].classList.remove('on');
+    cur = i;
+    slides[cur].classList.add('on'); texts[cur].classList.add('on'); dots[cur].classList.add('on');
+  }
+  function start() { if (reduce) return; stop(); timer = setInterval(function () { go(cur + 1); }, 6000); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  for (var d = 0; d < dots.length; d++) {
+    (function (k) { dots[k].addEventListener('click', function () { go(k); start(); }); })(d);
+  }
+  hero.addEventListener('mouseenter', stop);
+  hero.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  start();
+})();
 </script>
 </body>
 </html>

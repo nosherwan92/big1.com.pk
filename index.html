@@ -1304,6 +1304,30 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .hcard-h b{display:block;font-size:1.02rem;letter-spacing:-.02em}
 .hcard-h .s{font-size:.72rem;color:var(--text-3)}
 .hcard-h .pill{margin-left:auto}
+/* ---------- Rotating full-bleed hero (home) ---------- */
+.rhero{position:relative;min-height:clamp(600px,84svh,780px);display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--emerald-900)}
+.rhero-slides{position:absolute;inset:0;z-index:-2}
+.rslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.05);
+  transition:opacity 1.4s ease, transform 1.4s ease;will-change:opacity,transform}
+.rslide.on{opacity:1;transform:scale(1.13);transition:opacity 1.4s ease, transform 8s ease-out}
+.rhero-ov{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,rgba(3,24,18,.92) 0%,rgba(4,40,30,.76) 42%,rgba(4,30,22,.42) 78%,rgba(4,30,22,.24) 100%)}
+.rhero-inner{position:relative;z-index:1;color:#fff;padding-top:calc(var(--nav-h) + 24px);padding-bottom:46px}
+.rhero .eyebrow{color:#eafff5;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24)}
+.rhero .eyebrow .dot{background:var(--emerald-300)}
+.rtexts{position:relative;margin:22px 0 0;min-height:236px}
+.rtext{position:absolute;inset:0;opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease;pointer-events:none;max-width:700px}
+.rtext.on{opacity:1;transform:none;position:relative;pointer-events:auto}
+.rtext h1{font-size:clamp(2.2rem,4.7vw,3.5rem);letter-spacing:-.035em;line-height:1.06;color:#fff;margin-bottom:16px;text-shadow:0 2px 30px rgba(0,0,0,.22)}
+.rtext p{font-size:clamp(.98rem,1.5vw,1.14rem);color:rgba(255,255,255,.9);line-height:1.6;max-width:560px}
+.rhero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.rhero-cta .btn-glass{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.32);color:#fff}
+.rhero-cta .btn-glass:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.5)}
+.rdots{display:flex;gap:9px;margin-top:34px}
+.rdot{width:30px;height:4px;border-radius:4px;background:rgba(255,255,255,.35);border:0;padding:0;cursor:pointer;transition:.3s}
+.rdot.on{background:#fff;width:46px}
+@media (prefers-reduced-motion:reduce){.rslide,.rslide.on{transition:opacity .5s ease;transform:none}}
+@media (max-width:640px){.rtexts{min-height:300px}}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
   border:1px solid var(--border);background:var(--surface-solid);text-decoration:none;color:inherit;overflow:hidden;
@@ -1365,47 +1389,45 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 
 <main id="main">
 <span id="top"></span>
-<!-- ============================== HOME HERO ============================== -->
-<section class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="aurora a1" data-par="0.035"></div><div class="aurora a2" data-par="-0.028"></div>
-    <div class="aurora a3" data-par="0.02"></div><div class="grid-lines"></div>
+<!-- ============================== HOME HERO (rotating) ============================== -->
+<section class="rhero" id="rhero">
+  <div class="rhero-slides" aria-hidden="true">
+    <div class="rslide on" style="background-image:url('assets/hero-1-tax.jpg')"></div>
+    <div class="rslide" style="background-image:url('assets/hero-2-register.jpg')"></div>
+    <div class="rslide" style="background-image:url('assets/hero-3-corporate.jpg')"></div>
+    <div class="rslide" style="background-image:url('assets/hero-4-team.jpg')"></div>
   </div>
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow" data-reveal><span class="dot"></span>Tax, registration &amp; corporate services &middot; Pakistan</span>
-        <h1 class="h-display" data-reveal style="--d:80ms">Your tax and compliance,<br /><span class="grad-text">handled end to end.</span></h1>
-        <p class="lede" data-reveal style="--d:160ms">BIG1 helps individuals and businesses across Pakistan file their taxes,
-          register with the authorities, and stay compliant &mdash; a real team behind an intelligent platform, in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
-        <div class="hero-cta" data-reveal style="--d:240ms">
-          <a class="btn btn-primary btn-lg" href="tax-filing.html">File your taxes
-            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          <a class="btn btn-glass btn-lg" href="services.html">Explore all services</a>
-        </div>
-        <div class="hero-meta" data-reveal style="--d:340ms">
-          <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Filed via an authorized FBR e-intermediary</div>
-          <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> One team for FBR, SECP &amp; IPO Pakistan</div>
-          <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Available in English &amp; &#1575;&#1585;&#1583;&#1608;</div>
-        </div>
+  <div class="rhero-ov" aria-hidden="true"></div>
+  <div class="wrap rhero-inner">
+    <span class="eyebrow"><span class="dot"></span>Tax, registration &amp; corporate services &middot; Pakistan</span>
+    <div class="rtexts">
+      <div class="rtext on">
+        <h1>File correctly.<br />Down to the last rupee.</h1>
+        <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorized FBR e-intermediary.</p>
       </div>
-
-      <div class="stage" data-reveal="scale" style="--d:220ms">
-        <div class="hcard">
-          <div class="hcard-h">
-            <span class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.6-3.1 7.9-7.5 9-4.4-1.1-7.5-4.4-7.5-9V6z"/><path d="M9 12.2l2 2 4-4.2"/></svg></span>
-            <div><b>Compliance, in one place</b><span class="s">Tax &middot; registrations &middot; corporate</span></div>
-            <span class="pill pill-g">On track</span>
-          </div>
-          <div style="display:grid;gap:9px">
-              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="hl"><b>Income tax return</b><span>Tax Year 2026</span></span><span class="pill pill-g">Filed</span></div>
-              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><circle cx="8" cy="11" r="2"/><path d="M14.5 10h4M14.5 14h4"/></svg></span><span class="hl"><b>NTN</b><span>Active Taxpayer List</span></span><span class="pill pill-g">Active</span></div>
-              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8h5M9.5 12h5"/></svg></span><span class="hl"><b>Sales tax (GST)</b><span>STRN issued</span></span><span class="pill pill-g">Registered</span></div>
-              <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M3 21h18"/></svg></span><span class="hl"><b>Company &middot; SECP</b><span>Annual return</span></span><span class="pill pill-a">Due soon</span></div>
-            </div>
-          <div class="hnext">Next: SECP annual return due in 24 days &mdash; we&rsquo;ll handle it for you.</div>
-        </div>
+      <div class="rtext">
+        <h1>Register, incorporate,<br />comply.</h1>
+        <p>NTN, sales tax, trademark and company registration &mdash; the exact documents listed up front.</p>
       </div>
+      <div class="rtext">
+        <h1>Built for<br />Pakistani business.</h1>
+        <p>From company formation to SECP compliance &mdash; handled end to end.</p>
+      </div>
+      <div class="rtext">
+        <h1>A real team behind<br />an intelligent platform.</h1>
+        <p>Filed by people who know Pakistani tax &mdash; in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
+      </div>
+    </div>
+    <div class="rhero-cta">
+      <a class="btn btn-primary btn-lg" href="tax-filing.html" data-start>File your taxes
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+      <a class="btn btn-glass btn-lg" href="services.html">Explore all services</a>
+    </div>
+    <div class="rdots" role="group" aria-label="Choose hero slide">
+      <button class="rdot on" type="button" data-i="0" aria-label="Slide 1"></button>
+      <button class="rdot" type="button" data-i="1" aria-label="Slide 2"></button>
+      <button class="rdot" type="button" data-i="2" aria-label="Slide 3"></button>
+      <button class="rdot" type="button" data-i="3" aria-label="Slide 4"></button>
     </div>
   </div>
 </section>
@@ -1994,6 +2016,32 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
   }
   m.addEventListener("click", function (e) { if (e.target.hasAttribute("data-sclose")) closeM(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !m.hidden) closeM(); });
+})();
+
+/* ---------- Rotating home hero ---------- */
+(function () {
+  var hero = document.querySelector('.rhero');
+  if (!hero) return;
+  var slides = hero.querySelectorAll('.rslide'),
+      texts = hero.querySelectorAll('.rtext'),
+      dots = hero.querySelectorAll('.rdot');
+  var n = slides.length, cur = 0, timer = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function go(i) {
+    i = (i + n) % n;
+    slides[cur].classList.remove('on'); texts[cur].classList.remove('on'); dots[cur].classList.remove('on');
+    cur = i;
+    slides[cur].classList.add('on'); texts[cur].classList.add('on'); dots[cur].classList.add('on');
+  }
+  function start() { if (reduce) return; stop(); timer = setInterval(function () { go(cur + 1); }, 6000); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  for (var d = 0; d < dots.length; d++) {
+    (function (k) { dots[k].addEventListener('click', function () { go(k); start(); }); })(d);
+  }
+  hero.addEventListener('mouseenter', stop);
+  hero.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  start();
 })();
 </script>
 </body>
