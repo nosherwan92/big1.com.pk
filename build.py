@@ -293,7 +293,14 @@ HOME_HERO = '''<!-- ============================== HOME HERO ===================
 </section>'''
 
 PILLARS = '''<!-- ============================== PILLARS ============================== -->
-<section class="sec" id="what" style="padding-top:clamp(20px,3vw,40px)">
+<section class="sec" id="what">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>What we do</span>
+      <h2 class="h1">One firm,<br /><span class="serif">everything you need.</span></h2>
+      <p class="lede">Start where it suits you &mdash; file a return, request a registration, or run a quick estimate.</p>
+    </div>
+  </div>
   <div class="wrap wrap-wide">
     <div class="pillars">
       <a class="pillar" data-reveal href="tax-filing.html">
