@@ -122,6 +122,15 @@ NEW_CSS = """
 .hnext{margin-top:13px;padding:10px 13px;border-radius:12px;font-size:.77rem;color:var(--emerald-700);line-height:1.4;
   background:linear-gradient(120deg,rgba(16,185,129,.1),rgba(16,158,125,.06));border:1px solid rgba(16,185,129,.22)}
 html[data-theme="dark"] .hnext{color:var(--emerald-300)}
+/* clean floating card (distinct from the tax page's browser-window mock) */
+.hcard{position:relative;background:var(--surface-solid);border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:var(--shadow-xl)}
+.hcard-h{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.hcard-h .hb{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;flex-shrink:0;
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 12px 22px -10px rgba(6,95,70,.55)}
+.hcard-h .hb svg{width:24px;height:24px}
+.hcard-h b{display:block;font-size:1.02rem;letter-spacing:-.02em}
+.hcard-h .s{font-size:.72rem;color:var(--text-3)}
+.hcard-h .pill{margin-left:auto}
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
   border:1px solid var(--border);background:var(--surface-solid);text-decoration:none;color:inherit;overflow:hidden;
@@ -271,21 +280,19 @@ HOME_HERO = '''<!-- ============================== HOME HERO ===================
       </div>
 
       <div class="stage" data-reveal="scale" style="--d:220ms">
-        <div class="app tilt" id="heroApp">
-          <div class="app-bar"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">app.big1.com.pk</span></div>
-          <div class="app-body" style="display:block;padding:22px;overflow:hidden">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:15px">
-              <div><div style="font-weight:640;letter-spacing:-.02em;font-size:1.02rem">Compliance overview</div><div style="font-size:.72rem;color:var(--text-3)">Everything in one place</div></div>
-              <span class="pill pill-g">All on track</span>
-            </div>
-            <div style="display:grid;gap:9px">
+        <div class="hcard">
+          <div class="hcard-h">
+            <span class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.6-3.1 7.9-7.5 9-4.4-1.1-7.5-4.4-7.5-9V6z"/><path d="M9 12.2l2 2 4-4.2"/></svg></span>
+            <div><b>Compliance, in one place</b><span class="s">Tax &middot; registrations &middot; corporate</span></div>
+            <span class="pill pill-g">On track</span>
+          </div>
+          <div style="display:grid;gap:9px">
               <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="hl"><b>Income tax return</b><span>Tax Year 2026</span></span><span class="pill pill-g">Filed</span></div>
               <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><circle cx="8" cy="11" r="2"/><path d="M14.5 10h4M14.5 14h4"/></svg></span><span class="hl"><b>NTN</b><span>Active Taxpayer List</span></span><span class="pill pill-g">Active</span></div>
               <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9.5 8h5M9.5 12h5"/></svg></span><span class="hl"><b>Sales tax (GST)</b><span>STRN issued</span></span><span class="pill pill-g">Registered</span></div>
               <div class="hrow"><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M3 21h18"/></svg></span><span class="hl"><b>Company &middot; SECP</b><span>Annual return</span></span><span class="pill pill-a">Due soon</span></div>
             </div>
-            <div class="hnext">Next: SECP annual return due in 24 days &mdash; we&rsquo;ll handle it for you.</div>
-          </div>
+          <div class="hnext">Next: SECP annual return due in 24 days &mdash; we&rsquo;ll handle it for you.</div>
         </div>
       </div>
     </div>
@@ -306,36 +313,21 @@ PILLARS = '''<!-- ============================== PILLARS =======================
       <a class="pillar" data-reveal href="tax-filing.html">
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg></span>
         <h3>File your taxes</h3>
-        <p>Guided income-tax filing for salaried people, freelancers and businesses &mdash; computed to the rupee and filed through an authorized FBR e-intermediary.</p>
-        <ul>
-          <li><span class="d"></span>Reads your documents, finds tax you overpaid</li>
-          <li><span class="d"></span>Wealth statement that reconciles before you file</li>
-          <li><span class="d"></span>File any year back to 2016 to get on the ATL</li>
-        </ul>
+        <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorized FBR e-intermediary.</p>
         <span class="go">Go to tax filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
 
       <a class="pillar" data-reveal style="--d:80ms" href="services.html">
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h6"/></svg></span>
         <h3>Register &amp; comply</h3>
-        <p>Every registration and filing a person or business needs &mdash; with the exact documents listed up front and a tracked reference to completion.</p>
-        <ul>
-          <li><span class="d"></span>NTN, sales tax (GST) &amp; provincial sales tax</li>
-          <li><span class="d"></span>Trademark, copyright, patent &amp; design (IPO Pakistan)</li>
-          <li><span class="d"></span>Company incorporation &amp; SECP compliance</li>
-        </ul>
+        <p>NTN, sales tax, trademark and company incorporation &mdash; the exact documents listed up front.</p>
         <span class="go">Explore services <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
 
       <a class="pillar" data-reveal style="--d:160ms" href="calculators.html">
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.4"/><path d="M8 7h8M8 11h8M8 15h4"/></svg></span>
         <h3>Free tax tools</h3>
-        <p>Estimate what you owe in seconds &mdash; salary, rental, capital gains and business tax, on the current Finance Act rates.</p>
-        <ul>
-          <li><span class="d"></span>Salary &amp; business income tax</li>
-          <li><span class="d"></span>Capital gains &mdash; property &amp; securities</li>
-          <li><span class="d"></span>Rental income tax</li>
-        </ul>
+        <p>Estimate salary, rental, capital-gains and business tax in seconds, on current Finance Act rates.</p>
         <span class="go">Open calculators <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
     </div>
