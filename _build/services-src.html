@@ -70,12 +70,14 @@
 .svc-docs .tk{width:16px;height:16px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
   background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
 html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
-.svc-info{list-style:none;display:grid;gap:6px;margin:0}
-.svc-info li{position:relative;padding-left:15px;font-size:.82rem;color:var(--text-2);line-height:1.45}
-.svc-info li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--text-3)}
-.svc-note2{margin-top:13px;font-size:.78rem;color:var(--text-2);background:var(--bg-sub);border:1px solid var(--border);
-  border-radius:12px;padding:10px 12px;line-height:1.45;display:flex;gap:8px}
-.svc-note2 b{font-weight:650;color:var(--text)}
+.svc-fee{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:16px;padding:5px 13px;border-radius:100px;
+  background:var(--bg-sub);border:1px solid var(--border);font-size:.74rem;color:var(--text-3);letter-spacing:.01em}
+.svc-fee b{font-size:.92rem;color:var(--text);font-weight:700;letter-spacing:-.01em}
+.svc-plus{margin-top:12px;font-size:.82rem;color:var(--text-2);line-height:1.5}
+.svc-plus.nodocs{margin-top:0}
+.svc-plus b{font-weight:650;color:var(--text)}
+.svc-note2{margin-top:14px;font-size:.78rem;color:var(--text-3);line-height:1.5;
+  border-left:2px solid var(--border-strong);padding-left:11px}
 .svc-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .svc-act{flex:1;min-width:150px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
   padding:12px 16px;border-radius:100px;font-size:.85rem;font-weight:650;text-decoration:none;transition:.2s}
@@ -202,7 +204,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   var WA='https://wa.me/923399999611?text=';
   var SVC={
     ntn:{cat:'tax',title:'NTN Registration',sub:'FBR &middot; National Tax Number',
-      desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer. Pick the type that fits you.',
+      desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer.',
       wa:'NTN registration',
       options:[
         {id:'individual',label:'Individual / salaried',fee:'Rs. 500',
@@ -229,7 +231,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       info:['Business name &amp; activity','Commencement date','Gas / electricity consumer number','Production capacity (manufacturers)'],
       note:'Includes biometric verification at a NADRA e-Sahulat centre within 30 days; manufacturers also get an FBR post-verification visit of the premises.'},
     pst:{cat:'tax',title:'Provincial Sales Tax (PST)',sub:'PRA &middot; SRB &middot; KPRA &middot; BRA',
-      desc:'Provincial sales tax on services. Pick the type that fits you.',
+      desc:'Provincial sales tax on services.',
       wa:'PST registration',
       options:[
         {id:'individual',label:'Individual',fee:'Rs. 3,000',
@@ -261,7 +263,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image'],
       info:['Applicant name','Brand / mark name','Class of goods / services','The goods or services it covers']},
     copyright:{cat:'ip',title:'Copyright Registration',sub:'IPO Pakistan',
-      desc:'Register an original work. Pick the kind of work.',
+      desc:'Register an original work.',
       wa:'copyright registration',
       options:[
         {id:'artistic',label:'Artistic (logo, art, photo)',fee:'Rs. 60,000',
@@ -320,18 +322,21 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
   function renderDetail(docs,info,note,fee){
     var h='';
-    if(fee){h+='<div class="svc-fee" style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#ecfdf3;border:1px solid #d1fae5;border-radius:10px;padding:10px 14px;margin-bottom:14px"><span style="color:#475569;font-weight:600;font-size:13px">Our professional fee</span><b style="color:#0f172a;font-size:17px">'+fee+'</b></div>';}
-    if(docs&&docs.length){
-      h+='<div class="svc-dh">Documents you&rsquo;ll need</div><ul class="svc-docs">';
+    if(fee){h+='<div class="svc-fee"><span>Professional fee</span><b>'+fee+'</b></div>';}
+    var hasDocs=docs&&docs.length;
+    if(hasDocs){
+      h+='<div class="svc-dh">What you&rsquo;ll need</div><ul class="svc-docs">';
       for(var i=0;i<docs.length;i++){h+='<li>'+tk()+'<span>'+docs[i]+'</span></li>';}
       h+='</ul>';
     }
     if(info&&info.length){
-      h+='<div class="svc-dh" style="margin-top:'+(docs&&docs.length?'16px':'0')+'">We&rsquo;ll also ask you for</div><ul class="svc-info">';
-      for(var j=0;j<info.length;j++){h+='<li>'+info[j]+'</li>';}
-      h+='</ul>';
+      if(hasDocs){
+        h+='<p class="svc-plus"><b>Plus a few details:</b> '+info.join(', ')+'.</p>';
+      } else {
+        h+='<div class="svc-dh">What you&rsquo;ll need</div><p class="svc-plus nodocs">'+info.join(', ')+'.</p>';
+      }
     }
-    if(note){h+='<div class="svc-note2"><b>Good to know:</b>&nbsp;'+note+'</div>';}
+    if(note){h+='<p class="svc-note2">'+note+'</p>';}
     elDetail.innerHTML=h;
   }
   function setWa(extra){
