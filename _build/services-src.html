@@ -73,6 +73,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
 .svc-fee{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:16px;padding:5px 13px;border-radius:100px;
   background:var(--bg-sub);border:1px solid var(--border);font-size:.74rem;color:var(--text-3);letter-spacing:.01em}
 .svc-fee b{font-size:.92rem;color:var(--text);font-weight:700;letter-spacing:-.01em}
+.svc-fee-gov{display:block;margin-top:-8px;margin-bottom:16px;font-size:.72rem;color:var(--text-3)}
 .svc-plus{margin-top:12px;font-size:.82rem;color:var(--text-2);line-height:1.5}
 .svc-plus.nodocs{margin-top:0}
 .svc-plus b{font-weight:650;color:var(--text)}
@@ -259,17 +260,17 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       docs:[],info:['Your question or situation'],note:'No documents needed to start &mdash; just bring your question.'},
     trademark:{cat:'ip',title:'Trademark Registration',sub:'IPO Pakistan',
       desc:'Register your brand name or logo as a trademark &mdash; before someone else does.',
-      wa:'trademark registration',fee:'Rs. 60,000',
+      wa:'trademark registration',fee:'Rs. 60,000',gov:1,
       docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image'],
       info:['Applicant name','Brand / mark name','Class of goods / services','The goods or services it covers']},
     copyright:{cat:'ip',title:'Copyright Registration',sub:'IPO Pakistan',
       desc:'Register an original work.',
-      wa:'copyright registration',
+      wa:'copyright registration',gov:1,
       options:[
         {id:'artistic',label:'Artistic (logo, art, photo)',fee:'Rs. 60,000',
           docs:['CNIC &mdash; front &amp; back','A copy of the artistic work (image / PDF)','Affidavit of original creativity','Two newspaper advertisements of the work','NOC from the artist / creator (if someone else made it)'],
           info:['Applicant name','Title of the work'],
-          note:'Don&rsquo;t have the newspaper advertisements? We can arrange them for you.'},
+          note:'Don&rsquo;t have the newspaper advertisements? We can arrange them for you &mdash; as a paid add-on.'},
         {id:'literary',label:'Literary / software',fee:'Rs. 60,000',
           docs:['CNIC &mdash; front &amp; back','A copy of the work (source code, for software)','Affidavit of original creativity','NOC from the writer / owner (if someone else made it)'],
           info:['Applicant name','Title of the work','Literary work or software']},
@@ -282,17 +283,17 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       ]},
     patent:{cat:'ip',title:'Patent Registration',sub:'IPO Pakistan',
       desc:'Protect an invention with a patent.',
-      wa:'patent registration',fee:'Rs. 140,000',
+      wa:'patent registration',fee:'Rs. 140,000',gov:1,
       docs:['CNIC &mdash; front &amp; back','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application document (if you filed abroad first)','Assignment (if you are not the inventor)','NOC from your institution (students / employees of a university or research institute)'],
       info:['Applicant / inventor name','Title of the invention']},
     design:{cat:'ip',title:'Industrial Design Registration',sub:'IPO Pakistan',
       desc:'Register the look of a product &mdash; its shape, pattern or ornamentation.',
-      wa:'industrial design registration',fee:'Rs. 140,000',
+      wa:'industrial design registration',fee:'Rs. 140,000',gov:1,
       docs:['CNIC &mdash; front &amp; back','Images of the design &mdash; front, back, sides, top and an angled view','Earlier foreign application document (if you filed abroad first)'],
       info:['Applicant name','Title of the design','The product it applies to','What is new about it']},
     incorp:{cat:'corp',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
       desc:'Incorporate your company with SECP, from name reservation to certificate.',
-      wa:'company incorporation (SECP)',fee:'Rs. 10,000',
+      wa:'company incorporation (SECP)',fee:'Rs. 10,000',gov:1,
       docs:['Colour CNICs of all directors / subscribers','Registered office proof (rent / ownership)','Draft Memorandum of Association (we can draft)','Draft Articles of Association (we can draft)'],
       info:['Proposed company name','Principal business activity','Number of directors / subscribers'],
       note:'SECP reserves the company name first, and directors obtain an SECP e-signature PIN to sign the incorporation filing.'},
@@ -303,7 +304,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       info:['Business / firm name']},
     secp:{cat:'corp',title:'SECP Filings &amp; Compliance',sub:'Annual returns &middot; Form 29 / A &middot; changes',
       desc:'Annual returns, director changes, charges and every other SECP filing &mdash; on time, every time.',
-      wa:'SECP filings / compliance',fee:'Rs. 10,000',
+      wa:'SECP filings / compliance',fee:'Rs. 10,000',gov:1,
       docs:['Supporting documents for the filing'],
       info:['Company name','The filing you need (annual return, Form 29, change of directors&hellip;)']},
     corpadv:{cat:'corp',title:'Corporate Advisory',sub:'Structuring &middot; agreements &middot; governance',
@@ -320,9 +321,9 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   var cur=null;
 
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
-  function renderDetail(docs,info,note,fee){
+  function renderDetail(docs,info,note,fee,gov){
     var h='';
-    if(fee){h+='<div class="svc-fee"><span>Professional fee</span><b>'+fee+'</b></div>';}
+    if(fee){h+='<div class="svc-fee"><span>Professional fee</span><b>'+fee+'</b></div>'+(gov?'<span class="svc-fee-gov">+ government / IPO fee, billed separately at actuals</span>':'');}
     var hasDocs=docs&&docs.length;
     if(hasDocs){
       h+='<div class="svc-dh">What you&rsquo;ll need</div><ul class="svc-docs">';
@@ -347,7 +348,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     var opts=cur.options;
     var chips=elChips.querySelectorAll('.svc-chip');
     for(var i=0;i<chips.length;i++){chips[i].setAttribute('aria-pressed', i===idx?'true':'false');}
-    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note, opts[idx].fee);
+    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note, opts[idx].fee, opts[idx].gov||cur.gov);
     setWa(opts[idx].label);
   }
   function open(key, iconHtml){
@@ -364,7 +365,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       selectOpt(0);
     } else {
       elOptWrap.hidden=true;
-      renderDetail(cur.docs, cur.info, cur.note, cur.fee);
+      renderDetail(cur.docs, cur.info, cur.note, cur.fee, cur.gov);
       setWa('');
     }
     modal.hidden=false;
