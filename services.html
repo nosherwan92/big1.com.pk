@@ -1280,6 +1280,10 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 .startm-opt.is-live .so-ic{background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));color:#fff;border-color:transparent}
 .startm-badge{position:absolute;top:-8px;right:12px;font-size:.57rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
   color:#fff;background:var(--emerald-600);padding:2px 8px;border-radius:20px}
+.startm-badge.soon{background:var(--text-3)}
+.startm-opt.is-soon{cursor:default;border-style:dashed;opacity:.72}
+.startm-opt.is-soon:hover{border-color:var(--border);box-shadow:none;transform:none}
+.startm-opt.is-soon .so-ic{background:var(--bg-sub);color:var(--text-3)}
 .startm-note{font-size:.74rem;color:var(--text-3);text-align:center;margin-top:16px}
 
 
@@ -1381,7 +1385,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}html[data-theme="dark"] .pgsvc .svc-docs .tk{color:var(--emerald-300)}.pgsvc .svc-fee{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:16px;padding:5px 13px;border-radius:100px;
   background:var(--bg-sub);border:1px solid var(--border);font-size:.74rem;color:var(--text-3);letter-spacing:.01em}.pgsvc .svc-fee b{font-size:.92rem;color:var(--text);font-weight:700;letter-spacing:-.01em}.pgsvc .svc-fee-gov{display:block;margin-top:-8px;margin-bottom:16px;font-size:.72rem;color:var(--text-3)}.pgsvc .svc-plus{margin-top:12px;font-size:.82rem;color:var(--text-2);line-height:1.5}.pgsvc .svc-plus.nodocs{margin-top:0}.pgsvc .svc-plus b{font-weight:650;color:var(--text)}.pgsvc .svc-note2{margin-top:14px;font-size:.78rem;color:var(--text-3);line-height:1.5;
   border-left:2px solid var(--border-strong);padding-left:11px}.pgsvc .svc-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pgsvc .svc-act{flex:1;min-width:150px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  padding:12px 16px;border-radius:100px;font-size:.85rem;font-weight:650;text-decoration:none;transition:.2s}.pgsvc .svc-act.primary{background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600));color:#fff;box-shadow:var(--shadow-sm)}.pgsvc .svc-act.primary:hover{filter:brightness(1.08)}.pgsvc .svc-act.ghost{border:1px solid var(--border-strong);color:var(--text-2)}.pgsvc .svc-act.ghost:hover{border-color:var(--accent);color:var(--accent)}.pgsvc .svc-pagelink{width:100%;text-align:center;font-size:.82rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:2px}.pgsvc .svc-pagelink:hover{text-decoration:underline}.pgsvc .svc-pagelink[hidden]{display:none}.pgsvc .svc-foot-note{width:100%;text-align:center;font-size:.72rem;color:var(--text-3);margin-top:10px}
+  padding:12px 16px;border-radius:100px;font-size:.85rem;font-weight:650;text-decoration:none;transition:.2s}.pgsvc .svc-act.primary{background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600));color:#fff;box-shadow:var(--shadow-sm)}.pgsvc .svc-act.primary:hover{filter:brightness(1.08)}.pgsvc .svc-act.ghost{border:1px solid var(--border-strong);color:var(--text-2)}.pgsvc .svc-act.ghost:hover{border-color:var(--accent);color:var(--accent)}.pgsvc .svc-act.svc-soon{border:1px dashed var(--border-strong);color:var(--text-3);opacity:.75;pointer-events:none}.pgsvc .svc-pagelink{width:100%;text-align:center;font-size:.82rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:2px}.pgsvc .svc-pagelink:hover{text-decoration:underline}.pgsvc .svc-pagelink[hidden]{display:none}.pgsvc .svc-foot-note{width:100%;text-align:center;font-size:.72rem;color:var(--text-3);margin-top:10px}
 </style>
 </head>
 <body>
@@ -1738,6 +1742,14 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       elDetail=document.getElementById('svcDetail'), elWa=document.getElementById('svcWa'),
       elPage=document.getElementById('svcPage');
   var cur=null;
+
+  // FilePak self-serve app is built but not yet public -- show "Start in the app" as coming soon.
+  // Flip APP_LIVE to true when it opens; the button becomes a live link to the app again.
+  var APP_LIVE=false, elApp=document.getElementById('svcApp');
+  if(!APP_LIVE && elApp){
+    elApp.classList.add('svc-soon'); elApp.removeAttribute('href'); elApp.removeAttribute('target');
+    elApp.setAttribute('aria-disabled','true'); elApp.innerHTML='In the app &middot; coming soon';
+  }
 
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
   function renderDetail(docs,info,note,fee,gov){
@@ -2176,30 +2188,35 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 
 /* ---------- Start-your-return chooser ---------- */
 (function () {
+  // FilePak self-serve app is built but not yet open to the public -- show it as "coming soon".
+  // Flip APP_LIVE to true when it is ready; the browser row then becomes a live link to APP.
+  var APP_LIVE = false;
   var APP = "https://filepak-507722663026.asia-south1.run.app";
   var WA = "https://wa.me/923399999611?text=I%20want%20to%20file%20my%20tax%20return.";
   var arw = '<span class="so-arw"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>';
+  var globe = '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.5 6 3.5 9s-1.1 6.4-3.5 9c-2.4-2.6-3.5-6-3.5-9s1.1-6.4 3.5-9z"/></svg></span>';
+  var waRow =
+    '<a class="startm-opt is-live" href="' + WA + '" target="_blank" rel="noopener noreferrer">' +
+      '<span class="startm-badge">Available now</span>' +
+      '<span class="so-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>' +
+      '<span class="so-t"><b>File with our team on WhatsApp</b><span>We prepare and file it for you</span></span>' + arw +
+    '</a>';
+  var appRow = APP_LIVE
+    ? '<a class="startm-opt" href="' + APP + '" target="_blank" rel="noopener noreferrer">' +
+        globe + '<span class="so-t"><b>Use the FilePak app</b><span>File online yourself, in your browser</span></span>' + arw +
+      '</a>'
+    : '<div class="startm-opt is-soon" aria-disabled="true">' +
+        '<span class="startm-badge soon">Coming soon</span>' +
+        globe + '<span class="so-t"><b>Self-file in the FilePak app</b><span>Online DIY filing &mdash; launching soon</span></span>' +
+      '</div>';
   var html =
     '<div class="startm" id="startModal" hidden>' +
       '<div class="startm-back" data-sclose></div>' +
       '<div class="startm-dialog" role="dialog" aria-modal="true" aria-labelledby="startmTitle">' +
         '<button class="startm-x" data-sclose aria-label="Close">&times;</button>' +
         '<h3 id="startmTitle">Start your tax return</h3>' +
-        '<p class="startm-sub">Choose how you&rsquo;d like to continue.</p>' +
-        '<div class="startm-opts">' +
-          '<a class="startm-opt" href="' + APP + '" target="_blank" rel="noopener noreferrer">' +
-            '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.5 6 3.5 9s-1.1 6.4-3.5 9c-2.4-2.6-3.5-6-3.5-9s1.1-6.4 3.5-9z"/></svg></span>' +
-            '<span class="so-t"><b>Continue in your browser</b><span>File online in the FilePak app</span></span>' + arw +
-          '</a>' +
-          '<a class="startm-opt" href="' + APP + '" target="_blank" rel="noopener noreferrer">' +
-            '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.4"/><path d="M11 18.5h2"/></svg></span>' +
-            '<span class="so-t"><b>Continue on your phone</b><span>Works in any mobile browser</span></span>' + arw +
-          '</a>' +
-          '<a class="startm-opt" href="' + WA + '" target="_blank" rel="noopener noreferrer">' +
-            '<span class="so-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>' +
-            '<span class="so-t"><b>File with our team on WhatsApp</b><span>We prepare and file it for you</span></span>' + arw +
-          '</a>' +
-        '</div>' +
+        '<p class="startm-sub">File with our team today &mdash; or self-file in the app soon.</p>' +
+        '<div class="startm-opts">' + waRow + appRow + '</div>' +
         '<p class="startm-note">Building your return is free &mdash; you only pay when you choose to file.</p>' +
       '</div>' +
     '</div>';

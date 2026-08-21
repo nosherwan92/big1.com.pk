@@ -86,6 +86,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
 .svc-act.primary:hover{filter:brightness(1.08)}
 .svc-act.ghost{border:1px solid var(--border-strong);color:var(--text-2)}
 .svc-act.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.svc-act.svc-soon{border:1px dashed var(--border-strong);color:var(--text-3);opacity:.75;pointer-events:none}
 .svc-pagelink{width:100%;text-align:center;font-size:.82rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:2px}
 .svc-pagelink:hover{text-decoration:underline}
 .svc-pagelink[hidden]{display:none}
@@ -346,6 +347,14 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       elDetail=document.getElementById('svcDetail'), elWa=document.getElementById('svcWa'),
       elPage=document.getElementById('svcPage');
   var cur=null;
+
+  // FilePak self-serve app is built but not yet public -- show "Start in the app" as coming soon.
+  // Flip APP_LIVE to true when it opens; the button becomes a live link to the app again.
+  var APP_LIVE=false, elApp=document.getElementById('svcApp');
+  if(!APP_LIVE && elApp){
+    elApp.classList.add('svc-soon'); elApp.removeAttribute('href'); elApp.removeAttribute('target');
+    elApp.setAttribute('aria-disabled','true'); elApp.innerHTML='In the app &middot; coming soon';
+  }
 
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
   function renderDetail(docs,info,note,fee,gov){
