@@ -351,6 +351,12 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   // FilePak self-serve app is built but not yet public -- show "Start in the app" as coming soon.
   // Flip APP_LIVE to true when it opens; the button becomes a live link to the app again.
   var APP_LIVE=false, elApp=document.getElementById('svcApp');
+  var APP_BASE='https://filepak-507722663026.asia-south1.run.app';   // app origin (extracted JS is not template-substituted; keep in sync with APP_URL)
+  // Map each service tile to the app's ?service= deep-link token (understood by the app's routeToService).
+  // '' = the income-tax-return flow (no service param -- the app opens on the dashboard / File Return).
+  var APP_SVC={itr:'', ntn:'ntn', gst:'gst', pst:'pst', iris:'iris', notice:'notice', taxadv:'advisory',
+    trademark:'trademark', copyright:'copyright', patent:'patent', design:'design',
+    incorp:'company', bizreg:'business_reg', secp:'secp', corpadv:'corporate_advisory'};
   if(!APP_LIVE && elApp){
     elApp.classList.add('svc-soon'); elApp.removeAttribute('href'); elApp.removeAttribute('target');
     elApp.setAttribute('aria-disabled','true'); elApp.innerHTML='In the app &middot; coming soon';
@@ -404,6 +410,13 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       elOptWrap.hidden=true;
       renderDetail(cur.docs, cur.info, cur.note, cur.fee, cur.gov);
       setWa('');
+    }
+    if(elApp){   // "Start in the app" -> live deep-link to this exact service (app routes there after sign-in)
+      var ap=APP_SVC[key];
+      elApp.classList.remove('svc-soon'); elApp.removeAttribute('aria-disabled');
+      elApp.setAttribute('target','_blank'); elApp.setAttribute('rel','noopener noreferrer');
+      elApp.setAttribute('href', ap ? (APP_BASE+'/?service='+encodeURIComponent(ap)) : APP_BASE);
+      elApp.innerHTML='Start in the app';
     }
     modal.hidden=false;
     document.body.style.overflow='hidden';
