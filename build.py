@@ -243,9 +243,9 @@ def nav_for(active):
 WA = "https://wa.me/923399999611"
 WA_START = WA + "?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20get%20started."
 
-# ---- the FilePak application URL. PLACEHOLDER: app.big1.com.pk is the intended home but is NOT
-#      deployed yet (runs local-only). Pages use the {{APP}} token; swap this one line when the app is live.
-APP_URL = "https://app.big1.com.pk"
+# ---- the FilePak application URL. Live on Cloud Run. Pages use the {{APP}} token; when the branded
+#      domain (e.g. app.big1.com.pk) is mapped in front of Cloud Run, swap this one line.
+APP_URL = "https://filepak-507722663026.asia-south1.run.app"
 
 # ---- shared footer + whatsapp float + scripts ----
 FOOTER = section(F08, '<footer class="foot">', "</footer>")
