@@ -350,7 +350,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
 
   // FilePak self-serve app is built but not yet public -- show "Start in the app" as coming soon.
   // Flip APP_LIVE to true when it opens; the button becomes a live link to the app again.
-  var APP_LIVE=false, elApp=document.getElementById('svcApp');
+  var APP_LIVE=true, elApp=document.getElementById('svcApp');
   var APP_BASE='https://filepak-507722663026.asia-south1.run.app';   // app origin (extracted JS is not template-substituted; keep in sync with APP_URL)
   // Map each service tile to the app's ?service= deep-link token (understood by the app's routeToService).
   // '' = the income-tax-return flow (no service param -- the app opens on the dashboard / File Return).
