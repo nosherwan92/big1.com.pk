@@ -1387,6 +1387,31 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 .page-hero{padding:clamp(46px,7vw,88px) 0 clamp(10px,2vw,24px);text-align:center}
 .page-hero h1{font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:-.035em;line-height:1.08;margin:16px 0 14px}
 .page-hero .lede{max-width:620px;margin-inline:auto}
+/* insights (news / articles) */
+.insights-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.insights-grid{grid-template-columns:1fr;max-width:440px;margin-inline:auto}}
+.insight{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--border);background:var(--surface-solid);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.insight:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+.insight-img{aspect-ratio:16/10;background-size:cover;background-position:center;
+  background-image:linear-gradient(135deg,var(--emerald-700),var(--blue-600))}
+.insight-body{padding:17px 20px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
+.insight-cat{font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.insight-t{font-size:1.02rem;font-weight:650;letter-spacing:-.02em;line-height:1.32}
+.insight-ex{font-size:.83rem;color:var(--text-2);line-height:1.55}
+.insight-date{margin-top:auto;font-size:.72rem;color:var(--text-3);padding-top:6px}
+/* article page */
+.article{max-width:740px;margin-inline:auto}
+.article h2{font-size:clamp(1.25rem,2.3vw,1.6rem);letter-spacing:-.02em;margin:26px 0 10px}
+.article h3{font-size:1.08rem;margin:20px 0 8px}
+.article p{font-size:.97rem;color:var(--text-2);line-height:1.75;margin-bottom:14px}
+.article ul{margin:0 0 16px;padding-left:20px;display:grid;gap:7px}
+.article li{font-size:.95rem;color:var(--text-2);line-height:1.6}
+.article a{color:var(--accent);font-weight:600}
+.article-hero{max-width:760px;margin-inline:auto}
+.article-back{display:inline-flex;gap:6px;align-items:center;font-size:.83rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:32px}
+.article-note{max-width:740px;margin:22px auto 0;font-size:.78rem;color:var(--text-3);border-left:2px solid var(--border-strong);padding-left:12px;line-height:1.55}
 
 @media (prefers-color-scheme:dark){}.pgabout .wrap{max-width:980px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}.pgabout .bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}.pgabout .bar-in{display:flex;align-items:center;gap:18px;height:62px}.pgabout .bmark{font-weight:800;font-size:1.15rem;letter-spacing:-.04em}.pgabout .bmark i{font-style:normal;color:var(--emerald-500)}.pgabout .bar-links{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:.85rem;font-weight:560;color:var(--text-2)}.pgabout .bar-links a:hover{color:var(--text)}.pgabout .bar-links a[aria-current]{color:var(--text)}.pgabout .wa-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;font-size:.8rem;font-weight:650;
   background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600));color:#fff;box-shadow:var(--shadow-sm)}.pgabout .wa-btn:hover{filter:brightness(1.08)}@media (max-width:560px){.pgabout .bar-links a.hideS{display:none}}.pgabout .phead{padding:clamp(44px,7vw,86px) 0 clamp(8px,2vw,20px);text-align:center}.pgabout .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}.pgabout .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald-500)}.pgabout h1{font-size:clamp(1.9rem,4.6vw,3rem);letter-spacing:-.035em;line-height:1.08;margin:16px 0 14px}.pgabout h1 .serif{font-family:var(--serif);font-weight:400;font-style:italic}.pgabout .lede{max-width:660px;margin-inline:auto;font-size:clamp(.98rem,1.7vw,1.1rem);color:var(--text-2)}.pgabout .sec{padding:clamp(30px,5vw,54px) 0}.pgabout .sec h2{font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.03em;margin-bottom:8px}.pgabout .sec .sub{color:var(--text-2);max-width:640px;margin-bottom:26px}.pgabout .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.pgabout .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.pgabout .card{padding:22px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface);transition:.3s}.pgabout .card:hover{box-shadow:var(--shadow-md);border-color:var(--border-strong);transform:translateY(-3px)}.pgabout .card .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;
@@ -1411,6 +1436,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       <a href="index.html">Home</a>
       <a href="tax-filing.html">Tax filing</a>
       <a href="services.html">Services</a>
+      <a href="insights.html">Insights</a>
       <a href="calculators.html">Calculators</a>
     </nav>
 

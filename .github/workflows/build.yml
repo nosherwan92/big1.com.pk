@@ -1,0 +1,49 @@
+name: Build site
+
+# Rebuilds the static HTML whenever content or templates change, then commits
+# the regenerated pages back to main (GitHub Pages serves them from the branch).
+# Adding an article = add a file under content/insights/*.md and push — the site
+# updates itself. The `paths` filter excludes *.html so the bot's own commit
+# (HTML only) never re-triggers this workflow.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'content/**'
+      - '_build/**'
+      - 'build.py'
+      - 'assets/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build the site
+        run: python build.py
+
+      - name: Commit regenerated HTML
+        run: |
+          git config user.name "big1-site-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Rebuild site from content [skip ci]"
+            git push
+          fi

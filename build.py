@@ -13,7 +13,7 @@ one nav, one footer, shared scripts) and per-page bodies, then emits:
 Run:  python build.py     (from C:\\bfiler\\website)
 UTF-8 no BOM; asserts non-ascii == 0 per page.
 """
-import io, os, re, sys
+import io, os, re, sys, glob
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BLD  = os.path.join(ROOT, "_build")
@@ -189,6 +189,31 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 .page-hero{padding:clamp(46px,7vw,88px) 0 clamp(10px,2vw,24px);text-align:center}
 .page-hero h1{font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:-.035em;line-height:1.08;margin:16px 0 14px}
 .page-hero .lede{max-width:620px;margin-inline:auto}
+/* insights (news / articles) */
+.insights-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.insights-grid{grid-template-columns:1fr;max-width:440px;margin-inline:auto}}
+.insight{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--border);background:var(--surface-solid);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.insight:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+.insight-img{aspect-ratio:16/10;background-size:cover;background-position:center;
+  background-image:linear-gradient(135deg,var(--emerald-700),var(--blue-600))}
+.insight-body{padding:17px 20px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
+.insight-cat{font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.insight-t{font-size:1.02rem;font-weight:650;letter-spacing:-.02em;line-height:1.32}
+.insight-ex{font-size:.83rem;color:var(--text-2);line-height:1.55}
+.insight-date{margin-top:auto;font-size:.72rem;color:var(--text-3);padding-top:6px}
+/* article page */
+.article{max-width:740px;margin-inline:auto}
+.article h2{font-size:clamp(1.25rem,2.3vw,1.6rem);letter-spacing:-.02em;margin:26px 0 10px}
+.article h3{font-size:1.08rem;margin:20px 0 8px}
+.article p{font-size:.97rem;color:var(--text-2);line-height:1.75;margin-bottom:14px}
+.article ul{margin:0 0 16px;padding-left:20px;display:grid;gap:7px}
+.article li{font-size:.95rem;color:var(--text-2);line-height:1.6}
+.article a{color:var(--accent);font-weight:600}
+.article-hero{max-width:760px;margin-inline:auto}
+.article-back{display:inline-flex;gap:6px;align-items:center;font-size:.83rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:32px}
+.article-note{max-width:740px;margin:22px auto 0;font-size:.78rem;color:var(--text-3);border-left:2px solid var(--border-strong);padding-left:12px;line-height:1.55}
 """
 
 # ---- head / body-open (shared) ----
@@ -208,7 +233,8 @@ def head_for(title, desc, canonical, extra_css=""):
 
 # ---- shared nav (cross-page links + active state) ----
 NAVLINKS = [("home","index.html","Home"),("tax","tax-filing.html","Tax filing"),
-            ("services","services.html","Services"),("calc","calculators.html","Calculators")]
+            ("services","services.html","Services"),("insights","insights.html","Insights"),
+            ("calc","calculators.html","Calculators")]
 def nav_for(active):
     links = "\n".join(
         '      <a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if key==active else "", label)
@@ -490,6 +516,146 @@ def page(title, desc, canonical, active, body, calc=False, extra_css="", extra_j
     parts.append(GEN_SCRIPT)
     return "\n".join(parts)
 
+# ==================== INSIGHTS (content/insights/*.md -> cards + pages) ====================
+_MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+def _esc(s):
+    """HTML-escape and convert any non-ASCII char to a numeric entity (keeps the ascii==0 guard happy)."""
+    o = []
+    for ch in (s or ""):
+        c = ord(ch)
+        if ch == "&": o.append("&amp;")
+        elif ch == "<": o.append("&lt;")
+        elif ch == ">": o.append("&gt;")
+        elif c > 127: o.append("&#%d;" % c)
+        else: o.append(ch)
+    return "".join(o)
+
+def _inline(s):
+    """Minimal inline markdown: [text](url), **bold**, *italic*."""
+    links = []
+    def cap(m):
+        links.append((m.group(1), m.group(2))); return "\x01%d\x01" % (len(links) - 1)
+    s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", cap, s)
+    s = _esc(s)
+    s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
+    s = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", s)
+    s = re.sub("\x01(\\d+)\x01", lambda m: '<a href="%s">%s</a>' % (_esc(links[int(m.group(1))][1]), _esc(links[int(m.group(1))][0])), s)
+    return s
+
+def _render_md(md):
+    """Block-level markdown: ## / ### headings, - lists, paragraphs."""
+    lines = (md or "").replace("\r", "").split("\n"); out = []; i, n = 0, len((md or "").replace("\r", "").split("\n"))
+    while i < n:
+        st = lines[i].strip()
+        if not st: i += 1; continue
+        if st.startswith("### "): out.append("<h3>" + _inline(st[4:]) + "</h3>"); i += 1
+        elif st.startswith("## "): out.append("<h2>" + _inline(st[3:]) + "</h2>"); i += 1
+        elif st.startswith("# "): out.append("<h2>" + _inline(st[2:]) + "</h2>"); i += 1
+        elif st.startswith("- "):
+            items = []
+            while i < n and lines[i].strip().startswith("- "):
+                items.append("<li>" + _inline(lines[i].strip()[2:]) + "</li>"); i += 1
+            out.append("<ul>" + "".join(items) + "</ul>")
+        else:
+            buf = []
+            while i < n and lines[i].strip() and not lines[i].strip().startswith(("#", "- ")):
+                buf.append(lines[i].strip()); i += 1
+            out.append("<p>" + _inline(" ".join(buf)) + "</p>")
+    return "\n".join(out)
+
+def _fmt_date(d):
+    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", d or "")
+    return "%s %d, %s" % (_MONTHS[int(m.group(2))], int(m.group(3)), m.group(1)) if m else _esc(d or "")
+
+def _frontmatter(text):
+    meta, body = {}, text
+    if text.startswith("---"):
+        end = text.find("\n---", 3)
+        if end != -1:
+            for line in text[3:end].strip().splitlines():
+                if ":" in line:
+                    k, v = line.split(":", 1); meta[k.strip().lower()] = v.strip()
+            body = text[end + 4:].lstrip("\n")
+    return meta, body
+
+def load_insights():
+    items = []
+    d = os.path.join(ROOT, "content", "insights")
+    if os.path.isdir(d):
+        for path in glob.glob(os.path.join(d, "*.md")):
+            meta, body = _frontmatter(io.open(path, encoding="utf-8").read())
+            meta["slug"] = os.path.splitext(os.path.basename(path))[0]
+            meta["body"] = body
+            items.append(meta)
+    items.sort(key=lambda m: m.get("date", ""), reverse=True)
+    return items
+
+INSIGHTS = load_insights()
+
+def _insight_card(it):
+    img = it.get("image", "")
+    style = ' style="background-image:url(%s)"' % _esc(img) if img else ""
+    href = it.get("link") or ("insight-%s.html" % it["slug"])
+    return ('<a class="insight" href="%s"><span class="insight-img"%s></span>'
+            '<span class="insight-body"><span class="insight-cat">%s</span>'
+            '<span class="insight-t">%s</span><span class="insight-ex">%s</span>'
+            '<span class="insight-date">%s</span></span></a>') % (
+        _esc(href), style, _esc(it.get("category", "Insight")), _esc(it.get("title", "")),
+        _esc(it.get("excerpt", "")), _fmt_date(it.get("date", "")))
+
+def _insights_home():
+    if not INSIGHTS: return ""
+    cards = "\n".join(_insight_card(it) for it in INSIGHTS[:3])
+    return ('''<!-- ============================== INSIGHTS ============================== -->
+<section class="sec frame-sub" id="insights">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>Insights</span>
+      <h2 class="h1">Tax &amp; business<br /><span class="serif">insights.</span></h2>
+      <p class="lede">Plain-language updates on FBR, SECP and IPO&nbsp;Pakistan &mdash; deadlines, changes, and what they mean for you.</p>
+    </div>
+    <div class="insights-grid" data-reveal>%s</div>
+    <div style="text-align:center;margin-top:32px"><a class="btn btn-primary btn-lg" href="insights.html">View all insights <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>''') % cards
+
+INSIGHTS_HOME = _insights_home()
+
+def _insights_page_body():
+    cards = "\n".join(_insight_card(it) for it in INSIGHTS) or '<p class="lede" style="text-align:center">New insights are on the way.</p>'
+    return ('''<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal><span class="dot"></span>Insights</span>
+    <h1 data-reveal style="--d:80ms">Tax &amp; business insights.</h1>
+    <p class="lede" data-reveal style="--d:160ms">Plain-language updates on FBR, SECP and IPO&nbsp;Pakistan &mdash; and what they mean for individuals and businesses in Pakistan.</p>
+  </div>
+</section>
+<section class="sec" style="padding-top:clamp(18px,2.6vw,32px)">
+  <div class="wrap"><div class="insights-grid">%s</div></div>
+</section>''') % cards
+
+def _article_body(it):
+    img = it.get("image", "")
+    hero_img = ('<div class="insight-img" style="max-width:740px;margin:24px auto 0;border-radius:var(--r-lg);background-image:url(%s)"></div>' % _esc(img)) if img else ""
+    return ('''<section class="page-hero">
+  <div class="wrap article-hero" style="text-align:center">
+    <span class="eyebrow" data-reveal><span class="dot"></span>%s</span>
+    <h1 data-reveal style="--d:80ms">%s</h1>
+    <p class="lede" data-reveal style="--d:160ms">%s</p>
+    <p class="insight-date" style="margin-top:2px">%s</p>
+  </div>
+</section>
+%s
+<section class="sec" style="padding-top:clamp(14px,2vw,26px)">
+  <div class="wrap">
+    <div class="article">%s</div>
+    <p class="article-note">This is general information, not tax advice for your particular situation. Figures, rates and deadlines change &mdash; confirm your case with us before you act.</p>
+    <div style="max-width:740px;margin-inline:auto"><a class="article-back" href="insights.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M12 5l-7 7 7 7"/></svg> All insights</a></div>
+  </div>
+</section>''') % (_esc(it.get("category", "Insight")), _esc(it.get("title", "")), _esc(it.get("excerpt", "")),
+                 _fmt_date(it.get("date", "")), hero_img, _render_md(it.get("body", "")))
+
 TAX_BODY = "\n\n".join([HERO_TAX, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
@@ -499,7 +665,7 @@ PAGES = {
         "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
         "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
         "", "home",
-        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, STORIES, FAQ_HOME, CTA_HOME])),
+        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
         "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
@@ -522,6 +688,17 @@ PAGES["about.html"] = page(
     "About &amp; Contact &mdash; BIG1 / FilePak",
     "BIG1 is a Pakistani tax and corporate-services firm behind FilePak: income-tax filing, registrations, IP and SECP compliance. What we do, how we work, and how to reach us.",
     "about.html", "about", _ABT_BODY, extra_css=_ABT_CSS, extra_js=_ABT_JS)
+
+# ---- insights: listing page + one page per article ----
+PAGES["insights.html"] = page(
+    "Insights &mdash; Tax, Registration &amp; Corporate Updates in Pakistan | BIG1",
+    "Plain-language tax and business insights for Pakistan from BIG1 &mdash; FBR, SECP and IPO Pakistan updates, deadlines and guides for individuals and businesses.",
+    "insights.html", "insights", _insights_page_body())
+for _it in INSIGHTS:
+    PAGES["insight-%s.html" % _it["slug"]] = page(
+        _esc(_it.get("title", "Insight")) + " &mdash; BIG1 Insights",
+        _esc(_it.get("excerpt", "")),
+        "insight-%s.html" % _it["slug"], "insights", _article_body(_it))
 
 def build():
     for name, html in PAGES.items():
