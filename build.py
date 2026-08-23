@@ -163,7 +163,7 @@ html.has-hero .nav:not(.stuck) .theme-btn{color:#fff;border-color:rgba(255,255,2
 html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,255,.45)}
 @media (prefers-reduced-motion:reduce){.rslide,.rslide.on{animation:none;transition:opacity .5s ease;transform:none}}
 @media (max-width:640px){.rtexts{min-height:300px}}
-.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 8px}
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
   border:1px solid var(--border);background:var(--surface-solid);text-decoration:none;color:inherit;overflow:hidden;
   transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
@@ -181,7 +181,10 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 .pillar .go{margin-top:auto;font-size:.84rem;font-weight:650;color:var(--accent);display:inline-flex;align-items:center;gap:7px}
 .pillar:hover .go svg{transform:translateX(3px)}
 .pillar .go svg{transition:transform .3s var(--ease)}
-@media (max-width:900px){.pillars{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+.what-tools{text-align:center;margin-top:24px;font-size:.92rem;color:var(--text-2)}
+.what-tools a{color:var(--accent);font-weight:650}
+@media (max-width:980px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.pillars{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
 /* calculators page header */
 .page-hero{padding:clamp(46px,7vw,88px) 0 clamp(10px,2vw,24px);text-align:center}
 .page-hero h1{font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:-.035em;line-height:1.08;margin:16px 0 14px}
@@ -334,33 +337,41 @@ PILLARS = '''<!-- ============================== PILLARS =======================
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>What we do</span>
-      <h2 class="h1">One firm,<br /><span class="serif">everything you need.</span></h2>
-      <p class="lede">Start where it suits you &mdash; file a return, request a registration, or run a quick estimate.</p>
+      <h2 class="h1">One firm for tax, registration<br /><span class="serif">and everything after.</span></h2>
+      <p class="lede">From your income-tax return to trademarks, company formation and advisory &mdash; handled under one roof, by a real team.</p>
     </div>
   </div>
   <div class="wrap wrap-wide">
     <div class="pillars">
       <a class="pillar" data-reveal href="tax-filing.html">
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg></span>
-        <h3>File your taxes</h3>
-        <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorized FBR e-intermediary.</p>
-        <span class="go">Go to tax filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+        <h3>Income tax</h3>
+        <p>Guided returns computed to the rupee, prior-year filing, notices and tax advisory &mdash; filed through an authorized FBR e-intermediary.</p>
+        <span class="go">File your taxes <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
 
-      <a class="pillar" data-reveal style="--d:80ms" href="services.html">
-        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h6"/></svg></span>
-        <h3>Register &amp; comply</h3>
-        <p>NTN, sales tax, trademark and company incorporation &mdash; the exact documents listed up front.</p>
-        <span class="go">Explore services <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      <a class="pillar" data-reveal style="--d:80ms" href="services.html#taxation">
+        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg></span>
+        <h3>Registrations</h3>
+        <p>NTN, Sales Tax (GST) and Provincial Sales Tax &mdash; with the exact documents for your case listed up front.</p>
+        <span class="go">Get registered <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
 
-      <a class="pillar" data-reveal style="--d:160ms" href="calculators.html">
-        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.4"/><path d="M8 7h8M8 11h8M8 15h4"/></svg></span>
-        <h3>Free tax tools</h3>
-        <p>Estimate salary, rental, capital-gains and business tax in seconds, on current Finance Act rates.</p>
-        <span class="go">Open calculators <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      <a class="pillar" data-reveal style="--d:160ms" href="services.html#ip">
+        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg></span>
+        <h3>Intellectual property</h3>
+        <p>Trademark, copyright, patent and design registration with IPO&nbsp;Pakistan &mdash; protect your brand and your ideas.</p>
+        <span class="go">Protect your brand <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <a class="pillar" data-reveal style="--d:240ms" href="services.html#corporate">
+        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
+        <h3>Corporate &amp; advisory</h3>
+        <p>Company incorporation, SECP compliance, and corporate &amp; business advisory &mdash; structure and run your company right.</p>
+        <span class="go">Explore corporate <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
     </div>
+    <p class="what-tools" data-reveal>Just exploring? <a href="calculators.html">Try the free tax calculators &rarr;</a></p>
   </div>
 </section>'''
 
@@ -401,7 +412,7 @@ CTA_HOME = '''<!-- ============================== HOME CTA =====================
   <div class="wrap">
     <div class="cta-inner">
       <span class="eyebrow" data-reveal><span class="dot"></span>BIG1 &middot; FilePak</span>
-      <h2 data-reveal style="--d:80ms">One team for your<br /><span class="grad-text">tax and compliance.</span></h2>
+      <h2 data-reveal style="--d:80ms">One team for tax, registration<br /><span class="grad-text">and corporate services.</span></h2>
       <p class="lede" data-reveal style="--d:160ms">File your return, register a business, protect a brand, or answer a
         notice &mdash; start on WhatsApp and a real person picks it up.</p>
       <div class="cta-btns" data-reveal style="--d:240ms">
@@ -488,7 +499,7 @@ PAGES = {
         "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
         "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
         "", "home",
-        "\n\n".join([HOME_HERO, PILLARS, STORIES, FAQ_HOME, CTA_HOME])),
+        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
         "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
