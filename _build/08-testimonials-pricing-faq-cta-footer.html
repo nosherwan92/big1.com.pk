@@ -109,6 +109,8 @@
 .fbot{margin-top:52px;padding-top:24px;border-top:1px solid var(--border);
   display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;font-size:.79rem;color:var(--text-3)}
 .fbot .fright{margin-left:auto;display:flex;flex-wrap:wrap;gap:18px}
+.fbot a[data-cookie-open]{margin-left:auto;color:var(--text-3);text-decoration:none;font-weight:600}
+.fbot a[data-cookie-open]:hover{color:var(--accent)}
 .fdisc{margin-top:20px;font-size:.75rem;color:var(--text-3);line-height:1.65;max-width:96ch}
 @media (max-width:960px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}.fbrand{grid-column:span 2}}
 @media (max-width:560px){.fgrid{grid-template-columns:1fr}.fbrand{grid-column:span 1}.fbot .fright{margin-left:0}}
@@ -403,6 +405,7 @@
 
     <div class="fbot">
       <span>&copy; 2026 BIG1. All rights reserved.</span>
+      <a href="#" data-cookie-open>Cookie preferences</a>
     </div>
 
     <p class="fdisc">BIG1 operates FilePak, a private tax-technology platform, and is not a government body. Returns

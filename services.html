@@ -1215,6 +1215,8 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 .fbot{margin-top:52px;padding-top:24px;border-top:1px solid var(--border);
   display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;font-size:.79rem;color:var(--text-3)}
 .fbot .fright{margin-left:auto;display:flex;flex-wrap:wrap;gap:18px}
+.fbot a[data-cookie-open]{margin-left:auto;color:var(--text-3);text-decoration:none;font-weight:600}
+.fbot a[data-cookie-open]:hover{color:var(--accent)}
 .fdisc{margin-top:20px;font-size:.75rem;color:var(--text-3);line-height:1.65;max-width:96ch}
 @media (max-width:960px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}.fbrand{grid-column:span 2}}
 @media (max-width:560px){.fgrid{grid-template-columns:1fr}.fbrand{grid-column:span 1}.fbot .fright{margin-left:0}}
@@ -1285,6 +1287,25 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 .startm-opt.is-soon:hover{border-color:var(--border);box-shadow:none;transform:none}
 .startm-opt.is-soon .so-ic{background:var(--bg-sub);color:var(--text-3)}
 .startm-note{font-size:.74rem;color:var(--text-3);text-align:center;margin-top:16px}
+/* ---------- Cookie consent ---------- */
+.cookie{position:fixed;left:0;right:0;bottom:0;z-index:130;padding:0 16px 16px;display:flex;justify-content:center;
+  animation:ckUp .4s var(--ease)}
+@keyframes ckUp{from{opacity:0;transform:translateY(20px)}}
+.cookie[hidden]{display:none}
+.cookie-in{width:min(1040px,100%);display:flex;gap:22px;align-items:center;flex-wrap:wrap;
+  background:var(--surface-solid,var(--surface));border:1px solid var(--border);border-radius:16px;
+  box-shadow:var(--shadow-lg);padding:18px 22px}
+.cookie-tx{flex:1;min-width:250px}
+.cookie-tx b{display:block;font-size:.92rem;letter-spacing:-.01em;margin-bottom:4px}
+.cookie-tx p{font-size:.8rem;color:var(--text-2);line-height:1.55;margin:0}
+.cookie-tx a{color:var(--accent);font-weight:600}
+.cookie-btns{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-btn{font-family:var(--sans);font-size:.82rem;font-weight:650;padding:10px 18px;border-radius:100px;
+  cursor:pointer;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);transition:.2s}
+.cookie-btn:hover{border-color:var(--accent);color:var(--accent)}
+.cookie-btn.primary{border-color:transparent;color:#fff;background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600))}
+.cookie-btn.primary:hover{filter:brightness(1.08);color:#fff}
+@media (max-width:620px){.cookie-in{flex-direction:column;align-items:stretch}.cookie-btns .cookie-btn{flex:1}}
 
 
 /* ---------- Home: hero + pillars (multi-page) ---------- */
@@ -1595,6 +1616,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 
     <div class="fbot">
       <span>&copy; 2026 BIG1. All rights reserved.</span>
+      <a href="#" data-cookie-open>Cookie preferences</a>
     </div>
 
     <p class="fdisc">BIG1 operates FilePak, a private tax-technology platform, and is not a government body. Returns
@@ -2286,6 +2308,54 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
     (function (k) { dots[k].addEventListener('click', function () { go(k); }); })(d);
   }
   if (!reduce) { setInterval(function () { go(cur + 1); }, 4500); }
+})();
+
+/* ---------- Cookie consent ---------- */
+(function () {
+  var KEY = "big1_cookie_consent";  // stored value: "all" | "necessary"
+  // Runs only after the visitor accepts analytics. Drop your analytics
+  // snippet (e.g. Plausible / Google Analytics) inside this function.
+  function enableAnalytics() {
+    if (window.__big1Analytics) return; window.__big1Analytics = true;
+    /* e.g. var s=document.createElement('script'); s.src='...'; document.head.appendChild(s); */
+  }
+  function apply(choice) { if (choice === "all") enableAnalytics(); }
+
+  var html =
+    '<div class="cookie" id="cookieBar" role="dialog" aria-label="Cookie consent" hidden>' +
+      '<div class="cookie-in">' +
+        '<div class="cookie-tx">' +
+          '<b>Cookies</b>' +
+          '<p>We use essential cookies to make this site work. With your consent we&rsquo;d also use analytics ' +
+          'to understand what&rsquo;s useful and improve it. See our <a href="about.html#contact">privacy note</a>.</p>' +
+        '</div>' +
+        '<div class="cookie-btns">' +
+          '<button class="cookie-btn ghost" type="button" data-cc="necessary">Necessary only</button>' +
+          '<button class="cookie-btn primary" type="button" data-cc="all">Accept all</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.insertAdjacentHTML("beforeend", html);
+  var bar = document.getElementById("cookieBar");
+
+  function choose(v) { try { localStorage.setItem(KEY, v); } catch (e) {} apply(v); if (bar) bar.hidden = true; }
+  function open() { if (bar) bar.hidden = false; }
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved) { apply(saved); } else { open(); }
+
+  if (bar) {
+    var btns = bar.querySelectorAll("[data-cc]");
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) { b.addEventListener("click", function () { choose(b.getAttribute("data-cc")); }); })(btns[i]);
+    }
+  }
+  // Footer "Cookie preferences" link reopens the banner.
+  var reopen = document.querySelectorAll("[data-cookie-open]");
+  for (var j = 0; j < reopen.length; j++) {
+    reopen[j].addEventListener("click", function (e) { e.preventDefault(); open(); });
+  }
 })();
 </script>
 </body>
