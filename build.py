@@ -229,6 +229,11 @@ def head_for(title, desc, canonical, extra_css=""):
     h = re.sub(r'(<meta property="og:url" content=").*?(" />)', lambda m: m.group(1)+"https://big1.com.pk/"+canonical+m.group(2), h, flags=re.S)
     h = re.sub(r'(<link rel="canonical" href=").*?(" />)', lambda m: m.group(1)+"https://big1.com.pk/"+canonical+m.group(2), h, flags=re.S)
     h = re.sub(r"<style>.*?</style>", "<style>\n" + CSS + "\n" + NEW_CSS + "\n" + extra_css + "\n</style>", h, flags=re.S, count=1)
+    # Meta (Facebook) domain verification for big1.com.pk — must stay in a STATIC <head> permanently;
+    # Meta re-checks periodically and un-verifies if it disappears, so it lives in the shared head, not
+    # one page. Public token, safe to commit. Added on every page's <head> before the closing tag.
+    h = h.replace("</head>",
+                  '<meta name="facebook-domain-verification" content="pq059rmb39z0t76ve40w2312t7hxni" />\n</head>')
     return h
 
 # ---- shared nav (cross-page links + active state) ----
