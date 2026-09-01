@@ -279,7 +279,7 @@ WA_START = WA + "?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20get%20star
 
 # ---- the FilePak application URL. Live on Cloud Run. Pages use the {{APP}} token; when the branded
 #      domain (e.g. app.big1.com.pk) is mapped in front of Cloud Run, swap this one line.
-APP_URL = "https://filepak-507722663026.asia-south1.run.app"
+APP_URL = "https://app.big1.com.pk"
 
 # ---- shared footer + whatsapp float + scripts ----
 FOOTER = section(F08, '<footer class="foot">', "</footer>")
