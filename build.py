@@ -406,6 +406,37 @@ PILLARS = '''<!-- ============================== PILLARS =======================
   </div>
 </section>'''
 
+# Two ways to file — mirrors the app's "File your Income Tax Return" chooser (Services → Taxation).
+# Prices are the app's rate card (Self-Filing 3,900 · Priority 8,000 / 10,000 estimates); keep in sync with
+# backend/app/payments/pricing.py. Deep links open the chosen way directly after sign-in.
+TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE ============================== -->
+<section class="sec" id="two-ways" style="padding-top:clamp(28px,3.2vw,46px)">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>File your income tax return</span>
+      <h2 class="h1">Two ways to file.<br /><span class="serif">Same profile, your choice of effort.</span></h2>
+      <p class="lede">Prepare it yourself with FilePak&rsquo;s guided steps, or hand us your documents and let the BIG1 team prepare and file it for you.</p>
+    </div>
+  </div>
+  <div class="wrap wrap-wide">
+    <div class="pillars" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:980px;margin:0 auto">
+      <a class="pillar" data-reveal href="{{APP}}/?service=self_filing" target="_blank" rel="noopener noreferrer">
+        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h6"/></svg></span>
+        <h3>Self-Filing &middot; Rs 3,900</h3>
+        <p>You prepare your return yourself with step-by-step guidance &mdash; automatic tax calculation, wealth reconciliation, IRIS-format summary and Excel export. Pay at the end, before filing.</p>
+        <span class="go">Start Self-Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a class="pillar" data-reveal style="--d:80ms" href="{{APP}}/?service=priority" target="_blank" rel="noopener noreferrer">
+        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>
+        <h3>Priority Filing &middot; from Rs 8,000</h3>
+        <p>Don&rsquo;t know how to prepare your return? Tick what applies, upload what you have &mdash; nothing is mandatory &mdash; and our team prepares and files it. Salary-only Rs 8,000 &middot; business or multiple incomes Rs 10,000 (estimates; you pay when it&rsquo;s ready).</p>
+        <span class="go">Start Priority Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+    <p class="what-tools" data-reveal>Either way, nothing is filed without your approval &mdash; and no need to send last year&rsquo;s return, we retrieve it from IRIS.</p>
+  </div>
+</section>'''
+
 # a short, GENERIC home FAQ (filing-specific FAQ stays on the tax page)
 FAQ_HOME = '''<!-- ============================== HOME FAQ ============================== -->
 <section class="sec frame-sub" id="faq">
@@ -661,7 +692,7 @@ def _article_body(it):
 </section>''') % (_esc(it.get("category", "Insight")), _esc(it.get("title", "")), _esc(it.get("excerpt", "")),
                  _fmt_date(it.get("date", "")), hero_img, _render_md(it.get("body", "")))
 
-TAX_BODY = "\n\n".join([HERO_TAX, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
+TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 
@@ -670,7 +701,7 @@ PAGES = {
         "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
         "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
         "", "home",
-        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
+        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, TWO_WAYS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
         "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
