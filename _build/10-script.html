@@ -55,6 +55,11 @@
 .startm-opt .so-t{flex:1;min-width:0}
 .startm-opt .so-t b{display:block;font-size:.9rem;font-weight:600;letter-spacing:-.01em}
 .startm-opt .so-t span{font-size:.75rem;color:var(--text-3)}
+.startm-pri{cursor:default}
+.startm-tiers{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.startm-tier{display:inline-block;padding:7px 12px;border-radius:100px;border:1.5px solid var(--emerald-600);color:var(--emerald-700);
+  font-size:.78rem!important;font-weight:700;text-decoration:none;transition:.2s}
+.startm-tier:hover{background:var(--emerald-600);color:#fff}
 .startm-opt .so-arw{color:var(--text-3);flex-shrink:0}
 .startm-opt.is-live{border-color:rgba(16,185,129,.4)}
 .startm-opt.is-live .so-ic{background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));color:#fff;border-color:transparent}
@@ -461,14 +466,20 @@
   // Both deep-link into the app on the chosen way (the app asks for sign-in + profile first).
   var selfRow =
     '<a class="startm-opt" href="' + APP + '/?service=self_filing" target="_blank" rel="noopener noreferrer">' +
-      globe + '<span class="so-t"><b>Self-Filing &middot; Rs 3,900</b><span>You prepare it yourself with guided steps &mdash; automatic tax calculation, wealth reconciliation, IRIS summary &amp; Excel</span></span>' + arw +
+      globe + '<span class="so-t"><b>Self-Filing &middot; Rs 3,900</b><span>You prepare it yourself, step by step.</span></span>' + arw +
     '</a>';
   var bolt = '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>';
+  // Priority Filing: two equal tier buttons (no single headline price), one short line of text.
   var priorityRow =
-    '<a class="startm-opt is-live" href="' + APP + '/?service=priority" target="_blank" rel="noopener noreferrer">' +
+    '<div class="startm-opt is-live startm-pri">' +
       '<span class="startm-badge">We prepare it</span>' +
-      bolt + '<span class="so-t"><b>Priority Filing &middot; from Rs 8,000</b><span>Tick what applies, upload what you have &mdash; our team prepares &amp; files it. Salary-only 8,000 &middot; business / multiple 10,000 (estimates; pay when ready)</span></span>' + arw +
-    '</a>';
+      bolt + '<span class="so-t"><b>Priority Filing &mdash; we prepare it for you</b><span>Tick what applies, upload what you have. Pay when it&rsquo;s ready.</span>' +
+        '<span class="startm-tiers">' +
+          '<a class="startm-tier" href="' + APP + '/?service=priority_salary" target="_blank" rel="noopener noreferrer">Salary only &middot; Rs 8,000</a>' +
+          '<a class="startm-tier" href="' + APP + '/?service=priority_complex" target="_blank" rel="noopener noreferrer">Business / multiple &middot; Rs 10,000</a>' +
+        '</span>' +
+      '</span>' +
+    '</div>';
   var appRow = selfRow + priorityRow;   // (waRow is kept as the "or chat on WhatsApp" line below)
   var html =
     '<div class="startm" id="startModal" hidden>' +
