@@ -436,6 +436,8 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
     <p class="what-tools" data-reveal>Either way, nothing is filed without your approval &mdash; and no need to send last year&rsquo;s return, we retrieve it from IRIS.</p>
   </div>
 </section>'''
+# {{APP}} is only substituted for standalone pages (see standalone()); inline home/tax blocks resolve it here.
+TWO_WAYS = TWO_WAYS.replace("{{APP}}", APP_URL)
 
 # a short, GENERIC home FAQ (filing-specific FAQ stays on the tax page)
 FAQ_HOME = '''<!-- ============================== HOME FAQ ============================== -->
