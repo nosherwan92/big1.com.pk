@@ -480,7 +480,7 @@ CTA_HOME = '''<!-- ============================== HOME CTA =====================
       <p class="lede" data-reveal style="--d:160ms">File your return, register a business, protect a brand, or answer a
         notice &mdash; start on WhatsApp and a real person picks it up.</p>
       <div class="cta-btns" data-reveal style="--d:240ms">
-        <a class="btn btn-primary btn-lg" href="tax-filing.html">File your taxes
+        <a class="btn btn-primary btn-lg" href="tax-filing.html" data-start>File your taxes
           <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
         <a class="btn btn-glass btn-lg" href="''' + WA_START + '''" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
       </div>

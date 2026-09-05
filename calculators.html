@@ -2560,23 +2560,28 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       '<span class="so-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span>' +
       '<span class="so-t"><b>File with our team on WhatsApp</b><span>We prepare and file it for you</span></span>' + arw +
     '</a>';
-  var appRow = APP_LIVE
-    ? '<a class="startm-opt" href="' + APP + '" target="_blank" rel="noopener noreferrer">' +
-        globe + '<span class="so-t"><b>Use the FilePak app</b><span>File online yourself, in your browser</span></span>' + arw +
-      '</a>'
-    : '<div class="startm-opt is-soon" aria-disabled="true">' +
-        '<span class="startm-badge soon">Coming soon</span>' +
-        globe + '<span class="so-t"><b>Self-file in the FilePak app</b><span>Online DIY filing &mdash; launching soon</span></span>' +
-      '</div>';
+  // ONE chooser for every "start" button on the site -- the same two ways the app offers.
+  // Both deep-link into the app on the chosen way (the app asks for sign-in + profile first).
+  var selfRow =
+    '<a class="startm-opt" href="' + APP + '/?service=self_filing" target="_blank" rel="noopener noreferrer">' +
+      globe + '<span class="so-t"><b>Self-Filing &middot; Rs 3,900</b><span>You prepare it yourself with guided steps &mdash; automatic tax calculation, wealth reconciliation, IRIS summary &amp; Excel</span></span>' + arw +
+    '</a>';
+  var bolt = '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>';
+  var priorityRow =
+    '<a class="startm-opt is-live" href="' + APP + '/?service=priority" target="_blank" rel="noopener noreferrer">' +
+      '<span class="startm-badge">We prepare it</span>' +
+      bolt + '<span class="so-t"><b>Priority Filing &middot; from Rs 8,000</b><span>Tick what applies, upload what you have &mdash; our team prepares &amp; files it. Salary-only 8,000 &middot; business / multiple 10,000 (estimates; pay when ready)</span></span>' + arw +
+    '</a>';
+  var appRow = selfRow + priorityRow;   // (waRow is kept as the "or chat on WhatsApp" line below)
   var html =
     '<div class="startm" id="startModal" hidden>' +
       '<div class="startm-back" data-sclose></div>' +
       '<div class="startm-dialog" role="dialog" aria-modal="true" aria-labelledby="startmTitle">' +
         '<button class="startm-x" data-sclose aria-label="Close">&times;</button>' +
-        '<h3 id="startmTitle">Start your tax return</h3>' +
-        '<p class="startm-sub">File with our team today &mdash; or self-file in the app soon.</p>' +
-        '<div class="startm-opts">' + waRow + appRow + '</div>' +
-        '<p class="startm-note">Building your return is free &mdash; you only pay when you choose to file.</p>' +
+        '<h3 id="startmTitle">File your income tax return</h3>' +
+        '<p class="startm-sub">Two ways to file &mdash; same profile, your choice of effort.</p>' +
+        '<div class="startm-opts">' + appRow + '</div>' +
+        '<p class="startm-note">Nothing is filed without your approval. Prefer to talk first? <a href="' + WA + '" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>.</p>' +
       '</div>' +
     '</div>';
   document.body.insertAdjacentHTML("beforeend", html);

@@ -62,6 +62,15 @@
 .svc-chip{padding:8px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
   font-family:var(--sans);font-size:.81rem;font-weight:600;color:var(--text-2);cursor:pointer;transition:.2s}
 .svc-chip:hover{border-color:var(--border-strong);color:var(--text)}
+/* tier buttons inside an option (e.g. Priority Filing: salary-only / business) -- each one starts the app on that tier */
+.svc-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 4px}
+.svc-tier{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);
+  text-decoration:none;color:var(--text);transition:.2s}
+.svc-tier:hover{border-color:var(--emerald-600);box-shadow:0 6px 18px -10px rgba(5,150,105,.45)}
+.svc-tier b{font-family:var(--sans);font-size:.9rem;font-weight:700}
+.svc-tier span{font-size:.76rem;color:var(--text-3);line-height:1.4}
+.svc-tier em{font-style:normal;font-weight:700;color:var(--emerald-700)}
+.svc-tier .go{font-size:.78rem;font-weight:700;color:var(--emerald-700);margin-top:4px}
 .svc-chip[aria-pressed="true"]{border-color:transparent;color:#fff;background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600))}
 .svc-detail{border-top:1px solid var(--border);padding-top:16px;animation:svcFade .25s ease}
 .svc-dh{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:11px}
@@ -224,6 +233,10 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
           info:['You answer guided questions in the app','Automatic tax calculation and wealth reconciliation','IRIS-format summary and Excel export before you file'],
           note:'You prepare your own return step by step in FilePak; our engine computes the tax and reconciles your wealth statement. Payment at the end, before filing.'},
         {id:'priority',label:'Priority Filing (we prepare it)',fee:'From Rs. 8,000',app:'priority',
+          tiers:[
+            {label:'Salary only',fee:'Rs. 8,000',sub:'Salary income (bank profit is fine).',app:'priority_salary'},
+            {label:'Business / multiple incomes',fee:'Rs. 10,000',sub:'Business, freelance / IT export, rent, capital gains, foreign or a mix.',app:'priority_complex'}
+          ],
           docs:['Salary / tax-deduction certificate (if salaried)','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Any certificates of tax deducted elsewhere','Only what changed this year &mdash; property, vehicle, investments, loans, remittances'],
           info:['Tick what applies, upload what you have &mdash; nothing is mandatory','Our team prepares the return from your documents and follows up for the rest','No need for last year&rsquo;s return &mdash; we retrieve it from IRIS'],
           note:'Salary-only Rs. 8,000 &middot; business or multiple incomes Rs. 10,000 (estimates &mdash; the final fee is confirmed when your return is ready). You review a summary, then pay, then we file. No refunds once paid.'}
@@ -391,6 +404,13 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     setWa(opts[idx].label);
     if(elApp && opts[idx].app){   // option-level deep link (e.g. income tax: self_filing / priority) -- the app opens that way directly
       elApp.setAttribute('href', APP_BASE+'/?service='+encodeURIComponent(opts[idx].app));
+    }
+    if(opts[idx].tiers){   // two buttons inside the option -- each starts the app on that exact tier (after sign-in + profile)
+      var th='<div class="svc-dh">Choose your case</div><div class="svc-tiers">';
+      for(var t=0;t<opts[idx].tiers.length;t++){var tr=opts[idx].tiers[t];
+        th+='<a class="svc-tier" href="'+APP_BASE+'/?service='+encodeURIComponent(tr.app)+'" target="_blank" rel="noopener noreferrer"><b>'+tr.label+' &middot; <em>'+tr.fee+'</em></b><span>'+tr.sub+'</span><span class="go">Start in the app &rarr;</span></a>';}
+      th+='</div>';
+      elDetail.insertAdjacentHTML('afterbegin', th);
     }
   }
   function open(key, iconHtml){
