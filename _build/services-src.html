@@ -62,7 +62,7 @@
 .svc-chip{padding:8px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
   font-family:var(--sans);font-size:.81rem;font-weight:600;color:var(--text-2);cursor:pointer;transition:.2s}
 .svc-chip:hover{border-color:var(--border-strong);color:var(--text)}
-/* tier buttons inside an option (e.g. Priority Filing: salary-only / business) -- each one starts the app on that tier */
+/* tier buttons inside an option (e.g. Assisted Filing: salary-only / business) -- each one starts the app on that tier */
 .svc-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 4px}
 .svc-tier{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);
   text-decoration:none;text-align:left;color:var(--text);cursor:pointer;font-family:var(--sans);transition:.2s}
@@ -232,8 +232,8 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
         {id:'self',label:'Self-Filing (guided app)',fee:'Rs. 3,900',app:'self_filing',
           docs:['Salary tax certificate or business income &amp; expense summary','Tax deduction certificates &mdash; bank profit, mobile, vehicle, property','Bank statement(s) for the tax year','Assets &amp; liabilities for the wealth statement'],
           note:'You prepare it yourself, step by step. Pay at the end, before filing.'},
-        // Priority Filing: pick a tier -> the checklist and the app link change with it (no fee pill, no long notes).
-        {id:'priority',label:'Priority Filing (we prepare it)',app:'priority',
+        // Assisted Filing: pick a tier -> the checklist and the app link change with it (no fee pill, no long notes).
+        {id:'priority',label:'Assisted Filing (we prepare it)',app:'priority',
           note:'Nothing is mandatory &mdash; tick what applies, upload what you have; we follow up for the rest. Pay when it&rsquo;s ready.',
           tiers:[
             {label:'Salary only',fee:'Rs. 8,000',sub:'Salary income (bank profit is fine).',app:'priority_salary',
@@ -408,7 +408,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       elApp.setAttribute('href', APP_BASE+'/?service='+encodeURIComponent(opts[idx].app));
     }
   }
-  // Tiered option (Priority Filing): selectable tier cards; the selected tier sets "what you'll need" and the
+  // Tiered option (Assisted Filing): selectable tier cards; the selected tier sets "what you'll need" and the
   // footer "Start in the app" link. No separate fee pill (the fee is on the card) and one short note only.
   function selectTier(opt, t){
     var tr=opt.tiers[t];

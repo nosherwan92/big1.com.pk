@@ -1435,7 +1435,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   animation:svcUp .32s var(--ease)}@media (min-width:640px){.pgsvc .svc-modal{place-items:center;padding:20px}.pgsvc .svc-dialog{border-radius:22px}}@keyframes svcUp{from{opacity:0;transform:translateY(40px)}}.pgsvc .svc-x{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);
   background:var(--surface);color:var(--text-2);font-size:1.05rem;line-height:1;cursor:pointer;display:grid;place-items:center}.pgsvc .svc-x:hover{color:var(--text);border-color:var(--border-strong)}.pgsvc .svc-head{display:flex;align-items:center;gap:14px;margin-bottom:13px;padding-right:34px}.pgsvc .svc-head .ti{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;color:#fff;flex-shrink:0;
   background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70,.5)}.pgsvc .svc-head .ti svg{width:27px;height:27px}.pgsvc .svc-head h3{font-size:1.16rem;letter-spacing:-.02em;line-height:1.2}.pgsvc .svc-head .sub{font-size:.72rem;color:var(--text-3)}.pgsvc .svc-desc{font-size:.9rem;color:var(--text-2);line-height:1.55;margin-bottom:18px}.pgsvc .svc-opts-l{display:block;font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin-bottom:9px}.pgsvc .svc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.pgsvc .svc-chip{padding:8px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
-  font-family:var(--sans);font-size:.81rem;font-weight:600;color:var(--text-2);cursor:pointer;transition:.2s}.pgsvc .svc-chip:hover{border-color:var(--border-strong);color:var(--text)}.pgsvc /* tier buttons inside an option (e.g. Priority Filing: salary-only / business) -- each one starts the app on that tier */
+  font-family:var(--sans);font-size:.81rem;font-weight:600;color:var(--text-2);cursor:pointer;transition:.2s}.pgsvc .svc-chip:hover{border-color:var(--border-strong);color:var(--text)}.pgsvc /* tier buttons inside an option (e.g. Assisted Filing: salary-only / business) -- each one starts the app on that tier */
 .svc-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 4px}.pgsvc .svc-tier{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);
   text-decoration:none;text-align:left;color:var(--text);cursor:pointer;font-family:var(--sans);transition:.2s}.pgsvc .svc-tier:hover{border-color:var(--emerald-600);box-shadow:0 6px 18px -10px rgba(5,150,105,.45)}.pgsvc .svc-tier[aria-pressed="true"]{border-color:var(--emerald-600);background:linear-gradient(120deg,rgba(5,150,105,.10),rgba(5,150,105,.04));box-shadow:0 0 0 3px rgba(5,150,105,.12)}.pgsvc .svc-tier b{font-family:var(--sans);font-size:.9rem;font-weight:700}.pgsvc .svc-tier span{font-size:.76rem;color:var(--text-3);line-height:1.4}.pgsvc .svc-tier em{font-style:normal;font-weight:700;color:var(--emerald-700)}.pgsvc .svc-tier .go{font-size:.78rem;font-weight:700;color:var(--emerald-700);margin-top:4px}.pgsvc .svc-chip[aria-pressed="true"]{border-color:transparent;color:#fff;background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600))}.pgsvc .svc-detail{border-top:1px solid var(--border);padding-top:16px;animation:svcFade .25s ease}.pgsvc .svc-dh{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:11px}.pgsvc .svc-docs{list-style:none;display:grid;gap:8px;margin:0}.pgsvc .svc-docs li{display:flex;gap:9px;align-items:flex-start;font-size:.85rem;color:var(--text-2);line-height:1.45}.pgsvc .svc-docs .tk{width:16px;height:16px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
   background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}html[data-theme="dark"] .pgsvc .svc-docs .tk{color:var(--emerald-300)}.pgsvc .svc-fee{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:16px;padding:5px 13px;border-radius:100px;
@@ -1680,8 +1680,8 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
         {id:'self',label:'Self-Filing (guided app)',fee:'Rs. 3,900',app:'self_filing',
           docs:['Salary tax certificate or business income &amp; expense summary','Tax deduction certificates &mdash; bank profit, mobile, vehicle, property','Bank statement(s) for the tax year','Assets &amp; liabilities for the wealth statement'],
           note:'You prepare it yourself, step by step. Pay at the end, before filing.'},
-        // Priority Filing: pick a tier -> the checklist and the app link change with it (no fee pill, no long notes).
-        {id:'priority',label:'Priority Filing (we prepare it)',app:'priority',
+        // Assisted Filing: pick a tier -> the checklist and the app link change with it (no fee pill, no long notes).
+        {id:'priority',label:'Assisted Filing (we prepare it)',app:'priority',
           note:'Nothing is mandatory &mdash; tick what applies, upload what you have; we follow up for the rest. Pay when it&rsquo;s ready.',
           tiers:[
             {label:'Salary only',fee:'Rs. 8,000',sub:'Salary income (bank profit is fine).',app:'priority_salary',
@@ -1856,7 +1856,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       elApp.setAttribute('href', APP_BASE+'/?service='+encodeURIComponent(opts[idx].app));
     }
   }
-  // Tiered option (Priority Filing): selectable tier cards; the selected tier sets "what you'll need" and the
+  // Tiered option (Assisted Filing): selectable tier cards; the selected tier sets "what you'll need" and the
   // footer "Start in the app" link. No separate fee pill (the fee is on the card) and one short note only.
   function selectTier(opt, t){
     var tr=opt.tiers[t];
@@ -2304,11 +2304,11 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       globe + '<span class="so-t"><b>Self-Filing &middot; Rs 3,900</b><span>You prepare it yourself, step by step.</span></span>' + arw +
     '</a>';
   var bolt = '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>';
-  // Priority Filing: two equal tier buttons (no single headline price), one short line of text.
+  // Assisted Filing: two equal tier buttons (no single headline price), one short line of text.
   var priorityRow =
     '<div class="startm-opt is-live startm-pri">' +
       '<span class="startm-badge">We prepare it</span>' +
-      bolt + '<span class="so-t"><b>Priority Filing &mdash; we prepare it for you</b><span>Tick what applies, upload what you have. Pay when it&rsquo;s ready.</span>' +
+      bolt + '<span class="so-t"><b>Assisted Filing &mdash; we prepare it for you</b><span>Tick what applies, upload what you have. Pay when it&rsquo;s ready.</span>' +
         '<span class="startm-tiers">' +
           '<a class="startm-tier" href="' + APP + '/?service=priority_salary" target="_blank" rel="noopener noreferrer">Salary only &middot; Rs 8,000</a>' +
           '<a class="startm-tier" href="' + APP + '/?service=priority_complex" target="_blank" rel="noopener noreferrer">Business / multiple &middot; Rs 10,000</a>' +
