@@ -1448,6 +1448,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+<script>window.BIG1_FEES={"currency": "PKR", "fees": {"business_registration": 6000, "company_incorporation": 10000, "copyright_artistic": 60000, "copyright_cinematographic": 60000, "copyright_literary": 60000, "copyright_record": 60000, "design_registration": 140000, "income_tax_return": 3900, "iris_profile_update": 1000, "ntn_aop": 5000, "ntn_business": 1500, "ntn_company": 5000, "ntn_individual": 500, "ntn_npo": 5000, "ntn_registration": 500, "patent_registration": 140000, "priority_filing_complex": 10000, "priority_filing_salary": 8000, "pst_aop": 3000, "pst_company": 3000, "pst_individual": 3000, "sales_tax_registration": 20000, "secp_compliance": 10000, "trademark_registration": 60000}};</script>
 <!-- ============================== NAV ============================== -->
 <header class="nav" id="nav">
   <div class="wrap">
@@ -1677,16 +1678,16 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       page:{label:'See how income-tax filing works',href:'tax-filing.html'},
       // Two ways to file -- mirrors the app's "File your Income Tax Return" chooser. `app` = the app's ?service= token.
       options:[
-        {id:'self',label:'Self-Filing (guided app)',fee:'Rs. 3,900',app:'self_filing',
+        {id:'self',label:'Self-Filing (guided app)',fee:feeTxt('income_tax_return'),app:'self_filing',
           docs:['Salary tax certificate or business income &amp; expense summary','Tax deduction certificates &mdash; bank profit, mobile, vehicle, property','Bank statement(s) for the tax year','Assets &amp; liabilities for the wealth statement'],
           note:'You prepare it yourself, step by step. Pay at the end, before filing.'},
         // Assisted Filing: pick a tier -> the checklist and the app link change with it (no fee pill, no long notes).
         {id:'priority',label:'Assisted Filing (we prepare it)',app:'priority',
           note:'Nothing is mandatory &mdash; tick what applies, upload what you have; we follow up for the rest. Pay when it&rsquo;s ready.',
           tiers:[
-            {label:'Salary only',fee:'Rs. 8,000',sub:'Salary income (bank profit is fine).',app:'priority_salary',
+            {label:'Salary only',fee:feeTxt('priority_filing_salary'),sub:'Salary income (bank profit is fine).',app:'priority_salary',
               docs:['Salary / tax-deduction certificate from your employer','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Certificates of tax deducted elsewhere (bank profit, mobile, vehicle, property)','Only what changed this year &mdash; property, vehicle, investments, loans, remittances']},
-            {label:'Business / multiple incomes',fee:'Rs. 10,000',sub:'Business, freelance / IT export, rent, capital gains, foreign or a mix.',app:'priority_complex',
+            {label:'Business / multiple incomes',fee:feeTxt('priority_filing_complex'),sub:'Business, freelance / IT export, rent, capital gains, foreign or a mix.',app:'priority_complex',
               docs:['Business / freelance records &mdash; invoices, receipts, bank credits, expenses','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Evidence of other income &mdash; rent, capital gains, foreign, salary certificate if any','Only what changed this year &mdash; property, vehicle, investments, loans, remittances']}
           ]}
       ]},
@@ -1694,26 +1695,26 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer.',
       wa:'NTN registration',
       options:[
-        {id:'individual',label:'Individual / salaried',fee:'Rs. 500',
+        {id:'individual',label:'Individual / salaried',fee:feeTxt('ntn_individual'),
           docs:['CNIC &mdash; front &amp; back'],
           info:['A mobile number registered on your own CNIC','Email address'],
           note:'FBR sends a verification PIN to the mobile registered on your CNIC and to your email to complete IRIS enrolment.'},
-        {id:'business',label:'Business (sole proprietor)',fee:'Rs. 1,500',
+        {id:'business',label:'Business (sole proprietor)',fee:feeTxt('ntn_business'),
           docs:['CNIC &mdash; front &amp; back','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
           info:['Business name','Principal line of business','Business address']},
-        {id:'aop',label:'Partnership / AOP',fee:'Rs. 5,000',
+        {id:'aop',label:'Partnership / AOP',fee:feeTxt('ntn_aop'),
           docs:['Partnership deed','Partnership registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
           info:['AOP / firm name']},
-        {id:'company',label:'Company',fee:'Rs. 5,000',
+        {id:'company',label:'Company',fee:feeTxt('ntn_company'),
           docs:['Incorporation certificate','Memorandum &amp; Articles of Association','Authorisation of the principal officer','Colour CNICs of all directors','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
           info:['Company name']},
-        {id:'npo',label:'NPO / trust',fee:'Rs. 5,000',
+        {id:'npo',label:'NPO / trust',fee:feeTxt('ntn_npo'),
           docs:['NTNs of all members','Registration certificate','Constitution of the NPO','Authorisation of the principal officer','Colour CNICs of all members','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Any other document the authority asks for'],
           info:['NPO / trust / society name']}
       ]},
     gst:{cat:'tax',title:'Sales Tax (GST) Registration',sub:'FBR &middot; STRN',
       desc:'A Sales Tax Registration Number (STRN) for your business, start to finish.',
-      wa:'sales tax (GST) registration',fee:'Rs. 20,000',
+      wa:'sales tax (GST) registration',fee:feeTxt('sales_tax_registration'),
       docs:['Colour CNICs of proprietor / partners','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of premises','NOC from the landlord (if the premises are rented)','Latest paid electricity bill','Pictures of the gas &amp; electricity meters','GPS-tagged photographs of the premises','Particulars of all branches (if any)','GPS-tagged photos of machinery &amp; the industrial meter (manufacturers only)'],
       info:['Business name &amp; activity','Commencement date','Gas / electricity consumer number','Production capacity (manufacturers)'],
       note:'Includes biometric verification at a NADRA e-Sahulat centre within 30 days; manufacturers also get an FBR post-verification visit of the premises.'},
@@ -1721,19 +1722,19 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       desc:'Provincial sales tax on services.',
       wa:'PST registration',
       options:[
-        {id:'individual',label:'Individual',fee:'Rs. 3,000',
+        {id:'individual',label:'Individual',fee:feeTxt('pst_individual'),
           docs:['Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Particulars of all branches (if any)','Signed application form'],
           info:['Full name (as per CNIC)','Business / service activity','Commencement date']},
-        {id:'aop',label:'Partnership / AOP',fee:'Rs. 3,000',
+        {id:'aop',label:'Partnership / AOP',fee:feeTxt('pst_aop'),
           docs:['Partnership certificate','Partnership deed','Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Signed application form'],
           info:['AOP / firm name','Business / service activity']},
-        {id:'company',label:'Company',fee:'Rs. 3,000',
+        {id:'company',label:'Company',fee:feeTxt('pst_company'),
           docs:['Incorporation certificate','Memorandum of Association','Articles of Association','Incorporation Form / Form A &amp; 29','Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Signed application form'],
           info:['Company name','Business / service activity']}
       ]},
     iris:{cat:'tax',title:'IRIS Profile Update',sub:'FBR',
       desc:'Change of address, bank account, business activity or contacts &mdash; kept current so notices reach you.',
-      wa:'an IRIS profile update',fee:'Rs. 1,000',
+      wa:'an IRIS profile update',fee:feeTxt('iris_profile_update'),
       docs:['CNIC &mdash; front &amp; back'],
       info:['What needs updating']},
     notice:{cat:'tax',title:'FBR Notice &amp; Audit Response',sub:'FBR',
@@ -1746,51 +1747,51 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       docs:[],info:['Your question or situation'],note:'No documents needed to start &mdash; just bring your question.'},
     trademark:{cat:'ip',title:'Trademark Registration',sub:'IPO Pakistan',
       desc:'Register your brand name or logo as a trademark &mdash; before someone else does.',
-      wa:'trademark registration',fee:'Rs. 60,000',gov:1,
+      wa:'trademark registration',fee:feeTxt('trademark_registration'),gov:1,
       docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image'],
       info:['Applicant name','Brand / mark name','Class of goods / services','The goods or services it covers']},
     copyright:{cat:'ip',title:'Copyright Registration',sub:'IPO Pakistan',
       desc:'Register an original work.',
       wa:'copyright registration',gov:1,
       options:[
-        {id:'artistic',label:'Artistic (logo, art, photo)',fee:'Rs. 60,000',
+        {id:'artistic',label:'Artistic (logo, art, photo)',fee:feeTxt('copyright_artistic'),
           docs:['CNIC &mdash; front &amp; back','A copy of the artistic work (image / PDF)','Affidavit of original creativity','Two newspaper advertisements of the work','NOC from the artist / creator (if someone else made it)'],
           info:['Applicant name','Title of the work'],
           note:'Don&rsquo;t have the newspaper advertisements? We can arrange them for you &mdash; as a paid add-on.'},
-        {id:'literary',label:'Literary / software',fee:'Rs. 60,000',
+        {id:'literary',label:'Literary / software',fee:feeTxt('copyright_literary'),
           docs:['CNIC &mdash; front &amp; back','A copy of the work (source code, for software)','Affidavit of original creativity','NOC from the writer / owner (if someone else made it)'],
           info:['Applicant name','Title of the work','Literary work or software']},
-        {id:'film',label:'Film / drama / game',fee:'Rs. 60,000',
+        {id:'film',label:'Film / drama / game',fee:feeTxt('copyright_cinematographic'),
           docs:['CNIC &mdash; front &amp; back','A copy of the work on USB / DVD','Affidavit of original creativity','NOC from all contributors (performers, singer, lyricist, musician)'],
           info:['Applicant name','Title of the work']},
-        {id:'music',label:'Music / sound',fee:'Rs. 60,000',
+        {id:'music',label:'Music / sound',fee:feeTxt('copyright_record'),
           docs:['CNIC &mdash; front &amp; back','Audio copy on USB / DVD','Affidavit of original creativity','NOC from all contributors (singer, composer, lyricist, musician)'],
           info:['Applicant name','Title of the song / work']}
       ]},
     patent:{cat:'ip',title:'Patent Registration',sub:'IPO Pakistan',
       desc:'Protect an invention with a patent.',
-      wa:'patent registration',fee:'Rs. 140,000',gov:1,
+      wa:'patent registration',fee:feeTxt('patent_registration'),gov:1,
       docs:['CNIC &mdash; front &amp; back','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application document (if you filed abroad first)','Assignment (if you are not the inventor)','NOC from your institution (students / employees of a university or research institute)'],
       info:['Applicant / inventor name','Title of the invention']},
     design:{cat:'ip',title:'Industrial Design Registration',sub:'IPO Pakistan',
       desc:'Register the look of a product &mdash; its shape, pattern or ornamentation.',
-      wa:'industrial design registration',fee:'Rs. 140,000',gov:1,
+      wa:'industrial design registration',fee:feeTxt('design_registration'),gov:1,
       docs:['CNIC &mdash; front &amp; back','Images of the design &mdash; front, back, sides, top and an angled view','Earlier foreign application document (if you filed abroad first)'],
       info:['Applicant name','Title of the design','The product it applies to','What is new about it']},
     incorp:{cat:'corp',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
       desc:'Incorporate your company with SECP, from name reservation to certificate.',
-      wa:'company incorporation (SECP)',fee:'Rs. 10,000',gov:1,
+      wa:'company incorporation (SECP)',fee:feeTxt('company_incorporation'),gov:1,
       docs:['Colour CNICs of all directors / subscribers','Registered office proof (rent / ownership)','Draft Memorandum of Association (we can draft)','Draft Articles of Association (we can draft)'],
       info:['Proposed company name','Principal business activity','Number of directors / subscribers'],
       note:'SECP reserves the company name first, and directors obtain an SECP e-signature PIN to sign the incorporation filing.'},
     bizreg:{cat:'corp',title:'Business / AOP Registration',sub:'Sole proprietorship &middot; partnership',
       desc:'Register a sole proprietorship, partnership or AOP and start operating formally.',
-      wa:'business / AOP registration',fee:'Rs. 6,000',
+      wa:'business / AOP registration',fee:feeTxt('business_registration'),
       docs:['CNIC &mdash; front &amp; back','Business proof / partnership deed','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
       info:['Business / firm name']},
     secp:{cat:'corp',title:'SECP Filings &amp; Compliance',sub:'Annual returns &middot; Form 29 / A &middot; changes',
       desc:'Annual returns, director changes, charges and every other SECP filing &mdash; on time, every time.',
-      wa:'SECP filings / compliance',fee:'Rs. 10,000',gov:1,
+      wa:'SECP filings / compliance',fee:feeTxt('secp_compliance'),gov:1,
       docs:['Supporting documents for the filing'],
       info:['Company name','The filing you need (annual return, Form 29, change of directors&hellip;)']},
     corpadv:{cat:'corp',title:'Corporate Advisory',sub:'Structuring &middot; agreements &middot; governance',
@@ -1810,7 +1811,9 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   // FilePak self-serve app is built but not yet public -- show "Start in the app" as coming soon.
   // Flip APP_LIVE to true when it opens; the button becomes a live link to the app again.
   var APP_LIVE=true, elApp=document.getElementById('svcApp');
-  var APP_BASE='https://app.big1.com.pk';   // app origin (extracted JS is not template-substituted; keep in sync with APP_URL)
+  var APP_BASE='https://app.big1.com.pk';
+  // Fees: single source = FilePak rate card (window.BIG1_FEES, baked at build + refreshed live by 10-script)
+  function feeTxt(kind){ var f=(window.BIG1_FEES&&window.BIG1_FEES.fees)||{}; var v=f[kind]; return v?('Rs. '+Number(v).toLocaleString('en-PK')):'See app'; }   // app origin (extracted JS is not template-substituted; keep in sync with APP_URL)
   // Map each service tile to the app's ?service= deep-link token (understood by the app's routeToService).
   // '' = the income-tax-return flow (no service param -- the app opens on the dashboard / File Return).
   var APP_SVC={itr:'', ntn:'ntn', gst:'gst', pst:'pst', iris:'iris', notice:'notice', taxadv:'advisory',
@@ -2289,6 +2292,19 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   var APP_LIVE = true;
   var APP = "https://app.big1.com.pk";
   var WA = "https://wa.me/923399999611?text=I%20want%20to%20file%20my%20tax%20return.";
+  // Fees come from the FilePak rate card: baked at build into window.BIG1_FEES, refreshed live from the API.
+  function feeTxt(kind){ var f=(window.BIG1_FEES&&window.BIG1_FEES.fees)||{}; var v=f[kind]; return v?Number(v).toLocaleString('en-PK'):'?'; }
+  function feeSpan(kind){ return '<span data-fee="'+kind+'">'+feeTxt(kind)+'</span>'; }
+  (function refreshFees(){
+    try{
+      fetch(APP+'/api/v1/pricing',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+        if(!d||!d.fees) return;
+        window.BIG1_FEES={currency:d.currency||'PKR',fees:d.fees};
+        var els=document.querySelectorAll('[data-fee]');
+        for(var i=0;i<els.length;i++){ var t=feeTxt(els[i].getAttribute('data-fee')); if(t!=='?') els[i].textContent=t; }
+      }).catch(function(){});
+    }catch(e){}
+  })();
   var arw = '<span class="so-arw"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>';
   var globe = '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.5 6 3.5 9s-1.1 6.4-3.5 9c-2.4-2.6-3.5-6-3.5-9s1.1-6.4 3.5-9z"/></svg></span>';
   var waRow =
@@ -2301,7 +2317,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   // Both deep-link into the app on the chosen way (the app asks for sign-in + profile first).
   var selfRow =
     '<a class="startm-opt" href="' + APP + '/?service=self_filing" target="_blank" rel="noopener noreferrer">' +
-      globe + '<span class="so-t"><b>Self-Filing &middot; Rs 3,900</b><span>You prepare it yourself, step by step.</span></span>' + arw +
+      globe + '<span class="so-t"><b>Self-Filing &middot; Rs ' + feeSpan('income_tax_return') + '</b><span>You prepare it yourself, step by step.</span></span>' + arw +
     '</a>';
   var bolt = '<span class="so-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>';
   // Assisted Filing: two equal tier buttons (no single headline price), one short line of text.
@@ -2310,8 +2326,8 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
       '<span class="startm-badge">We prepare it</span>' +
       bolt + '<span class="so-t"><b>Assisted Filing &mdash; we prepare it for you</b><span>Tick what applies, upload what you have. Pay when it&rsquo;s ready.</span>' +
         '<span class="startm-tiers">' +
-          '<a class="startm-tier" href="' + APP + '/?service=priority_salary" target="_blank" rel="noopener noreferrer">Salary only &middot; Rs 8,000</a>' +
-          '<a class="startm-tier" href="' + APP + '/?service=priority_complex" target="_blank" rel="noopener noreferrer">Business / multiple &middot; Rs 10,000</a>' +
+          '<a class="startm-tier" href="' + APP + '/?service=priority_salary" target="_blank" rel="noopener noreferrer">Salary only &middot; Rs ' + feeSpan('priority_filing_salary') + '</a>' +
+          '<a class="startm-tier" href="' + APP + '/?service=priority_complex" target="_blank" rel="noopener noreferrer">Business / multiple &middot; Rs ' + feeSpan('priority_filing_complex') + '</a>' +
         '</span>' +
       '</span>' +
     '</div>';

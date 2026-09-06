@@ -281,6 +281,46 @@ WA_START = WA + "?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20get%20star
 #      domain (e.g. app.big1.com.pk) is mapped in front of Cloud Run, swap this one line.
 APP_URL = "https://app.big1.com.pk"
 
+# ---- FEES: single source of truth = the FilePak backend rate card (GET /api/v1/pricing, which serves
+# backend/app/payments/pricing.py -- the same table the app and the WhatsApp bot use). At build time we
+# fetch it and bake the numbers in ({{FEE:kind}} tokens + window.BIG1_FEES); pricing.json is the last
+# good snapshot used when the API is unreachable. At runtime the page re-fetches and refreshes [data-fee].
+import json as _json, urllib.request as _urlreq
+_FEES_SNAPSHOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pricing.json")
+
+def _load_fees():
+    try:
+        # Cloudflare in front of the app rejects the default Python user-agent (403) -- identify as a browser.
+        req = _urlreq.Request(APP_URL + "/api/v1/pricing",
+                              headers={"User-Agent": "Mozilla/5.0 (big1.com.pk site build)", "Accept": "application/json"})
+        with _urlreq.urlopen(req, timeout=10) as r:
+            data = _json.loads(r.read().decode("utf-8"))
+        fees = {k: int(v) for k, v in (data.get("fees") or {}).items() if int(v) > 0}
+        if fees:
+            with io.open(_FEES_SNAPSHOT, "w", encoding="utf-8", newline="\n") as f:
+                _json.dump({"currency": "PKR", "fees": fees}, f, indent=2, sort_keys=True)
+            print("  fees: %d kinds from the live rate card" % len(fees))
+            return fees
+    except Exception as e:  # noqa: BLE001
+        sys.stderr.write("  fees: live rate card unavailable (%s) -- using pricing.json snapshot\n" % e)
+    try:
+        with io.open(_FEES_SNAPSHOT, "r", encoding="utf-8") as f:
+            return {k: int(v) for k, v in _json.load(f)["fees"].items()}
+    except Exception:  # noqa: BLE001
+        sys.stderr.write("  fees: NO snapshot either -- fee tokens will render as '?'\n")
+        return {}
+
+FEES = _load_fees()
+
+def fee_txt(kind):
+    v = FEES.get(kind)
+    return "{:,}".format(v) if v else "?"
+
+def _apply_fees(html):
+    html = re.sub(r"\{\{FEE:([a-z_]+)\}\}", lambda m: fee_txt(m.group(1)), html)
+    script = "<script>window.BIG1_FEES=%s;</script>" % _json.dumps({"currency": "PKR", "fees": FEES}, sort_keys=True)
+    return html.replace(BODY_OPEN, BODY_OPEN + "\n" + script, 1) if BODY_OPEN in html else html
+
 # ---- shared footer + whatsapp float + scripts ----
 FOOTER = section(F08, '<footer class="foot">', "</footer>")
 # repoint footer links from in-page anchors to cross-page
@@ -422,14 +462,14 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
     <div class="pillars" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:980px;margin:0 auto">
       <a class="pillar" data-reveal href="{{APP}}/?service=self_filing" target="_blank" rel="noopener noreferrer">
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h6"/></svg></span>
-        <h3>Self-Filing &middot; Rs 3,900</h3>
+        <h3>Self-Filing &middot; Rs <span data-fee="income_tax_return">{{FEE:income_tax_return}}</span></h3>
         <p>You prepare your return yourself with step-by-step guidance &mdash; automatic tax calculation, wealth reconciliation, IRIS-format summary and Excel export. Pay at the end, before filing.</p>
         <span class="go">Start Self-Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
       <a class="pillar" data-reveal style="--d:80ms" href="{{APP}}/?service=priority" target="_blank" rel="noopener noreferrer">
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>
-        <h3>Assisted Filing &middot; from Rs 8,000</h3>
-        <p>Don&rsquo;t know how to prepare your return? Tick what applies, upload what you have &mdash; nothing is mandatory &mdash; and our team prepares and files it. Salary-only Rs 8,000 &middot; business or multiple incomes Rs 10,000 (estimates; you pay when it&rsquo;s ready).</p>
+        <h3>Assisted Filing &middot; from Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span></h3>
+        <p>Don&rsquo;t know how to prepare your return? Tick what applies, upload what you have &mdash; nothing is mandatory &mdash; and our team prepares and files it. Salary-only Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span> &middot; business or multiple incomes Rs <span data-fee="priority_filing_complex">{{FEE:priority_filing_complex}}</span> (estimates; you pay when it&rsquo;s ready).</p>
         <span class="go">Start Assisted Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
     </div>
@@ -740,6 +780,7 @@ for _it in INSIGHTS:
 
 def build():
     for name, html in PAGES.items():
+        html = _apply_fees(html)          # bake the live rate card ({{FEE:kind}} + window.BIG1_FEES)
         na = len(re.findall(r"[^\x00-\x7F]", html))
         with io.open(os.path.join(ROOT, name), "w", encoding="utf-8", newline="\n") as f:
             f.write(html)

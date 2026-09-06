@@ -1,0 +1,29 @@
+{
+  "currency": "PKR",
+  "fees": {
+    "business_registration": 6000,
+    "company_incorporation": 10000,
+    "copyright_artistic": 60000,
+    "copyright_cinematographic": 60000,
+    "copyright_literary": 60000,
+    "copyright_record": 60000,
+    "design_registration": 140000,
+    "income_tax_return": 3900,
+    "iris_profile_update": 1000,
+    "ntn_aop": 5000,
+    "ntn_business": 1500,
+    "ntn_company": 5000,
+    "ntn_individual": 500,
+    "ntn_npo": 5000,
+    "ntn_registration": 500,
+    "patent_registration": 140000,
+    "priority_filing_complex": 10000,
+    "priority_filing_salary": 8000,
+    "pst_aop": 3000,
+    "pst_company": 3000,
+    "pst_individual": 3000,
+    "sales_tax_registration": 20000,
+    "secp_compliance": 10000,
+    "trademark_registration": 60000
+  }
+}
