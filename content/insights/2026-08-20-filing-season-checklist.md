@@ -2,6 +2,7 @@
 title: Filing season is here: a simple checklist before you file
 category: Income Tax
 date: 2026-08-20
+image: assets/ins-checklist.webp
 excerpt: The documents to gather now so your return goes in cleanly and on time.
 ---
 

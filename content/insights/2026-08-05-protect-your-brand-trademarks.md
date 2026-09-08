@@ -2,6 +2,7 @@
 title: Protect your brand: trademarks in Pakistan, explained
 category: Intellectual Property
 date: 2026-08-05
+image: assets/ins-trademark.webp
 excerpt: What a trademark protects, why registering early matters, and how the process works with IPO Pakistan.
 ---
 

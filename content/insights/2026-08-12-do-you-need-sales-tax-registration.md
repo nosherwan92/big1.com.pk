@@ -2,6 +2,7 @@
 title: Do you need a Sales Tax (STRN) registration?
 category: Registrations
 date: 2026-08-12
+image: assets/ins-salestax.webp
 excerpt: A quick guide to who registers for sales tax in Pakistan, and what the process involves.
 ---
 
