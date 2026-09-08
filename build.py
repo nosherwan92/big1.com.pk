@@ -396,6 +396,10 @@ DASH       = section(F07, 'id="dashboard"')
 SECURITY   = section(F07, 'id="security"')
 STORIES    = section(F08, 'id="stories"')
 FAQ        = section(F08, 'id="faq"')
+# The home page already uses "The things people actually ask." -- retitle the tax-page FAQ so a reader
+# can tell the two apart.
+FAQ = FAQ.replace("The things people<br />actually ask.", "Filing questions,<br />answered.")
+FAQ = FAQ.replace("The things people actually ask.", "Filing questions, answered.")
 CTA        = section(F08, 'id="cta"')
 
 # repoint the tax-page hero primary CTA + who-card etc. stay in-page (same page now)
@@ -459,8 +463,8 @@ PILLARS = '''<!-- ============================== PILLARS =======================
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg></span>
         <img class="shot" src="assets/img-income-tax.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Preparing an income-tax return with a calculator and documents" />
         <h3>Income tax</h3>
-        <p>Guided returns computed to the rupee, prior-year filing, notices and tax advisory &mdash; filed through an authorized FBR e-intermediary.</p>
-        <span class="go">File your taxes <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+        <p>Two ways to file: prepare it yourself with guided steps, or hand us your documents and we prepare it for you. Plus prior-year filing, notices and tax advisory.</p>
+        <span class="go">See both ways <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
 
       <a class="pillar" data-reveal style="--d:80ms" href="services.html#taxation">
@@ -660,7 +664,7 @@ TRUST_HOME = '''<!-- ============================== HOME TRUST BAND ============
       </div>
       <div class="stat" data-reveal style="--d:240ms">
         <div class="v tnum" style="font-size:clamp(1.6rem,3vw,2.1rem)">EN&nbsp;/&nbsp;&#1575;&#1585;&#1583;&#1608;</div>
-        <div class="l">Every step available in English and Urdu.</div>
+        <div class="l">Talk to our team in English or Urdu &mdash; on WhatsApp or the phone.</div>
       </div>
     </div>
   </div>
@@ -898,7 +902,9 @@ PAGES = {
         "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
         "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
         "", "home",
-        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, TWO_WAYS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
+        # TWO_WAYS lives on the tax-filing page (its product page). The home page routes there through the
+        # Income-tax pillar and the "Get started" chooser, so the block is not repeated here.
+        "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
         "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
