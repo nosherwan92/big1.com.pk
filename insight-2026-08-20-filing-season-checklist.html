@@ -1392,6 +1392,13 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   filter:saturate(.9) contrast(1.02);transition:filter .3s var(--ease),transform .3s var(--ease)}
 .pillar:hover .shot{filter:saturate(1);transform:translateY(-2px)}
 #two-ways .pillar .shot{aspect-ratio:16/9}
+/* what each way actually gives you -- scannable, so the card is read rather than skimmed past */
+.pillar .feat{list-style:none;display:grid;gap:9px;margin:14px 0 18px;padding:0}
+.pillar .feat li{position:relative;padding-left:25px;font-size:.855rem;line-height:1.5;color:var(--text-2)}
+.pillar .feat li::before{content:"";position:absolute;left:0;top:.36em;width:15px;height:15px;border-radius:5px;
+  background:rgba(16,185,129,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/10px 10px no-repeat}
+html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,129,.2)}
+#two-ways .pillar .go{margin-top:auto}
 /* "See it working" framed product screens (tax page) + demo walkthrough (demo.html) */
 .shots{display:grid;gap:28px;max-width:1120px;margin:0 auto}
 .shotrow{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;padding:10px 0}

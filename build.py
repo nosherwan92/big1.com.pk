@@ -189,6 +189,13 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   filter:saturate(.9) contrast(1.02);transition:filter .3s var(--ease),transform .3s var(--ease)}
 .pillar:hover .shot{filter:saturate(1);transform:translateY(-2px)}
 #two-ways .pillar .shot{aspect-ratio:16/9}
+/* what each way actually gives you -- scannable, so the card is read rather than skimmed past */
+.pillar .feat{list-style:none;display:grid;gap:9px;margin:14px 0 18px;padding:0}
+.pillar .feat li{position:relative;padding-left:25px;font-size:.855rem;line-height:1.5;color:var(--text-2)}
+.pillar .feat li::before{content:"";position:absolute;left:0;top:.36em;width:15px;height:15px;border-radius:5px;
+  background:rgba(16,185,129,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/10px 10px no-repeat}
+html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,129,.2)}
+#two-ways .pillar .go{margin-top:auto}
 /* "See it working" framed product screens (tax page) + demo walkthrough (demo.html) */
 .shots{display:grid;gap:28px;max-width:1120px;margin:0 auto}
 .shotrow{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;padding:10px 0}
@@ -508,19 +515,33 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
     </div>
   </div>
   <div class="wrap wrap-wide">
-    <div class="pillars" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:980px;margin:0 auto">
+    <div class="pillars" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));max-width:1020px;margin:0 auto">
       <a class="pillar" data-reveal href="{{APP}}/?service=self_filing" target="_blank" rel="noopener noreferrer">
         <img class="shot" src="assets/img-income-tax.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Preparing an income-tax return with a calculator and documents" />
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h6"/></svg></span>
         <h3>Self-Filing &middot; Rs <span data-fee="income_tax_return">{{FEE:income_tax_return}}</span></h3>
-        <p>You prepare your return yourself with step-by-step guidance &mdash; automatic tax calculation, wealth reconciliation, IRIS-format summary and Excel export. Pay at the end, before filing.</p>
+        <p>You prepare your own return, guided one step at a time.</p>
+        <ul class="feat">
+          <li>Plain questions &mdash; one income source at a time</li>
+          <li>Your tax recomputed live as you type</li>
+          <li>Wealth statement reconciled before you submit</li>
+          <li>IRIS-format summary and Excel export</li>
+          <li>Pay at the end, before filing</li>
+        </ul>
         <span class="go">Start Self-Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
       <a class="pillar" data-reveal style="--d:80ms" href="{{APP}}/?service=priority" target="_blank" rel="noopener noreferrer">
-        <img class="shot" src="assets/img-assisted.webp" width="1200" height="800" loading="lazy" decoding="async" alt="An adviser going through figures with a client" />
+        <img class="shot" src="assets/img-assisted.webp" width="1200" height="800" loading="lazy" decoding="async" alt="A client going through documents with an adviser" />
         <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>
         <h3>Assisted Filing &middot; from Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span></h3>
-        <p>Don&rsquo;t know how to prepare your return? Tick what applies, upload what you have &mdash; nothing is mandatory &mdash; and our team prepares and files it. Salary-only Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span> &middot; business or multiple incomes Rs <span data-fee="priority_filing_complex">{{FEE:priority_filing_complex}}</span> (estimates; you pay when it&rsquo;s ready).</p>
+        <p>Don&rsquo;t know how to prepare a return? Hand it to our team.</p>
+        <ul class="feat">
+          <li>Tick what applies, upload what you have &mdash; nothing is mandatory</li>
+          <li>Our team prepares it and follows up for anything missing</li>
+          <li>No need for last year&rsquo;s return &mdash; we retrieve it from IRIS</li>
+          <li>Review a summary, then pay &mdash; nothing charged up front</li>
+          <li>Salary-only Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span> &middot; business or multiple incomes Rs <span data-fee="priority_filing_complex">{{FEE:priority_filing_complex}}</span></li>
+        </ul>
         <span class="go">Start Assisted Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
     </div>
