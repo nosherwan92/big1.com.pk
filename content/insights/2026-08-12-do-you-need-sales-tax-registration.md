@@ -1,5 +1,5 @@
 ---
-title: Do you need a Sales Tax (STRN) registration?
+title: Do you need a sales tax (STRN) registration?
 category: Registrations
 date: 2026-08-12
 image: assets/ins-salestax.webp

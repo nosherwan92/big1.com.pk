@@ -426,7 +426,7 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
     <div class="rtexts">
       <div class="rtext on" data-cta="File your taxes" data-href="tax-filing.html" data-start="1">
         <h1>File correctly.<br />Down to the last rupee.</h1>
-        <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorized FBR e-intermediary.</p>
+        <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorised FBR e-intermediary.</p>
       </div>
       <div class="rtext" data-cta="Start a registration" data-href="services.html" data-start="0">
         <h1>Register, incorporate,<br />comply.</h1>
@@ -631,9 +631,9 @@ FAQ_HOME = '''<!-- ============================== HOME FAQ =====================
         <div class="ans"><div><p>BIG1 is a Pakistani tax and corporate-services firm. We file income-tax returns through
           FilePak, our own platform, and we handle the registrations and filings that go with running your affairs &mdash;
           NTN, sales tax, trademarks, company incorporation and SECP compliance, plus notices and advisory.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false"><span>Are you authorized to file with FBR?</span>
+      <div class="qa"><button aria-expanded="false"><span>Are you authorised to file with FBR?</span>
         <span class="qi" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-        <div class="ans"><div><p>Yes. Returns are filed through an authorized FBR e-intermediary channel &mdash; and we never
+        <div class="ans"><div><p>Yes. Returns are filed through an authorised FBR e-intermediary channel &mdash; and we never
           ask for or store the IRIS password that belongs to you and FBR alone.</p></div></div></div>
       <div class="qa"><button aria-expanded="false"><span>Is my data safe?</span>
         <span class="qi" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
@@ -662,33 +662,13 @@ CTA_HOME = '''<!-- ============================== HOME CTA =====================
           <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
         <a class="btn btn-glass btn-lg" href="''' + WA_START + '''" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
       </div>
-      <p class="cta-fine" data-reveal style="--d:360ms">Filed through an authorized FBR e-intermediary &middot; English &amp; &#1575;&#1585;&#1583;&#1608;</p>
+      <p class="cta-fine" data-reveal style="--d:360ms">Filed through an authorised FBR e-intermediary &middot; No card required to see your computation</p>
     </div>
   </div>
 </section>'''
 
 TRUST_HOME = '''<!-- ============================== HOME TRUST BAND ============================== -->
 <section class="trust" aria-label="BIG1 at a glance">
-  <div class="wrap wrap-wide">
-    <div class="trust-in">
-      <div class="stat" data-reveal>
-        <div class="v tnum" data-count="20" data-suffix="+">0</div>
-        <div class="l">Services across tax, registration &amp; corporate &mdash; handled under one roof.</div>
-      </div>
-      <div class="stat" data-reveal style="--d:80ms">
-        <div class="v tnum" data-count="3">0</div>
-        <div class="l">Authorities we file with &mdash; FBR, IPO&nbsp;Pakistan and SECP.</div>
-      </div>
-      <div class="stat" data-reveal style="--d:160ms">
-        <div class="v tnum" data-count="10" data-suffix=" yrs">0</div>
-        <div class="l">Of prior income-tax returns you can still file &mdash; back to 2016.</div>
-      </div>
-      <div class="stat" data-reveal style="--d:240ms">
-        <div class="v tnum" style="font-size:clamp(1.6rem,3vw,2.1rem)">EN&nbsp;/&nbsp;&#1575;&#1585;&#1583;&#1608;</div>
-        <div class="l">Talk to our team in English or Urdu &mdash; on WhatsApp or the phone.</div>
-      </div>
-    </div>
-  </div>
   <div class="marquee" aria-hidden="true">
     <ul>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Income-tax filing</li>
@@ -696,17 +676,17 @@ TRUST_HOME = '''<!-- ============================== HOME TRUST BAND ============
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sales tax (GST) &amp; PST</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &mdash; IPO Pakistan</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &mdash; SECP</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorized FBR e-intermediary</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorised FBR e-intermediary</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> AES-256 encryption</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> English &amp; &#1575;&#1585;&#1583;&#1608;</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> WhatsApp support</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Income-tax filing</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> NTN registration</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sales tax (GST) &amp; PST</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &mdash; IPO Pakistan</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &mdash; SECP</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorized FBR e-intermediary</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorised FBR e-intermediary</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> AES-256 encryption</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> English &amp; &#1575;&#1585;&#1583;&#1608;</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> WhatsApp support</li>
     </ul>
   </div>
 </section>'''
@@ -919,7 +899,10 @@ CTA_SLIM = '''<!-- ============================== TAX PAGE CLOSE ===============
 # placeholder whose own docstring says the Maloomat import and found-money detector "lands here", and no
 # ReturnInput row (the source=ocr provenance record) is ever written. What the product really does is
 # shown in SHOTS, with real screenshots.
-TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, TRUST, COMPARE, HOW, SECURITY_STRIP, FAQ, CTA_SLIM])
+# TRUST is not included: its four stats were a median turnaround we have never measured ("18 min"), a
+# "100%" claim, "61+ automated validation rules" (the sixty-one claim in numeric form) and "7 yrs of
+# versioned rulesets" -- the engine holds three (2025-2027). Restore only with figures we can stand behind.
+TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, COMPARE, HOW, SECURITY_STRIP, FAQ, CTA_SLIM])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 
@@ -933,7 +916,7 @@ PAGES = {
         "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
         "Tax Filing in Pakistan &mdash; FilePak by BIG1",
-        "FilePak files your Pakistani income-tax return correctly to the last rupee: reads your documents, reconciles your wealth statement, matches withholding, and files through an authorized FBR e-intermediary.",
+        "File your Pakistani income-tax return two ways: guided Self-Filing you complete yourself, or Assisted Filing where the BIG1 team prepares it from your documents. Reviewed in IRIS format before anything is filed.",
         "tax-filing.html", "tax", TAX_BODY),
     "calculators.html": page(
         "Free Pakistan Tax Calculators &mdash; Salary, Rental, Capital Gains &amp; Business",
