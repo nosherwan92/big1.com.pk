@@ -208,6 +208,22 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 .hero-trust{margin-top:14px;font-size:.8rem;color:var(--text-3);max-width:560px;line-height:1.5}
 .rhero .hero-trust{color:rgba(255,255,255,.78)}
 .foot-trust{display:block;font-size:.74rem;color:var(--text-3);max-width:640px;line-height:1.5;margin-bottom:6px}
+/* compact security band (replaces the full-screen dark panel on the tax page) */
+.secstrip{border:1px solid var(--border);border-radius:20px;background:var(--bg-sub);padding:clamp(20px,2.4vw,30px)}
+.secstrip-h{max-width:640px;margin-bottom:18px}
+.secstrip-h p{margin-top:10px;color:var(--text-2);font-size:.92rem;line-height:1.55}
+.secstrip-g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.secstrip-g>div{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--border)}
+.secstrip-g b{font-size:.86rem;font-weight:650;letter-spacing:-.01em}
+.secstrip-g span{font-size:.76rem;color:var(--text-3);line-height:1.5}
+@media (max-width:900px){.secstrip-g{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.secstrip-g{grid-template-columns:1fr}}
+/* slim closing band (tax page) -- the home page keeps the full-bleed dark CTA */
+.ctaslim{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  border:1px solid var(--border);border-radius:20px;background:var(--bg-sub);padding:clamp(22px,2.6vw,32px)}
+.ctaslim h2{font-size:clamp(1.3rem,2.2vw,1.7rem);letter-spacing:-.025em;line-height:1.2}
+.ctaslim p{margin-top:8px;color:var(--text-2);font-size:.92rem;line-height:1.55;max-width:560px}
+.ctaslim-b{display:flex;gap:10px;flex-wrap:wrap}
 @media (max-width:980px){.pillars{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.pillars{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
 /* calculators page header */
@@ -831,7 +847,49 @@ def _article_body(it):
 </section>''') % (_esc(it.get("category", "Insight")), _esc(it.get("title", "")), _esc(it.get("excerpt", "")),
                  _fmt_date(it.get("date", "")), hero_img, _render_md(it.get("body", "")))
 
-TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
+# Compact security strip for the tax page. The full-bleed dark SECURITY panel ate a whole screen and
+# repeated the hero/footer trust line; this says the same four things in one band.
+SECURITY_STRIP = '''<!-- ============================== SECURITY (compact) ============================== -->
+<section class="sec" id="security" style="padding-top:clamp(20px,2.6vw,34px);padding-bottom:clamp(20px,2.6vw,34px)">
+  <div class="wrap">
+    <div class="secstrip" data-reveal>
+      <div class="secstrip-h">
+        <span class="eyebrow"><span class="dot"></span>Security &amp; trust</span>
+        <p>We hold CNICs, salary histories and bank balances &mdash; and we designed for that from the first line of code.</p>
+      </div>
+      <div class="secstrip-g">
+        <div><b>Encrypted end to end</b><span>TLS 1.3 in transit, AES-256 at rest, per-client document keys.</span></div>
+        <div><b>Lawful filing channel</b><span>Filed through an authorised FBR e-intermediary. Your IRIS password is never requested or stored.</span></div>
+        <div><b>Least-privilege access</b><span>Role-based, per-client access; a reason is recorded before any file is opened.</span></div>
+        <div><b>Immutable audit log</b><span>Every action logged with actor, timestamp and ruleset version. Append-only.</span></div>
+      </div>
+    </div>
+  </div>
+</section>'''
+
+# Tax page: BEYOND removed (broken icons; claimed "file any year since 2016" when the engine supports
+# 2025-2027, and promised refunds, which contradicts the no-refund policy) and DASH removed (a mocked-up
+# dashboard with invented figures, now duplicated by the real screenshots in SHOTS).
+# The home page already closes with a full-bleed dark CTA; a second one on the tax page (with a social
+# row the footer repeats) read as the same panel twice. Slim band instead.
+CTA_SLIM = '''<!-- ============================== TAX PAGE CLOSE ============================== -->
+<section class="sec" id="cta" style="padding-top:clamp(18px,2.4vw,30px)">
+  <div class="wrap">
+    <div class="ctaslim" data-reveal>
+      <div>
+        <h2>Ready to file your 2025&ndash;26 return?</h2>
+        <p>Build it yourself or hand us your documents &mdash; either way you see the full computation before anything is filed, and you pay at the end.</p>
+      </div>
+      <div class="ctaslim-b">
+        <a class="btn btn-primary btn-lg" href="#top" data-start>File your taxes
+          <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+        <a class="btn btn-lg" style="border:1px solid var(--border)" href="demo.html">See how it works</a>
+      </div>
+    </div>
+  </div>
+</section>'''
+
+TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, TRUST, COMPARE, FEATURES, HOW, SECURITY_STRIP, FAQ, CTA_SLIM])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 
