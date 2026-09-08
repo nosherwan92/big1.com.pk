@@ -189,6 +189,25 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
   filter:saturate(.9) contrast(1.02);transition:filter .3s var(--ease),transform .3s var(--ease)}
 .pillar:hover .shot{filter:saturate(1);transform:translateY(-2px)}
 #two-ways .pillar .shot{aspect-ratio:16/9}
+/* "See it working" framed product screens (tax page) + demo walkthrough (demo.html) */
+.shots{display:grid;gap:28px;max-width:1120px;margin:0 auto}
+.shotrow{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;padding:10px 0}
+.shotrow.rev .shot-img{order:2}
+.shot-img{background:linear-gradient(135deg,rgba(6,95,70,.10),rgba(16,185,129,.06));border:1px solid var(--border);border-radius:22px;padding:14px}
+.shot-img img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 18px 40px -22px rgba(6,95,70,.45)}
+.shot-copy h3{font-size:1.35rem;letter-spacing:-.02em;line-height:1.2;margin:10px 0 8px}
+.shot-copy p{color:var(--text-2);line-height:1.6;font-size:.95rem}
+@media (max-width:860px){.shotrow{grid-template-columns:1fr;gap:16px}.shotrow.rev .shot-img{order:0}}
+.demo-steps{display:grid;gap:36px;max-width:900px;margin:0 auto}
+.demo-step{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start}
+.demo-n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70,.5)}
+.demo-step h3{font-size:1.15rem;letter-spacing:-.015em;margin:6px 0 4px}
+.demo-step p{color:var(--text-2);line-height:1.55;font-size:.93rem}
+.demo-step img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);margin-top:12px;box-shadow:0 18px 40px -24px rgba(6,95,70,.45)}
+.hero-trust{margin-top:14px;font-size:.8rem;color:var(--text-3);max-width:560px;line-height:1.5}
+.rhero .hero-trust{color:rgba(255,255,255,.78)}
+.foot-trust{display:block;font-size:.74rem;color:var(--text-3);max-width:640px;line-height:1.5;margin-bottom:6px}
 @media (max-width:980px){.pillars{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.pillars{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
 /* calculators page header */
@@ -491,6 +510,72 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
 # {{APP}} is only substituted for standalone pages (see standalone()); inline home/tax blocks resolve it here.
 TWO_WAYS = TWO_WAYS.replace("{{APP}}", APP_URL)
 
+# ---- "See it working": framed FilePak screenshots (demo profile, fictitious data) with one idea each.
+#      Screens: assets/app-*.webp, captured from the app with a demo profile ("Ahmed Khan", fake CNIC).
+def _shot(img, w, h, eyebrow, title, body, rev=False, alt=""):
+    return '''
+      <div class="shotrow%s" data-reveal>
+        <div class="shot-img"><img src="assets/%s" width="%d" height="%d" loading="lazy" decoding="async" alt="%s" /></div>
+        <div class="shot-copy"><span class="eyebrow"><span class="dot"></span>%s</span><h3>%s</h3><p>%s</p></div>
+      </div>''' % (" rev" if rev else "", img, w, h, alt, eyebrow, title, body)
+
+SHOTS = '''<!-- ============================== SEE IT WORKING ============================== -->
+<section class="sec" id="see-it-working">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>See it working</span>
+      <h2 class="h1">This is FilePak.<br /><span class="serif">Real screens, not promises.</span></h2>
+      <p class="lede">Every screen below is the actual product, shown with a demo profile. <a href="demo.html">Walk through the whole flow &rarr;</a></p>
+    </div>
+    <div class="shots">''' + _shot("app-self.webp", 1100, 515, "Self-Filing", "Guided steps with your live tax position",
+        "Answer plain questions, one income source at a time. The engine recomputes your taxable income, tax charge and tax already paid as you type &mdash; no spreadsheet, no guessing.",
+        alt="FilePak guided income step with the live tax summary") + _shot("app-assisted.webp", 620, 680, "Assisted Filing", "Tick what applies. Upload what you have.",
+        "Nothing is mandatory. Tick the items that apply to you, attach the documents you already have, and the BIG1 team prepares the return and follows up for the rest.", rev=True,
+        alt="FilePak Assisted Filing document checklist") + _shot("app-iris.webp", 660, 752, "Before filing", "An IRIS-format summary you can read",
+        "Your return laid out exactly as FBR structures it &mdash; income heads, codes and computations &mdash; so you review the real thing before anything is filed. Download it to Excel any time.",
+        alt="FilePak IRIS-format return summary") + _shot("app-dashboard.webp", 1100, 515, "Your account", "Every request and return, in one place",
+        "Returns, registrations and trademark work show their live status on one dashboard. You can still edit a submitted return until our team starts on it.", rev=True,
+        alt="FilePak dashboard showing services and a submitted return") + '''
+    </div>
+  </div>
+</section>'''
+
+# ---- demo.html: a no-login walkthrough of the real product (the "Launch demo" idea, without exposing the app) ----
+def _step(n, img, w, h, title, body, alt=""):
+    return '''
+      <div class="demo-step" data-reveal>
+        <div class="demo-n">%d</div>
+        <div><h3>%s</h3><p>%s</p><img src="assets/%s" width="%d" height="%d" loading="lazy" decoding="async" alt="%s" /></div>
+      </div>''' % (n, title, body, img, w, h, alt)
+
+DEMO_BODY = '''<!-- ============================== DEMO WALKTHROUGH ============================== -->
+<section class="sec" id="demo" style="padding-top:calc(var(--nav-h) + 96px)">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span>See how it works</span>
+      <h1 class="h1">Filing a return in FilePak,<br /><span class="serif">start to finish.</span></h1>
+      <p class="lede">A read-only walkthrough of the real product using a demo profile. Nothing here is a mock-up; every screen is what you get after signing in.</p>
+    </div>
+    <div class="demo-steps">''' + _step(1, "app-chooser.webp", 620, 390, "Choose how you want to file",
+        "Two ways, same profile. Self-Filing if you want to prepare it yourself with guidance; Assisted Filing if you would rather hand us your documents. Fees are shown up front; Assisted Filing is paid last, when the return is ready.",
+        "FilePak filing chooser") + _step(2, "app-self.webp", 1100, 515, "Self-Filing: guided, one source at a time",
+        "Salary, savings, property, business &mdash; each in its own step with plain-language questions. Your live position updates on the left as you go.",
+        "FilePak guided income step") + _step(3, "app-assisted.webp", 620, 680, "Assisted Filing: tick, upload, done",
+        "Tick what applies to you and upload what you have. Nothing is mandatory &mdash; the BIG1 team prepares the return from your documents and contacts you for anything missing. No need for last year&rsquo;s return; we retrieve it from IRIS.",
+        "FilePak Assisted Filing checklist") + _step(4, "app-iris.webp", 660, 752, "Review the return in IRIS format",
+        "Before anything is filed you see the return exactly as FBR structures it &mdash; income heads, codes, computations, and the wealth reconciliation. Export to Excel with one click.",
+        "FilePak IRIS-format summary") + _step(5, "app-dashboard.webp", 1100, 515, "Track everything from one dashboard",
+        "Your returns, registrations and trademark requests show their live status. A submitted return stays editable until our team starts work on it; after that, one tap reaches an agent.",
+        "FilePak dashboard") + '''
+    </div>
+    <div class="cta-btns" data-reveal style="justify-content:center;margin-top:36px">
+      <a class="btn btn-primary btn-lg" href="''' + APP_URL + '''/?service=self_filing" target="_blank" rel="noopener noreferrer">Start Self-Filing &middot; Rs {{FEE:income_tax_return}}</a>
+      <a class="btn btn-lg" style="border:1px solid var(--border)" href="''' + APP_URL + '''/?service=priority" target="_blank" rel="noopener noreferrer">Start Assisted Filing &middot; from Rs {{FEE:priority_filing_salary}}</a>
+    </div>
+    <p class="what-tools" data-reveal>BIG1 is a chartered accountancy firm. Returns are filed through an authorised FBR e-intermediary &mdash; we never ask for or store your IRIS password. Demo profile: fictitious data.</p>
+  </div>
+</section>'''
+
 # a short, GENERIC home FAQ (filing-specific FAQ stays on the tax page)
 FAQ_HOME = '''<!-- ============================== HOME FAQ ============================== -->
 <section class="sec frame-sub" id="faq">
@@ -746,7 +831,7 @@ def _article_body(it):
 </section>''') % (_esc(it.get("category", "Insight")), _esc(it.get("title", "")), _esc(it.get("excerpt", "")),
                  _fmt_date(it.get("date", "")), hero_img, _render_md(it.get("body", "")))
 
-TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
+TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, TRUST, COMPARE, FEATURES, HOW, BEYOND, DASH, SECURITY, FAQ, CTA])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 
@@ -770,6 +855,10 @@ PAGES = {
 # ---- standalone content pages, now sharing the same head/nav/footer ----
 _SVC_CSS, _SVC_BODY, _SVC_JS = standalone("services-src.html", "pgsvc", wrap_inner=True)
 _ABT_CSS, _ABT_BODY, _ABT_JS = standalone("about-src.html", "pgabout", wrap_inner=False)
+PAGES["demo.html"] = page(
+    "See how FilePak works &mdash; a walkthrough of filing your return | BIG1",
+    "A read-only walkthrough of FilePak with a demo profile: choose Self-Filing or Assisted Filing, answer guided steps or upload documents, review the IRIS-format summary, track it on your dashboard.",
+    "demo.html", "tax", DEMO_BODY)
 PAGES["services.html"] = page(
     "Services &mdash; NTN, Sales Tax, Trademark &amp; Company Registration in Pakistan | BIG1",
     "Assisted tax, IP and corporate services in Pakistan with the exact documents each one needs: NTN, sales tax (GST) and PST registration, IRIS updates, FBR notices, trademark, copyright, patent, design, SECP incorporation and compliance.",
