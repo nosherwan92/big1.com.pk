@@ -893,7 +893,12 @@ CTA_SLIM = '''<!-- ============================== TAX PAGE CLOSE ===============
   </div>
 </section>'''
 
-TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, TRUST, COMPARE, FEATURES, HOW, SECURITY_STRIP, FAQ, CTA_SLIM])
+# FEATURES is deliberately NOT included: its two blocks marketed document OCR/extraction ("Documents in,
+# data out") and an FBR Maloomat "found money" reconciler. Neither exists -- app/withholding is an empty
+# placeholder whose own docstring says the Maloomat import and found-money detector "lands here", and no
+# ReturnInput row (the source=ocr provenance record) is ever written. What the product really does is
+# shown in SHOTS, with real screenshots.
+TAX_BODY = "\n\n".join([HERO_TAX, TWO_WAYS, SHOTS, TRUST, COMPARE, HOW, SECURITY_STRIP, FAQ, CTA_SLIM])
 # these sections moved to their own pages, so their in-page anchors become cross-page links
 TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace('href="#calculators"', 'href="calculators.html"')
 
