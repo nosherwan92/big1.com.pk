@@ -13,8 +13,6 @@ Photos: Pexels licence (free for commercial use, no attribution required).
             RDNE Stock Project (8293750) - wealth statement
             Amorie Sam (30692588) - NTN registration
 
-Video (Pexels licence, same terms):
-  home hero, corporate slide : aerial over Jinnah Avenue toward Faisal Mosque,
-                               Islamabad (29494307). Trimmed to 6s, 1600px, no audio.
-                               assets/hero-3-islamabad.mp4 + .webp still (same frame).
-                               Replaced hero-3-corporate.jpg, a generic glass atrium.
+The home hero's moving background is not footage: it is drawn live on a canvas
+(scattered figures settling into a ledger, which give way around the pointer).
+See the hero canvas block in _build/10-script.html. No video files are shipped.
