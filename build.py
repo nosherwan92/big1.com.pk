@@ -137,6 +137,8 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 .rslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.03);
   transition:opacity 1s ease;will-change:opacity,transform}
 .rslide.on{opacity:1;animation:kenburns 5s ease-out forwards}
+.rvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.rvid.playing{opacity:1}
 @keyframes kenburns{0%{transform:scale(1.03)}100%{transform:scale(1.15)}}
 .rhero-ov{position:absolute;inset:0;z-index:-1;
   background:linear-gradient(100deg,rgba(3,24,18,.92) 0%,rgba(4,40,30,.76) 42%,rgba(4,30,22,.42) 78%,rgba(4,30,22,.24) 100%)}
@@ -493,7 +495,12 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
   <div class="rhero-slides" aria-hidden="true">
     <div class="rslide on" style="background-image:url(\'assets/hero-1-tax.jpg\')"></div>
     <div class="rslide" style="background-image:url(\'assets/hero-2-register.jpg\')"></div>
-    <div class="rslide" style="background-image:url(\'assets/hero-3-corporate.jpg\')"></div>
+    <!-- The corporate slide carries motion. The still is the design; the clip is an
+         enhancement that only loads where it is free to (see rhero-video in the script). -->
+    <div class="rslide rslide-vid" style="background-image:url(\'assets/hero-3-islamabad.webp\')">
+      <video class="rvid" muted playsinline preload="none" loop aria-hidden="true"
+             poster="assets/hero-3-islamabad.webp" data-src="assets/hero-3-islamabad.mp4"></video>
+    </div>
     <div class="rslide" style="background-image:url(\'assets/hero-4-team.jpg\')"></div>
   </div>
   <div class="rhero-ov" aria-hidden="true"></div>

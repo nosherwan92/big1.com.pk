@@ -551,6 +551,47 @@
     (function (k) { dots[k].addEventListener('click', function () { go(k); }); })(d);
   }
   if (!reduce) { setInterval(function () { go(cur + 1); }, 4500); }
+
+  /* ---- rhero-video: the corporate slide's clip ----------------------------------------
+     The still is the design and always renders. The clip is an enhancement, and it is only
+     fetched where it costs the visitor nothing they would mind: a wide screen, no Data
+     Saver, not a 2g/3g connection, and no reduced-motion preference. On a phone on mobile
+     data -- most of our visitors -- nothing downloads at all: preload="none" plus a src
+     that is never set means the browser makes no request for it.
+     It also pauses whenever its slide is not showing, so it never plays unseen. */
+  (function () {
+    var v = hero.querySelector('.rvid');
+    if (!v || reduce) return;
+    var wide = !window.matchMedia || window.matchMedia('(min-width: 900px)').matches;
+    var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var slow = !!c && (c.saveData === true || /^(slow-)?2g$/.test(c.effectiveType || '') || c.effectiveType === '3g');
+    if (!wide || slow) return;
+
+    var slide = v.parentNode, idx = -1, loaded = false;
+    for (var i = 0; i < n; i++) { if (slides[i] === slide) idx = i; }
+    if (idx < 0) return;
+
+    function show() {
+      if (!loaded) { loaded = true; v.src = v.getAttribute('data-src'); }
+      v.currentTime = 0;                       // the slide shows for 4.5s of a 6s clip,
+      var pr = v.play();                       // so restarting means the loop seam is never seen
+      if (pr && pr.catch) { pr.catch(function () { /* autoplay refused: the still stands */ }); }
+      v.classList.add('playing');
+    }
+    function hide() { v.classList.remove('playing'); try { v.pause(); } catch (e) {} }
+
+    // `go` swaps the classes; watch the slide rather than wrapping it, so the rotator
+    // keeps working untouched whether the change came from the timer or a dot click.
+    if (window.MutationObserver) {
+      new MutationObserver(function () {
+        if (slide.classList.contains('on')) { show(); } else { hide(); }
+      }).observe(slide, { attributes: true, attributeFilter: ['class'] });
+    }
+    // pause with the tab: no decoding in a background tab
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { hide(); } else if (slide.classList.contains('on')) { show(); }
+    });
+  })();
 })();
 
 /* ---------- Cookie consent ---------- */
