@@ -1076,16 +1076,29 @@ def load_insights():
 
 INSIGHTS = load_insights()
 
+def _read_minutes(it):
+    """Reading time from the article's own words, at 200 wpm -- never guessed.
+
+    Counted off the markdown body with the syntax stripped, so a heading-heavy piece is not
+    inflated by its own hashes and asterisks."""
+    import re as _re
+    body = it.get("body_md") or it.get("body") or ""
+    txt = _re.sub(r"[#*_`>\[\]()-]", " ", body)
+    words = len([w for w in txt.split() if any(c.isalnum() for c in w)])
+    return max(1, int(round(words / 200.0)))
+
+
 def _insight_card(it):
     img = it.get("image", "")
     style = ' style="background-image:url(%s)"' % _esc(img) if img else ""
     href = it.get("link") or ("insight-%s.html" % it["slug"])
+    meta = "%s &middot; %d min read" % (_fmt_date(it.get("date", "")), _read_minutes(it))
     return ('<a class="insight" href="%s"><span class="insight-img"%s></span>'
             '<span class="insight-body"><span class="insight-cat">%s</span>'
             '<span class="insight-t">%s</span><span class="insight-ex">%s</span>'
             '<span class="insight-date">%s</span></span></a>') % (
         _esc(href), style, _esc(it.get("category", "Insight")), _esc(it.get("title", "")),
-        _esc(it.get("excerpt", "")), _fmt_date(it.get("date", "")))
+        _esc(it.get("excerpt", "")), meta)
 
 def _insights_home():
     if not INSIGHTS: return ""
@@ -1095,13 +1108,13 @@ def _insights_home():
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Insights</span>
-      <h2 class="h1">Tax &amp; business<br /><span class="serif">insights.</span></h2>
-      <p class="lede">Plain-language updates on FBR, SECP and IPO&nbsp;Pakistan &mdash; deadlines, changes, and what they mean for you.</p>
+      <h2 class="h1">The rules, explained<br /><span class="serif">in plain language.</span></h2>
+      <p class="lede">What FBR, SECP and IPO&nbsp;Pakistan actually require &mdash; deadlines, registrations and the parts that catch people out.</p>
     </div>
     <div class="insights-grid" data-reveal>%s</div>
-    <div style="text-align:center;margin-top:32px"><a class="btn btn-primary btn-lg" href="insights.html">View all insights <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></div>
+    <div style="text-align:center;margin-top:32px"><a class="btn btn-ghost btn-lg" href="insights.html">Read all %d articles <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></div>
   </div>
-</section>''') % cards
+</section>''') % (cards, len(INSIGHTS))
 
 INSIGHTS_HOME = _insights_home()
 
