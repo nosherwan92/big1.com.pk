@@ -477,8 +477,21 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     }
   }
   for(var b=0;b<tabs.length;b++){(function(btn){btn.addEventListener('click',function(){setCat(btn.getAttribute('data-cat'));});})(tabs[b]);}
-  var h=(location.hash||'').replace('#','');
-  if(h==='taxation')setCat('tax'); else if(h==='ip')setCat('ip'); else if(h==='corporate')setCat('corp');
+  // Deep links. #taxation / #ip / #corporate filter the grid; #<service> opens that
+  // service outright, so a link from the nav menu lands on the thing itself.
+  function fromHash(){
+    var h=(location.hash||'').replace('#','');
+    if(!h) return;
+    if(h==='taxation'){setCat('tax'); return;}
+    if(h==='ip'){setCat('ip'); return;}
+    if(h==='corporate'){setCat('corp'); return;}
+    var tile=document.querySelector('.tile[data-svc="'+h.replace(/[^a-z0-9_-]/gi,'')+'"]');
+    if(!tile) return;
+    setCat(tile.getAttribute('data-cat'));   // the tile must be visible before it is clicked
+    tile.click();
+  }
+  fromHash();
+  window.addEventListener('hashchange',fromHash);   // links to this page from this page
 })();
 </script>
 </body>

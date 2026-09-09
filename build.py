@@ -476,7 +476,7 @@ MEGAS = {
             ("Self-Filing", "user", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
             ("Assisted Filing", "team", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
             ("Prior-year returns", "clock", [("Learn", "tax-filing.html#faq")]),
-            ("Notice &amp; audit response", "bell", [("Learn", "services.html#taxation")]),
+            ("Notice &amp; audit response", "bell", [("Learn", "services.html#notice")]),
             ("Free calculators", "calc", [("Open", "calculators.html")]),
         ],
         side=[("How it works", "tax-filing.html#see-it-working"),
@@ -486,13 +486,13 @@ MEGAS = {
     "services": dict(
         items=[
             ("Income tax return", "doc", [("Learn", "tax-filing.html"), ("Start", "{{APP}}")]),
-            ("NTN registration", "id", [("Learn", "services.html")]),
-            ("Sales tax &mdash; GST &amp; PST", "shop", [("Learn", "services.html")]),
-            ("Trademark", "shield", [("Learn", "services.html")]),
-            ("Copyright, patent &amp; design", "copy", [("Learn", "services.html")]),
-            ("Company incorporation", "build", [("Learn", "services.html")]),
-            ("SECP compliance", "map", [("Learn", "services.html")]),
-            ("Advisory", "bulb", [("Learn", "services.html")]),
+            ("NTN registration", "id", [("Learn", "services.html#ntn")]),
+            ("Sales tax &mdash; GST &amp; PST", "shop", [("GST", "services.html#gst"), ("PST", "services.html#pst")]),
+            ("Trademark", "shield", [("Learn", "services.html#trademark")]),
+            ("Copyright, patent &amp; design", "copy", [("Copyright", "services.html#copyright"), ("Patent", "services.html#patent")]),
+            ("Company incorporation", "build", [("Learn", "services.html#incorp")]),
+            ("SECP compliance", "map", [("Learn", "services.html#secp")]),
+            ("Advisory", "bulb", [("Learn", "services.html#corpadv")]),
         ],
         side=[("All services", "services.html"),
               ("Insights", "insights.html"),
@@ -743,8 +743,8 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
           <h3>Registered, without<br />the guesswork.</h3>
           <p>NTN, Sales Tax (GST) and Provincial Sales Tax &mdash; with the exact documents for your case listed up front, and the fee confirmed before you pay.</p>
           <div class="svc-btns">
-            <a class="btn btn-primary" href="services.html#taxation">Start a registration <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-glass" href="services.html">What is involved</a>
+            <a class="btn btn-primary" href="services.html#ntn">Start a registration <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="services.html#taxation">All registrations</a>
           </div>
         </div>
       </article>
@@ -755,8 +755,8 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
           <h3>Protect the name<br />you built.</h3>
           <p>Trademark, copyright, patent and design registration with IPO&nbsp;Pakistan &mdash; searched first, then filed and tracked to registration.</p>
           <div class="svc-btns">
-            <a class="btn btn-primary" href="services.html#ip">Protect your brand <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-glass" href="services.html">What is involved</a>
+            <a class="btn btn-primary" href="services.html#trademark">Protect your brand <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="services.html#ip">All IP services</a>
           </div>
         </div>
       </article>
@@ -767,8 +767,8 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
           <h3>Built to run,<br />not just to exist.</h3>
           <p>Company incorporation, SECP compliance and business advisory &mdash; the structure set up right, and the filings that follow handled on time.</p>
           <div class="svc-btns">
-            <a class="btn btn-primary" href="services.html#corporate">Incorporate a company <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-glass" href="services.html">What is involved</a>
+            <a class="btn btn-primary" href="services.html#incorp">Incorporate a company <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="services.html#corporate">All corporate services</a>
           </div>
         </div>
       </article>
