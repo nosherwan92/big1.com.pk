@@ -607,6 +607,64 @@
   })();
 })();
 
+/* ---------- Services rail (home) ----------
+   The track is a real scroll container, so swipe, trackpad and keyboard already work and
+   this only adds the arrows, the dots and the disabled states. Everything reads position
+   from scrollLeft rather than keeping its own index, so dragging by hand stays in sync. */
+(function () {
+  var track = document.getElementById('svcTrack');
+  if (!track) return;
+  var panels = track.querySelectorAll('.svc-panel');
+  var prev = document.querySelector('.svc-prev'),
+      next = document.querySelector('.svc-next'),
+      dotWrap = document.getElementById('svcDots');
+  if (!panels.length) return;
+
+  for (var i = 0; i < panels.length; i++) {
+    (function (k) {
+      var b = document.createElement('button');
+      b.className = 'svc-dot' + (k === 0 ? ' on' : '');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Go to service ' + (k + 1));
+      b.addEventListener('click', function () { scrollTo(k); });
+      dotWrap.appendChild(b);
+    })(i);
+  }
+  var dots = dotWrap.querySelectorAll('.svc-dot');
+
+  function step() {
+    // panel width + the gap between panels
+    var a = panels[0].getBoundingClientRect();
+    if (panels.length < 2) return a.width;
+    return panels[1].getBoundingClientRect().left - a.left;
+  }
+  function current() {
+    var st = step();
+    return st ? Math.round(track.scrollLeft / st) : 0;
+  }
+  function scrollTo(i) {
+    i = Math.max(0, Math.min(panels.length - 1, i));
+    track.scrollTo({ left: i * step(), behavior: 'smooth' });
+  }
+  function sync() {
+    var i = current(),
+        max = track.scrollWidth - track.clientWidth - 2;
+    if (prev) prev.disabled = track.scrollLeft <= 2;
+    if (next) next.disabled = track.scrollLeft >= max;
+    for (var k = 0; k < dots.length; k++) { dots[k].classList.toggle('on', k === i); }
+  }
+  if (prev) prev.addEventListener('click', function () { scrollTo(current() - 1); });
+  if (next) next.addEventListener('click', function () { scrollTo(current() + 1); });
+
+  var tick;
+  track.addEventListener('scroll', function () {
+    if (tick) return;                       // one sync per frame, not one per scroll event
+    tick = requestAnimationFrame(function () { tick = 0; sync(); });
+  }, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+})();
+
 /* ---------- Cookie consent ---------- */
 (function () {
   var KEY = "big1_cookie_consent";  // stored value: "all" | "necessary"

@@ -265,6 +265,65 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .article-back{display:inline-flex;gap:6px;align-items:center;font-size:.83rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:32px}
 .article-note{max-width:740px;margin:22px auto 0;font-size:.78rem;color:var(--text-3);border-left:2px solid var(--border-strong);padding-left:12px;line-height:1.55}
 
+/* ============================ SERVICES RAIL (home) ============================
+   A peek carousel: the panel in view is flanked by the edges of the ones either side,
+   so it reads as a rail you can move rather than a grid that has ended. Native
+   scroll-snap does the work -- swipe, trackpad, keyboard and deep links all behave,
+   and it degrades to a plain horizontal scroller if the script never runs. */
+.svc-rail{position:relative;margin-top:clamp(18px,2.4vw,30px)}
+.svc-track{display:flex;gap:clamp(12px,1.4vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;padding:6px clamp(16px,7vw,132px) 20px;scrollbar-width:none;-ms-overflow-style:none}
+.svc-track::-webkit-scrollbar{display:none}
+.svc-panel{position:relative;flex:0 0 clamp(260px,74vw,1060px);scroll-snap-align:center;
+  aspect-ratio:16/9;min-height:min(62vh,470px);border-radius:var(--r-lg,22px);overflow:hidden;
+  isolation:isolate;background:var(--emerald-900,#04120D)}
+.svc-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  transition:transform 1.1s var(--ease,cubic-bezier(.22,1,.36,1))}
+.svc-panel:hover img{transform:scale(1.04)}
+/* the wash keeps the copy legible over any photograph, dark or bright */
+.svc-panel::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(3,18,13,.92) 0%,rgba(3,18,13,.6) 32%,rgba(3,18,13,.16) 64%,rgba(3,18,13,.04) 100%)}
+.svc-body{position:absolute;z-index:2;left:clamp(20px,3vw,48px);right:clamp(20px,3vw,48px);
+  bottom:clamp(20px,3vw,44px);max-width:600px;color:#fff}
+.svc-kicker{display:inline-flex;align-items:center;gap:7px;font-size:.66rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--emerald-300,#6EE7B7);margin-bottom:10px}
+.svc-kicker svg{width:14px;height:14px}
+.svc-panel h3{font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.06;letter-spacing:-.032em;
+  margin:0 0 10px;color:#fff;text-wrap:balance}
+.svc-panel p{font-size:clamp(.86rem,1.05vw,.98rem);line-height:1.6;color:rgba(255,255,255,.84);
+  margin:0 0 clamp(14px,1.6vw,20px);max-width:44ch}
+.svc-btns{display:flex;flex-wrap:wrap;gap:10px}
+.svc-btns .btn{font-size:.86rem;padding:11px 20px}
+.svc-btns .btn-glass{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.34);color:#fff;
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.svc-btns .btn-glass:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.52)}
+
+/* arrows sit over the peeking neighbours, the way Tesla's do */
+.svc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;
+  border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:var(--surface-solid,#fff);color:var(--text,#080D13);
+  border:1px solid var(--border,rgba(9,30,24,.12));box-shadow:var(--shadow-lg,0 10px 30px -12px rgba(0,0,0,.3));
+  transition:transform .3s var(--ease,ease),opacity .3s ease,background .3s ease}
+.svc-arrow:hover{transform:translateY(-50%) scale(1.08)}
+.svc-arrow[disabled]{opacity:0;pointer-events:none}
+.svc-prev{left:clamp(8px,2.4vw,44px)}
+.svc-next{right:clamp(8px,2.4vw,44px)}
+.svc-arrow svg{width:19px;height:19px}
+.svc-dots{display:flex;justify-content:center;gap:7px;margin-top:4px}
+.svc-dot{width:26px;height:3px;border-radius:2px;border:0;padding:0;cursor:pointer;
+  background:var(--border-strong,rgba(9,30,24,.22));transition:background .3s ease,width .3s ease}
+.svc-dot.on{width:40px;background:var(--accent,#0D6E5A)}
+@media (max-width:760px){
+  .svc-panel{flex-basis:86vw;min-height:400px;aspect-ratio:4/5}
+  .svc-track{padding-inline:7vw}
+  .svc-arrow{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .svc-track{scroll-behavior:auto}
+  .svc-panel:hover img{transform:none}
+}
+
+
 /* ============================ AMBIENT SECTION BACKGROUNDS ============================
    The flat bands between content read as empty -- the insights and stories screens carry
    only about a fifth as much ink as the pillars. This fills them the way the final CTA is
@@ -539,7 +598,7 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
   </div>
 </section>'''
 
-PILLARS = '''<!-- ============================== PILLARS ============================== -->
+PILLARS = '''<!-- ============================== SERVICES RAIL ============================== -->
 <section class="sec" id="what" style="padding-top:clamp(34px,3.8vw,54px)">
   <div class="wrap">
     <div class="sec-head center" data-reveal>
@@ -548,40 +607,64 @@ PILLARS = '''<!-- ============================== PILLARS =======================
       <p class="lede">From your income-tax return to trademarks, company formation and advisory &mdash; handled under one roof, by a real team.</p>
     </div>
   </div>
-  <div class="wrap wrap-wide">
-    <div class="pillars">
-      <a class="pillar" data-reveal href="tax-filing.html">
-        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg></span>
-        <img class="shot" src="assets/img-income-tax.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Preparing an income-tax return with a calculator and documents" />
-        <h3>Income tax</h3>
-        <p>Two ways to file: prepare it yourself with guided steps, or hand us your documents and we prepare it for you. Plus prior-year filing, notices and tax advisory.</p>
-        <span class="go">See both ways <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
-      </a>
 
-      <a class="pillar" data-reveal style="--d:80ms" href="services.html#taxation">
-        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg></span>
-        <img class="shot" src="assets/img-registrations.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Stamping an official registration document" />
-        <h3>Registrations</h3>
-        <p>NTN, Sales Tax (GST) and Provincial Sales Tax &mdash; with the exact documents for your case listed up front.</p>
-        <span class="go">Get registered <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
-      </a>
-
-      <a class="pillar" data-reveal style="--d:160ms" href="services.html#ip">
-        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg></span>
-        <img class="shot" src="assets/img-ip.webp" width="1200" height="800" loading="lazy" decoding="async" alt="A designer sketching a brand logo on a tablet" />
-        <h3>Intellectual property</h3>
-        <p>Trademark, copyright, patent and design registration with IPO&nbsp;Pakistan &mdash; protect your brand and your ideas.</p>
-        <span class="go">Protect your brand <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
-      </a>
-
-      <a class="pillar" data-reveal style="--d:240ms" href="services.html#corporate">
-        <span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span>
-        <img class="shot" src="assets/img-corporate.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Aerial view of Karachi's business district" />
-        <h3>Corporate &amp; advisory</h3>
-        <p>Company incorporation, SECP compliance, and corporate &amp; business advisory &mdash; structure and run your company right.</p>
-        <span class="go">Explore corporate <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
-      </a>
+  <div class="svc-rail" data-reveal>
+    <button class="svc-arrow svc-prev" type="button" aria-label="Previous service" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="svc-track" id="svcTrack" role="group" aria-label="Our services">
+      <article class="svc-panel" aria-label="Income tax">
+        <img src="assets/img-income-tax.webp" width="1200" height="800" loading="eager" decoding="async" alt="Preparing an income-tax return with a calculator and documents" />
+        <div class="svc-body">
+          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg>Income tax</span>
+          <h3>Your return, done<br />properly.</h3>
+          <p>Two ways to file: prepare it yourself with guided steps, or hand us your documents and our team prepares it for you. Prior years, notices and advisory too.</p>
+          <div class="svc-btns">
+            <a class="btn btn-primary" href="tax-filing.html">File your taxes <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="tax-filing.html#two-ways">See both ways</a>
+          </div>
+        </div>
+      </article>
+      <article class="svc-panel" aria-label="Registrations">
+        <img src="assets/img-registrations.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Stamping an official registration document" />
+        <div class="svc-body">
+          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg>Registrations</span>
+          <h3>Registered, without<br />the guesswork.</h3>
+          <p>NTN, Sales Tax (GST) and Provincial Sales Tax &mdash; with the exact documents for your case listed up front, and the fee confirmed before you pay.</p>
+          <div class="svc-btns">
+            <a class="btn btn-primary" href="services.html#taxation">Start a registration <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="services.html">What is involved</a>
+          </div>
+        </div>
+      </article>
+      <article class="svc-panel" aria-label="Intellectual property">
+        <img src="assets/img-ip.webp" width="1200" height="800" loading="lazy" decoding="async" alt="A designer sketching a brand logo on a tablet" />
+        <div class="svc-body">
+          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg>Intellectual property</span>
+          <h3>Protect the name<br />you built.</h3>
+          <p>Trademark, copyright, patent and design registration with IPO&nbsp;Pakistan &mdash; searched first, then filed and tracked to registration.</p>
+          <div class="svc-btns">
+            <a class="btn btn-primary" href="services.html#ip">Protect your brand <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="services.html">What is involved</a>
+          </div>
+        </div>
+      </article>
+      <article class="svc-panel" aria-label="Corporate &amp; advisory">
+        <img src="assets/img-corporate.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Aerial view of Karachi's business district" />
+        <div class="svc-body">
+          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>Corporate &amp; advisory</span>
+          <h3>Built to run,<br />not just to exist.</h3>
+          <p>Company incorporation, SECP compliance and business advisory &mdash; the structure set up right, and the filings that follow handled on time.</p>
+          <div class="svc-btns">
+            <a class="btn btn-primary" href="services.html#corporate">Incorporate a company <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-glass" href="services.html">What is involved</a>
+          </div>
+        </div>
+      </article>
     </div>
+    <button class="svc-arrow svc-next" type="button" aria-label="Next service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="svc-dots" id="svcDots" aria-hidden="true"></div>
+
+  <div class="wrap wrap-wide">
     <p class="what-tools" data-reveal>Just exploring? <a href="calculators.html">Try the free tax calculators &rarr;</a></p>
   </div>
 </section>'''
