@@ -1339,14 +1339,14 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
   pointer-events:none}       /* the hero's own buttons must stay clickable through it */
 .rcanvas.on{opacity:1}
 @keyframes kenburns{0%{transform:scale(1.03)}100%{transform:scale(1.15)}}
+/* Two layers. The ellipse is the copy's own scrim -- the overlay was lightened so the
+   photograph shows, and this puts the contrast back only where the words are. It has to be
+   a radial: an earlier rectangular scrim on .rhero-inner cut visible edges across the
+   photo, because that element is only as tall as the copy. This falls off to nothing in
+   every direction, so there is no edge to see. */
 .rhero-ov{position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(100deg,rgba(3,24,18,.80) 0%,rgba(4,40,30,.58) 42%,rgba(4,30,22,.26) 78%,rgba(4,30,22,.12) 100%)}
-/* The overlay was lightened so the photograph is actually visible. That costs contrast
-   where the copy sits, so the copy carries its own local scrim instead of darkening the
-   whole frame: measured back above 4.5:1 on every slide (scratchpad/contrast.py). */
-.rhero-inner::before{content:"";position:absolute;left:-4vw;top:0;bottom:0;
-  width:min(880px,72%);z-index:-1;pointer-events:none;
-  background:linear-gradient(100deg,rgba(2,18,13,.66) 0%,rgba(2,18,13,.44) 48%,rgba(2,18,13,.14) 80%,transparent 100%)}
+  background:radial-gradient(ellipse 72% 88% at 20% 50%,rgba(2,18,13,.60) 0%,rgba(2,18,13,.34) 44%,rgba(2,18,13,.10) 66%,transparent 80%),
+             linear-gradient(100deg,rgba(3,24,18,.62) 0%,rgba(4,40,30,.50) 42%,rgba(4,30,22,.26) 78%,rgba(4,30,22,.12) 100%)}
 .rhero-inner{position:relative;z-index:1;color:#fff;padding-top:calc(var(--nav-h) + 24px);padding-bottom:46px}
 .rhero .eyebrow{color:#eafff5;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24)}
 .rhero .eyebrow .dot{background:var(--emerald-300)}
