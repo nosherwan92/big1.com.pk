@@ -265,6 +265,44 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .article-back{display:inline-flex;gap:6px;align-items:center;font-size:.83rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:32px}
 .article-note{max-width:740px;margin:22px auto 0;font-size:.78rem;color:var(--text-3);border-left:2px solid var(--border-strong);padding-left:12px;line-height:1.55}
 
+/* ============================ NAV MEGA-MENU ============================
+   The panel is a sibling of the nav row, positioned under the whole header, so it spans
+   the full width regardless of where its trigger sits. It is display:none until opened,
+   so nothing in it is focusable while closed. */
+/* .nav is already position:fixed, which is its own containing block -- do NOT set
+   position here: relative would drop the nav out of its overlay and push the hero down. */
+.mega{position:absolute;left:0;right:0;top:100%;z-index:90;display:none;
+  background:var(--surface-solid,#fff);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);box-shadow:0 24px 48px -24px rgba(4,20,15,.28)}
+.mega.open{display:block;animation:mega-in .22s var(--ease,ease) both}
+@keyframes mega-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.mega-in{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,64px);
+  max-width:var(--maxw);margin-inline:auto;padding:clamp(22px,2.6vw,36px) clamp(24px,3.2vw,64px)}
+.mega-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(14px,1.8vw,26px)}
+.mega-item{text-align:center}
+.mega-item .mi{display:grid;place-items:center;height:88px;margin-bottom:10px;border-radius:14px;
+  background:var(--bg-sub);border:1px solid var(--border);color:var(--accent);
+  transition:background .3s var(--ease,ease),border-color .3s ease,transform .3s var(--ease,ease)}
+.mega-item:hover .mi{background:var(--surface);border-color:var(--emerald-500);transform:translateY(-2px)}
+.mega-item .mi svg{width:30px;height:30px}
+.mega-item b{display:block;font-size:.85rem;font-weight:620;letter-spacing:-.012em;line-height:1.3;
+  color:var(--text);margin-bottom:5px}
+.mega-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.mega-links a{font-size:.78rem;color:var(--text-2);text-decoration:underline;
+  text-underline-offset:3px;text-decoration-color:var(--border-strong);transition:color .25s ease}
+.mega-links a:hover{color:var(--accent);text-decoration-color:currentColor}
+.mega-side{border-left:1px solid var(--border);padding-left:clamp(22px,3vw,48px);
+  display:flex;flex-direction:column;gap:13px;min-width:190px}
+.mega-side a{font-size:.86rem;font-weight:560;color:var(--text);white-space:nowrap;transition:color .25s ease}
+.mega-side a:hover{color:var(--accent)}
+.mega-side .mst{font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-3);margin-bottom:-4px}
+/* the trigger keeps a visible state while its panel is open */
+.nav-links a.mega-on{color:var(--text)!important;background:var(--bg-sub)!important}
+@media (max-width:900px){.mega{display:none!important}}
+@media (prefers-reduced-motion:reduce){.mega.open{animation:none}}
+
+
 /* ============================ SERVICES RAIL (home) ============================
    A peek carousel: the panel in view is flanked by the edges of the ones either side,
    so it reads as a rail you can move rather than a grid that has ended. Native
@@ -407,12 +445,86 @@ def head_for(title, desc, canonical, extra_css=""):
 NAVLINKS = [("home","index.html","Home"),("tax","tax-filing.html","Tax filing"),
             ("services","services.html","Services"),("insights","insights.html","Insights"),
             ("calc","calculators.html","Calculators")]
+# ---- nav mega-menu ----
+# Each item is an icon, a name and the small verbs under it -- Tesla's "Learn / Order" --
+# so a visitor can jump to the thing itself rather than landing on a page and hunting.
+# Only "Tax filing" and "Services" have panels; the rest are single destinations.
+def _mico(paths):
+    return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+            'stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg>')
+
+_MI = {
+    "doc":   _mico('<path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/>'),
+    "user":  _mico('<circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>'),
+    "team":  _mico('<circle cx="9" cy="8" r="3.2"/><path d="M2.5 19a6.5 6.5 0 0 1 13 0"/><path d="M16.5 6.2a3.2 3.2 0 0 1 0 6M18 19a6.6 6.6 0 0 0-1.6-4.3"/>'),
+    "calc":  _mico('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15h.01M8.5 18h7"/>'),
+    "clock": _mico('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/>'),
+    "bell":  _mico('<path d="M18 8.5a6 6 0 1 0-12 0c0 5-2 6.5-2 6.5h16s-2-1.5-2-6.5z"/><path d="M13.7 19a2 2 0 0 1-3.4 0"/>'),
+    "id":    _mico('<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.4a3.6 3.6 0 0 1 6.4 0M15 10h4M15 13.5h4"/>'),
+    "shop":  _mico('<path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/>'),
+    "map":   _mico('<path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4z"/><path d="M9 4v13M15 6.5v13"/>'),
+    "shield":_mico('<path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/>'),
+    "copy":  _mico('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>'),
+    "bulb":  _mico('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5.9 1.1 1 1.7h5.2c.1-.6.4-1.2 1-1.7A6 6 0 0 0 12 3z"/>'),
+    "build": _mico('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/>'),
+}
+
+MEGAS = {
+    "tax": dict(
+        items=[
+            ("Self-Filing", "user", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
+            ("Assisted Filing", "team", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
+            ("Prior-year returns", "clock", [("Learn", "tax-filing.html#faq")]),
+            ("Notice &amp; audit response", "bell", [("Learn", "services.html#taxation")]),
+            ("Free calculators", "calc", [("Open", "calculators.html")]),
+        ],
+        side=[("How it works", "tax-filing.html#see-it-working"),
+              ("Compare the two ways", "tax-filing.html#two-ways"),
+              ("Filing questions", "tax-filing.html#faq"),
+              ("Talk to us", "about.html#contact")]),
+    "services": dict(
+        items=[
+            ("Income tax return", "doc", [("Learn", "tax-filing.html"), ("Start", "{{APP}}")]),
+            ("NTN registration", "id", [("Learn", "services.html")]),
+            ("Sales tax &mdash; GST &amp; PST", "shop", [("Learn", "services.html")]),
+            ("Trademark", "shield", [("Learn", "services.html")]),
+            ("Copyright, patent &amp; design", "copy", [("Learn", "services.html")]),
+            ("Company incorporation", "build", [("Learn", "services.html")]),
+            ("SECP compliance", "map", [("Learn", "services.html")]),
+            ("Advisory", "bulb", [("Learn", "services.html")]),
+        ],
+        side=[("All services", "services.html"),
+              ("Insights", "insights.html"),
+              ("About BIG1", "about.html"),
+              ("Talk to us", "about.html#contact")]),
+}
+
+
+def mega_html(key):
+    d = MEGAS[key]
+    cells = []
+    for name, icon, links in d["items"]:
+        ls = "".join('<a href="%s">%s</a>' % (h.replace("{{APP}}", APP_URL), t) for t, h in links)
+        cells.append('        <div class="mega-item"><span class="mi">%s</span>'
+                     '<b>%s</b><span class="mega-links">%s</span></div>' % (_MI[icon], name, ls))
+    side = "".join('<a href="%s">%s</a>' % (h, t) for t, h in d["side"])
+    return ('  <div class="mega" id="mega-%s">\n    <div class="mega-in">\n'
+            '      <div class="mega-grid">\n%s\n      </div>\n'
+            '      <div class="mega-side"><span class="mst">More</span>%s</div>\n'
+            '    </div>\n  </div>' % (key, "\n".join(cells), side))
+
+
 def nav_for(active):
     links = "\n".join(
-        '      <a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if key==active else "", label)
-        for key,href,label in NAVLINKS)
+        '      <a href="%s"%s%s>%s</a>' % (
+            href,
+            ' aria-current="page"' if key == active else "",
+            ' data-mega-for="%s" aria-haspopup="true" aria-expanded="false"' % key if key in MEGAS else "",
+            label)
+        for key, href, label in NAVLINKS)
+    megas = "\n".join(mega_html(k) for k in MEGAS)
     return '''<!-- ============================== NAV ============================== -->
-<header class="nav" id="nav">
+<header class="nav has-mega" id="nav">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="BIG1 &mdash; home">
       <img class="logo-img" src="assets/big1-logo.png" alt="BIG1" onerror="this.remove()" />
@@ -435,10 +547,11 @@ def nav_for(active):
       </button>
     </div>
   </div>
+%s
 </header>
 
 <main id="main">
-<span id="top"></span>''' % (links, WA_START)
+<span id="top"></span>''' % (links, WA_START, megas)
 
 # ---- interim "start" target: app not deployed yet -> WhatsApp ----
 WA = "https://wa.me/923399999611"

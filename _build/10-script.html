@@ -665,6 +665,71 @@
   sync();
 })();
 
+/* ---------- Nav mega-menu ----------
+   Opens on hover and on keyboard focus; closes on Escape, on click-through, and when the
+   pointer leaves both the trigger and the panel. The small close delay is what stops the
+   menu flickering shut while the pointer crosses the gap between the two. */
+(function () {
+  var triggers = document.querySelectorAll('[data-mega-for]');
+  if (!triggers.length) return;
+  if (window.matchMedia && !window.matchMedia('(min-width: 901px)').matches) return;
+  if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;  // touch: no hover to leave
+
+  var open = null, timer = null;
+
+  function show(key, trigger) {
+    clearTimeout(timer);
+    if (open && open.key === key) return;
+    hide(true);
+    var panel = document.getElementById('mega-' + key);
+    if (!panel) return;
+    panel.classList.add('open');
+    trigger.classList.add('mega-on');
+    trigger.setAttribute('aria-expanded', 'true');
+    open = { key: key, panel: panel, trigger: trigger };
+  }
+  function hide(now) {
+    clearTimeout(timer);
+    if (!open) return;
+    var o = open;
+    var done = function () {
+      o.panel.classList.remove('open');
+      o.trigger.classList.remove('mega-on');
+      o.trigger.setAttribute('aria-expanded', 'false');
+      if (open === o) open = null;
+    };
+    if (now) { done(); } else { timer = setTimeout(done, 180); }
+  }
+
+  for (var i = 0; i < triggers.length; i++) {
+    (function (t) {
+      var key = t.getAttribute('data-mega-for');
+      t.addEventListener('mouseenter', function () { show(key, t); });
+      t.addEventListener('focus', function () { show(key, t); });
+      t.addEventListener('mouseleave', function () { hide(); });
+      // clicking the nav item still navigates: the panel is a shortcut, not a gate
+      t.addEventListener('click', function () { hide(true); });
+      var panel = document.getElementById('mega-' + key);
+      if (panel) {
+        panel.addEventListener('mouseenter', function () { clearTimeout(timer); });
+        panel.addEventListener('mouseleave', function () { hide(); });
+        panel.addEventListener('click', function (e) { if (e.target.closest('a')) hide(true); });
+      }
+    })(triggers[i]);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && open) { var t = open.trigger; hide(true); t.focus(); }
+  });
+  // focus moving anywhere outside the open panel and its trigger closes it
+  document.addEventListener('focusin', function (e) {
+    if (!open) return;
+    if (open.panel.contains(e.target) || e.target === open.trigger) return;
+    hide(true);
+  });
+  window.addEventListener('scroll', function () { if (open) hide(true); }, { passive: true });
+})();
+
 /* ---------- Cookie consent ---------- */
 (function () {
   var KEY = "big1_cookie_consent";  // stored value: "all" | "necessary"
