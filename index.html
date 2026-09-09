@@ -1460,6 +1460,64 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .article-back{display:inline-flex;gap:6px;align-items:center;font-size:.83rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:32px}
 .article-note{max-width:740px;margin:22px auto 0;font-size:.78rem;color:var(--text-3);border-left:2px solid var(--border-strong);padding-left:12px;line-height:1.55}
 
+/* ============================ AMBIENT SECTION BACKGROUNDS ============================
+   The flat bands between content read as empty -- the insights and stories screens carry
+   only about a fifth as much ink as the pillars. This fills them the way the final CTA is
+   already filled: a soft radial mesh that drifts, under a still, masked grid. Only the mesh
+   moves -- the grid is texture, and animating it would drag its own mask along with it.
+
+   Deliberately CSS, not video. The whole home page is ~150 KB; one background loop would be
+   megabytes on metered Pakistani mobile data, iOS Low Power Mode and Android Data Saver
+   refuse to autoplay it anyway, and moving footage behind body text costs contrast on a
+   page about someone's CNIC and bank balances. This layer costs about 3 KB, cannot fail to
+   load, and reads as the same firm on every screen.
+
+   Add `amb` to a section, plus a flavour: `amb-mesh` (mesh + grid) or `amb-grid` (grid only,
+   for a section next to one that already moves). Both layers are inert: pointer-events none,
+   z-index below the content, and they never affect layout. */
+.amb{position:relative;overflow:clip;isolation:isolate}
+.amb > *{position:relative;z-index:1}
+.amb::before,.amb::after{content:"";position:absolute;inset:-10% -5%;z-index:0;pointer-events:none}
+
+/* soft emerald mesh -- the drift is 3 slow, unsynchronised radials, so it never loops visibly */
+.amb-mesh::before{
+  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129,.22),transparent 62%),
+             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191,.18),transparent 64%),
+             radial-gradient(46% 42% at 52% 88%,rgba(6,95,70,.14),transparent 66%);
+  /* fade at the top and bottom edges: without this the tint starts on a hard line and reads
+     as a rendering seam where the section meets a plain one */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
+  animation:amb-drift 34s ease-in-out infinite alternate}
+html[data-theme="dark"] .amb-mesh::before{
+  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129,.20),transparent 62%),
+             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191,.15),transparent 64%),
+             radial-gradient(46% 42% at 52% 88%,rgba(16,158,125,.16),transparent 66%)}
+
+/* fine grid, faded out at the edges so it never fights the text */
+.amb-mesh::after,.amb-grid::after{
+  opacity:.75;
+  background-image:linear-gradient(var(--amb-line,rgba(9,30,24,.085)) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--amb-line,rgba(9,30,24,.085)) 1px,transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 74% 62% at 50% 46%,#000,transparent 78%);
+          mask-image:radial-gradient(ellipse 74% 62% at 50% 46%,#000,transparent 78%)}
+html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::after{--amb-line:rgba(255,255,255,.05)}
+
+@keyframes amb-drift{
+  0%  {transform:translate3d(0,0,0) scale(1)}
+  50% {transform:translate3d(1.6%,-1.4%,0) scale(1.05)}
+  100%{transform:translate3d(-1.4%,1.2%,0) scale(1.02)}}
+
+@keyframes amb-breathe{from{opacity:.72;transform:scale(1)}to{opacity:1;transform:scale(1.06)}}
+
+/* the existing CTA mesh joins in rather than sitting still next to moving neighbours */
+.cta-sec::before{animation:amb-breathe 30s ease-in-out infinite alternate}
+
+/* Motion is decoration here: anyone who asks for less keeps the full background, still. */
+@media (prefers-reduced-motion:reduce){
+  .amb-mesh::before,.cta-sec::before{animation:none}}
+
 
 </style>
 <meta name="facebook-domain-verification" content="pq059rmb39z0t76ve40w2312t7hxni" />
@@ -1615,7 +1673,7 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 </section>
 
 <!-- ============================== INSIGHTS ============================== -->
-<section class="sec frame-sub" id="insights">
+<section class="sec frame-sub amb amb-mesh" id="insights">
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Insights</span>
@@ -1629,7 +1687,7 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
   </div>
 </section>
 
-<section class="sec frame-sub" id="stories">
+<section class="amb amb-grid sec frame-sub" id="stories">
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>In their words</span>

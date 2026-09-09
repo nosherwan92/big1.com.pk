@@ -262,6 +262,64 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .article-hero{max-width:760px;margin-inline:auto}
 .article-back{display:inline-flex;gap:6px;align-items:center;font-size:.83rem;font-weight:650;color:var(--accent);text-decoration:none;margin-top:32px}
 .article-note{max-width:740px;margin:22px auto 0;font-size:.78rem;color:var(--text-3);border-left:2px solid var(--border-strong);padding-left:12px;line-height:1.55}
+
+/* ============================ AMBIENT SECTION BACKGROUNDS ============================
+   The flat bands between content read as empty -- the insights and stories screens carry
+   only about a fifth as much ink as the pillars. This fills them the way the final CTA is
+   already filled: a soft radial mesh that drifts, under a still, masked grid. Only the mesh
+   moves -- the grid is texture, and animating it would drag its own mask along with it.
+
+   Deliberately CSS, not video. The whole home page is ~150 KB; one background loop would be
+   megabytes on metered Pakistani mobile data, iOS Low Power Mode and Android Data Saver
+   refuse to autoplay it anyway, and moving footage behind body text costs contrast on a
+   page about someone's CNIC and bank balances. This layer costs about 3 KB, cannot fail to
+   load, and reads as the same firm on every screen.
+
+   Add `amb` to a section, plus a flavour: `amb-mesh` (mesh + grid) or `amb-grid` (grid only,
+   for a section next to one that already moves). Both layers are inert: pointer-events none,
+   z-index below the content, and they never affect layout. */
+.amb{position:relative;overflow:clip;isolation:isolate}
+.amb > *{position:relative;z-index:1}
+.amb::before,.amb::after{content:"";position:absolute;inset:-10% -5%;z-index:0;pointer-events:none}
+
+/* soft emerald mesh -- the drift is 3 slow, unsynchronised radials, so it never loops visibly */
+.amb-mesh::before{
+  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129,.22),transparent 62%),
+             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191,.18),transparent 64%),
+             radial-gradient(46% 42% at 52% 88%,rgba(6,95,70,.14),transparent 66%);
+  /* fade at the top and bottom edges: without this the tint starts on a hard line and reads
+     as a rendering seam where the section meets a plain one */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
+  animation:amb-drift 34s ease-in-out infinite alternate}
+html[data-theme="dark"] .amb-mesh::before{
+  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129,.20),transparent 62%),
+             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191,.15),transparent 64%),
+             radial-gradient(46% 42% at 52% 88%,rgba(16,158,125,.16),transparent 66%)}
+
+/* fine grid, faded out at the edges so it never fights the text */
+.amb-mesh::after,.amb-grid::after{
+  opacity:.75;
+  background-image:linear-gradient(var(--amb-line,rgba(9,30,24,.085)) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--amb-line,rgba(9,30,24,.085)) 1px,transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 74% 62% at 50% 46%,#000,transparent 78%);
+          mask-image:radial-gradient(ellipse 74% 62% at 50% 46%,#000,transparent 78%)}
+html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::after{--amb-line:rgba(255,255,255,.05)}
+
+@keyframes amb-drift{
+  0%  {transform:translate3d(0,0,0) scale(1)}
+  50% {transform:translate3d(1.6%,-1.4%,0) scale(1.05)}
+  100%{transform:translate3d(-1.4%,1.2%,0) scale(1.02)}}
+
+@keyframes amb-breathe{from{opacity:.72;transform:scale(1)}to{opacity:1;transform:scale(1.06)}}
+
+/* the existing CTA mesh joins in rather than sitting still next to moving neighbours */
+.cta-sec::before{animation:amb-breathe 30s ease-in-out infinite alternate}
+
+/* Motion is decoration here: anyone who asks for less keeps the full background, still. */
+@media (prefers-reduced-motion:reduce){
+  .amb-mesh::before,.cta-sec::before{animation:none}}
 """
 
 # ---- head / body-open (shared) ----
@@ -389,19 +447,37 @@ WA_FAB = section(F09, '<a class="wa-fab"', "</a>")
 CALC_ENGINE = section(F09, "<script>", "</script>")
 GEN_SCRIPT = F10[F10.index("<script>"):]  # <script>..</script></body></html>
 
+# ---- ambient backgrounds ----
+def amb(block, flavour="amb-mesh"):
+    """Add the ambient background layer to a section's own <section> tag.
+
+    Applied here rather than in the fragments so one list, below, shows every screen that
+    carries motion -- and so a fragment stays a plain section when reused elsewhere."""
+    import re as _re
+    m = _re.search(r'<section\b[^>]*>', block)
+    if not m:
+        raise SystemExit("amb(): no <section> tag in block starting %r" % block[:60])
+    tag = m.group(0)
+    if 'class="' in tag:
+        newtag = tag.replace('class="', 'class="amb %s ' % flavour, 1)
+    else:
+        newtag = tag.replace('<section', '<section class="amb %s"' % flavour, 1)
+    return block.replace(tag, newtag, 1)
+
+
 # ---- sections ----
 HERO_TAX   = section(F02, '<section class="hero">')
 TRUST      = section(F03, '<section class="trust"')
 COMPARE    = section(F04, 'id="compare"')
 FEATURES   = section(F05, 'id="features"')
-HOW        = section(F05, 'id="how"')
+HOW        = amb(section(F05, 'id="how"'), "amb-mesh")
 INTEL      = section(F05, 'id="intelligence"')
 BEYOND     = section(F05, 'id="beyond"')
 CALC       = section(F06, 'id="calculators"')
 WHO        = section(F07, 'id="who"')
 DASH       = section(F07, 'id="dashboard"')
 SECURITY   = section(F07, 'id="security"')
-STORIES    = section(F08, 'id="stories"')
+STORIES    = amb(section(F08, 'id="stories"'), "amb-grid")
 FAQ        = section(F08, 'id="faq"')
 # The home page already uses "The things people actually ask." -- retitle the tax-page FAQ so a reader
 # can tell the two apart.
@@ -804,7 +880,7 @@ def _insights_home():
     if not INSIGHTS: return ""
     cards = "\n".join(_insight_card(it) for it in INSIGHTS[:3])
     return ('''<!-- ============================== INSIGHTS ============================== -->
-<section class="sec frame-sub" id="insights">
+<section class="sec frame-sub amb amb-mesh" id="insights">
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Insights</span>
@@ -827,7 +903,7 @@ def _insights_page_body():
     <p class="lede" data-reveal style="--d:160ms">Plain-language updates on FBR, SECP and IPO&nbsp;Pakistan &mdash; and what they mean for individuals and businesses in Pakistan.</p>
   </div>
 </section>
-<section class="sec" style="padding-top:clamp(18px,2.6vw,32px)">
+<section class="sec amb amb-mesh" style="padding-top:clamp(18px,2.6vw,32px)">
   <div class="wrap"><div class="insights-grid">%s</div></div>
 </section>''') % cards
 
