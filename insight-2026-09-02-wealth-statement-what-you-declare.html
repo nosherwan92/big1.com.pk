@@ -2164,6 +2164,19 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) { hide(); } else if (slide.classList.contains('on')) { show(); }
     });
+
+    // The observer only fires on a CHANGE, so the slide that is already showing at parse
+    // time would never start. Kick it off -- but after load and when the browser is idle,
+    // so the clip never competes with the page's own render.
+    if (slide.classList.contains('on')) {
+      var kick = function () {
+        var go = function () { if (slide.classList.contains('on') && !document.hidden) show(); };
+        if (window.requestIdleCallback) { requestIdleCallback(go, { timeout: 2500 }); }
+        else { setTimeout(go, 1200); }
+      };
+      if (document.readyState === 'complete') { kick(); }
+      else { window.addEventListener('load', kick); }
+    }
   })();
 })();
 
