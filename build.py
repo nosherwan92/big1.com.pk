@@ -906,9 +906,7 @@ SHOTS = '''<!-- ============================== SEE IT WORKING ==================
     </div>
     <div class="shots">''' + _shot("app-self.webp", 1100, 515, "Self-Filing", "Guided steps with your live tax position",
         "Answer plain questions, one income source at a time. The engine recomputes your taxable income, tax charge and tax already paid as you type. No spreadsheet, no guessing.",
-        alt="FilePak guided income step with the live tax summary") + _shot("app-assisted.webp", 620, 680, "Assisted Filing", "Tick what applies. Upload what you have.",
-        "Nothing is mandatory. Tick the items that apply to you, attach the documents you already have, and the BIG1 team prepares the return and follows up for the rest.", rev=True,
-        alt="FilePak Assisted Filing document checklist") + _shot("app-iris.webp", 660, 752, "Before filing", "An IRIS-format summary you can read",
+        alt="FilePak guided income step with the live tax summary") + _shot("app-iris.webp", 660, 752, "Before filing", "An IRIS-format summary you can read",
         "Your return laid out exactly as FBR structures it (income heads, codes and computations), so you review the real thing before anything is filed. Download it to Excel any time.",
         alt="FilePak IRIS-format return summary") + '''
     </div>
