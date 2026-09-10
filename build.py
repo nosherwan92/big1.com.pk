@@ -886,9 +886,7 @@ SHOTS = '''<!-- ============================== SEE IT WORKING ==================
         "Nothing is mandatory. Tick the items that apply to you, attach the documents you already have, and the BIG1 team prepares the return and follows up for the rest.", rev=True,
         alt="FilePak Assisted Filing document checklist") + _shot("app-iris.webp", 660, 752, "Before filing", "An IRIS-format summary you can read",
         "Your return laid out exactly as FBR structures it &mdash; income heads, codes and computations &mdash; so you review the real thing before anything is filed. Download it to Excel any time.",
-        alt="FilePak IRIS-format return summary") + _shot("app-dashboard.webp", 1100, 515, "Your account", "Every request and return, in one place",
-        "Returns, registrations and trademark work show their live status on one dashboard. You can still edit a submitted return until our team starts on it.", rev=True,
-        alt="FilePak dashboard showing services and a submitted return") + '''
+        alt="FilePak IRIS-format return summary") + '''
     </div>
   </div>
 </section>'''
