@@ -132,7 +132,7 @@ ul,ol{list-style:none}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(24px,3.2vw,64px)}
 .wrap-wide{max-width:1560px}
 section{position:relative}
-.sec{padding-block:clamp(52px,6.4vw,92px)}
+.sec{padding-block:clamp(34px,4.2vw,62px)}
 .sec-sm{padding-block:clamp(60px,7vw,96px)}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 
@@ -524,7 +524,14 @@ html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"
 /* ============================================================
    GENERIC SECTION HEADER
    ============================================================ */
-.sec-head{max-width:760px;margin-bottom:clamp(24px,3vw,40px)}
+/* Section heads are not page heroes. Nine of the ten used the .h1 scale -- sized for the
+   top of a page -- which pushed the content below them off the screen. One rule with
+   higher specificity than .h1, so it covers every section head including later ones,
+   without touching the real page-hero h1s. */
+.sec-head{max-width:760px;margin-bottom:clamp(15px,1.7vw,24px)}
+.sec-head h2,.sec-head h2.h1{font-size:clamp(1.55rem,3.3vw,2.45rem);line-height:1.1;
+  letter-spacing:-.03em;margin:8px 0 9px}
+.sec-head .lede{font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.5;max-width:54ch}
 .sec-head.center{margin-inline:auto;text-align:center}
 .sec-head h2{margin:12px 0 12px}
 .sec-head .lede{margin-inline:auto}
@@ -1451,7 +1458,7 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .insight{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:var(--r-lg);overflow:hidden;
   border:1px solid var(--border);background:var(--surface-solid);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
 .insight:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
-.insight-img{aspect-ratio:16/10;background-size:cover;background-position:center;
+.insight-img{aspect-ratio:16/7;background-size:cover;background-position:center;
   background-image:linear-gradient(135deg,var(--emerald-700),var(--blue-600))}
 .insight-body{padding:17px 20px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
 .insight-cat{font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
@@ -1580,15 +1587,13 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
    uses a section scale here rather than the page-hero .h1, its lede is one line, and the
    panels are a wide shallow frame -- which also suits a card carrying only a name, one
    line and two buttons. */
-#what .sec-head{margin-bottom:clamp(14px,1.5vw,22px)}
-#what .sec-head h2{font-size:clamp(1.55rem,3.3vw,2.45rem);line-height:1.1;letter-spacing:-.03em;
-  margin:8px 0 8px}
-#what .sec-head .lede{font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.5;max-width:52ch}
 /* Height comes from the viewport, not a fixed ratio, so the card fits beside the
    heading on a short laptop screen as well as a tall desktop one. 330px is the rest of
-   the section: nav, heading, track padding and dots -- 348px, measured not guessed. */
-#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 348px),460px);min-height:0}
+   the section: nav, heading, track padding and dots -- 356px, measured not guessed. */
+#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 356px),460px);min-height:0}
 #what .svc-track{padding-bottom:12px}
+#insights{padding-block:clamp(26px,3vw,44px)}
+#faq{padding-block:clamp(26px,3vw,46px)}   /* was 7px over one screen */
 #what .svc-dots{margin-top:0}
 @media (max-width:760px){
   /* on a phone the fold is not winnable, so go back to a portrait card that reads well */
@@ -1740,8 +1745,7 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Free tools &middot; No sign-up</span>
       <h2 class="h1">Know the number<br /><span class="serif">before you file.</span></h2>
-      <p class="lede">Five calculators built on the Finance Act 2025 rates for tax year 2026. Pick the one that
-        matches your situation &mdash; the answer updates as you type.</p>
+      <p class="lede">Finance Act 2025 rates, tax year 2026. The answer updates as you type.</p>
     </div>
 
     <!-- picker -->

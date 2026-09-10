@@ -131,7 +131,7 @@ ul,ol{list-style:none}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(24px,3.2vw,64px)}
 .wrap-wide{max-width:1560px}
 section{position:relative}
-.sec{padding-block:clamp(52px,6.4vw,92px)}
+.sec{padding-block:clamp(34px,4.2vw,62px)}
 .sec-sm{padding-block:clamp(60px,7vw,96px)}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 
@@ -523,7 +523,14 @@ html[data-theme="dark"] .pill-g{color:var(--emerald-300)} html[data-theme="dark"
 /* ============================================================
    GENERIC SECTION HEADER
    ============================================================ */
-.sec-head{max-width:760px;margin-bottom:clamp(24px,3vw,40px)}
+/* Section heads are not page heroes. Nine of the ten used the .h1 scale -- sized for the
+   top of a page -- which pushed the content below them off the screen. One rule with
+   higher specificity than .h1, so it covers every section head including later ones,
+   without touching the real page-hero h1s. */
+.sec-head{max-width:760px;margin-bottom:clamp(15px,1.7vw,24px)}
+.sec-head h2,.sec-head h2.h1{font-size:clamp(1.55rem,3.3vw,2.45rem);line-height:1.1;
+  letter-spacing:-.03em;margin:8px 0 9px}
+.sec-head .lede{font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.5;max-width:54ch}
 .sec-head.center{margin-inline:auto;text-align:center}
 .sec-head h2{margin:12px 0 12px}
 .sec-head .lede{margin-inline:auto}

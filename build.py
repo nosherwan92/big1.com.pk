@@ -254,7 +254,7 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .insight{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:var(--r-lg);overflow:hidden;
   border:1px solid var(--border);background:var(--surface-solid);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
 .insight:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
-.insight-img{aspect-ratio:16/10;background-size:cover;background-position:center;
+.insight-img{aspect-ratio:16/7;background-size:cover;background-position:center;
   background-image:linear-gradient(135deg,var(--emerald-700),var(--blue-600))}
 .insight-body{padding:17px 20px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
 .insight-cat{font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
@@ -383,15 +383,13 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
    uses a section scale here rather than the page-hero .h1, its lede is one line, and the
    panels are a wide shallow frame -- which also suits a card carrying only a name, one
    line and two buttons. */
-#what .sec-head{margin-bottom:clamp(14px,1.5vw,22px)}
-#what .sec-head h2{font-size:clamp(1.55rem,3.3vw,2.45rem);line-height:1.1;letter-spacing:-.03em;
-  margin:8px 0 8px}
-#what .sec-head .lede{font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.5;max-width:52ch}
 /* Height comes from the viewport, not a fixed ratio, so the card fits beside the
    heading on a short laptop screen as well as a tall desktop one. 330px is the rest of
-   the section: nav, heading, track padding and dots -- 348px, measured not guessed. */
-#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 348px),460px);min-height:0}
+   the section: nav, heading, track padding and dots -- 356px, measured not guessed. */
+#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 356px),460px);min-height:0}
 #what .svc-track{padding-bottom:12px}
+#insights{padding-block:clamp(26px,3vw,44px)}
+#faq{padding-block:clamp(26px,3vw,46px)}   /* was 7px over one screen */
 #what .svc-dots{margin-top:0}
 @media (max-width:760px){
   /* on a phone the fold is not winnable, so go back to a portrait card that reads well */
@@ -826,8 +824,8 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>File your income tax return</span>
-      <h2 class="h1">Two ways to file.<br /><span class="serif">Same profile, your choice of effort.</span></h2>
-      <p class="lede">Prepare it yourself with FilePak&rsquo;s guided steps, or hand us your documents and let the BIG1 team prepare and file it for you.</p>
+      <h2 class="h1">Two ways to file. <span class="serif">Your choice of effort.</span></h2>
+      <p class="lede">Prepare it yourself, or hand us your documents.</p>
     </div>
   </div>
   <div class="wrap wrap-wide">
@@ -882,7 +880,7 @@ SHOTS = '''<!-- ============================== SEE IT WORKING ==================
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>See it working</span>
       <h2 class="h1">This is FilePak.<br /><span class="serif">Real screens, not promises.</span></h2>
-      <p class="lede">Every screen below is the actual product, shown with a demo profile. <a href="demo.html">Walk through the whole flow &rarr;</a></p>
+      <p class="lede">Shown with a demo profile. <a href="demo.html">Walk through the whole flow &rarr;</a></p>
     </div>
     <div class="shots">''' + _shot("app-self.webp", 1100, 515, "Self-Filing", "Guided steps with your live tax position",
         "Answer plain questions, one income source at a time. The engine recomputes your taxable income, tax charge and tax already paid as you type &mdash; no spreadsheet, no guessing.",
@@ -1138,10 +1136,10 @@ def _insights_home():
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Insights</span>
       <h2 class="h1">The rules, explained<br /><span class="serif">in plain language.</span></h2>
-      <p class="lede">What FBR, SECP and IPO&nbsp;Pakistan actually require &mdash; deadlines, registrations and the parts that catch people out.</p>
+      <p class="lede">Deadlines, registrations, and the parts that catch people out.</p>
     </div>
     <div class="insights-grid" data-reveal>%s</div>
-    <div style="text-align:center;margin-top:32px"><a class="btn btn-ghost btn-lg" href="insights.html">Read all %d articles <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></div>
+    <div style="text-align:center;margin-top:18px"><a class="btn btn-ghost btn-lg" href="insights.html">Read all %d articles <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>''') % (cards, len(INSIGHTS))
 
