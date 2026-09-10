@@ -923,7 +923,7 @@ DEMO_BODY = '''<!-- ============================== DEMO WALKTHROUGH ============
       <a class="btn btn-primary btn-lg" href="''' + APP_URL + '''/?service=self_filing" target="_blank" rel="noopener noreferrer">Start Self-Filing &middot; Rs {{FEE:income_tax_return}}</a>
       <a class="btn btn-lg" style="border:1px solid var(--border)" href="''' + APP_URL + '''/?service=priority" target="_blank" rel="noopener noreferrer">Start Assisted Filing &middot; from Rs {{FEE:priority_filing_salary}}</a>
     </div>
-    <p class="what-tools" data-reveal>BIG1 is a chartered accountancy firm. Returns are filed through an authorised FBR e-intermediary &mdash; we never ask for or store your IRIS password. Demo profile: fictitious data.</p>
+    <p class="what-tools" data-reveal>Demo profile: fictitious data.</p>
   </div>
 </section>'''
 
