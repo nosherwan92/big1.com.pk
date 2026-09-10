@@ -331,9 +331,21 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
   background:linear-gradient(to top,rgba(3,18,13,.92) 0%,rgba(3,18,13,.6) 32%,rgba(3,18,13,.16) 64%,rgba(3,18,13,.04) 100%)}
 .svc-body{position:absolute;z-index:2;left:clamp(20px,3vw,48px);right:clamp(20px,3vw,48px);
   bottom:clamp(20px,3vw,44px);max-width:600px;color:#fff}
-.svc-kicker{display:inline-flex;align-items:center;gap:7px;font-size:.66rem;font-weight:700;
-  letter-spacing:.15em;text-transform:uppercase;color:var(--emerald-300,#6EE7B7);margin-bottom:10px}
-.svc-kicker svg{width:14px;height:14px}
+/* The service name, not a caption. It was .66rem against 14-16px body copy, i.e. smaller
+   than its own description; it now sits above the body in the scale and below the headline.
+   It is also a link to that service area, so the card offers a way through to the service
+   itself and not only to the two actions. */
+.svc-kicker{display:inline-flex;align-items:center;gap:8px;font-size:clamp(.92rem,1.15vw,1.08rem);
+  font-weight:700;letter-spacing:.02em;color:var(--emerald-300,#6EE7B7);margin-bottom:9px;
+  text-decoration:none;transition:color .25s var(--ease,ease)}
+a.svc-kicker:hover{color:#fff}
+a.svc-kicker:hover .svc-kname{text-decoration-color:currentColor}
+.svc-kname{text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1.5px;text-decoration-color:rgba(110,231,183,.42);
+  transition:text-decoration-color .25s var(--ease,ease)}
+.svc-kicker svg{width:17px;height:17px;flex-shrink:0}
+.svc-kicker .arw{width:14px;height:14px;transition:transform .3s var(--ease,ease)}
+a.svc-kicker:hover .arw{transform:translateX(3px)}
 .svc-panel h3{font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.06;letter-spacing:-.032em;
   margin:0 0 10px;color:#fff;text-wrap:balance}
 .svc-panel p{font-size:clamp(.86rem,1.05vw,.98rem);line-height:1.6;color:rgba(255,255,255,.84);
@@ -734,7 +746,7 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
       <article class="svc-panel" aria-label="Income tax">
         <img src="assets/img-income-tax.webp" width="1200" height="800" loading="eager" decoding="async" alt="Preparing an income-tax return with a calculator and documents" />
         <div class="svc-body">
-          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg>Income tax</span>
+          <a class="svc-kicker" href="tax-filing.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg><span class="svc-kname">Income tax</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
           <h3>Your return, done<br />properly.</h3>
           <p>Two ways to file: prepare it yourself with guided steps, or hand us your documents and our team prepares it for you. Prior years, notices and advisory too.</p>
           <div class="svc-btns">
@@ -746,7 +758,7 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
       <article class="svc-panel" aria-label="Registrations">
         <img src="assets/img-registrations.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Stamping an official registration document" />
         <div class="svc-body">
-          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg>Registrations</span>
+          <a class="svc-kicker" href="services.html#taxation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg><span class="svc-kname">Registrations</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
           <h3>Registered, without<br />the guesswork.</h3>
           <p>NTN, Sales Tax (GST) and Provincial Sales Tax &mdash; with the exact documents for your case listed up front, and the fee confirmed before you pay.</p>
           <div class="svc-btns">
@@ -758,7 +770,7 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
       <article class="svc-panel" aria-label="Intellectual property">
         <img src="assets/img-ip.webp" width="1200" height="800" loading="lazy" decoding="async" alt="A designer sketching a brand logo on a tablet" />
         <div class="svc-body">
-          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg>Intellectual property</span>
+          <a class="svc-kicker" href="services.html#ip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg><span class="svc-kname">Intellectual property</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
           <h3>Protect the name<br />you built.</h3>
           <p>Trademark, copyright, patent and design registration with IPO&nbsp;Pakistan &mdash; searched first, then filed and tracked to registration.</p>
           <div class="svc-btns">
@@ -770,7 +782,7 @@ PILLARS = '''<!-- ============================== SERVICES RAIL =================
       <article class="svc-panel" aria-label="Corporate &amp; advisory">
         <img src="assets/img-corporate.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Aerial view of Karachi's business district" />
         <div class="svc-body">
-          <span class="svc-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>Corporate &amp; advisory</span>
+          <a class="svc-kicker" href="services.html#corporate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg><span class="svc-kname">Corporate &amp; advisory</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
           <h3>Built to run,<br />not just to exist.</h3>
           <p>Company incorporation, SECP compliance and business advisory &mdash; the structure set up right, and the filings that follow handled on time.</p>
           <div class="svc-btns">

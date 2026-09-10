@@ -1528,9 +1528,21 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
   background:linear-gradient(to top,rgba(3,18,13,.92) 0%,rgba(3,18,13,.6) 32%,rgba(3,18,13,.16) 64%,rgba(3,18,13,.04) 100%)}
 .svc-body{position:absolute;z-index:2;left:clamp(20px,3vw,48px);right:clamp(20px,3vw,48px);
   bottom:clamp(20px,3vw,44px);max-width:600px;color:#fff}
-.svc-kicker{display:inline-flex;align-items:center;gap:7px;font-size:.66rem;font-weight:700;
-  letter-spacing:.15em;text-transform:uppercase;color:var(--emerald-300,#6EE7B7);margin-bottom:10px}
-.svc-kicker svg{width:14px;height:14px}
+/* The service name, not a caption. It was .66rem against 14-16px body copy, i.e. smaller
+   than its own description; it now sits above the body in the scale and below the headline.
+   It is also a link to that service area, so the card offers a way through to the service
+   itself and not only to the two actions. */
+.svc-kicker{display:inline-flex;align-items:center;gap:8px;font-size:clamp(.92rem,1.15vw,1.08rem);
+  font-weight:700;letter-spacing:.02em;color:var(--emerald-300,#6EE7B7);margin-bottom:9px;
+  text-decoration:none;transition:color .25s var(--ease,ease)}
+a.svc-kicker:hover{color:#fff}
+a.svc-kicker:hover .svc-kname{text-decoration-color:currentColor}
+.svc-kname{text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1.5px;text-decoration-color:rgba(110,231,183,.42);
+  transition:text-decoration-color .25s var(--ease,ease)}
+.svc-kicker svg{width:17px;height:17px;flex-shrink:0}
+.svc-kicker .arw{width:14px;height:14px;transition:transform .3s var(--ease,ease)}
+a.svc-kicker:hover .arw{transform:translateX(3px)}
 .svc-panel h3{font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.06;letter-spacing:-.032em;
   margin:0 0 10px;color:#fff;text-wrap:balance}
 .svc-panel p{font-size:clamp(.86rem,1.05vw,.98rem);line-height:1.6;color:rgba(255,255,255,.84);
