@@ -222,9 +222,6 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 .demo-step h3{font-size:1.15rem;letter-spacing:-.015em;margin:6px 0 4px}
 .demo-step p{color:var(--text-2);line-height:1.55;font-size:.93rem}
 .demo-step img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);margin-top:12px;box-shadow:0 18px 40px -24px rgba(6,95,70,.45)}
-.hero-trust{margin-top:14px;font-size:.8rem;color:var(--text-3);max-width:560px;line-height:1.5}
-.rhero .hero-trust{color:rgba(255,255,255,.78)}
-.foot-trust{display:block;font-size:.74rem;color:var(--text-3);max-width:640px;line-height:1.5;margin-bottom:6px}
 /* compact security band (replaces the full-screen dark panel on the tax page) */
 .secstrip{border:1px solid var(--border);border-radius:20px;background:var(--bg-sub);padding:clamp(20px,2.4vw,30px)}
 .secstrip-h{max-width:640px;margin-bottom:18px}
