@@ -385,11 +385,9 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
    line and two buttons. */
 /* Height comes from the viewport, not a fixed ratio, so the card fits beside the
    heading on a short laptop screen as well as a tall desktop one. 330px is the rest of
-   the section: nav, heading, track padding and dots -- 356px, measured not guessed. */
-#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 356px),460px);min-height:0}
+   the section: nav, heading, track padding and dots -- 391px, measured not guessed. */
+#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 391px),460px);min-height:0}
 #what .svc-track{padding-bottom:12px}
-#insights{padding-block:clamp(26px,3vw,44px)}
-#faq{padding-block:clamp(26px,3vw,46px)}   /* was 7px over one screen */
 #what .svc-dots{margin-top:0}
 @media (max-width:760px){
   /* on a phone the fold is not winnable, so go back to a portrait card that reads well */
@@ -750,7 +748,7 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
 </section>'''
 
 PILLARS = '''<!-- ============================== SERVICES RAIL ============================== -->
-<section class="sec" id="what" style="padding-top:clamp(18px,1.8vw,28px);padding-bottom:clamp(20px,2.2vw,32px)">
+<section class="sec" id="what">
   <div class="wrap">
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>What we do</span>
