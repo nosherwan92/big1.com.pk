@@ -1,18 +1,8 @@
 
 <style>
 /* ---------- Deferred animation gating (JS adds .hold, then .play) ---------- */
-.hold .b,
-.hold .dseg,
-.hold .linechart .line,
-.hold .scanrow,
-.hold .doccard,
-.hold .progress-tiny i{animation-play-state:paused}
-.hold.play .b,
-.hold.play .dseg,
-.hold.play .linechart .line,
-.hold.play .scanrow,
-.hold.play .doccard,
-.hold.play .progress-tiny i{animation-play-state:running}
+.hold .b.hold .dseg.hold .linechart .line.hold .scanrow.hold .doccard.hold .progress-tiny i{animation-play-state:paused}
+.hold.play .b.hold.play .dseg.hold.play .linechart .line.hold.play .scanrow.hold.play .doccard.hold.play .progress-tiny i{animation-play-state:running}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
@@ -22,19 +12,19 @@
   }
   [data-reveal]{opacity:1 !important;transform:none !important}
   .app.tilt{transform:none !important}
-  .scanline,.scroll-ind .rail::after{display:none}
+  .scanline.scroll-ind .rail::after{display:none}
 }
 
 /* ---------- Print ---------- */
 @media print{
-  .nav,.scrollbar,.scroll-ind,.cta-sec,.chip{display:none !important}
+  .nav.scrollbar.scroll-ind.cta-sec.chip{display:none !important}
   body{background:#fff;color:#000}
   .sec{padding-block:24px}
 }
 /* ---------- Start-your-return chooser ---------- */
 .startm{position:fixed;inset:0;z-index:130;display:grid;place-items:end center}
 .startm[hidden]{display:none}
-.startm-back{position:absolute;inset:0;background:rgba(8,13,19,.55);backdrop-filter:blur(3px);animation:startmFade .25s ease}
+.startm-back{position:absolute;inset:0;background:rgba(8,13,19.55);backdrop-filter:blur(3px);animation:startmFade .25s ease}
 @keyframes startmFade{from{opacity:0}}
 .startm-dialog{position:relative;width:min(460px,100%);max-height:92vh;overflow:auto;background:var(--bg);
   border:1px solid var(--border);border-radius:22px 22px 0 0;box-shadow:var(--shadow-xl);padding:26px 24px 24px;animation:startmUp .32s var(--ease)}
@@ -50,7 +40,7 @@
   background:var(--surface);text-decoration:none;color:var(--text);transition:.2s;position:relative}
 .startm-opt:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
 .startm-opt .so-ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;color:var(--accent);
-  background:linear-gradient(135deg,rgba(6,95,70,.12),rgba(16,158,125,.1));border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70.12),rgba(16,158,125.1));border:1px solid var(--border)}
 .startm-opt .so-ic svg{width:20px;height:20px}
 .startm-opt .so-t{flex:1;min-width:0}
 .startm-opt .so-t b{display:block;font-size:.9rem;font-weight:600;letter-spacing:-.01em}
@@ -61,7 +51,7 @@
   font-size:.78rem!important;font-weight:700;text-decoration:none;transition:.2s}
 .startm-tier:hover{background:var(--emerald-600);color:#fff}
 .startm-opt .so-arw{color:var(--text-3);flex-shrink:0}
-.startm-opt.is-live{border-color:rgba(16,185,129,.4)}
+.startm-opt.is-live{border-color:rgba(16,185,129.4)}
 .startm-opt.is-live .so-ic{background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));color:#fff;border-color:transparent}
 .startm-badge{position:absolute;top:-8px;right:12px;font-size:.57rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
   color:#fff;background:var(--emerald-600);padding:2px 8px;border-radius:20px}
@@ -246,7 +236,7 @@
   }
 
   /* ---------------- Gate in-view animations ---------------- */
-  var holders = document.querySelectorAll(".bars, .donutwrap, .linechart, .ai-pbody, .ai-foot, .illo, .dash-view");
+  var holders = document.querySelectorAll(".bars.donutwrap.linechart.ai-pbody.ai-foot.illo.dash-view");
   if ("IntersectionObserver" in window && !reduced) {
     holders.forEach(function (el) { el.classList.add("hold"); });
     var ho = new IntersectionObserver(function (entries) {
@@ -486,7 +476,7 @@
   var priorityRow =
     '<div class="startm-opt is-live startm-pri">' +
       '<span class="startm-badge">We prepare it</span>' +
-      bolt + '<span class="so-t"><b>Assisted Filing &mdash; we prepare it for you</b><span>Tick what applies, upload what you have. Pay when it&rsquo;s ready.</span>' +
+      bolt + '<span class="so-t"><b>Assisted Filing, we prepare it for you</b><span>Tick what applies, upload what you have. Pay when it&rsquo;s ready.</span>' +
         '<span class="startm-tiers">' +
           '<a class="startm-tier" href="' + APP + '/?service=priority_salary" target="_blank" rel="noopener noreferrer">Salary only &middot; Rs ' + feeSpan('priority_filing_salary') + '</a>' +
           '<a class="startm-tier" href="' + APP + '/?service=priority_complex" target="_blank" rel="noopener noreferrer">Business / multiple &middot; Rs ' + feeSpan('priority_filing_complex') + '</a>' +
@@ -500,7 +490,7 @@
       '<div class="startm-dialog" role="dialog" aria-modal="true" aria-labelledby="startmTitle">' +
         '<button class="startm-x" data-sclose aria-label="Close">&times;</button>' +
         '<h3 id="startmTitle">File your income tax return</h3>' +
-        '<p class="startm-sub">Two ways to file &mdash; same profile, your choice of effort.</p>' +
+        '<p class="startm-sub">Two ways to file, same profile, your choice of effort.</p>' +
         '<div class="startm-opts">' + appRow + '</div>' +
         '<p class="startm-note">Nothing is filed without your approval. BIG1 is a chartered accountancy firm; returns are filed through an authorised FBR e-intermediary, and we never ask for or store your IRIS password. Prefer to talk first? <a href="' + WA + '" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>.</p>' +
       '</div>' +

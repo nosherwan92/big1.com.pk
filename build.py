@@ -35,7 +35,7 @@ def _scope_sel(sel, P):
     if sel in (":root", "*", "html", "body", "a"):
         return None
     if re.match(r"^(a|body|html)([:\s]|$)", sel) and not sel.startswith(("html[", "a.", "a#", "a[")):
-        return None  # a{}, a:hover, body ..., html ... — global resets, shared head already has them
+        return None  # a{}, a:hover, body ..., html ..., global resets, shared head already has them
     if sel.startswith("html"):                     # html[data-theme=..] .x  ->  html[..] .P .x
         parts = sel.split(None, 1)
         return parts[0] + " " + P + " " + parts[1] if len(parts) == 2 else None
@@ -114,19 +114,19 @@ NEW_CSS = """
 /* home hero: reuses the shared .hero/.hero-grid; a generic compliance-overview mock on the right */
 .hrow{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--bg-sub)}
 .hrow .hi{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;color:var(--accent);
-  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70.13),rgba(16,158,125.1));border:1px solid var(--border)}
 .hrow .hi svg{width:16px;height:16px}
 .hrow .hl{flex:1;min-width:0}
 .hrow .hl b{display:block;font-size:.82rem;font-weight:600;letter-spacing:-.01em}
 .hrow .hl span{font-size:.67rem;color:var(--text-3)}
 .hnext{margin-top:13px;padding:10px 13px;border-radius:12px;font-size:.77rem;color:var(--emerald-700);line-height:1.4;
-  background:linear-gradient(120deg,rgba(16,185,129,.1),rgba(16,158,125,.06));border:1px solid rgba(16,185,129,.22)}
+  background:linear-gradient(120deg,rgba(16,185,129.1),rgba(16,158,125.06));border:1px solid rgba(16,185,129.22)}
 html[data-theme="dark"] .hnext{color:var(--emerald-300)}
 /* clean floating card (distinct from the tax page's browser-window mock) */
 .hcard{position:relative;background:var(--surface-solid);border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:var(--shadow-xl)}
 .hcard-h{display:flex;align-items:center;gap:13px;margin-bottom:16px}
 .hcard-h .hb{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;flex-shrink:0;
-  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 12px 22px -10px rgba(6,95,70,.55)}
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 12px 22px -10px rgba(6,95,70.55)}
 .hcard-h .hb svg{width:24px;height:24px}
 .hcard-h b{display:block;font-size:1.02rem;letter-spacing:-.02em}
 .hcard-h .s{font-size:.72rem;color:var(--text-3)}
@@ -148,30 +148,30 @@ html[data-theme="dark"] .hnext{color:var(--emerald-300)}
    photo, because that element is only as tall as the copy. This falls off to nothing in
    every direction, so there is no edge to see. */
 .rhero-ov{position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(ellipse 72% 88% at 20% 50%,rgba(2,18,13,.60) 0%,rgba(2,18,13,.34) 44%,rgba(2,18,13,.10) 66%,transparent 80%),
-             linear-gradient(100deg,rgba(3,24,18,.62) 0%,rgba(4,40,30,.50) 42%,rgba(4,30,22,.26) 78%,rgba(4,30,22,.12) 100%)}
+  background:radial-gradient(ellipse 72% 88% at 20% 50%,rgba(2,18,13.60) 0%,rgba(2,18,13.34) 44%,rgba(2,18,13.10) 66%,transparent 80%),
+             linear-gradient(100deg,rgba(3,24,18.62) 0%,rgba(4,40,30.50) 42%,rgba(4,30,22.26) 78%,rgba(4,30,22.12) 100%)}
 .rhero-inner{position:relative;z-index:1;color:#fff;padding-top:calc(var(--nav-h) + 24px);padding-bottom:46px}
-.rhero .eyebrow{color:#eafff5;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24)}
+.rhero .eyebrow{color:#eafff5;background:rgba(255,255,255.1);border:1px solid rgba(255,255,255.24)}
 .rhero .eyebrow .dot{background:var(--emerald-300)}
 .rtexts{position:relative;margin:22px 0 0;min-height:236px}
 .rtext{position:absolute;inset:0;opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease;pointer-events:none;max-width:700px}
 .rtext.on{opacity:1;transform:none;position:relative;pointer-events:auto}
-.rtext h1{font-size:clamp(2.2rem,4.7vw,3.5rem);letter-spacing:-.035em;line-height:1.06;color:#fff;margin-bottom:16px;text-shadow:0 2px 30px rgba(0,0,0,.22)}
-.rtext p{font-size:clamp(.98rem,1.5vw,1.14rem);color:rgba(255,255,255,.9);line-height:1.6;max-width:560px}
+.rtext h1{font-size:clamp(2.2rem,4.7vw,3.5rem);letter-spacing:-.035em;line-height:1.06;color:#fff;margin-bottom:16px;text-shadow:0 2px 30px rgba(0,0,0.22)}
+.rtext p{font-size:clamp(.98rem,1.5vw,1.14rem);color:rgba(255,255,255.9);line-height:1.6;max-width:560px}
 .rhero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
-.rhero-cta .btn-glass{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.32);color:#fff}
-.rhero-cta .btn-glass:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.5)}
+.rhero-cta .btn-glass{background:rgba(255,255,255.13);border-color:rgba(255,255,255.32);color:#fff}
+.rhero-cta .btn-glass:hover{background:rgba(255,255,255.22);border-color:rgba(255,255,255.5)}
 .rdots{display:flex;gap:9px;margin-top:34px}
-.rdot{width:30px;height:4px;border-radius:4px;background:rgba(255,255,255,.35);border:0;padding:0;cursor:pointer;transition:.3s}
+.rdot{width:30px;height:4px;border-radius:4px;background:rgba(255,255,255.35);border:0;padding:0;cursor:pointer;transition:.3s}
 .rdot.on{background:#fff;width:46px}
 /* light nav while over the dark hero (home, before scroll) */
-html.has-hero .nav:not(.stuck) .nav-links a{color:rgba(255,255,255,.85)}
-html.has-hero .nav:not(.stuck) .nav-links a:hover{color:#fff;background:rgba(255,255,255,.15)}
-html.has-hero .nav:not(.stuck) .brand .tag{color:#fff;border-color:rgba(255,255,255,.45)}
+html.has-hero .nav:not(.stuck) .nav-links a{color:rgba(255,255,255.85)}
+html.has-hero .nav:not(.stuck) .nav-links a:hover{color:#fff;background:rgba(255,255,255.15)}
+html.has-hero .nav:not(.stuck) .brand .tag{color:#fff;border-color:rgba(255,255,255.45)}
 html.has-hero .nav:not(.stuck) .bmark{background:none;-webkit-text-fill-color:#fff;color:#fff}
-html.has-hero .nav:not(.stuck) .theme-btn{color:#fff;border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.12)}
-html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,255,.45)}
-@media (prefers-reduced-motion:reduce){.rslide,.rslide.on{animation:none;transition:opacity .5s ease;transform:none}}
+html.has-hero .nav:not(.stuck) .theme-btn{color:#fff;border-color:rgba(255,255,255.45);background:rgba(255,255,255.12)}
+html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,255.45)}
+@media (prefers-reduced-motion:reduce){.rslide.rslide.on{animation:none;transition:opacity .5s ease;transform:none}}
 @media (max-width:640px){.rtexts{min-height:300px}}
 .pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:8px 0 8px}
 .pillar{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:var(--r-lg);
@@ -182,7 +182,7 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 .pillar:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
 .pillar:hover::after{transform:scaleX(1)}
 .pillar .pic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
-  background:linear-gradient(135deg,rgba(6,95,70,.14),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70.14),rgba(16,158,125.1));color:var(--accent);border:1px solid var(--border)}
 .pillar h3{font-size:1.2rem;letter-spacing:-.025em;margin-bottom:8px}
 .pillar p{font-size:.86rem;color:var(--text-2);line-height:1.6;margin-bottom:16px}
 .pillar ul{list-style:none;display:grid;gap:7px;margin-bottom:20px}
@@ -203,25 +203,25 @@ html.has-hero .nav:not(.stuck) .nav-toggle{color:#fff;border-color:rgba(255,255,
 .pillar .feat{list-style:none;display:grid;gap:9px;margin:14px 0 18px;padding:0}
 .pillar .feat li{position:relative;padding-left:25px;font-size:.855rem;line-height:1.5;color:var(--text-2)}
 .pillar .feat li::before{content:"";position:absolute;left:0;top:.36em;width:15px;height:15px;border-radius:5px;
-  background:rgba(16,185,129,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/10px 10px no-repeat}
-html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,129,.2)}
+  background:rgba(16,185,129.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/10px 10px no-repeat}
+html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,129.2)}
 #two-ways .pillar .go{margin-top:auto}
 /* "See it working" framed product screens (tax page) + demo walkthrough (demo.html) */
 .shots{display:grid;gap:28px;max-width:1120px;margin:0 auto}
 .shotrow{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;padding:10px 0}
 .shotrow.rev .shot-img{order:2}
-.shot-img{background:linear-gradient(135deg,rgba(6,95,70,.10),rgba(16,185,129,.06));border:1px solid var(--border);border-radius:22px;padding:14px}
-.shot-img img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 18px 40px -22px rgba(6,95,70,.45)}
+.shot-img{background:linear-gradient(135deg,rgba(6,95,70.10),rgba(16,185,129.06));border:1px solid var(--border);border-radius:22px;padding:14px}
+.shot-img img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 18px 40px -22px rgba(6,95,70.45)}
 .shot-copy h3{font-size:1.35rem;letter-spacing:-.02em;line-height:1.2;margin:10px 0 8px}
 .shot-copy p{color:var(--text-2);line-height:1.6;font-size:.95rem}
 @media (max-width:860px){.shotrow{grid-template-columns:1fr;gap:16px}.shotrow.rev .shot-img{order:0}}
 .demo-steps{display:grid;gap:36px;max-width:900px;margin:0 auto}
 .demo-step{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start}
 .demo-n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;
-  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70,.5)}
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70.5)}
 .demo-step h3{font-size:1.15rem;letter-spacing:-.015em;margin:6px 0 4px}
 .demo-step p{color:var(--text-2);line-height:1.55;font-size:.93rem}
-.demo-step img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);margin-top:12px;box-shadow:0 18px 40px -24px rgba(6,95,70,.45)}
+.demo-step img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);margin-top:12px;box-shadow:0 18px 40px -24px rgba(6,95,70.45)}
 /* compact security band (replaces the full-screen dark panel on the tax page) */
 .secstrip{border:1px solid var(--border);border-radius:20px;background:var(--bg-sub);padding:clamp(20px,2.4vw,30px)}
 .secstrip-h{max-width:640px;margin-bottom:18px}
@@ -278,7 +278,7 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
    position here: relative would drop the nav out of its overlay and push the hero down. */
 .mega{position:absolute;left:0;right:0;top:100%;z-index:90;display:none;
   background:var(--surface-solid,#fff);border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);box-shadow:0 24px 48px -24px rgba(4,20,15,.28)}
+  border-bottom:1px solid var(--border);box-shadow:0 24px 48px -24px rgba(4,20,15.28)}
 .mega.open{display:block;animation:mega-in .22s var(--ease,ease) both}
 @keyframes mega-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .mega-in{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,64px);
@@ -321,11 +321,11 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
   aspect-ratio:16/9;min-height:min(62vh,470px);border-radius:var(--r-lg,22px);overflow:hidden;
   isolation:isolate;background:var(--emerald-900,#04120D)}
 .svc-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-  transition:transform 1.1s var(--ease,cubic-bezier(.22,1,.36,1))}
+  transition:transform 1.1s var(--ease,cubic-bezier(.22,1.36,1))}
 .svc-panel:hover img{transform:scale(1.04)}
 /* the wash keeps the copy legible over any photograph, dark or bright */
 .svc-panel::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(to top,rgba(3,18,13,.92) 0%,rgba(3,18,13,.6) 32%,rgba(3,18,13,.16) 64%,rgba(3,18,13,.04) 100%)}
+  background:linear-gradient(to top,rgba(3,18,13.92) 0%,rgba(3,18,13.6) 32%,rgba(3,18,13.16) 64%,rgba(3,18,13.04) 100%)}
 .svc-body{position:absolute;z-index:2;left:clamp(20px,3vw,48px);right:clamp(20px,3vw,48px);
   bottom:clamp(20px,3vw,44px);max-width:600px;color:#fff}
 /* The service name, not a caption. It was .66rem against 14-16px body copy, i.e. smaller
@@ -338,7 +338,7 @@ html[data-theme="dark"] .pillar .feat li::before{background-color:rgba(16,185,12
 a.svc-kicker:hover{color:var(--emerald-300,#6EE7B7)}
 a.svc-kicker:hover .svc-kname{text-decoration-color:currentColor}
 .svc-kname{text-decoration:underline;text-underline-offset:6px;
-  text-decoration-thickness:2px;text-decoration-color:rgba(110,231,183,.42);
+  text-decoration-thickness:2px;text-decoration-color:rgba(110,231,183.42);
   transition:text-decoration-color .25s var(--ease,ease)}
 .svc-kicker svg{width:.62em;height:.62em;flex-shrink:0;color:var(--emerald-300,#6EE7B7)}
 .svc-kicker .arw{width:.42em;height:.42em;transition:transform .3s var(--ease,ease)}
@@ -347,19 +347,19 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
    linked name, which sets its own size. The old h3 held the slogan. */
 .svc-title{margin:0 0 10px;font:inherit;line-height:1}
 .svc-title .svc-kicker{margin-bottom:0}
-.svc-panel p{font-size:clamp(.95rem,1.25vw,1.14rem);line-height:1.5;color:rgba(255,255,255,.9);
+.svc-panel p{font-size:clamp(.95rem,1.25vw,1.14rem);line-height:1.5;color:rgba(255,255,255.9);
   margin:0 0 clamp(16px,1.8vw,22px);max-width:34ch;font-weight:450}
 .svc-btns{display:flex;flex-wrap:wrap;gap:10px}
 .svc-btns .btn{font-size:.86rem;padding:11px 20px}
-.svc-btns .btn-glass{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.34);color:#fff;
+.svc-btns .btn-glass{background:rgba(255,255,255.15);border:1px solid rgba(255,255,255.34);color:#fff;
   backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
-.svc-btns .btn-glass:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.52)}
+.svc-btns .btn-glass:hover{background:rgba(255,255,255.25);border-color:rgba(255,255,255.52)}
 
 /* arrows sit over the peeking neighbours, the way Tesla's do */
 .svc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;
   border-radius:50%;display:grid;place-items:center;cursor:pointer;
   background:var(--surface-solid,#fff);color:var(--text,#080D13);
-  border:1px solid var(--border,rgba(9,30,24,.12));box-shadow:var(--shadow-lg,0 10px 30px -12px rgba(0,0,0,.3));
+  border:1px solid var(--border,rgba(9,30,24.12));box-shadow:var(--shadow-lg,0 10px 30px -12px rgba(0,0,0.3));
   transition:transform .3s var(--ease,ease),opacity .3s ease,background .3s ease}
 .svc-arrow:hover{transform:translateY(-50%) scale(1.08)}
 .svc-arrow[disabled]{opacity:0;pointer-events:none}
@@ -368,7 +368,7 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
 .svc-arrow svg{width:19px;height:19px}
 .svc-dots{display:flex;justify-content:center;gap:7px;margin-top:4px}
 .svc-dot{width:26px;height:3px;border-radius:2px;border:0;padding:0;cursor:pointer;
-  background:var(--border-strong,rgba(9,30,24,.22));transition:background .3s ease,width .3s ease}
+  background:var(--border-strong,rgba(9,30,24.22));transition:background .3s ease,width .3s ease}
 .svc-dot.on{width:40px;background:var(--accent,#0D6E5A)}
 @media (max-width:760px){
   .svc-panel{flex-basis:86vw;min-height:400px;aspect-ratio:4/5}
@@ -413,32 +413,32 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
    z-index below the content, and they never affect layout. */
 .amb{position:relative;overflow:clip;isolation:isolate}
 .amb > *{position:relative;z-index:1}
-.amb::before,.amb::after{content:"";position:absolute;inset:-10% -5%;z-index:0;pointer-events:none}
+.amb::before.amb::after{content:"";position:absolute;inset:-10% -5%;z-index:0;pointer-events:none}
 
 /* soft emerald mesh -- the drift is 3 slow, unsynchronised radials, so it never loops visibly */
 .amb-mesh::before{
-  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129,.22),transparent 62%),
-             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191,.18),transparent 64%),
-             radial-gradient(46% 42% at 52% 88%,rgba(6,95,70,.14),transparent 66%);
+  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129.22),transparent 62%),
+             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191.18),transparent 64%),
+             radial-gradient(46% 42% at 52% 88%,rgba(6,95,70.14),transparent 66%);
   /* fade at the top and bottom edges: without this the tint starts on a hard line and reads
      as a rendering seam where the section meets a plain one */
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
           mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
   animation:amb-drift 34s ease-in-out infinite alternate}
 html[data-theme="dark"] .amb-mesh::before{
-  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129,.20),transparent 62%),
-             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191,.15),transparent 64%),
-             radial-gradient(46% 42% at 52% 88%,rgba(16,158,125,.16),transparent 66%)}
+  background:radial-gradient(38% 46% at 16% 22%,rgba(16,185,129.20),transparent 62%),
+             radial-gradient(34% 44% at 82% 30%,rgba(45,212,191.15),transparent 64%),
+             radial-gradient(46% 42% at 52% 88%,rgba(16,158,125.16),transparent 66%)}
 
 /* fine grid, faded out at the edges so it never fights the text */
-.amb-mesh::after,.amb-grid::after{
+.amb-mesh::after.amb-grid::after{
   opacity:.75;
-  background-image:linear-gradient(var(--amb-line,rgba(9,30,24,.085)) 1px,transparent 1px),
-                   linear-gradient(90deg,var(--amb-line,rgba(9,30,24,.085)) 1px,transparent 1px);
+  background-image:linear-gradient(var(--amb-line,rgba(9,30,24.085)) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--amb-line,rgba(9,30,24.085)) 1px,transparent 1px);
   background-size:58px 58px;
   -webkit-mask-image:radial-gradient(ellipse 74% 62% at 50% 46%,#000,transparent 78%);
           mask-image:radial-gradient(ellipse 74% 62% at 50% 46%,#000,transparent 78%)}
-html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::after{--amb-line:rgba(255,255,255,.05)}
+html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::after{--amb-line:rgba(255,255,255.05)}
 
 @keyframes amb-drift{
   0%  {transform:translate3d(0,0,0) scale(1)}
@@ -452,7 +452,7 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 
 /* Motion is decoration here: anyone who asks for less keeps the full background, still. */
 @media (prefers-reduced-motion:reduce){
-  .amb-mesh::before,.cta-sec::before{animation:none}}
+  .amb-mesh::before.cta-sec::before{animation:none}}
 """
 
 # ---- head / body-open (shared) ----
@@ -520,7 +520,7 @@ MEGAS = {
         items=[
             ("Income tax return", "doc", [("Learn", "tax-filing.html"), ("Start", "{{APP}}")]),
             ("NTN registration", "id", [("Learn", "services.html#ntn")]),
-            ("Sales tax &mdash; GST &amp; PST", "shop", [("GST", "services.html#gst"), ("PST", "services.html#pst")]),
+            ("Sales tax (GST &amp; PST)", "shop", [("GST", "services.html#gst"), ("PST", "services.html#pst")]),
             ("Trademark", "shield", [("Learn", "services.html#trademark")]),
             ("Copyright, patent &amp; design", "copy", [("Copyright", "services.html#copyright"), ("Patent", "services.html#patent")]),
             ("Company incorporation", "build", [("Learn", "services.html#incorp")]),
@@ -560,7 +560,7 @@ def nav_for(active):
     return '''<!-- ============================== NAV ============================== -->
 <header class="nav has-mega" id="nav">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="BIG1 &mdash; home">
+    <a class="brand" href="index.html" aria-label="BIG1 home">
       <img class="logo-img" src="assets/big1-logo.png" alt="BIG1" onerror="this.remove()" />
       <span class="bmark" aria-hidden="true">B<i>1</i>G</span>
       <span class="tag">FilePak</span>
@@ -715,19 +715,19 @@ HOME_HERO = '''<!-- ============================== HOME HERO (rotating) ========
     <div class="rtexts">
       <div class="rtext on" data-cta="File your taxes" data-href="tax-filing.html" data-start="1">
         <h1>File correctly.<br />Down to the last rupee.</h1>
-        <p>Guided income-tax filing &mdash; computed to the rupee and filed through an authorised FBR e-intermediary.</p>
+        <p>Guided income-tax filing, computed to the rupee and filed through an authorised FBR e-intermediary.</p>
       </div>
       <div class="rtext" data-cta="Start a registration" data-href="services.html" data-start="0">
         <h1>Register, incorporate,<br />comply.</h1>
-        <p>NTN, sales tax, trademark and company registration &mdash; the exact documents listed up front.</p>
+        <p>NTN, sales tax, trademark and company registration, with the exact documents listed up front.</p>
       </div>
       <div class="rtext" data-cta="Explore corporate services" data-href="services.html" data-start="0">
         <h1>Built for<br />Pakistani business.</h1>
-        <p>From company formation to SECP compliance &mdash; handled end to end.</p>
+        <p>From company formation to SECP compliance, handled end to end.</p>
       </div>
       <div class="rtext" data-cta="Get started" data-href="services.html" data-start="0">
         <h1>A real team behind<br />an intelligent platform.</h1>
-        <p>Filed by people who know Pakistani tax &mdash; in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
+        <p>Filed by people who know Pakistani tax, in English or&nbsp;&#1575;&#1585;&#1583;&#1608;.</p>
       </div>
     </div>
     <div class="rhero-cta">
@@ -831,7 +831,7 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
         <h3>Self-Filing &middot; Rs <span data-fee="income_tax_return">{{FEE:income_tax_return}}</span></h3>
         <p>You prepare your own return, guided one step at a time.</p>
         <ul class="feat">
-          <li>Plain questions &mdash; one income source at a time</li>
+          <li>Plain questions, one income source at a time</li>
           <li>Your tax recomputed live as you type</li>
           <li>Wealth statement reconciled before you submit</li>
           <li>IRIS-format summary and Excel export</li>
@@ -845,16 +845,16 @@ TWO_WAYS = '''<!-- ============================== TWO WAYS TO FILE =============
         <h3>Assisted Filing &middot; from Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span></h3>
         <p>Don&rsquo;t know how to prepare a return? Hand it to our team.</p>
         <ul class="feat">
-          <li>Tick what applies, upload what you have &mdash; nothing is mandatory</li>
+          <li>Tick what applies, upload what you have; nothing is mandatory</li>
           <li>Our team prepares it and follows up for anything missing</li>
-          <li>No need for last year&rsquo;s return &mdash; we retrieve it from IRIS</li>
-          <li>Review a summary, then pay &mdash; nothing charged up front</li>
+          <li>No need for last year&rsquo;s return: we retrieve it from IRIS</li>
+          <li>Review a summary, then pay. Nothing charged up front</li>
           <li>Salary-only Rs <span data-fee="priority_filing_salary">{{FEE:priority_filing_salary}}</span> &middot; business or multiple incomes Rs <span data-fee="priority_filing_complex">{{FEE:priority_filing_complex}}</span></li>
         </ul>
         <span class="go">Start Assisted Filing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
       </a>
     </div>
-    <p class="what-tools" data-reveal>Either way, nothing is filed without your approval &mdash; and no need to send last year&rsquo;s return, we retrieve it from IRIS.</p>
+    <p class="what-tools" data-reveal>Either way, nothing is filed without your approval, and there is no need to send last year&rsquo;s return: we retrieve it from IRIS.</p>
   </div>
 </section>'''
 # {{APP}} is only substituted for standalone pages (see standalone()); inline home/tax blocks resolve it here.
@@ -878,11 +878,11 @@ SHOTS = '''<!-- ============================== SEE IT WORKING ==================
       <p class="lede">Shown with a demo profile. <a href="demo.html">Walk through the whole flow &rarr;</a></p>
     </div>
     <div class="shots">''' + _shot("app-self.webp", 1100, 515, "Self-Filing", "Guided steps with your live tax position",
-        "Answer plain questions, one income source at a time. The engine recomputes your taxable income, tax charge and tax already paid as you type &mdash; no spreadsheet, no guessing.",
+        "Answer plain questions, one income source at a time. The engine recomputes your taxable income, tax charge and tax already paid as you type. No spreadsheet, no guessing.",
         alt="FilePak guided income step with the live tax summary") + _shot("app-assisted.webp", 620, 680, "Assisted Filing", "Tick what applies. Upload what you have.",
         "Nothing is mandatory. Tick the items that apply to you, attach the documents you already have, and the BIG1 team prepares the return and follows up for the rest.", rev=True,
         alt="FilePak Assisted Filing document checklist") + _shot("app-iris.webp", 660, 752, "Before filing", "An IRIS-format summary you can read",
-        "Your return laid out exactly as FBR structures it &mdash; income heads, codes and computations &mdash; so you review the real thing before anything is filed. Download it to Excel any time.",
+        "Your return laid out exactly as FBR structures it (income heads, codes and computations), so you review the real thing before anything is filed. Download it to Excel any time.",
         alt="FilePak IRIS-format return summary") + '''
     </div>
   </div>
@@ -907,11 +907,11 @@ DEMO_BODY = '''<!-- ============================== DEMO WALKTHROUGH ============
     <div class="demo-steps">''' + _step(1, "app-chooser.webp", 620, 390, "Choose how you want to file",
         "Two ways, same profile. Self-Filing if you want to prepare it yourself with guidance; Assisted Filing if you would rather hand us your documents. Fees are shown up front; Assisted Filing is paid last, when the return is ready.",
         "FilePak filing chooser") + _step(2, "app-self.webp", 1100, 515, "Self-Filing: guided, one source at a time",
-        "Salary, savings, property, business &mdash; each in its own step with plain-language questions. Your live position updates on the left as you go.",
+        "Salary, savings, property, business: each in its own step with plain-language questions. Your live position updates on the left as you go.",
         "FilePak guided income step") + _step(3, "app-assisted.webp", 620, 680, "Assisted Filing: tick, upload, done",
-        "Tick what applies to you and upload what you have. Nothing is mandatory &mdash; the BIG1 team prepares the return from your documents and contacts you for anything missing. No need for last year&rsquo;s return; we retrieve it from IRIS.",
+        "Tick what applies to you and upload what you have. Nothing is mandatory. The BIG1 team prepares the return from your documents and contacts you for anything missing. No need for last year&rsquo;s return; we retrieve it from IRIS.",
         "FilePak Assisted Filing checklist") + _step(4, "app-iris.webp", 660, 752, "Review the return in IRIS format",
-        "Before anything is filed you see the return exactly as FBR structures it &mdash; income heads, codes, computations, and the wealth reconciliation. Export to Excel with one click.",
+        "Before anything is filed you see the return exactly as FBR structures it: income heads, codes, computations, and the wealth reconciliation. Export to Excel with one click.",
         "FilePak IRIS-format summary") + _step(5, "app-dashboard.webp", 1100, 515, "Track everything from one dashboard",
         "Your returns, registrations and trademark requests show their live status. A submitted return stays editable until our team starts work on it; after that, one tap reaches an agent.",
         "FilePak dashboard") + '''
@@ -936,11 +936,11 @@ FAQ_HOME = '''<!-- ============================== HOME FAQ =====================
       <div class="qa"><button aria-expanded="false"><span>What does BIG1 do?</span>
         <span class="qi" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
         <div class="ans"><div><p>BIG1 is a Pakistani tax and corporate-services firm. We file income-tax returns through
-          FilePak, our own platform, and we handle the registrations and filings that go with running your affairs &mdash;
+          FilePak, our own platform, and we handle the registrations and filings that go with running your affairs, 
           NTN, sales tax, trademarks, company incorporation and SECP compliance, plus notices and advisory.</p></div></div></div>
       <div class="qa"><button aria-expanded="false"><span>Are you authorised to file with FBR?</span>
         <span class="qi" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-        <div class="ans"><div><p>Yes. Returns are filed through an authorised FBR e-intermediary channel &mdash; and we never
+        <div class="ans"><div><p>Yes. Returns are filed through an authorised FBR e-intermediary channel, and we never
           ask for or store the IRIS password that belongs to you and FBR alone.</p></div></div></div>
       <div class="qa"><button aria-expanded="false"><span>Is my data safe?</span>
         <span class="qi" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
@@ -948,7 +948,7 @@ FAQ_HOME = '''<!-- ============================== HOME FAQ =====================
           permission with the reason recorded. We do not sell your data or market off your return.</p></div></div></div>
       <div class="qa"><button aria-expanded="false"><span>How do I get started?</span>
         <span class="qi" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-        <div class="ans"><div><p>Pick what you need &mdash; <a href="tax-filing.html">file your taxes</a>,
+        <div class="ans"><div><p>Pick what you need: <a href="tax-filing.html">file your taxes</a>,
           <a href="services.html">request a service</a>, or message us on WhatsApp at +92&nbsp;339&nbsp;9999611 and a
           person will guide you from there.</p></div></div></div>
     </div>
@@ -961,15 +961,15 @@ CTA_HOME = '''<!-- ============================== HOME CTA =====================
   <div class="wrap">
     <div class="cta-inner">
       <span class="eyebrow" data-reveal><span class="dot"></span>BIG1 &middot; FilePak</span>
-      <h2 data-reveal style="--d:80ms">One team for tax, registration<br /><span class="grad-text">and corporate services.</span></h2>
+      <h2 data-reveal style="--d:80ms">Tell us what<br /><span class="grad-text">you need.</span></h2>
       <p class="lede" data-reveal style="--d:160ms">File your return, register a business, protect a brand, or answer a
-        notice &mdash; start on WhatsApp and a real person picks it up.</p>
+      notice. A real person picks it up.</p>
       <div class="cta-btns" data-reveal style="--d:240ms">
-        <a class="btn btn-primary btn-lg" href="tax-filing.html" data-start>File your taxes
+        <a class="btn btn-primary btn-lg" href="services.html" data-start>Get started
           <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
         <a class="btn btn-glass btn-lg" href="''' + WA_START + '''" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
       </div>
-      <p class="cta-fine" data-reveal style="--d:360ms">Filed through an authorised FBR e-intermediary &middot; No card required to see your computation</p>
+      <p class="cta-fine" data-reveal style="--d:360ms">No card required to see your computation</p>
     </div>
   </div>
 </section>'''
@@ -981,16 +981,16 @@ TRUST_HOME = '''<!-- ============================== HOME TRUST BAND ============
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Income-tax filing</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> NTN registration</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sales tax (GST) &amp; PST</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &mdash; IPO Pakistan</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &mdash; SECP</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &middot; IPO Pakistan</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &middot; SECP</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorised FBR e-intermediary</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> AES-256 encryption</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> WhatsApp support</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Income-tax filing</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> NTN registration</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Sales tax (GST) &amp; PST</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &mdash; IPO Pakistan</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &mdash; SECP</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Trademark &middot; IPO Pakistan</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Company incorporation &middot; SECP</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> Authorised FBR e-intermediary</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> AES-256 encryption</li>
       <li><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg> WhatsApp support</li>
@@ -1003,7 +1003,7 @@ CALC_HERO = '''<!-- ============================== CALC HERO ===================
   <div class="wrap">
     <span class="eyebrow" data-reveal><span class="dot"></span>Free tools &middot; Tax Year 2025&ndash;26</span>
     <h1 data-reveal style="--d:80ms">Pakistan tax calculators.</h1>
-    <p class="lede" data-reveal style="--d:160ms">Estimate your tax in seconds on the current Finance Act rates &mdash; salary,
+    <p class="lede" data-reveal style="--d:160ms">Estimate your tax in seconds on the current Finance Act rates, salary,
       rental, capital gains and business income. No sign-up.</p>
   </div>
 </section>'''
@@ -1144,7 +1144,7 @@ def _insights_page_body():
   <div class="wrap">
     <span class="eyebrow" data-reveal><span class="dot"></span>Insights</span>
     <h1 data-reveal style="--d:80ms">Tax &amp; business insights.</h1>
-    <p class="lede" data-reveal style="--d:160ms">Plain-language updates on FBR, SECP and IPO&nbsp;Pakistan &mdash; and what they mean for individuals and businesses in Pakistan.</p>
+    <p class="lede" data-reveal style="--d:160ms">Plain-language updates on FBR, SECP and IPO&nbsp;Pakistan, and what they mean for individuals and businesses in Pakistan.</p>
   </div>
 </section>
 <section class="sec amb amb-mesh" style="padding-top:clamp(18px,2.6vw,32px)">
@@ -1166,7 +1166,7 @@ def _article_body(it):
 <section class="sec" style="padding-top:clamp(14px,2vw,26px)">
   <div class="wrap">
     <div class="article">%s</div>
-    <p class="article-note">This is general information, not tax advice for your particular situation. Figures, rates and deadlines change &mdash; confirm your case with us before you act.</p>
+    <p class="article-note">This is general information, not tax advice for your particular situation. Figures, rates and deadlines change, so confirm your case with us before you act.</p>
     <div style="max-width:740px;margin-inline:auto"><a class="article-back" href="insights.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M12 5l-7 7 7 7"/></svg> All insights</a></div>
   </div>
 </section>''') % (_esc(it.get("category", "Insight")), _esc(it.get("title", "")), _esc(it.get("excerpt", "")),
@@ -1180,7 +1180,7 @@ SECURITY_STRIP = '''<!-- ============================== SECURITY (compact) =====
     <div class="secstrip" data-reveal>
       <div class="secstrip-h">
         <span class="eyebrow"><span class="dot"></span>Security &amp; trust</span>
-        <p>We hold CNICs, salary histories and bank balances &mdash; and we designed for that from the first line of code.</p>
+        <p>We hold CNICs, salary histories and bank balances, and we designed for that from the first line of code.</p>
       </div>
       <div class="secstrip-g">
         <div><b>Encrypted end to end</b><span>TLS 1.3 in transit, AES-256 at rest, per-client document keys.</span></div>
@@ -1203,7 +1203,7 @@ CTA_SLIM = '''<!-- ============================== TAX PAGE CLOSE ===============
     <div class="ctaslim" data-reveal>
       <div>
         <h2>Ready to file your 2025&ndash;26 return?</h2>
-        <p>Build it yourself or hand us your documents &mdash; either way you see the full computation before anything is filed, and you pay at the end.</p>
+        <p>Build it yourself or hand us your documents: either way you see the full computation before anything is filed, and you pay at the end.</p>
       </div>
       <div class="ctaslim-b">
         <a class="btn btn-primary btn-lg" href="#top" data-start>File your taxes
@@ -1228,18 +1228,18 @@ TAX_BODY = TAX_BODY.replace('href="#services"', 'href="services.html"').replace(
 
 PAGES = {
     "index.html": page(
-        "BIG1 &mdash; Tax Filing, Registration &amp; Corporate Services in Pakistan",
-        "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant &mdash; a real team behind an intelligent platform.",
+        "BIG1 | Tax Filing, Registration &amp; Corporate Services in Pakistan",
+        "BIG1 helps individuals and businesses in Pakistan file income tax, register (NTN, sales tax, company, trademark) and stay compliant, with a real team behind an intelligent platform.",
         "", "home",
         # TWO_WAYS lives on the tax-filing page (its product page). The home page routes there through the
         # Income-tax pillar and the "Get started" chooser, so the block is not repeated here.
         "\n\n".join([HOME_HERO, TRUST_HOME, PILLARS, INSIGHTS_HOME, STORIES, FAQ_HOME, CTA_HOME])),
     "tax-filing.html": page(
-        "Tax Filing in Pakistan &mdash; FilePak by BIG1",
+        "Tax Filing in Pakistan | FilePak by BIG1",
         "File your Pakistani income-tax return two ways: guided Self-Filing you complete yourself, or Assisted Filing where the BIG1 team prepares it from your documents. Reviewed in IRIS format before anything is filed.",
         "tax-filing.html", "tax", TAX_BODY),
     "calculators.html": page(
-        "Free Pakistan Tax Calculators &mdash; Salary, Rental, Capital Gains &amp; Business",
+        "Free Pakistan Tax Calculators | Salary, Rental, Capital Gains &amp; Business",
         "Free income-tax calculators for Pakistan on current Finance Act rates: salary, rental income, capital gains on property and securities, and business income.",
         "calculators.html", "calc",
         "\n\n".join([CALC_HERO, CALC]), calc=True),
@@ -1249,26 +1249,26 @@ PAGES = {
 _SVC_CSS, _SVC_BODY, _SVC_JS = standalone("services-src.html", "pgsvc", wrap_inner=True)
 _ABT_CSS, _ABT_BODY, _ABT_JS = standalone("about-src.html", "pgabout", wrap_inner=False)
 PAGES["demo.html"] = page(
-    "See how FilePak works &mdash; a walkthrough of filing your return | BIG1",
+    "See how FilePak works: a walkthrough of filing your return | BIG1",
     "A read-only walkthrough of FilePak with a demo profile: choose Self-Filing or Assisted Filing, answer guided steps or upload documents, review the IRIS-format summary, track it on your dashboard.",
     "demo.html", "tax", DEMO_BODY)
 PAGES["services.html"] = page(
-    "Services &mdash; NTN, Sales Tax, Trademark &amp; Company Registration in Pakistan | BIG1",
+    "Services: NTN, Sales Tax, Trademark &amp; Company Registration in Pakistan | BIG1",
     "Assisted tax, IP and corporate services in Pakistan with the exact documents each one needs: NTN, sales tax (GST) and PST registration, IRIS updates, FBR notices, trademark, copyright, patent, design, SECP incorporation and compliance.",
     "services.html", "services", _SVC_BODY, extra_css=_SVC_CSS, extra_js=_SVC_JS)
 PAGES["about.html"] = page(
-    "About &amp; Contact &mdash; BIG1 / FilePak",
+    "About &amp; Contact | BIG1 / FilePak",
     "BIG1 is a Pakistani tax and corporate-services firm behind FilePak: income-tax filing, registrations, IP and SECP compliance. What we do, how we work, and how to reach us.",
     "about.html", "about", _ABT_BODY, extra_css=_ABT_CSS, extra_js=_ABT_JS)
 
 # ---- insights: listing page + one page per article ----
 PAGES["insights.html"] = page(
-    "Insights &mdash; Tax, Registration &amp; Corporate Updates in Pakistan | BIG1",
-    "Plain-language tax and business insights for Pakistan from BIG1 &mdash; FBR, SECP and IPO Pakistan updates, deadlines and guides for individuals and businesses.",
+    "Insights: Tax, Registration &amp; Corporate Updates in Pakistan | BIG1",
+    "Plain-language tax and business insights for Pakistan from BIG1: FBR, SECP and IPO Pakistan updates, deadlines and guides for individuals and businesses.",
     "insights.html", "insights", _insights_page_body())
 for _it in INSIGHTS:
     PAGES["insight-%s.html" % _it["slug"]] = page(
-        _esc(_it.get("title", "Insight")) + " &mdash; BIG1 Insights",
+        _esc(_it.get("title", "Insight")) + " | BIG1 Insights",
         _esc(_it.get("excerpt", "")),
         "insight-%s.html" % _it["slug"], "insights", _article_body(_it))
 

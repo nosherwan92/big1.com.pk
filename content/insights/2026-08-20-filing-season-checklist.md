@@ -24,4 +24,4 @@ Your declared assets and liabilities should move in line with your income. If yo
 
 Filing early avoids the last-week rush, gives time to fix anything missing, and keeps you on the active taxpayer list. If you are unsure whether you even need to file, or which income applies to you, it is worth a quick conversation before you start.
 
-Ready when you are &mdash; you can [start your return](tax-filing.html) or message our team, and we will take it from there.
+Ready when you are, you can [start your return](tax-filing.html) or message our team, and we will take it from there.

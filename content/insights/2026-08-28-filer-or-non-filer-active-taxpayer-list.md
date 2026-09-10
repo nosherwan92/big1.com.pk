@@ -16,7 +16,7 @@ It is not a judgement of how much tax you paid. It records that you filed.
 
 ## Where it shows up
 
-Pakistan collects a great deal of tax at source &mdash; when you withdraw cash, buy or sell property, register a vehicle, receive profit on savings, or pay certain bills. For many of these, **the rate applied depends on whether your name is on the ATL**. People not on the list are charged at the higher rate.
+Pakistan collects a great deal of tax at source, when you withdraw cash, buy or sell property, register a vehicle, receive profit on savings, or pay certain bills. For many of these, **the rate applied depends on whether your name is on the ATL**. People not on the list are charged at the higher rate.
 
 That difference is deducted quietly, transaction by transaction, whether or not you ever look at it. Over a year it is rarely trivial.
 
@@ -24,7 +24,7 @@ That difference is deducted quietly, transaction by transaction, whether or not 
 
 By filing your return for the relevant tax year. Once the return is filed and processed, your name appears on the list when it is next updated.
 
-If you have not filed for a year or two, that is a common position and a fixable one &mdash; prior years can still be prepared and filed.
+If you have not filed for a year or two, that is a common position and a fixable one, prior years can still be prepared and filed.
 
 ## The part people miss
 

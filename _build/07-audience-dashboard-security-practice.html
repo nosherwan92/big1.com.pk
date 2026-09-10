@@ -10,7 +10,7 @@
 .aud-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
 .aud-card:hover::after{transform:scaleX(1)}
 .aud-card .ai2{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:16px;
-  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70.13),rgba(16,158,125.1));color:var(--accent);border:1px solid var(--border)}
 .aud-card h3{font-size:1.02rem;letter-spacing:-.02em;margin-bottom:7px}
 .aud-card p{font-size:.85rem;color:var(--text-2);line-height:1.6}
 .aud-card .need{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:.75rem;color:var(--text-3)}
@@ -21,8 +21,8 @@
 /* ---------- Dashboard showcase ---------- */
 .dash-sec{overflow:clip;position:relative}
 .dash-sec::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(58% 42% at 50% 0%,rgba(16,185,129,.11),transparent 62%),
-             radial-gradient(48% 40% at 84% 34%,rgba(16,158,125,.1),transparent 66%)}
+  background:radial-gradient(58% 42% at 50% 0%,rgba(16,185,129.11),transparent 62%),
+             radial-gradient(48% 40% at 84% 34%,rgba(16,158,125.1),transparent 66%)}
 .dash-wrap{position:relative;z-index:1}
 .dash-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
 .dash-tabs button{padding:9px 17px;border-radius:100px;border:1px solid var(--border);background:var(--surface);
@@ -32,7 +32,7 @@
 .dash-tabs button[aria-pressed="true"]{
   color:#fff;border-color:transparent;
   background:linear-gradient(120deg,var(--emerald-700),var(--blue-700));
-  box-shadow:0 10px 26px -12px rgba(6,95,70,.7)}
+  box-shadow:0 10px 26px -12px rgba(6,95,70.7)}
 .dash-stage{position:relative;perspective:2200px}
 .dash-app{transition:transform .8s var(--ease),box-shadow .8s var(--ease)}
 .dash-view{display:none}
@@ -47,7 +47,7 @@
 .tile .td{font-size:.72rem;margin-top:3px;color:var(--text-3)}
 .tile .td.up{color:var(--emerald-600)}
 .spark{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:10px}
-.spark i{flex:1;border-radius:2px;background:linear-gradient(180deg,var(--emerald-500),rgba(16,185,129,.2));display:block}
+.spark i{flex:1;border-radius:2px;background:linear-gradient(180deg,var(--emerald-500),rgba(16,185,129.2));display:block}
 .linechart{height:130px;width:100%}
 .linechart path.area{fill:url(#areagrad)}
 .linechart path.line{fill:none;stroke:url(#linegrad);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
@@ -62,35 +62,35 @@
   --surface-solid:#0A1016;--bg-sub:#080D13;--accent:#10B981;
   background:#04070B;color:#EAF0F6;position:relative;overflow:clip;isolation:isolate}
 .sec-dark::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(60% 50% at 12% 0%,rgba(16,185,129,.16),transparent 62%),
-             radial-gradient(60% 50% at 88% 90%,rgba(16,158,125,.18),transparent 64%)}
-.sec-dark .eyebrow{background:rgba(255,255,255,.04);border-color:#1D2733;color:#9AA9BB}
-.shield-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(30px,4.4vw,64px);align-items:center}
+  background:radial-gradient(60% 50% at 12% 0%,rgba(16,185,129.16),transparent 62%),
+             radial-gradient(60% 50% at 88% 90%,rgba(16,158,125.18),transparent 64%)}
+.sec-dark .eyebrow{background:rgba(255,255,255.04);border-color:#1D2733;color:#9AA9BB}
+.shield-grid{display:grid;grid-template-columns:minmax(0.9fr) minmax(0,1.2fr);gap:clamp(30px,4.4vw,64px);align-items:center}
 .shield-vis{position:relative;display:grid;place-items:center;min-height:330px}
-.shield-vis .ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.07)}
+.shield-vis .ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255.07)}
 .r1{width:180px;height:180px;animation:pulseRing 4s var(--ease) infinite}
 .r2{width:250px;height:250px;animation:pulseRing 4s var(--ease) infinite .6s}
 .r3{width:320px;height:320px;animation:pulseRing 4s var(--ease) infinite 1.2s}
 @keyframes pulseRing{0%{opacity:.9;transform:scale(.92)}70%{opacity:0;transform:scale(1.12)}100%{opacity:0}}
 .shield-core{position:relative;width:118px;height:118px;border-radius:34px;display:grid;place-items:center;
   background:linear-gradient(140deg,#065F46,#0B7A5B 40%,#0D6E5A);color:#fff;
-  box-shadow:0 30px 70px -24px rgba(16,185,129,.6),0 0 0 1px rgba(255,255,255,.1) inset}
+  box-shadow:0 30px 70px -24px rgba(16,185,129.6),0 0 0 1px rgba(255,255,255.1) inset}
 .sec-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.sec-item{padding:17px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
-.sec-item:hover{border-color:#2A3644;background:rgba(255,255,255,.05);transform:translateY(-3px)}
+.sec-item{padding:17px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255.025);transition:.4s var(--ease)}
+.sec-item:hover{border-color:#2A3644;background:rgba(255,255,255.05);transform:translateY(-3px)}
 .sec-item .sh{display:flex;align-items:center;gap:9px;font-weight:600;font-size:.92rem;letter-spacing:-.015em;margin-bottom:6px}
 .sec-item .sh svg{color:#34D399;flex-shrink:0}
 .sec-item p{font-size:.79rem;color:#8695A8;line-height:1.58}
-.pledge{margin-top:26px;padding:18px 20px;border-radius:var(--r-md);border:1px solid rgba(16,185,129,.25);
-  background:linear-gradient(120deg,rgba(16,185,129,.09),rgba(16,158,125,.06));font-size:.88rem;line-height:1.62;color:#C7D3E1}
+.pledge{margin-top:26px;padding:18px 20px;border-radius:var(--r-md);border:1px solid rgba(16,185,129.25);
+  background:linear-gradient(120deg,rgba(16,185,129.09),rgba(16,158,125.06));font-size:.88rem;line-height:1.62;color:#C7D3E1}
 .pledge b{color:#fff}
 @media (max-width:960px){.shield-grid{grid-template-columns:1fr;gap:40px}}
 @media (max-width:560px){.sec-list{grid-template-columns:1fr}}
 
 .stbadge{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
-.st-done{background:rgba(16,185,129,.14);color:var(--emerald-600)}
-.st-rev{background:rgba(16,158,125,.13);color:var(--blue-600)}
-.st-wait{background:rgba(233,185,73,.16);color:var(--gold-600)}
+.st-done{background:rgba(16,185,129.14);color:var(--emerald-600)}
+.st-rev{background:rgba(16,158,125.13);color:var(--blue-600)}
+.st-wait{background:rgba(233,185,73.16);color:var(--gold-600)}
 html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark"] .st-rev{color:var(--blue-400)}
 
 
@@ -107,8 +107,8 @@ html[data-theme="dark"] .st-done{color:var(--emerald-300)} html[data-theme="dark
 .an-l i{width:8px;height:8px;border-radius:3px;background:var(--c);flex-shrink:0}
 .an-v{font-size:.8rem;font-variant-numeric:tabular-nums;font-weight:600;color:var(--text-2);white-space:nowrap}
 .an-d{font-size:.68rem;font-weight:700;font-variant-numeric:tabular-nums;padding:2px 6px;border-radius:20px;white-space:nowrap}
-.an-d.up{color:var(--emerald-600);background:rgba(16,185,129,.12)}
-.an-d.dn{color:#DC5B4B;background:rgba(220,91,75,.12)}
+.an-d.up{color:var(--emerald-600);background:rgba(16,185,129.12)}
+.an-d.dn{color:#DC5B4B;background:rgba(220,91,75.12)}
 .an-d.flat{color:var(--text-3);background:var(--bg-deep)}
 html[data-theme="dark"] .an-d.up{color:var(--emerald-300)}
 .an-track{grid-column:1/-1;height:6px;border-radius:4px;background:var(--bg-deep);overflow:hidden}
@@ -117,7 +117,7 @@ html[data-theme="dark"] .an-d.up{color:var(--emerald-300)}
 .an-note b{font-weight:640;color:var(--text)}
 /* bullet (effective rate) */
 .an-bullet{position:relative;height:12px;border-radius:6px;margin:6px 0 5px;
-  background:linear-gradient(90deg,var(--bg-deep) 0 38%,rgba(16,185,129,.18) 38% 68%,var(--bg-deep) 68%)}
+  background:linear-gradient(90deg,var(--bg-deep) 0 38%,rgba(16,185,129.18) 38% 68%,var(--bg-deep) 68%)}
 .an-band{display:none}
 .an-target{position:absolute;top:-3px;width:3px;height:18px;border-radius:2px;background:var(--emerald-700);transform:translateX(-50%)}
 .an-val{position:absolute;top:-20px;transform:translateX(-50%);font-size:.72rem;font-weight:700;color:var(--text)}
@@ -130,7 +130,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
 .an-chart{position:relative}
 .an-line{position:absolute;inset:0 0 22px 0;width:100%;height:calc(100% - 22px);z-index:2;pointer-events:none}
 .an-bars{display:flex;align-items:flex-end;gap:10px;height:104px;padding:0 6px}
-.an-bars span{flex:1;height:var(--h);border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,rgba(16,185,129,.4),rgba(16,185,129,.14))}
+.an-bars span{flex:1;height:var(--h);border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,rgba(16,185,129.4),rgba(16,185,129.14))}
 .an-bars span.on{background:linear-gradient(180deg,var(--emerald-600),var(--emerald-500))}
 .an-x{display:flex;gap:10px;padding:6px 6px 0;font-size:.64rem;color:var(--text-3)}
 .an-x span{flex:1;text-align:center}
@@ -143,28 +143,28 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span>Who it&rsquo;s for</span>
       <h2 class="h1">One platform.<br /><span class="serif">Every kind of taxpayer.</span></h2>
-      <p class="lede">Same engine underneath &mdash; a different surface for how complicated your year was.</p>
+      <p class="lede">Same engine underneath, a different surface for how complicated your year was.</p>
     </div>
 
     <div class="aud aud-3">
       <article class="aud-card" data-reveal>
         <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span>
         <h3>Individuals</h3>
-        <p>Salary, property, investments and foreign income &mdash; answered in plain questions.</p>
+        <p>Salary, property, investments and foreign income, answered in plain questions.</p>
         <div class="need"><b>Solves</b> &middot; unclaimed withholding, capital gains, wealth statement</div>
       </article>
 
       <article class="aud-card" data-reveal style="--d:80ms">
         <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l6-4 6 4v13"/><path d="M15 21V12h6v9"/><path d="M3 21h18"/></svg></span>
         <h3>Businesses &amp; freelancers</h3>
-        <p>Trading accounts, export of services, expenses and minimum tax &mdash; handled as a business.</p>
+        <p>Trading accounts, export of services, expenses and minimum tax, handled as a business.</p>
         <div class="need"><b>Solves</b> &middot; multi-source computation, s.113, PSEB / s.154A</div>
       </article>
 
       <article class="aud-card" data-reveal style="--d:160ms">
         <span class="ai2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l-3.5 3.5"/></svg></span>
         <h3>Non-filers &amp; late filers</h3>
-        <p>Missed a year &mdash; or five? File any year back to 2016 and get on the Active Taxpayer List.</p>
+        <p>Missed a year, or five? File any year back to 2016 and get on the Active Taxpayer List.</p>
         <div class="need"><b>Solves</b> &middot; prior-year rulesets, ATL status, surcharge quoted upfront</div>
       </article>
     </div>
@@ -220,7 +220,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
                 <div class="tile"><div class="tl">Effective rate</div><div class="tv tnum">27.9%</div><div class="td">Within peer band</div></div>
                 <div class="tile"><div class="tl">Refund due</div><div class="tv tnum" style="color:var(--emerald-600)">138.4k</div><div class="td">Claimable on filing</div></div>
                 <div class="tile span2">
-                  <div class="tl">Tax paid vs liability &mdash; 5 years</div>
+                  <div class="tl">Tax paid vs liability, 5 years</div>
                   <svg class="linechart" viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
                     <defs>
                       <linearGradient id="areagrad" x1="0" y1="0" x2="0" y2="1">
@@ -240,7 +240,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
                   <div style="margin-top:10px;display:grid;gap:8px">
                     <div style="display:flex;align-items:center;gap:9px;font-size:.79rem"><span class="chk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> All income sources confirmed</div>
                     <div style="display:flex;align-items:center;gap:9px;font-size:.79rem"><span class="chk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Wealth statement reconciled</div>
-                    <div style="display:flex;align-items:center;gap:9px;font-size:.79rem;color:var(--gold-600)"><span class="chk" style="background:rgba(233,185,73,.18);color:var(--gold-600)">!</span> Vehicle funding source &mdash; awaiting your note</div>
+                    <div style="display:flex;align-items:center;gap:9px;font-size:.79rem;color:var(--gold-600)"><span class="chk" style="background:rgba(233,185,73.18);color:var(--gold-600)">!</span> Vehicle funding source, awaiting your note</div>
                     <div style="display:flex;align-items:center;gap:9px;font-size:.79rem;color:var(--text-3)"><span class="chk" style="background:var(--bg-deep);color:var(--text-3)">&middot;</span> CA sign-off pending</div>
                   </div>
                 </div>
@@ -255,15 +255,15 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
               </div>
               <div class="rowlist">
                 <div class="r hd" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span>Year</span><span>Return</span><span>Tax paid</span><span>Status</span></div>
-                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2026</span><span>Individual &mdash; business &amp; salary</span><span class="n">3,210,581</span><span class="stbadge st-rev">In review</span></div>
-                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2025</span><span>Individual &mdash; business &amp; salary</span><span class="n">2,945,487</span><span class="stbadge st-done">Filed</span></div>
-                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2024</span><span>Individual &mdash; business &amp; salary</span><span class="n">2,702,282</span><span class="stbadge st-done">Filed</span></div>
-                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2023</span><span>Individual &mdash; business &amp; salary</span><span class="n">2,479,158</span><span class="stbadge st-done">Filed</span></div>
-                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2022</span><span>Individual &mdash; business &amp; salary</span><span class="n">2,274,457</span><span class="stbadge st-done">Filed</span></div>
+                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2026</span><span>Individual, business &amp; salary</span><span class="n">3,210,581</span><span class="stbadge st-rev">In review</span></div>
+                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2025</span><span>Individual, business &amp; salary</span><span class="n">2,945,487</span><span class="stbadge st-done">Filed</span></div>
+                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2024</span><span>Individual, business &amp; salary</span><span class="n">2,702,282</span><span class="stbadge st-done">Filed</span></div>
+                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2023</span><span>Individual, business &amp; salary</span><span class="n">2,479,158</span><span class="stbadge st-done">Filed</span></div>
+                <div class="r" style="grid-template-columns:auto minmax(0,1fr) auto auto"><span class="n">2022</span><span>Individual, business &amp; salary</span><span class="n">2,274,457</span><span class="stbadge st-done">Filed</span></div>
               </div>
               <div class="hintbox">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
-                <span>Every filed year keeps its own ruleset version. Reopen TY2023 and it recomputes on TY2023 law &mdash; exactly as filed.</span>
+                <span>Every filed year keeps its own ruleset version. Reopen TY2023 and it recomputes on TY2023 law, exactly as filed.</span>
               </div>
             </div>
 
@@ -295,7 +295,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
                 </div>
 
                 <div class="an-card">
-                  <div class="an-hd"><b>Tax paid &mdash; 5 years</b><span>Contribution &amp; effective rate (TY2022&ndash;2026) &middot; CAGR 9%/yr</span></div>
+                  <div class="an-hd"><b>Tax paid, 5 years</b><span>Contribution &amp; effective rate (TY2022&ndash;2026) &middot; CAGR 9%/yr</span></div>
                   <div class="an-chart">
                     <svg viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true" class="an-line">
                       <polyline points="30,86 96,70 162,58 228,44 282,26" fill="none" stroke="#E9B949" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -310,7 +310,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
                 </div>
 
                 <div class="an-card">
-                  <div class="an-hd"><b>Business &mdash; expense breakdown</b><span>Top P&amp;L heads vs last year &middot; margin 69.5% &middot; turnover Rs 10,772,343</span></div>
+                  <div class="an-hd"><b>Business, expense breakdown</b><span>Top P&amp;L heads vs last year &middot; margin 69.5% &middot; turnover Rs 10,772,343</span></div>
                   <div class="an-rows">
                     <div class="an-row"><span class="an-l"><i style="--c:#0B7A5B"></i>Salaries</span><span class="an-v">Rs&nbsp;1,615,851</span><span class="an-d dn">&#9650;42%</span><span class="an-track"><i style="--w:100%;--c:#0B7A5B"></i></span></div>
                     <div class="an-row"><span class="an-l"><i style="--c:#0B7A5B"></i>Office</span><span class="an-v">Rs&nbsp;1,077,234</span><span class="an-d dn">&#9650;6%</span><span class="an-track"><i style="--w:67%;--c:#0B7A5B"></i></span></div>
@@ -319,7 +319,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
                     <div class="an-row"><span class="an-l"><i style="--c:#0B7A5B"></i>Travel</span><span class="an-v">Rs&nbsp;95,100</span><span class="an-d dn">&#9650;20%</span><span class="an-track"><i style="--w:6%;--c:#0B7A5B"></i></span></div>
                     <div class="an-row"><span class="an-l"><i style="--c:#0B7A5B"></i>Communication</span><span class="an-v">Rs&nbsp;46,700</span><span class="an-d flat">flat</span><span class="an-track"><i style="--w:3%;--c:#0B7A5B"></i></span></div>
                   </div>
-                  <p class="an-note"><b>Salaries up 42%</b> vs last year &mdash; above the expected range; document or review before filing.</p>
+                  <p class="an-note"><b>Salaries up 42%</b> vs last year, above the expected range; document or review before filing.</p>
                 </div>
               </div>
             </div>
@@ -331,10 +331,10 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
                 <span class="pill pill-g" style="margin-left:auto">AES-256</span>
               </div>
               <div style="display:grid;gap:9px">
-                <div class="doccard" style="--dd:0s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="meta"><b>TY2026 &mdash; filed return.pdf</b><span>Acknowledgement 3820-4471-9902 &middot; 12 Sep 2026</span></span><span class="st">Sealed</span></div>
-                <div class="doccard" style="--dd:.08s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="meta"><b>TY2026 &mdash; computation pack.pdf</b><span>28 pages &middot; every line traced to source</span></span><span class="st">Sealed</span></div>
-                <div class="doccard" style="--dd:.16s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.4"/><path d="M3 10h18"/></svg></span><span class="meta"><b>Salary certificate &mdash; TY2026</b><span>Supports line 1009 &middot; uploaded 14 Aug</span></span><span class="st">Linked</span></div>
-                <div class="doccard" style="--dd:.24s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span><span class="meta"><b>Audit trail export &mdash; TY2026.csv</b><span>412 events &middot; immutable</span></span><span class="st">Sealed</span></div>
+                <div class="doccard" style="--dd:0s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="meta"><b>TY2026, filed return.pdf</b><span>Acknowledgement 3820-4471-9902 &middot; 12 Sep 2026</span></span><span class="st">Sealed</span></div>
+                <div class="doccard" style="--dd:.08s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="meta"><b>TY2026, computation pack.pdf</b><span>28 pages &middot; every line traced to source</span></span><span class="st">Sealed</span></div>
+                <div class="doccard" style="--dd:.16s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.4"/><path d="M3 10h18"/></svg></span><span class="meta"><b>Salary certificate, TY2026</b><span>Supports line 1009 &middot; uploaded 14 Aug</span></span><span class="st">Linked</span></div>
+                <div class="doccard" style="--dd:.24s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span><span class="meta"><b>Audit trail export, TY2026.csv</b><span>412 events &middot; immutable</span></span><span class="st">Sealed</span></div>
               </div>
             </div>
 
@@ -372,7 +372,7 @@ html[data-theme="dark"] .an-kv b.pos{color:var(--emerald-300)}
           </div>
           <div class="sec-item">
             <span class="sh"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Lawful filing channel</span>
-            <p>Filed via the e-intermediary framework &mdash; your IRIS credentials are never requested or stored.</p>
+            <p>Filed via the e-intermediary framework, your IRIS credentials are never requested or stored.</p>
           </div>
           <div class="sec-item">
             <span class="sh"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg> Least-privilege access</span>

@@ -6,7 +6,7 @@ image: assets/ins-trademark.webp
 excerpt: What a trademark protects, why registering early matters, and how the process works with IPO Pakistan.
 ---
 
-Your brand name and logo are often the most valuable thing you own &mdash; and the easiest to lose if someone registers them first. A trademark is how you protect them.
+Your brand name and logo are often the most valuable thing you own, and the easiest to lose if someone registers them first. A trademark is how you protect them.
 
 ## What a trademark actually protects
 
@@ -25,6 +25,6 @@ The essentials are simple: your CNIC, a clear image of your logo or wordmark, an
 
 ## How long it takes
 
-Trademark registration is not instant &mdash; it moves through examination, publication, and a period for objections before the certificate is issued. Starting early is the whole point.
+Trademark registration is not instant, it moves through examination, publication, and a period for objections before the certificate is issued. Starting early is the whole point.
 
 If you have a brand worth protecting, [see what trademark registration involves](services.html#ip) or talk to our team about your mark.

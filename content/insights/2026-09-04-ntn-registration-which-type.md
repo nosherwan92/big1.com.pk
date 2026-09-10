@@ -6,7 +6,7 @@ image: assets/ins-ntn.webp
 excerpt: Four kinds of registration, and picking the wrong one costs you time. A plain guide to which applies to your situation.
 ---
 
-An NTN &mdash; National Tax Number &mdash; is your registration with FBR and the account through which everything else happens: filing, refunds, sales tax, notices. Getting the right kind at the start saves a correction later.
+An NTN, National Tax Number, is your registration with FBR and the account through which everything else happens: filing, refunds, sales tax, notices. Getting the right kind at the start saves a correction later.
 
 ## Individual
 
@@ -16,7 +16,7 @@ For an individual, the CNIC is the NTN. Registration is really the creation of y
 
 ## Business (sole proprietor)
 
-For a person trading in their own name &mdash; a shop, a practice, a freelance business, a small manufacturer.
+For a person trading in their own name, a shop, a practice, a freelance business, a small manufacturer.
 
 It stays attached to you personally rather than a separate legal entity, but the profile carries the business name, its nature and its premises. You will be asked for proof of the business address.
 
@@ -28,7 +28,7 @@ The AOP registers in its own name and files its own return, and the partners' sh
 
 ## Company
 
-For an entity incorporated with SECP &mdash; single-member, private limited, or public.
+For an entity incorporated with SECP, single-member, private limited, or public.
 
 Incorporation comes first, then the tax registration in the company's name, with its incorporation documents and director details.
 
@@ -39,7 +39,7 @@ Ask two questions:
 1. **Is there a separate legal entity?** If SECP has incorporated something, it is a company. If a partnership deed exists, it is an AOP.
 2. **Is there a business at all, or only personal income?** If only personal income, an individual registration is enough.
 
-If the answer is not obvious &mdash; a family business with no deed, a freelancer with foreign clients, a person about to incorporate &mdash; ask before registering. Changing the basis afterwards is possible but tedious.
+If the answer is not obvious, a family business with no deed, a freelancer with foreign clients, a person about to incorporate, ask before registering. Changing the basis afterwards is possible but tedious.
 
 ## What you will need
 

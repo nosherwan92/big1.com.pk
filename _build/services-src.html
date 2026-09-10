@@ -6,7 +6,7 @@
 .wrap{max-width:1760px;margin-inline:auto;padding-inline:clamp(18px,3vw,40px)}
 .phead{padding:clamp(20px,2.4vw,32px) 0 clamp(8px,1.2vw,14px);text-align:center}
 .phead h1{font-size:clamp(1.4rem,2.3vw,1.8rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 8px}
-.lede{max-width:620px;margin-inline:auto;font-size:clamp(.9rem,1.4vw,.98rem);color:var(--text-2);line-height:1.5}
+.lede{max-width:620px;margin-inline:auto;font-size:clamp(.9rem,1.4vw.98rem);color:var(--text-2);line-height:1.5}
 /* filter */
 .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:18px 0 18px}
 .tabs button{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);
@@ -28,7 +28,7 @@
 .tile[hidden]{display:none}
 .tile .ti{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;color:#fff;
   background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));
-  box-shadow:0 10px 20px -9px rgba(6,95,70,.5);transition:transform .28s var(--ease)}
+  box-shadow:0 10px 20px -9px rgba(6,95,70.5);transition:transform .28s var(--ease)}
 .tile:hover .ti{transform:scale(1.08) rotate(-4deg)}
 .tile .ti svg{width:30px;height:30px}
 .tile .tl{font-size:.95rem;font-weight:600;letter-spacing:-.012em;line-height:1.25}
@@ -40,7 +40,7 @@
 /* ---- guided detail modal ---- */
 .svc-modal{position:fixed;inset:0;z-index:120;display:grid;place-items:end center;padding:0}
 .svc-modal[hidden]{display:none}
-.svc-back{position:absolute;inset:0;background:rgba(8,13,19,.55);backdrop-filter:blur(3px);animation:svcFade .25s ease}
+.svc-back{position:absolute;inset:0;background:rgba(8,13,19.55);backdrop-filter:blur(3px);animation:svcFade .25s ease}
 @keyframes svcFade{from{opacity:0}}
 .svc-dialog{position:relative;width:min(560px,100%);max-height:92vh;overflow:auto;background:var(--bg);
   border:1px solid var(--border);border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);padding:26px 26px 30px;
@@ -52,7 +52,7 @@
 .svc-x:hover{color:var(--text);border-color:var(--border-strong)}
 .svc-head{display:flex;align-items:center;gap:14px;margin-bottom:13px;padding-right:34px}
 .svc-head .ti{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;color:#fff;flex-shrink:0;
-  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70,.5)}
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70.5)}
 .svc-head .ti svg{width:27px;height:27px}
 .svc-head h3{font-size:1.16rem;letter-spacing:-.02em;line-height:1.2}
 .svc-head .sub{font-size:.72rem;color:var(--text-3)}
@@ -66,8 +66,8 @@
 .svc-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 4px}
 .svc-tier{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);
   text-decoration:none;text-align:left;color:var(--text);cursor:pointer;font-family:var(--sans);transition:.2s}
-.svc-tier:hover{border-color:var(--emerald-600);box-shadow:0 6px 18px -10px rgba(5,150,105,.45)}
-.svc-tier[aria-pressed="true"]{border-color:var(--emerald-600);background:linear-gradient(120deg,rgba(5,150,105,.10),rgba(5,150,105,.04));box-shadow:0 0 0 3px rgba(5,150,105,.12)}
+.svc-tier:hover{border-color:var(--emerald-600);box-shadow:0 6px 18px -10px rgba(5,150,105.45)}
+.svc-tier[aria-pressed="true"]{border-color:var(--emerald-600);background:linear-gradient(120deg,rgba(5,150,105.10),rgba(5,150,105.04));box-shadow:0 0 0 3px rgba(5,150,105.12)}
 .svc-tier b{font-family:var(--sans);font-size:.9rem;font-weight:700}
 .svc-tier span{font-size:.76rem;color:var(--text-3);line-height:1.4}
 .svc-tier em{font-style:normal;font-weight:700;color:var(--emerald-700)}
@@ -78,7 +78,7 @@
 .svc-docs{list-style:none;display:grid;gap:8px;margin:0}
 .svc-docs li{display:flex;gap:9px;align-items:flex-start;font-size:.85rem;color:var(--text-2);line-height:1.45}
 .svc-docs .tk{width:16px;height:16px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
-  background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
+  background:rgba(16,185,129.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
 html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
 .svc-fee{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:16px;padding:5px 13px;border-radius:100px;
   background:var(--bg-sub);border:1px solid var(--border);font-size:.74rem;color:var(--text-3);letter-spacing:.01em}
@@ -108,7 +108,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   <div class="wrap">
     <div class="phead">
       <h1>Our services</h1>
-      <p class="lede">Tap a service to see what&rsquo;s involved and what you&rsquo;ll need for your case &mdash; then start on WhatsApp. We confirm the fee before you pay.</p>
+      <p class="lede">Tap a service to see what&rsquo;s involved and what you&rsquo;ll need for your case, then start on WhatsApp. We confirm the fee before you pay.</p>
     </div>
 
     <div class="tabs" role="group" aria-label="Filter services">
@@ -188,7 +188,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
 
     </div>
 
-    <p class="fine">Requirements and fees depend on your specific case &mdash; we confirm both before you pay. Income-tax
+    <p class="fine">Requirements and fees depend on your specific case, we confirm both before you pay. Income-tax
       return filing is on the <a href="tax-filing.html">tax&nbsp;filing</a> page.</p>
   </div>
   </section>
@@ -226,34 +226,34 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   var WA='https://wa.me/923399999611?text=';
   var SVC={
     itr:{cat:'tax',title:'Income Tax Return',sub:'FBR &middot; IRIS &middot; TY 2025&ndash;26',
-      desc:'Your annual income tax return &mdash; computed to the rupee, wealth statement reconciled, and filed through an authorised FBR e-intermediary.',
+      desc:'Your annual income tax return, computed to the rupee, wealth statement reconciled, and filed through an authorised FBR e-intermediary.',
       wa:'income tax return filing',
       page:{label:'See how income-tax filing works',href:'tax-filing.html'},
       // Two ways to file -- mirrors the app's "File your Income Tax Return" chooser. `app` = the app's ?service= token.
       options:[
         {id:'self',label:'Self-Filing (guided app)',fee:feeTxt('income_tax_return'),app:'self_filing',
-          docs:['Salary tax certificate or business income &amp; expense summary','Tax deduction certificates &mdash; bank profit, mobile, vehicle, property','Bank statement(s) for the tax year','Assets &amp; liabilities for the wealth statement'],
+          docs:['Salary tax certificate or business income &amp; expense summary','Tax deduction certificates, bank profit, mobile, vehicle, property','Bank statement(s) for the tax year','Assets &amp; liabilities for the wealth statement'],
           note:'You prepare it yourself, step by step. Pay at the end, before filing.'},
         // Assisted Filing: pick a tier -> the checklist and the app link change with it (no fee pill, no long notes).
         {id:'priority',label:'Assisted Filing (we prepare it)',app:'priority',
-          note:'Nothing is mandatory &mdash; tick what applies, upload what you have; we follow up for the rest. Pay when it&rsquo;s ready.',
+          note:'Nothing is mandatory, tick what applies, upload what you have; we follow up for the rest. Pay when it&rsquo;s ready.',
           tiers:[
             {label:'Salary only',fee:feeTxt('priority_filing_salary'),sub:'Salary income (bank profit is fine).',app:'priority_salary',
-              docs:['Salary / tax-deduction certificate from your employer','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Certificates of tax deducted elsewhere (bank profit, mobile, vehicle, property)','Only what changed this year &mdash; property, vehicle, investments, loans, remittances']},
+              docs:['Salary / tax-deduction certificate from your employer','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Certificates of tax deducted elsewhere (bank profit, mobile, vehicle, property)','Only what changed this year, property, vehicle, investments, loans, remittances']},
             {label:'Business / multiple incomes',fee:feeTxt('priority_filing_complex'),sub:'Business, freelance / IT export, rent, capital gains, foreign or a mix.',app:'priority_complex',
-              docs:['Business / freelance records &mdash; invoices, receipts, bank credits, expenses','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Evidence of other income &mdash; rent, capital gains, foreign, salary certificate if any','Only what changed this year &mdash; property, vehicle, investments, loans, remittances']}
+              docs:['Business / freelance records, invoices, receipts, bank credits, expenses','Bank statements 1&nbsp;July &ndash; 30&nbsp;June, all accounts','Evidence of other income, rent, capital gains, foreign, salary certificate if any','Only what changed this year, property, vehicle, investments, loans, remittances']}
           ]}
       ]},
     ntn:{cat:'tax',title:'NTN Registration',sub:'FBR &middot; National Tax Number',
-      desc:'Your National Tax Number and IRIS account &mdash; the first step to becoming a filer.',
+      desc:'Your National Tax Number and IRIS account, the first step to becoming a filer.',
       wa:'NTN registration',
       options:[
         {id:'individual',label:'Individual / salaried',fee:feeTxt('ntn_individual'),
-          docs:['CNIC &mdash; front &amp; back'],
+          docs:['CNIC (front &amp; back)'],
           info:['A mobile number registered on your own CNIC','Email address'],
           note:'FBR sends a verification PIN to the mobile registered on your CNIC and to your email to complete IRIS enrolment.'},
         {id:'business',label:'Business (sole proprietor)',fee:feeTxt('ntn_business'),
-          docs:['CNIC &mdash; front &amp; back','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
+          docs:['CNIC (front &amp; back)','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
           info:['Business name','Principal line of business','Business address']},
         {id:'aop',label:'Partnership / AOP',fee:feeTxt('ntn_aop'),
           docs:['Partnership deed','Partnership registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
@@ -286,50 +286,50 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
           info:['Company name','Business / service activity']}
       ]},
     iris:{cat:'tax',title:'IRIS Profile Update',sub:'FBR',
-      desc:'Change of address, bank account, business activity or contacts &mdash; kept current so notices reach you.',
+      desc:'Change of address, bank account, business activity or contacts, kept current so notices reach you.',
       wa:'an IRIS profile update',fee:feeTxt('iris_profile_update'),
-      docs:['CNIC &mdash; front &amp; back'],
+      docs:['CNIC (front &amp; back)'],
       info:['What needs updating']},
     notice:{cat:'tax',title:'FBR Notice &amp; Audit Response',sub:'FBR',
       desc:'Received a notice? We read it, tell you what it actually means, and draft the response with the evidence attached.',
       wa:'help with an FBR notice',fee:'Quoted case by case',
-      docs:['The FBR notice (PDF or photo)','CNIC &mdash; front side']},
+      docs:['The FBR notice (PDF or photo)','CNIC, front side']},
     taxadv:{cat:'tax',title:'Tax Advisory',sub:'Planning &middot; structuring &middot; second opinions',
-      desc:'Talk to a tax expert before you act &mdash; salary structuring, capital gains, property or business setup.',
+      desc:'Talk to a tax expert before you act, salary structuring, capital gains, property or business setup.',
       wa:'tax advisory',fee:'Quoted case by case',
-      docs:[],info:['Your question or situation'],note:'No documents needed to start &mdash; just bring your question.'},
+      docs:[],info:['Your question or situation'],note:'No documents needed to start, just bring your question.'},
     trademark:{cat:'ip',title:'Trademark Registration',sub:'IPO Pakistan',
-      desc:'Register your brand name or logo as a trademark &mdash; before someone else does.',
+      desc:'Register your brand name or logo as a trademark, before someone else does.',
       wa:'trademark registration',fee:feeTxt('trademark_registration'),gov:1,
-      docs:['CNIC &mdash; front &amp; back','Your logo / wordmark as a clear image'],
+      docs:['CNIC (front &amp; back)','Your logo / wordmark as a clear image'],
       info:['Applicant name','Brand / mark name','Class of goods / services','The goods or services it covers']},
     copyright:{cat:'ip',title:'Copyright Registration',sub:'IPO Pakistan',
       desc:'Register an original work.',
       wa:'copyright registration',gov:1,
       options:[
         {id:'artistic',label:'Artistic (logo, art, photo)',fee:feeTxt('copyright_artistic'),
-          docs:['CNIC &mdash; front &amp; back','A copy of the artistic work (image / PDF)','Affidavit of original creativity','Two newspaper advertisements of the work','NOC from the artist / creator (if someone else made it)'],
+          docs:['CNIC (front &amp; back)','A copy of the artistic work (image / PDF)','Affidavit of original creativity','Two newspaper advertisements of the work','NOC from the artist / creator (if someone else made it)'],
           info:['Applicant name','Title of the work'],
-          note:'Don&rsquo;t have the newspaper advertisements? We can arrange them for you &mdash; as a paid add-on.'},
+          note:'Don&rsquo;t have the newspaper advertisements? We can arrange them for you, as a paid add-on.'},
         {id:'literary',label:'Literary / software',fee:feeTxt('copyright_literary'),
-          docs:['CNIC &mdash; front &amp; back','A copy of the work (source code, for software)','Affidavit of original creativity','NOC from the writer / owner (if someone else made it)'],
+          docs:['CNIC (front &amp; back)','A copy of the work (source code, for software)','Affidavit of original creativity','NOC from the writer / owner (if someone else made it)'],
           info:['Applicant name','Title of the work','Literary work or software']},
         {id:'film',label:'Film / drama / game',fee:feeTxt('copyright_cinematographic'),
-          docs:['CNIC &mdash; front &amp; back','A copy of the work on USB / DVD','Affidavit of original creativity','NOC from all contributors (performers, singer, lyricist, musician)'],
+          docs:['CNIC (front &amp; back)','A copy of the work on USB / DVD','Affidavit of original creativity','NOC from all contributors (performers, singer, lyricist, musician)'],
           info:['Applicant name','Title of the work']},
         {id:'music',label:'Music / sound',fee:feeTxt('copyright_record'),
-          docs:['CNIC &mdash; front &amp; back','Audio copy on USB / DVD','Affidavit of original creativity','NOC from all contributors (singer, composer, lyricist, musician)'],
+          docs:['CNIC (front &amp; back)','Audio copy on USB / DVD','Affidavit of original creativity','NOC from all contributors (singer, composer, lyricist, musician)'],
           info:['Applicant name','Title of the song / work']}
       ]},
     patent:{cat:'ip',title:'Patent Registration',sub:'IPO Pakistan',
       desc:'Protect an invention with a patent.',
       wa:'patent registration',fee:feeTxt('patent_registration'),gov:1,
-      docs:['CNIC &mdash; front &amp; back','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application document (if you filed abroad first)','Assignment (if you are not the inventor)','NOC from your institution (students / employees of a university or research institute)'],
+      docs:['CNIC (front &amp; back)','A full description of the invention, with claims','Drawings / diagrams (if any)','Earlier foreign application document (if you filed abroad first)','Assignment (if you are not the inventor)','NOC from your institution (students / employees of a university or research institute)'],
       info:['Applicant / inventor name','Title of the invention']},
     design:{cat:'ip',title:'Industrial Design Registration',sub:'IPO Pakistan',
-      desc:'Register the look of a product &mdash; its shape, pattern or ornamentation.',
+      desc:'Register the look of a product, its shape, pattern or ornamentation.',
       wa:'industrial design registration',fee:feeTxt('design_registration'),gov:1,
-      docs:['CNIC &mdash; front &amp; back','Images of the design &mdash; front, back, sides, top and an angled view','Earlier foreign application document (if you filed abroad first)'],
+      docs:['CNIC (front &amp; back)','Images of the design, front, back, sides, top and an angled view','Earlier foreign application document (if you filed abroad first)'],
       info:['Applicant name','Title of the design','The product it applies to','What is new about it']},
     incorp:{cat:'corp',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
       desc:'Incorporate your company with SECP, from name reservation to certificate.',
@@ -340,17 +340,17 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     bizreg:{cat:'corp',title:'Business / AOP Registration',sub:'Sole proprietorship &middot; partnership',
       desc:'Register a sole proprietorship, partnership or AOP and start operating formally.',
       wa:'business / AOP registration',fee:feeTxt('business_registration'),
-      docs:['CNIC &mdash; front &amp; back','Business proof / partnership deed','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
+      docs:['CNIC (front &amp; back)','Business proof / partnership deed','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
       info:['Business / firm name']},
     secp:{cat:'corp',title:'SECP Filings &amp; Compliance',sub:'Annual returns &middot; Form 29 / A &middot; changes',
-      desc:'Annual returns, director changes, charges and every other SECP filing &mdash; on time, every time.',
+      desc:'Annual returns, director changes, charges and every other SECP filing, on time, every time.',
       wa:'SECP filings / compliance',fee:feeTxt('secp_compliance'),gov:1,
       docs:['Supporting documents for the filing'],
       info:['Company name','The filing you need (annual return, Form 29, change of directors&hellip;)']},
     corpadv:{cat:'corp',title:'Corporate Advisory',sub:'Structuring &middot; agreements &middot; governance',
-      desc:'Company structuring, mergers, shareholder agreements, governance &mdash; talk to an expert before you commit.',
+      desc:'Company structuring, mergers, shareholder agreements, governance, talk to an expert before you commit.',
       wa:'corporate advisory',fee:'Quoted case by case',
-      docs:[],info:['What you need help with'],note:'No documents needed to start &mdash; just bring your question.'}
+      docs:[],info:['What you need help with'],note:'No documents needed to start, just bring your question.'}
   };
 
   var modal=document.getElementById('svcModal');

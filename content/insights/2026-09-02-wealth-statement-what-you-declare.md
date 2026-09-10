@@ -3,7 +3,7 @@ title: The wealth statement: what you declare, and why it has to tie
 category: Income Tax
 date: 2026-09-02
 image: assets/ins-wealth.webp
-excerpt: Your return says what you earned. The wealth statement says what you own — and the two have to agree with each other.
+excerpt: Your return says what you earned. The wealth statement says what you own, and the two have to agree with each other.
 ---
 
 The return is only half of a filing. Alongside it sits the wealth statement: a list of what you own and what you owe, at the start and end of the year.
@@ -14,13 +14,13 @@ People find it uncomfortable, usually for the wrong reason. It is not an audit o
 
 Broadly, everything of value in your name at the year end:
 
-- **Property** &mdash; houses, plots, shops, agricultural land, with the year of purchase
-- **Vehicles** &mdash; registration details
-- **Bank accounts and cash** &mdash; balances at 30 June
-- **Investments** &mdash; shares, funds, certificates, bonds, insurance policies
-- **Business capital** &mdash; if you run one
-- **Other assets** &mdash; equipment, household items of value, foreign assets
-- **Liabilities** &mdash; loans, mortgages, overdrafts and other borrowings
+- **Property**, houses, plots, shops, agricultural land, with the year of purchase
+- **Vehicles**, registration details
+- **Bank accounts and cash**, balances at 30 June
+- **Investments**, shares, funds, certificates, bonds, insurance policies
+- **Business capital**, if you run one
+- **Other assets**, equipment, household items of value, foreign assets
+- **Liabilities**, loans, mortgages, overdrafts and other borrowings
 
 And, separately, your personal expenses for the year.
 
@@ -28,7 +28,7 @@ And, separately, your personal expenses for the year.
 
 Here is the logic FBR applies, and it is worth understanding because it explains almost every question that follows a filing:
 
-> What you owned at the end of the year, minus what you owned at the start, should be explained by the income you declared, less what you spent, plus anything that came in from outside &mdash; a gift, an inheritance, a remittance.
+> What you owned at the end of the year, minus what you owned at the start, should be explained by the income you declared, less what you spent, plus anything that came in from outside, a gift, an inheritance, a remittance.
 
 If your assets grew by more than your declared income can explain, there is a gap. A gap is not automatically an accusation, but it is the single most common reason a return attracts a question.
 

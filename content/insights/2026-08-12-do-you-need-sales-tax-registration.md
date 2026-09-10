@@ -10,7 +10,7 @@ If you sell goods or provide services, one question comes up early: do you need 
 
 ## Federal vs provincial
 
-Sales tax in Pakistan is split. Tax on **goods** is federal, administered by FBR through a Sales Tax Registration Number (STRN). Tax on **services** is provincial, handled by the authority in your province &mdash; PRA in Punjab, SRB in Sindh, KPRA and BRA elsewhere. Which one applies depends on what you sell and where you operate.
+Sales tax in Pakistan is split. Tax on **goods** is federal, administered by FBR through a Sales Tax Registration Number (STRN). Tax on **services** is provincial, handled by the authority in your province, PRA in Punjab, SRB in Sindh, KPRA and BRA elsewhere. Which one applies depends on what you sell and where you operate.
 
 ## Who typically registers
 

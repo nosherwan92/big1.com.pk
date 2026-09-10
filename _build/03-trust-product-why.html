@@ -32,12 +32,12 @@
 .panel{display:none;animation:panelIn .7s var(--ease)}
 .panel[data-active]{display:block}
 @keyframes panelIn{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
-.panel-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.5fr);gap:clamp(28px,4vw,60px);align-items:center}
+.panel-grid{display:grid;grid-template-columns:minmax(0.86fr) minmax(0,1.5fr);gap:clamp(28px,4vw,60px);align-items:center}
 .panel-copy h3{font-size:clamp(1.5rem,2.3vw,2rem);letter-spacing:-.03em;margin-bottom:14px}
 .feat-list{margin-top:22px;display:grid;gap:13px}
 .feat-list li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem;color:var(--text-2);line-height:1.55}
 .feat-list .tick{width:21px;height:21px;border-radius:7px;flex-shrink:0;margin-top:1px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(16,158,125,.12));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(16,185,129.16),rgba(16,158,125.12));color:var(--accent);border:1px solid var(--border)}
 @media (max-width:960px){.panel-grid{grid-template-columns:1fr;gap:34px}}
 
 /* ---------- Why: clean uniform grid ---------- */
@@ -46,7 +46,7 @@
   background:var(--surface-solid);transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
 .why-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
 .why-ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--accent);
-  background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(16,158,125,.09));border:1px solid var(--border);
+  background:linear-gradient(135deg,rgba(16,185,129.14),rgba(16,158,125.09));border:1px solid var(--border);
   margin-bottom:20px;transition:.4s var(--ease)}
 .why-card:hover .why-ic{background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));color:#fff;border-color:transparent}
 .why-card h3{font-size:1.12rem;letter-spacing:-.022em;line-height:1.25;margin-bottom:10px}
@@ -76,7 +76,7 @@
       </div>
       <div class="stat" data-reveal style="--d:240ms">
         <div class="v tnum" data-count="7" data-suffix=" yrs">0</div>
-        <div class="l">Versioned tax rulesets retained &mdash; recompute any prior year on demand.</div>
+        <div class="l">Versioned tax rulesets retained, recompute any prior year on demand.</div>
       </div>
     </div>
   </div>
@@ -107,14 +107,14 @@
 .q-opt{display:flex;gap:11px;align-items:flex-start;padding:12px 13px;border:1px solid var(--border);border-radius:var(--r-sm);
   font-size:.85rem;cursor:pointer;transition:.28s var(--ease);background:var(--bg-sub)}
 .q-opt:hover{border-color:var(--border-strong)}
-.q-opt.on{border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.07);box-shadow:0 0 0 3px rgba(16,185,129,.08)}
+.q-opt.on{border-color:rgba(16,185,129.45);background:rgba(16,185,129.07);box-shadow:0 0 0 3px rgba(16,185,129.08)}
 .q-opt .rd{width:16px;height:16px;border-radius:50%;border:2px solid var(--border-strong);flex-shrink:0;margin-top:2px;position:relative}
 .q-opt.on .rd{border-color:var(--emerald-500)}
 .q-opt.on .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--emerald-500)}
 .hintbox{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:var(--r-sm);font-size:.79rem;line-height:1.55;
-  background:rgba(16,158,125,.07);border:1px solid rgba(16,158,125,.2);color:var(--text-2)}
+  background:rgba(16,158,125.07);border:1px solid rgba(16,158,125.2);color:var(--text-2)}
 .hintbox svg{color:var(--blue-600);flex-shrink:0;margin-top:2px}
-.hintbox.amber{background:rgba(233,185,73,.1);border-color:rgba(233,185,73,.3)}
+.hintbox.amber{background:rgba(233,185,73.1);border-color:rgba(233,185,73.3)}
 .hintbox.amber svg{color:var(--gold-600)}
 .donutwrap{display:flex;align-items:center;gap:26px;padding-top:6px}
 .donut{width:118px;height:118px;transform:rotate(-90deg);flex-shrink:0}
