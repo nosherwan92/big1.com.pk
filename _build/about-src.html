@@ -14,8 +14,8 @@
   --blue-700:#0D6E5A; --blue-600:#109E7D; --gold-600:#C9971C; --gold-500:#E9B949;
   --bg:#FFFFFF; --bg-sub:#F7F9FB; --bg-deep:#EEF2F6; --surface:#FFFFFF; --border:#E4E9EF; --border-strong:#D2DAE4;
   --text:#080D13; --text-2:#495566; --text-3:#7B8798; --accent:var(--emerald-700);
-  --shadow-sm:0 2px 6px rgba(8,13,19.06), 0 1px 2px rgba(8,13,19.04);
-  --shadow-md:0 12px 28px -12px rgba(8,13,19.16), 0 2px 8px rgba(8,13,19.05);
+  --shadow-sm:0 2px 6px rgba(8,13,19,.06), 0 1px 2px rgba(8,13,19,.04);
+  --shadow-md:0 12px 28px -12px rgba(8,13,19,.16), 0 2px 8px rgba(8,13,19,.05);
   --sans:"Inter var","Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --serif:"Instrument Serif","Iowan Old Style","Palatino Linotype",Palatino,"Georgia",serif;
   --r-sm:12px; --r-md:16px; --r-lg:22px;
@@ -24,7 +24,7 @@
   :root{
     --bg:#070B10; --bg-sub:#0B1117; --bg-deep:#10171F; --surface:#0D141B; --border:#1C2733; --border-strong:#2A3846;
     --text:#EDF2F7; --text-2:#A6B2C1; --text-3:#718092; --accent:var(--emerald-500);
-    --shadow-sm:0 2px 6px rgba(0,0,0.4); --shadow-md:0 12px 28px -12px rgba(0,0,0.55);
+    --shadow-sm:0 2px 6px rgba(0,0,0,.4); --shadow-md:0 12px 28px -12px rgba(0,0,0,.55);
   }
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -57,14 +57,14 @@ h1 .serif{font-family:var(--serif);font-weight:400;font-style:italic}
 .card{padding:22px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface);transition:.3s}
 .card:hover{box-shadow:var(--shadow-md);border-color:var(--border-strong);transform:translateY(-3px)}
 .card .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;
-  background:linear-gradient(135deg,rgba(6,95,70.13),rgba(16,158,125.1));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
 .card h3{font-size:1.02rem;letter-spacing:-.02em;margin-bottom:6px}
 .card p{font-size:.85rem;color:var(--text-2)}
 .card a.go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.82rem;font-weight:650;color:var(--accent)}
 .how{display:grid;gap:10px}
 .how li{display:flex;gap:12px;align-items:flex-start;padding:15px 17px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);list-style:none}
 .how .t{width:22px;height:22px;border-radius:7px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
-  background:rgba(16,185,129.13);color:var(--emerald-600);font-size:.7rem;font-weight:800}
+  background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.7rem;font-weight:800}
 @media (prefers-color-scheme:dark){.how .t{color:var(--emerald-300)}}
 .how b{font-weight:640;letter-spacing:-.01em}
 .how span.d{font-size:.85rem;color:var(--text-2)}

@@ -6,7 +6,7 @@
 .wrap{max-width:1760px;margin-inline:auto;padding-inline:clamp(18px,3vw,40px)}
 .phead{padding:clamp(20px,2.4vw,32px) 0 clamp(8px,1.2vw,14px);text-align:center}
 .phead h1{font-size:clamp(1.4rem,2.3vw,1.8rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 8px}
-.lede{max-width:620px;margin-inline:auto;font-size:clamp(.9rem,1.4vw.98rem);color:var(--text-2);line-height:1.5}
+.lede{max-width:620px;margin-inline:auto;font-size:clamp(.9rem,1.4vw,.98rem);color:var(--text-2);line-height:1.5}
 /* filter */
 .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:18px 0 18px}
 .tabs button{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);
@@ -28,7 +28,7 @@
 .tile[hidden]{display:none}
 .tile .ti{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;color:#fff;
   background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));
-  box-shadow:0 10px 20px -9px rgba(6,95,70.5);transition:transform .28s var(--ease)}
+  box-shadow:0 10px 20px -9px rgba(6,95,70,.5);transition:transform .28s var(--ease)}
 .tile:hover .ti{transform:scale(1.08) rotate(-4deg)}
 .tile .ti svg{width:30px;height:30px}
 .tile .tl{font-size:.95rem;font-weight:600;letter-spacing:-.012em;line-height:1.25}
@@ -40,7 +40,7 @@
 /* ---- guided detail modal ---- */
 .svc-modal{position:fixed;inset:0;z-index:120;display:grid;place-items:end center;padding:0}
 .svc-modal[hidden]{display:none}
-.svc-back{position:absolute;inset:0;background:rgba(8,13,19.55);backdrop-filter:blur(3px);animation:svcFade .25s ease}
+.svc-back{position:absolute;inset:0;background:rgba(8,13,19,.55);backdrop-filter:blur(3px);animation:svcFade .25s ease}
 @keyframes svcFade{from{opacity:0}}
 .svc-dialog{position:relative;width:min(560px,100%);max-height:92vh;overflow:auto;background:var(--bg);
   border:1px solid var(--border);border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);padding:26px 26px 30px;
@@ -52,7 +52,7 @@
 .svc-x:hover{color:var(--text);border-color:var(--border-strong)}
 .svc-head{display:flex;align-items:center;gap:14px;margin-bottom:13px;padding-right:34px}
 .svc-head .ti{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;color:#fff;flex-shrink:0;
-  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70.5)}
+  background:linear-gradient(140deg,var(--emerald-700),var(--emerald-500));box-shadow:0 10px 20px -9px rgba(6,95,70,.5)}
 .svc-head .ti svg{width:27px;height:27px}
 .svc-head h3{font-size:1.16rem;letter-spacing:-.02em;line-height:1.2}
 .svc-head .sub{font-size:.72rem;color:var(--text-3)}
@@ -66,8 +66,8 @@
 .svc-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 4px}
 .svc-tier{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);
   text-decoration:none;text-align:left;color:var(--text);cursor:pointer;font-family:var(--sans);transition:.2s}
-.svc-tier:hover{border-color:var(--emerald-600);box-shadow:0 6px 18px -10px rgba(5,150,105.45)}
-.svc-tier[aria-pressed="true"]{border-color:var(--emerald-600);background:linear-gradient(120deg,rgba(5,150,105.10),rgba(5,150,105.04));box-shadow:0 0 0 3px rgba(5,150,105.12)}
+.svc-tier:hover{border-color:var(--emerald-600);box-shadow:0 6px 18px -10px rgba(5,150,105,.45)}
+.svc-tier[aria-pressed="true"]{border-color:var(--emerald-600);background:linear-gradient(120deg,rgba(5,150,105,.10),rgba(5,150,105,.04));box-shadow:0 0 0 3px rgba(5,150,105,.12)}
 .svc-tier b{font-family:var(--sans);font-size:.9rem;font-weight:700}
 .svc-tier span{font-size:.76rem;color:var(--text-3);line-height:1.4}
 .svc-tier em{font-style:normal;font-weight:700;color:var(--emerald-700)}
@@ -78,7 +78,7 @@
 .svc-docs{list-style:none;display:grid;gap:8px;margin:0}
 .svc-docs li{display:flex;gap:9px;align-items:flex-start;font-size:.85rem;color:var(--text-2);line-height:1.45}
 .svc-docs .tk{width:16px;height:16px;border-radius:5px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
-  background:rgba(16,185,129.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
+  background:rgba(16,185,129,.13);color:var(--emerald-600);font-size:.62rem;font-weight:800}
 html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
 .svc-fee{display:inline-flex;align-items:baseline;gap:8px;margin-bottom:16px;padding:5px 13px;border-radius:100px;
   background:var(--bg-sub);border:1px solid var(--border);font-size:.74rem;color:var(--text-3);letter-spacing:.01em}

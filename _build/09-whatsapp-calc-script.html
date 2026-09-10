@@ -126,7 +126,7 @@
     if (paid > 0) {
       var diff = paid - total;
       html("sal_recon", diff > 1
-        ? '<div class="calc-note" style="background:rgba(16,185,129.09);border-color:rgba(16,185,129.3)">' +
+        ? '<div class="calc-note" style="background:rgba(16,185,129,.09);border-color:rgba(16,185,129,.3)">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--emerald-600)"><path d="M20 6 9 17l-5-5"/></svg>' +
           '<span>Your employer has deducted <b>' + money(diff) + ' more</b> than the slabs require. That is a refund you can claim.</span></div>'
         : diff < -1
@@ -311,7 +311,7 @@
   });
 
   /* live inputs */
-  document.querySelectorAll(".calc-body input.calc-body select").forEach(function (el) {
+  document.querySelectorAll(".calc-body input, .calc-body select").forEach(function (el) {
     el.addEventListener("input", recalcAll);
     el.addEventListener("change", recalcAll);
   });

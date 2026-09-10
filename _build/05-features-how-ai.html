@@ -10,7 +10,7 @@
 .fbens{display:grid;gap:11px;margin-top:24px}
 .fbens li{display:flex;gap:11px;align-items:flex-start;font-size:.9rem;color:var(--text-2)}
 .fbens .tick{width:19px;height:19px;border-radius:6px;flex-shrink:0;margin-top:2px;display:grid;place-items:center;
-  background:rgba(16,185,129.13);color:var(--accent)}
+  background:rgba(16,185,129,.13);color:var(--accent)}
 .flow{margin-top:26px;padding:14px 16px;border-radius:var(--r-md);border:1px dashed var(--border-strong);background:var(--bg-sub)}
 .flow .fl{font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;display:block}
 .flow .steps{display:flex;flex-wrap:wrap;align-items:center;gap:7px;font-size:.8rem;color:var(--text-2)}
@@ -33,14 +33,14 @@
   animation:slideUp .8s var(--ease) both;animation-delay:var(--dd,0s)}
 @keyframes slideUp{from{opacity:0;transform:translateY(14px)}}
 .doccard .fic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;
-  background:linear-gradient(135deg,rgba(6,95,70.14),rgba(16,158,125.12));color:var(--accent)}
+  background:linear-gradient(135deg,rgba(6,95,70,.14),rgba(16,158,125,.12));color:var(--accent)}
 .doccard .meta{flex:1;min-width:0}
 .doccard .meta b{display:block;font-weight:600;font-size:.85rem;letter-spacing:-.01em}
 .doccard .meta span{font-size:.72rem;color:var(--text-3)}
-.doccard .st{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(16,185,129.14);color:var(--emerald-600);white-space:nowrap}
+.doccard .st{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(16,185,129,.14);color:var(--emerald-600);white-space:nowrap}
 html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .scanline{position:absolute;left:0;right:0;height:60px;z-index:2;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(16,185,129.16),transparent);
+  background:linear-gradient(180deg,transparent,rgba(16,185,129,.16),transparent);
   animation:scan 4.5s var(--ease-io) infinite}
 @keyframes scan{0%{top:-60px}100%{top:100%}}
 
@@ -52,7 +52,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
   background:var(--bg-deep);color:var(--text-2);flex-shrink:0;font-family:var(--mono)}
 .elayer b{font-weight:600}
 .elayer span{color:var(--text-3);font-size:.75rem;display:block}
-.elayer.hi{border-color:rgba(16,185,129.4);background:linear-gradient(120deg,rgba(16,185,129.08),rgba(16,158,125.05))}
+.elayer.hi{border-color:rgba(16,185,129,.4);background:linear-gradient(120deg,rgba(16,185,129,.08),rgba(16,158,125,.05))}
 .earrow{display:grid;place-items:center;color:var(--text-3)}
 
 /* ---------- How it works ---------- */
@@ -65,7 +65,7 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
   background:var(--surface-solid);border:1px solid var(--border);box-shadow:var(--shadow-sm);
   color:var(--text-3);transition:transform .4s var(--ease),background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
 .jstep:hover .jdot{border-color:transparent;color:#fff;transform:scale(1.08) translateY(-2px);
-  background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));box-shadow:0 16px 36px -12px rgba(6,95,70.62)}
+  background:linear-gradient(135deg,var(--emerald-700),var(--emerald-600));box-shadow:0 16px 36px -12px rgba(6,95,70,.62)}
 .jstep:hover .jbody h3{color:var(--accent)}
 .jbody .jn{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase}
 .jbody h3{font-size:1rem;margin:6px 0 6px;letter-spacing:-.02em;line-height:1.25}
@@ -82,18 +82,18 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 }
 .ai-sec::before{content:"";position:absolute;inset:0;z-index:-1;
   background:
-    radial-gradient(70% 46% at 18% 8%,rgba(16,185,129.2),transparent 62%),
-    radial-gradient(58% 44% at 86% 24%,rgba(16,158,125.22),transparent 64%),
-    radial-gradient(64% 50% at 52% 108%,rgba(45,212,191.15),transparent 64%)}
+    radial-gradient(70% 46% at 18% 8%,rgba(16,185,129,.2),transparent 62%),
+    radial-gradient(58% 44% at 86% 24%,rgba(16,158,125,.22),transparent 64%),
+    radial-gradient(64% 50% at 52% 108%,rgba(45,212,191,.15),transparent 64%)}
 .ai-sec::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
-  background-image:linear-gradient(rgba(255,255,255.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255.045) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
   background-size:56px 56px;
   -webkit-mask-image:radial-gradient(ellipse 82% 66% at 50% 42%,#000,transparent 76%);
   mask-image:radial-gradient(ellipse 82% 66% at 50% 42%,#000,transparent 76%)}
-.ai-sec .eyebrow{background:rgba(255,255,255.04);border-color:#1D2733;color:#9AA9BB}
+.ai-sec .eyebrow{background:rgba(255,255,255,.04);border-color:#1D2733;color:#9AA9BB}
 .ai-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:clamp(32px,4.6vw,68px);align-items:center}
-.ai-panel{border-radius:var(--r-xl);border:1px solid #1B2430;background:rgba(10,16,22.82);
-  box-shadow:0 60px 120px -50px rgba(0,0,0.95),0 0 0 1px rgba(16,185,129.08);
+.ai-panel{border-radius:var(--r-xl);border:1px solid #1B2430;background:rgba(10,16,22,.82);
+  box-shadow:0 60px 120px -50px rgba(0,0,0,.95),0 0 0 1px rgba(16,185,129,.08);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow:hidden}
 .ai-phdr{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #161F29;font-size:.76rem;color:#8C9BAE}
 .ai-orb{width:26px;height:26px;border-radius:50%;flex-shrink:0;position:relative;
@@ -106,9 +106,9 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
   animation:aiIn .7s var(--ease) forwards;animation-delay:var(--ad,0s)}
 @keyframes aiIn{to{opacity:1;transform:none}}
 .scanrow .sic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;font-size:.7rem;font-weight:700}
-.sic.ok{background:rgba(16,185,129.14);color:#34D399}
-.sic.warn{background:rgba(233,185,73.14);color:#F0C75E}
-.sic.info{background:rgba(16,158,125.16);color:#7BA5F8}
+.sic.ok{background:rgba(16,185,129,.14);color:#34D399}
+.sic.warn{background:rgba(233,185,73,.14);color:#F0C75E}
+.sic.info{background:rgba(16,158,125,.16);color:#7BA5F8}
 .scanrow .txt{flex:1;min-width:0}
 .scanrow .txt b{display:block;font-weight:600;letter-spacing:-.012em;color:#E7EEF6}
 .scanrow .txt span{font-size:.75rem;color:#8695A8;display:block;margin-top:1px}
@@ -118,9 +118,9 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .progress-tiny i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#10B981,#2DD4BF);animation:tinyfill 3.4s var(--ease) forwards .3s}
 @keyframes tinyfill{to{width:100%}}
 .ai-caps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
-.ai-cap{padding:15px 16px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255.025);transition:.4s var(--ease)}
+.ai-cap{padding:15px 16px;border-radius:var(--r-md);border:1px solid #1A2430;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
 .ai-cap:hover{border-color:#28advertisement}
-.ai-cap:hover{border-color:#2A3644;background:rgba(255,255,255.05);transform:translateY(-3px)}
+.ai-cap:hover{border-color:#2A3644;background:rgba(255,255,255,.05);transform:translateY(-3px)}
 .ai-cap b{display:block;font-size:.9rem;letter-spacing:-.015em;margin-bottom:4px}
 .ai-cap span{font-size:.78rem;color:#8695A8;line-height:1.55}
 @media (max-width:960px){.ai-grid{grid-template-columns:1fr;gap:38px}}
@@ -137,9 +137,9 @@ html[data-theme="dark"] .doccard .st{color:var(--emerald-300)}
 .fm-l{font-size:.86rem;font-weight:520;color:var(--text)}
 .fm-l em{font-style:normal;font-family:var(--mono);font-size:.7rem;color:var(--text-3);margin-left:5px}
 .fm-a{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:640;font-size:.9rem;color:var(--gold-600)}
-.fm-b{font-size:.72rem;font-weight:600;color:var(--accent);padding:5px 11px;border-radius:100px;border:1px solid rgba(16,185,129.3);background:rgba(16,185,129.08);white-space:nowrap}
+.fm-b{font-size:.72rem;font-weight:600;color:var(--accent);padding:5px 11px;border-radius:100px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.08);white-space:nowrap}
 .fm-tot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;padding:13px 14px;border-radius:12px;
-  background:linear-gradient(135deg,rgba(16,185,129.11),rgba(16,158,125.05));border:1px solid rgba(16,185,129.28)}
+  background:linear-gradient(135deg,rgba(16,185,129,.11),rgba(16,158,125,.05));border:1px solid rgba(16,185,129,.28)}
 .fm-tot span{font-size:.8rem;font-weight:600;color:var(--text-2)}
 .fm-tot b{font-family:var(--display);font-size:1.35rem;font-weight:660;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
   background:linear-gradient(120deg,var(--emerald-700),var(--emerald-500));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -151,13 +151,13 @@ html[data-theme="dark"] .fm-tot b{background:linear-gradient(120deg,var(--emeral
 .svc-card{position:relative;padding:24px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface-solid);transition:.4s var(--ease)}
 .svc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
 .svc-card .sic2{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:15px;
-  background:linear-gradient(135deg,rgba(6,95,70.13),rgba(16,158,125.1));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70,.13),rgba(16,158,125,.1));color:var(--accent);border:1px solid var(--border)}
 .svc-card h3{font-size:1.04rem;letter-spacing:-.02em;margin-bottom:4px}
 .svc-card .ssub{display:block;font-size:.72rem;color:var(--text-3);margin-bottom:13px}
 .svc-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
 .svc-list li{display:flex;align-items:flex-start;gap:9px;font-size:.82rem;color:var(--text-2);line-height:1.5}
 .svc-list li .t2{width:16px;height:16px;border-radius:5px;display:grid;place-items:center;flex-shrink:0;margin-top:1px;
-  background:rgba(16,185,129.13);color:var(--emerald-600)}
+  background:rgba(16,185,129,.13);color:var(--emerald-600)}
 html[data-theme="dark"] .svc-list li .t2{color:var(--emerald-300)}
 .svc-list li em{font-style:normal;color:var(--text-3);font-size:.74rem}
 .svc-note{max-width:760px;margin:26px auto 0;text-align:center;font-size:.8rem;color:var(--text-3);line-height:1.6}
@@ -253,7 +253,7 @@ html[data-theme="dark"] .svc-list li .t2{color:var(--emerald-300)}
         <div class="scanline" aria-hidden="true"></div>
         <div class="doccard" style="--dd:.05s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/></svg></span><span class="meta"><b>Salary certificate, TY2026.pdf</b><span>Employer &middot; Section 149 &middot; 2 pages</span></span><span class="st">Read</span></div>
         <div class="doccard" style="--dd:.18s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.4"/><path d="M3 10h18"/></svg></span><span class="meta"><b>Bank statement, Jul&ndash;Jun.csv</b><span>Profit on debt &middot; Section 7B &middot; 412 rows</span></span><span class="st">Read</span></div>
-        <div class="doccard" style="--dd:.31s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M9.5 20v-6h5v6"/></svg></span><span class="meta"><b>Tenancy agreement.jpg</b><span>Property income &middot; Section 15</span></span><span class="st" style="background:rgba(233,185,73.16);color:var(--gold-600)">1 flag</span></div>
+        <div class="doccard" style="--dd:.31s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M9.5 20v-6h5v6"/></svg></span><span class="meta"><b>Tenancy agreement.jpg</b><span>Property income &middot; Section 15</span></span><span class="st" style="background:rgba(233,185,73,.16);color:var(--gold-600)">1 flag</span></div>
         <div class="doccard" style="--dd:.44s"><span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/></svg></span><span class="meta"><b>CDC portfolio statement.pdf</b><span>Capital gains &middot; Section 37A</span></span><span class="st">Read</span></div>
       </div>
     </div>
@@ -424,7 +424,7 @@ html[data-theme="dark"] .svc-list li .t2{color:var(--emerald-300)}
 .br-card{padding:22px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface-solid);transition:.4s var(--ease)}
 .br-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
 .br-card .bic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;
-  background:linear-gradient(135deg,rgba(6,95,70.12),rgba(16,158,125.09));color:var(--accent);border:1px solid var(--border)}
+  background:linear-gradient(135deg,rgba(6,95,70,.12),rgba(16,158,125,.09));color:var(--accent);border:1px solid var(--border)}
 .br-card h3{font-size:.98rem;letter-spacing:-.018em;margin-bottom:6px}
 .br-card p{font-size:.83rem;color:var(--text-2);line-height:1.6}
 @media (max-width:1000px){.br-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
