@@ -453,6 +453,30 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 /* Motion is decoration here: anyone who asks for less keeps the full background, still. */
 @media (prefers-reduced-motion:reduce){
   .amb-mesh::before.cta-sec::before{animation:none}}
+
+/* ============================ MOBILE CORRECTIONS ============================
+   From an audit at a real 375px viewport. The layout itself was fine: no horizontal
+   scroll and nothing overflowing on any of the six pages. This is entirely touch and
+   legibility, neither of which shows up on a desktop screen.
+
+   It sits at the end of NEW_CSS deliberately. .rdot, .svc-dot, .insight-cat and
+   .insight-date are all defined earlier in this same block, and a later rule of equal
+   specificity is what makes these win. */
+@media (max-width:640px){
+  /* a 12px floor: below that these are decoration on a phone, not text you can read */
+  .brand .tag{font-size:.75rem}
+  .eyebrow{font-size:.78rem;letter-spacing:.1em}
+  .insight-cat{font-size:.75rem}
+  .insight-date{font-size:.78rem}
+
+  /* hit areas. The bars stay thin and the box around them does not: background-clip
+     keeps the new padding transparent, so nothing changes visually. */
+  .rdot,.svc-dot{padding:18px 0;background-clip:content-box;box-sizing:content-box}
+  .svc-dots{margin-top:-16px}
+  .theme-btn{width:42px;height:42px}
+  .wa-inline{display:inline-flex;align-items:center;min-height:40px}
+  .fcol a{min-height:40px;display:flex;align-items:center}
+}
 """
 
 # ---- head / body-open (shared) ----
@@ -1100,7 +1124,8 @@ def _read_minutes(it):
     """Reading time from the article's own words, at 200 wpm -- never guessed.
 
     Counted off the markdown body with the syntax stripped, so a heading-heavy piece is not
-    inflated by its own hashes and asterisks."""
+    inflated by its own hashes and asterisks.
+"""
     import re as _re
     body = it.get("body_md") or it.get("body") or ""
     txt = _re.sub(r"[#*_`>\[\]()-]", " ", body)

@@ -1646,6 +1646,30 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 @media (prefers-reduced-motion:reduce){
   .amb-mesh::before.cta-sec::before{animation:none}}
 
+/* ============================ MOBILE CORRECTIONS ============================
+   From an audit at a real 375px viewport. The layout itself was fine: no horizontal
+   scroll and nothing overflowing on any of the six pages. This is entirely touch and
+   legibility, neither of which shows up on a desktop screen.
+
+   It sits at the end of NEW_CSS deliberately. .rdot, .svc-dot, .insight-cat and
+   .insight-date are all defined earlier in this same block, and a later rule of equal
+   specificity is what makes these win. */
+@media (max-width:640px){
+  /* a 12px floor: below that these are decoration on a phone, not text you can read */
+  .brand .tag{font-size:.75rem}
+  .eyebrow{font-size:.78rem;letter-spacing:.1em}
+  .insight-cat{font-size:.75rem}
+  .insight-date{font-size:.78rem}
+
+  /* hit areas. The bars stay thin and the box around them does not: background-clip
+     keeps the new padding transparent, so nothing changes visually. */
+  .rdot,.svc-dot{padding:18px 0;background-clip:content-box;box-sizing:content-box}
+  .svc-dots{margin-top:-16px}
+  .theme-btn{width:42px;height:42px}
+  .wa-inline{display:inline-flex;align-items:center;min-height:40px}
+  .fcol a{min-height:40px;display:flex;align-items:center}
+}
+
 .pgsvc /* services page - icon tiles + guided detail modal (scoped under .pgsvc at build) */
 .wrap{max-width:1760px;margin-inline:auto;padding-inline:clamp(18px,3vw,40px)}.pgsvc .phead{padding:clamp(20px,2.4vw,32px) 0 clamp(8px,1.2vw,14px);text-align:center}.pgsvc .phead h1{font-size:clamp(1.4rem,2.3vw,1.8rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 8px}.pgsvc .lede{max-width:620px;margin-inline:auto;font-size:clamp(.9rem,1.4vw.98rem);color:var(--text-2);line-height:1.5}.pgsvc /* filter */
 .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:18px 0 18px}.pgsvc .tabs button{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);

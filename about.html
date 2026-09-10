@@ -1646,6 +1646,30 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 @media (prefers-reduced-motion:reduce){
   .amb-mesh::before.cta-sec::before{animation:none}}
 
+/* ============================ MOBILE CORRECTIONS ============================
+   From an audit at a real 375px viewport. The layout itself was fine: no horizontal
+   scroll and nothing overflowing on any of the six pages. This is entirely touch and
+   legibility, neither of which shows up on a desktop screen.
+
+   It sits at the end of NEW_CSS deliberately. .rdot, .svc-dot, .insight-cat and
+   .insight-date are all defined earlier in this same block, and a later rule of equal
+   specificity is what makes these win. */
+@media (max-width:640px){
+  /* a 12px floor: below that these are decoration on a phone, not text you can read */
+  .brand .tag{font-size:.75rem}
+  .eyebrow{font-size:.78rem;letter-spacing:.1em}
+  .insight-cat{font-size:.75rem}
+  .insight-date{font-size:.78rem}
+
+  /* hit areas. The bars stay thin and the box around them does not: background-clip
+     keeps the new padding transparent, so nothing changes visually. */
+  .rdot,.svc-dot{padding:18px 0;background-clip:content-box;box-sizing:content-box}
+  .svc-dots{margin-top:-16px}
+  .theme-btn{width:42px;height:42px}
+  .wa-inline{display:inline-flex;align-items:center;min-height:40px}
+  .fcol a{min-height:40px;display:flex;align-items:center}
+}
+
 @media (prefers-color-scheme:dark){}.pgabout .wrap{max-width:980px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}.pgabout .bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}.pgabout .bar-in{display:flex;align-items:center;gap:18px;height:62px}.pgabout .bmark{font-weight:800;font-size:1.15rem;letter-spacing:-.04em}.pgabout .bmark i{font-style:normal;color:var(--emerald-500)}.pgabout .bar-links{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:.85rem;font-weight:560;color:var(--text-2)}.pgabout .bar-links a:hover{color:var(--text)}.pgabout .bar-links a[aria-current]{color:var(--text)}.pgabout .wa-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:100px;font-size:.8rem;font-weight:650;
   background:linear-gradient(120deg,var(--emerald-700),var(--emerald-600));color:#fff;box-shadow:var(--shadow-sm)}.pgabout .wa-btn:hover{filter:brightness(1.08)}@media (max-width:560px){.pgabout .bar-links a.hideS{display:none}}.pgabout .phead{padding:clamp(44px,7vw,86px) 0 clamp(8px,2vw,20px);text-align:center}.pgabout .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}.pgabout .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald-500)}.pgabout h1{font-size:clamp(1.9rem,4.6vw,3rem);letter-spacing:-.035em;line-height:1.08;margin:16px 0 14px}.pgabout h1 .serif{font-family:var(--serif);font-weight:400;font-style:italic}.pgabout .lede{max-width:660px;margin-inline:auto;font-size:clamp(.98rem,1.7vw,1.1rem);color:var(--text-2)}.pgabout .sec{padding:clamp(30px,5vw,54px) 0}.pgabout .sec h2{font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.03em;margin-bottom:8px}.pgabout .sec .sub{color:var(--text-2);max-width:640px;margin-bottom:26px}.pgabout .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.pgabout .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.pgabout .card{padding:22px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface);transition:.3s}.pgabout .card:hover{box-shadow:var(--shadow-md);border-color:var(--border-strong);transform:translateY(-3px)}.pgabout .card .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;
   background:linear-gradient(135deg,rgba(6,95,70.13),rgba(16,158,125.1));color:var(--accent);border:1px solid var(--border)}.pgabout .card h3{font-size:1.02rem;letter-spacing:-.02em;margin-bottom:6px}.pgabout .card p{font-size:.85rem;color:var(--text-2)}.pgabout .card a.go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.82rem;font-weight:650;color:var(--accent)}.pgabout .how{display:grid;gap:10px}.pgabout .how li{display:flex;gap:12px;align-items:flex-start;padding:15px 17px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);list-style:none}.pgabout .how .t{width:22px;height:22px;border-radius:7px;flex-shrink:0;display:grid;place-items:center;margin-top:1px;
