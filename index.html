@@ -1543,10 +1543,12 @@ a.svc-kicker:hover .svc-kname{text-decoration-color:currentColor}
 .svc-kicker svg{width:.62em;height:.62em;flex-shrink:0;color:var(--emerald-300,#6EE7B7)}
 .svc-kicker .arw{width:.42em;height:.42em;transition:transform .3s var(--ease,ease)}
 a.svc-kicker:hover .arw{transform:translateX(3px)}
-.svc-panel h3{font-size:clamp(.98rem,1.45vw,1.22rem);line-height:1.35;letter-spacing:-.01em;
-  font-weight:560;margin:0 0 8px;color:var(--emerald-300,#6EE7B7);text-wrap:balance}
-.svc-panel p{font-size:clamp(.86rem,1.05vw,.98rem);line-height:1.6;color:rgba(255,255,255,.84);
-  margin:0 0 clamp(14px,1.6vw,20px);max-width:44ch}
+/* The heading IS the service now, so h3 carries no type of its own -- it wraps the
+   linked name, which sets its own size. The old h3 held the slogan. */
+.svc-title{margin:0 0 10px;font:inherit;line-height:1}
+.svc-title .svc-kicker{margin-bottom:0}
+.svc-panel p{font-size:clamp(.95rem,1.25vw,1.14rem);line-height:1.5;color:rgba(255,255,255,.9);
+  margin:0 0 clamp(16px,1.8vw,22px);max-width:34ch;font-weight:450}
 .svc-btns{display:flex;flex-wrap:wrap;gap:10px}
 .svc-btns .btn{font-size:.86rem;padding:11px 20px}
 .svc-btns .btn-glass{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.34);color:#fff;
@@ -1792,9 +1794,8 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
       <article class="svc-panel" aria-label="Income tax">
         <img src="assets/img-income-tax.webp" width="1200" height="800" loading="eager" decoding="async" alt="Preparing an income-tax return with a calculator and documents" />
         <div class="svc-body">
-          <a class="svc-kicker" href="tax-filing.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg><span class="svc-kname">Income tax</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          <h3>Your return, done<br />properly.</h3>
-          <p>Two ways to file: prepare it yourself with guided steps, or hand us your documents and our team prepares it for you. Prior years, notices and advisory too.</p>
+          <h3 class="svc-title"><h3 class="svc-title"><h3 class="svc-title"><h3 class="svc-title"><a class="svc-kicker" href="tax-filing.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6"/><path d="M9.5 13h5M9.5 16.5h5"/></svg><span class="svc-kname">Income tax</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></h3>
+          <p>Two ways to file: do it yourself, or hand it to our team.</p>
           <div class="svc-btns">
             <a class="btn btn-primary" href="tax-filing.html">File your taxes <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
             <a class="btn btn-glass" href="tax-filing.html#two-ways">See both ways</a>
@@ -1804,9 +1805,8 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
       <article class="svc-panel" aria-label="Registrations">
         <img src="assets/img-registrations.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Stamping an official registration document" />
         <div class="svc-body">
-          <a class="svc-kicker" href="services.html#taxation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg><span class="svc-kname">Registrations</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          <h3>Registered, without<br />the guesswork.</h3>
-          <p>NTN, Sales Tax (GST) and Provincial Sales Tax &mdash; with the exact documents for your case listed up front, and the fee confirmed before you pay.</p>
+          <a class="svc-kicker" href="services.html#taxation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><path d="M9.5 21v-5h5v5"/></svg><span class="svc-kname">Registrations</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></h3>
+          <p>NTN and sales tax, with the documents listed up front.</p>
           <div class="svc-btns">
             <a class="btn btn-primary" href="services.html#ntn">Start a registration <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
             <a class="btn btn-glass" href="services.html#taxation">All registrations</a>
@@ -1816,9 +1816,8 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
       <article class="svc-panel" aria-label="Intellectual property">
         <img src="assets/img-ip.webp" width="1200" height="800" loading="lazy" decoding="async" alt="A designer sketching a brand logo on a tablet" />
         <div class="svc-body">
-          <a class="svc-kicker" href="services.html#ip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg><span class="svc-kname">Intellectual property</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          <h3>Protect the name<br />you built.</h3>
-          <p>Trademark, copyright, patent and design registration with IPO&nbsp;Pakistan &mdash; searched first, then filed and tracked to registration.</p>
+          <a class="svc-kicker" href="services.html#ip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg><span class="svc-kname">Intellectual property</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></h3>
+          <p>Trademark, copyright, patent and design with IPO&nbsp;Pakistan.</p>
           <div class="svc-btns">
             <a class="btn btn-primary" href="services.html#trademark">Protect your brand <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
             <a class="btn btn-glass" href="services.html#ip">All IP services</a>
@@ -1828,9 +1827,8 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
       <article class="svc-panel" aria-label="Corporate &amp; advisory">
         <img src="assets/img-corporate.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Aerial view of Karachi's business district" />
         <div class="svc-body">
-          <a class="svc-kicker" href="services.html#corporate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg><span class="svc-kname">Corporate &amp; advisory</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
-          <h3>Built to run,<br />not just to exist.</h3>
-          <p>Company incorporation, SECP compliance and business advisory &mdash; the structure set up right, and the filings that follow handled on time.</p>
+          <a class="svc-kicker" href="services.html#corporate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg><span class="svc-kname">Corporate &amp; advisory</span><svg class="arw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></h3>
+          <p>Incorporation, SECP compliance and business advisory.</p>
           <div class="svc-btns">
             <a class="btn btn-primary" href="services.html#incorp">Incorporate a company <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
             <a class="btn btn-glass" href="services.html#corporate">All corporate services</a>
