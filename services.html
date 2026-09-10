@@ -1575,6 +1575,25 @@ a.svc-kicker:hover .arw{transform:translateX(3px)}
   .svc-track{padding-inline:7vw}
   .svc-arrow{display:none}
 }
+/* ---- "What we do" fits on one screen with its first card ----
+   Measured at 1422x804 the section was 1105px, so the card sat below the fold. The heading
+   uses a section scale here rather than the page-hero .h1, its lede is one line, and the
+   panels are a wide shallow frame -- which also suits a card carrying only a name, one
+   line and two buttons. */
+#what .sec-head{margin-bottom:clamp(14px,1.5vw,22px)}
+#what .sec-head h2{font-size:clamp(1.55rem,3.3vw,2.45rem);line-height:1.1;letter-spacing:-.03em;
+  margin:8px 0 8px}
+#what .sec-head .lede{font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.5;max-width:52ch}
+/* Height comes from the viewport, not a fixed ratio, so the card fits beside the
+   heading on a short laptop screen as well as a tall desktop one. 330px is the rest of
+   the section: nav, heading, track padding and dots -- 348px, measured not guessed. */
+#what .svc-panel{aspect-ratio:auto;height:clamp(270px,calc(100svh - 348px),460px);min-height:0}
+#what .svc-track{padding-bottom:12px}
+#what .svc-dots{margin-top:0}
+@media (max-width:760px){
+  /* on a phone the fold is not winnable, so go back to a portrait card that reads well */
+  #what .svc-panel{aspect-ratio:4/5;height:auto;min-height:380px}
+}
 @media (prefers-reduced-motion:reduce){
   .svc-track{scroll-behavior:auto}
   .svc-panel:hover img{transform:none}
