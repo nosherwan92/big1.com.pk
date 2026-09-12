@@ -535,7 +535,7 @@ MEGAS = {
         items=[
             ("Self-Filing", "user", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
             ("Assisted Filing", "team", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
-            ("Prior-year returns", "clock", [("Learn", "tax-filing.html#faq")]),
+            ("Prior-year returns", "clock", [("Learn", "tax-filing.html#two-ways"), ("Start", "{{APP}}")]),
         ],
         side=[("How it works", "tax-filing.html#see-it-working"),
               ("Compare the two ways", "tax-filing.html#two-ways"),
