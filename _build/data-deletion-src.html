@@ -4,46 +4,84 @@
 <meta charset="utf-8" />
 <title>Data Deletion | BIG1 / FilePak</title>
 <style>
-.pgdelete{max-width:860px;margin:0 auto;padding:48px 0 72px}
-.pgdelete h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.2vw,44px);letter-spacing:-.02em;margin:0 0 6px}
-.pgdelete .lede{color:var(--text-2);font-size:17px;line-height:1.6;margin:0 0 36px}
-.pgdelete h2{font-size:21px;letter-spacing:-.01em;margin:36px 0 10px}
-.pgdelete p,.pgdelete li{font-size:16px;line-height:1.7;color:var(--text-2)}
-.pgdelete p{margin:0 0 14px}
-.pgdelete ol,.pgdelete ul{margin:0 0 14px 22px;padding:0}
-.pgdelete li{margin:0 0 6px}
-.pgdelete strong{color:var(--text)}
-.pgdelete .box{border:1px solid var(--border);border-radius:var(--r-md);background:var(--bg-sub);padding:18px 22px;margin:18px 0}
-.pgdelete a{color:var(--accent)}
+.phead{padding:clamp(44px,7vw,86px) 0 clamp(8px,2vw,20px);text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald-500)}
+h1{font-size:clamp(1.9rem,4.6vw,3rem);letter-spacing:-.035em;line-height:1.08;margin:16px 0 14px}
+.lede{max-width:680px;margin-inline:auto;font-size:clamp(.98rem,1.7vw,1.1rem);color:var(--text-2);line-height:1.6}
+.art{max-width:760px;margin:0 auto;padding:clamp(24px,4vw,48px) 0 clamp(40px,6vw,80px)}
+.art section{padding:26px 0;border-bottom:1px solid var(--border)}
+.art section:first-child{padding-top:4px}
+.art section:last-of-type{border-bottom:0}
+.art h2{font-size:clamp(1.15rem,2vw,1.4rem);letter-spacing:-.02em;margin:0 0 12px;display:flex;align-items:baseline;gap:12px}
+.art h2 .n{font-family:var(--serif);font-weight:400;font-size:1.05em;color:var(--emerald-600);min-width:1.2em}
+.art p,.art li{font-size:1rem;line-height:1.7;color:var(--text-2)}
+.art p{margin:0 0 12px}
+.art p:last-child{margin-bottom:0}
+.art ul,.art ol{margin:0 0 12px;padding:0;list-style:none;display:grid;gap:10px}
+.art ul li{position:relative;padding-left:22px}
+.art ul li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:9px;border-radius:50%;background:rgba(16,185,129,.22);box-shadow:inset 0 0 0 2px var(--emerald-600)}
+.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:4px 0 14px}
+.way{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);padding:18px 20px}
+.way .k{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.way b{display:block;font-size:1.05rem;letter-spacing:-.01em;color:var(--text);margin-bottom:6px}
+.way p{font-size:.92rem;margin:0}
+.way a{color:var(--accent);font-weight:600;text-decoration:none}
+.way a:hover{text-decoration:underline}
+.art strong{color:var(--text);font-weight:640}
+.art a{color:var(--accent)}
+.contact{margin-top:26px;background:var(--bg-sub);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(20px,3vw,30px)}
+.contact h2{margin-bottom:8px}
+.contact p{margin:0}
+.cmeta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:12px;font-size:.9rem;color:var(--text-2)}
+.cmeta b{color:var(--text);font-weight:640}
+@media (max-width:700px){.ways{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
-  <h1>How to delete your data</h1>
-  <p class="lede">You can ask Big1 Consultants (Private) Limited to delete the information we hold about you from FilePak and from our WhatsApp records. This page explains how, what is deleted, and what the law requires us to keep.</p>
+  <div class="wrap">
+    <div class="phead">
+      <span class="eyebrow"><span class="dot"></span>Legal</span>
+      <h1>How to delete your data</h1>
+      <p class="lede">You can ask Big1 Consultants (Private) Limited to delete the information we hold about you from FilePak and from our WhatsApp records. This page explains how, what is deleted, and what the law requires us to keep.</p>
+    </div>
 
-  <h2>1. How to ask</h2>
-  <ol>
-    <li>Send an email to <a href="mailto:info@big1.com.pk?subject=Data%20deletion%20request">info@big1.com.pk</a> with the subject "Data deletion request", from the email address or with the WhatsApp number we have on record; or</li>
-    <li>send the message <strong>"Delete my data"</strong> to our WhatsApp number +92 339 9999611.</li>
-  </ol>
-  <p>We will confirm your identity using the details on record, then act on the request.</p>
+    <article class="art">
+      <section>
+        <h2><span class="n">1</span>How to ask</h2>
+        <div class="ways">
+          <div class="way"><div class="k">By email</div><b>Write to us</b><p>Send <a href="mailto:info@big1.com.pk?subject=Data%20deletion%20request">info@big1.com.pk</a> an email with the subject &ldquo;Data deletion request&rdquo;, from the email address or with the WhatsApp number we have on record.</p></div>
+          <div class="way"><div class="k">On WhatsApp</div><b>Send one message</b><p>Send <strong>&ldquo;Delete my data&rdquo;</strong> to our number <a href="https://wa.me/923399999611" rel="noopener">+92 339 9999611</a>. A member of staff will pick it up.</p></div>
+        </div>
+        <p>We confirm your identity using the details on record, then act on the request.</p>
+      </section>
 
-  <h2>2. What happens</h2>
-  <ul>
-    <li>Within <strong>30 days</strong> we delete your FilePak account, your profile, saved FBR credentials, uploaded documents, WhatsApp conversation history and files held on your client file, and we stop all WhatsApp messages to you.</li>
-    <li>We send you a confirmation when it is done.</li>
-    <li>Information shared with authorities (FBR, SECP, IPO) as part of a filing you instructed cannot be withdrawn from them by us.</li>
-  </ul>
+      <section>
+        <h2><span class="n">2</span>What happens</h2>
+        <ul>
+          <li>Within <strong>30 days</strong> we delete your FilePak account, your profile, saved FBR credentials, uploaded documents, WhatsApp conversation history and files held on your client file, and we stop all WhatsApp messages to you.</li>
+          <li>We send you a confirmation when it is done.</li>
+          <li>Information already filed with authorities (FBR, SECP, IPO) on your instruction cannot be withdrawn from them by us.</li>
+        </ul>
+      </section>
 
-  <h2>3. What we must keep</h2>
-  <p>Pakistani tax and corporate law requires professional firms to keep working papers, invoices and filed returns for a period after the work is done, generally six years. Where that applies, we keep only the records the law requires, restrict access to them, and delete everything else. We will tell you in our confirmation what was kept and until when.</p>
+      <section>
+        <h2><span class="n">3</span>What we must keep</h2>
+        <p>Pakistani tax and corporate law requires professional firms to keep working papers, invoices and filed returns for a period after the work is done, generally six years. Where that applies, we keep only the records the law requires, restrict access to them, and delete everything else. Our confirmation tells you what was kept and until when.</p>
+      </section>
 
-  <h2>4. Firms that use our WhatsApp software</h2>
-  <p>If you wrote to another firm whose WhatsApp number runs on our software, that firm holds your data and decides on deletion. Send your request to that firm; if you cannot reach them, write to us and we will pass it on and confirm the outcome.</p>
+      <section>
+        <h2><span class="n">4</span>Firms that use our WhatsApp software</h2>
+        <p>If you wrote to another firm whose WhatsApp number runs on our software, that firm holds your data and decides on deletion. Send your request to that firm; if you cannot reach them, write to us and we will pass it on and confirm the outcome.</p>
+      </section>
 
-  <div class="box">
-    <p style="margin:0"><strong>Contact.</strong> Big1 Consultants (Private) Limited &#183; 224 A Iqbal Avenue, Phase II, Lahore 54770, Pakistan &#183; <a href="mailto:info@big1.com.pk">info@big1.com.pk</a> &#183; +92 339 9999611 &#183; <a href="privacy.html">Privacy Policy</a></p>
+      <div class="contact">
+        <h2>Contact</h2>
+        <p>Deletion requests and questions about them go to the company directly.</p>
+        <div class="cmeta"><span><b>Big1 Consultants (Private) Limited</b></span><span>224 A Iqbal Avenue, Phase II, Lahore 54770, Pakistan</span><span><a href="mailto:info@big1.com.pk">info@big1.com.pk</a></span><span>+92 339 9999611</span><span><a href="privacy.html">Privacy Policy</a></span></div>
+      </div>
+    </article>
   </div>
 </main>
 </body>

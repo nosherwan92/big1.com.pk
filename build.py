@@ -1282,8 +1282,8 @@ PAGES["services.html"] = page(
     "Services: NTN, Sales Tax, Trademark &amp; Company Registration in Pakistan | BIG1",
     "Assisted tax, IP and corporate services in Pakistan with the exact documents each one needs: NTN, sales tax (GST) and PST registration, IRIS updates, FBR notices, trademark, copyright, patent, design, SECP incorporation and compliance.",
     "services.html", "services", _SVC_BODY, extra_css=_SVC_CSS, extra_js=_SVC_JS)
-_PRV_CSS, _PRV_BODY, _PRV_JS = standalone("privacy-src.html", "pgprivacy", wrap_inner=True)
-_DEL_CSS, _DEL_BODY, _DEL_JS = standalone("data-deletion-src.html", "pgdelete", wrap_inner=True)
+_PRV_CSS, _PRV_BODY, _PRV_JS = standalone("privacy-src.html", "pgprivacy", wrap_inner=False)
+_DEL_CSS, _DEL_BODY, _DEL_JS = standalone("data-deletion-src.html", "pgdelete", wrap_inner=False)
 PAGES["privacy.html"] = page(
     "Privacy Policy | BIG1 / FilePak",
     "How Big1 Consultants (Private) Limited collects, uses and protects your information on FilePak, on WhatsApp and in our tax, corporate and IP services.",
