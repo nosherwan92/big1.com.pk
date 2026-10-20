@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+/* ===== Google Ads landing page (self-contained; uses shared theme tokens) ===== */
+.lp-wrap{max-width:1200px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+.lp *{box-sizing:border-box}
+
+/* header */
+.lp-head{position:sticky;top:0;z-index:50;background:rgba(5,7,10,.82);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.lp-head .lp-wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.lp-brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff}
+.lp-bmark{font-family:var(--sans);font-weight:900;font-size:1.3rem;letter-spacing:-.04em;color:#fff}
+.lp-bmark i{color:var(--gold-500);font-style:normal}
+.lp-tag{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--emerald-300);
+  border:1px solid rgba(110,231,183,.35);border-radius:100px;padding:3px 8px}
+.lp-head-cta{display:flex;align-items:center;gap:10px}
+.lp-callnum{display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:700;font-size:.92rem}
+.lp-callnum svg{color:var(--gold-500)}
+.lp-callnum span{opacity:.6;font-weight:500;font-size:.72rem;display:block;margin-bottom:-2px}
+@media (max-width:620px){.lp-callnum .lp-ntxt{display:none}.lp-tag{display:none}}
+
+/* hero */
+.lp-hero{position:relative;background:var(--graphite);color:#fff;overflow:hidden;
+  padding:clamp(40px,6vw,76px) 0 clamp(44px,6vw,72px)}
+.lp-hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:52px 52px;mask-image:radial-gradient(ellipse 80% 70% at 30% 20%,#000,transparent)}
+.lp-hero::after{content:"";position:absolute;z-index:0;width:620px;height:620px;right:-180px;top:-200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(16,185,129,.22),transparent 68%);pointer-events:none}
+.lp-hero .lp-wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media (max-width:900px){.lp-hero .lp-wrap{grid-template-columns:1fr;gap:30px}}
+
+.lp-badge{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold-300);background:rgba(233,185,73,.1);border:1px solid rgba(233,185,73,.3);
+  border-radius:100px;padding:7px 14px;margin-bottom:22px}
+.lp-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald-500);box-shadow:0 0 0 4px rgba(16,185,129,.2)}
+.lp-h1{font-family:var(--sans);font-weight:900;font-size:clamp(2.4rem,6vw,4rem);line-height:1.02;letter-spacing:-.04em;margin:0 0 18px}
+.lp-h1 .hi{color:var(--gold-500)}
+.lp-h1 .hi2{color:var(--emerald-500)}
+.lp-sub{font-size:clamp(1rem,1.5vw,1.14rem);line-height:1.6;color:rgba(255,255,255,.82);max-width:560px;margin:0 0 18px}
+.lp-sub b{color:#fff;font-weight:700}
+.lp-fee{display:inline-flex;align-items:baseline;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:100px;padding:7px 16px;margin-bottom:24px;font-size:.8rem;color:rgba(255,255,255,.7)}
+.lp-fee b{font-size:1.05rem;color:#fff;font-weight:800;letter-spacing:-.01em}
+.lp-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-weight:750;
+  font-size:1rem;padding:15px 26px;border-radius:14px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .15s,filter .2s,background .2s}
+.lp-btn:active{transform:translateY(1px)}
+.lp-btn-wa{background:#25D366;color:#05331c}
+.lp-btn-wa:hover{filter:brightness(1.06)}
+.lp-btn-call{background:var(--gold-500);color:#1a1205}
+.lp-btn-call:hover{filter:brightness(1.06)}
+.lp-btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.lp-btn-ghost:hover{border-color:#fff}
+.lp-ticks{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.84rem;color:rgba(255,255,255,.72)}
+.lp-ticks span{display:inline-flex;align-items:center;gap:7px}
+.lp-ticks svg{color:var(--emerald-500);flex-shrink:0}
+
+/* hero form card */
+.lp-card{background:#fff;color:var(--text);border-radius:20px;padding:26px 24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
+.lp-card h2{font-size:1.18rem;letter-spacing:-.02em;margin:0 0 4px;color:var(--text)}
+.lp-card .lp-cardsub{font-size:.84rem;color:var(--text-2);margin:0 0 18px}
+.lp-field{display:block;margin-bottom:13px}
+.lp-field label{display:block;font-size:.76rem;font-weight:650;color:var(--text-2);margin-bottom:5px}
+.lp-field input,.lp-field select{width:100%;font-family:var(--sans);font-size:.95rem;color:var(--text);
+  background:var(--bg-sub);border:1px solid var(--border);border-radius:11px;padding:12px 13px;outline:none;transition:border-color .2s}
+.lp-field input:focus,.lp-field select:focus{border-color:var(--emerald-500)}
+.lp-card .lp-btn-wa{width:100%;margin-top:6px}
+.lp-card-note{font-size:.72rem;color:var(--text-3);text-align:center;margin:12px 0 0}
+.lp-card-or{text-align:center;font-size:.76rem;color:var(--text-3);margin:14px 0 10px;position:relative}
+.lp-card-or::before,.lp-card-or::after{content:"";position:absolute;top:50%;width:34%;height:1px;background:var(--border)}
+.lp-card-or::before{left:0}.lp-card-or::after{right:0}
+.lp-card-call{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-decoration:none;
+  font-weight:700;font-size:.95rem;color:var(--text);background:var(--bg-sub);border:1px solid var(--border-strong);border-radius:12px;padding:12px}
+.lp-card-call:hover{border-color:var(--emerald-600);color:var(--accent)}
+
+/* generic section */
+.lp-sec{padding:clamp(48px,6vw,84px) 0}
+.lp-sec.alt{background:var(--bg-sub)}
+.lp-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent)}
+.lp-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald-500)}
+.lp-h2{font-family:var(--sans);font-weight:850;font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.03em;line-height:1.1;margin:12px 0 10px;color:var(--text)}
+.lp-lede{font-size:clamp(.95rem,1.4vw,1.05rem);color:var(--text-2);line-height:1.6;max-width:620px;margin:0}
+.lp-center{text-align:center}
+.lp-center .lp-lede{margin-inline:auto}
+
+/* trust strip */
+.lp-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 14px;margin-top:6px}
+.lp-trust span{display:inline-flex;align-items:center;gap:8px;font-size:.84rem;font-weight:600;color:var(--text-2);
+  background:var(--surface-solid);border:1px solid var(--border);border-radius:100px;padding:9px 16px}
+.lp-trust svg{color:var(--emerald-600)}
+
+/* steps */
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+@media (max-width:760px){.lp-steps{grid-template-columns:1fr;max-width:440px;margin-inline:auto}}
+.lp-step{background:var(--surface-solid);border:1px solid var(--border);border-radius:16px;padding:24px 22px;position:relative}
+.lp-step-n{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,var(--emerald-700),var(--emerald-500));margin-bottom:14px}
+.lp-step h3{font-size:1.05rem;letter-spacing:-.02em;margin:0 0 6px;color:var(--text)}
+.lp-step p{font-size:.88rem;color:var(--text-2);line-height:1.55;margin:0}
+
+/* benefits */
+.lp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+@media (max-width:760px){.lp-grid{grid-template-columns:1fr}}
+.lp-ben{display:flex;gap:13px;background:var(--surface-solid);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.lp-ben .lp-bi{width:40px;height:40px;border-radius:11px;flex-shrink:0;display:grid;place-items:center;color:var(--accent);
+  background:linear-gradient(135deg,rgba(6,95,70,.12),rgba(16,185,129,.1));border:1px solid var(--border)}
+.lp-ben h3{font-size:.98rem;letter-spacing:-.015em;margin:0 0 4px;color:var(--text)}
+.lp-ben p{font-size:.85rem;color:var(--text-2);line-height:1.5;margin:0}
+
+/* who chips */
+.lp-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.lp-chip{font-size:.86rem;font-weight:650;color:var(--text);background:var(--surface-solid);border:1px solid var(--border-strong);
+  border-radius:100px;padding:9px 18px}
+
+/* faq */
+.lp-faq{max-width:760px;margin:30px auto 0;display:grid;gap:10px}
+.lp-qa{background:var(--surface-solid);border:1px solid var(--border);border-radius:13px;padding:18px 20px}
+.lp-qa h3{font-size:.98rem;letter-spacing:-.01em;margin:0 0 7px;color:var(--text)}
+.lp-qa p{font-size:.88rem;color:var(--text-2);line-height:1.6;margin:0}
+
+/* final cta */
+.lp-final{background:var(--graphite);color:#fff;text-align:center}
+.lp-final .lp-h2{color:#fff}
+.lp-final .lp-lede{color:rgba(255,255,255,.78);margin-inline:auto}
+.lp-final .lp-cta{justify-content:center;margin-top:24px}
+
+/* footer */
+.lp-foot{background:#05070A;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.08);padding:30px 0}
+.lp-foot .lp-wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;font-size:.8rem}
+.lp-foot a{color:rgba(255,255,255,.75);text-decoration:none}
+.lp-foot a:hover{color:#fff}
+.lp-foot .lp-fdisc{width:100%;font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-top:4px}
+
+/* sticky mobile bar + wa fab */
+.lp-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(5,7,10,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.1)}
+.lp-sticky a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:750;font-size:.95rem;
+  padding:13px;border-radius:12px;text-decoration:none}
+.lp-sticky .s-call{background:var(--gold-500);color:#1a1205}
+.lp-sticky .s-wa{background:#25D366;color:#05331c}
+.lp-fab{position:fixed;right:20px;bottom:22px;z-index:55;width:56px;height:56px;border-radius:50%;background:#25D366;
+  display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6)}
+.lp-fab svg{width:30px;height:30px;color:#fff}
+@media (max-width:760px){.lp-sticky{display:flex}.lp-fab{display:none}}
+</style>
+</head>
+<body>
+<div class="lp">
+
+  <!-- header -->
+  <header class="lp-head">
+    <div class="lp-wrap">
+      <a class="lp-brand" href="https://big1.com.pk" aria-label="BIG1 FilePak">
+        <span class="lp-bmark">B<i>1</i>G</span>
+        <span class="lp-tag">FilePak</span>
+      </a>
+      <div class="lp-head-cta">
+        <a class="lp-callnum" href="{{PHONE_TEL}}" data-conv="call">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1z"/></svg>
+          <span class="lp-ntxt"><span>Call now</span>{{PHONE}}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="lp-hero">
+    <div class="lp-wrap">
+      <div class="lp-hero-copy">
+        <span class="lp-badge"><span class="dot"></span>Authorized FBR e-intermediary &middot; Tax Year 2025&ndash;26</span>
+        <h1 class="lp-h1">Income tax return<br />filing, <span class="hi">done right.</span></h1>
+        <p class="lp-sub">Guided income-tax return filing by a real team &mdash; <b>computed to the rupee</b> and submitted through an authorized FBR e-intermediary. Your <b>IRIS password is never stored</b>, and a chartered accountant reviews your return on premium.</p>
+        <span class="lp-fee">Income tax returns <b>from Rs&nbsp;3,900</b> &middot; fee confirmed before you pay</span>
+        <div class="lp-cta">
+          <a class="lp-btn lp-btn-wa" href="{{WA_FILE}}" target="_blank" rel="noopener" data-conv="whatsapp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+            File on WhatsApp
+          </a>
+          <a class="lp-btn lp-btn-call" href="{{PHONE_TEL}}" data-conv="call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1z"/></svg>
+            Call for price
+          </a>
+        </div>
+        <div class="lp-ticks">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>FBR-authorized filing</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sixty-one automated checks</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>English &amp; &#1575;&#1585;&#1583;&#1608;</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Same-day start</span>
+        </div>
+      </div>
+
+      <!-- lead card -->
+      <div class="lp-card">
+        <h2>Start your return</h2>
+        <p class="lp-cardsub">Tell us the basics &mdash; we reply on WhatsApp and take it from there.</p>
+        <form id="lpForm" onsubmit="return lpSubmit(event)">
+          <label class="lp-field"><label>Your name</label><input id="lpName" type="text" autocomplete="name" placeholder="e.g. Ahmed Khan" required /></label>
+          <label class="lp-field"><label>WhatsApp number</label><input id="lpPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="03XX XXXXXXX" required /></label>
+          <label class="lp-field"><label>What do you need to file?</label>
+            <select id="lpType">
+              <option>Salary income</option>
+              <option>Business / self-employed</option>
+              <option>Freelance / IT exports</option>
+              <option>Rental / capital gains</option>
+              <option>NTN registration first</option>
+              <option>Not sure &mdash; please advise</option>
+            </select>
+          </label>
+          <button class="lp-btn lp-btn-wa" type="submit" data-conv="lead">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+            Send on WhatsApp
+          </button>
+        </form>
+        <div class="lp-card-or">or</div>
+        <a class="lp-card-call" href="{{PHONE_TEL}}" data-conv="call">Call {{PHONE}}</a>
+        <p class="lp-card-note">No spam. Your details are used only to help you file.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- trust strip -->
+  <section class="lp-sec alt">
+    <div class="lp-wrap lp-center">
+      <div class="lp-trust">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg>Authorized FBR e-intermediary</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>IRIS password never stored</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 7l7-4 7 4"/><path d="M5 7v8a7 7 0 0 0 14 0V7"/></svg>Chartered-accountant reviewed</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Same-day start</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- how it works -->
+  <section class="lp-sec">
+    <div class="lp-wrap">
+      <span class="lp-eyebrow"><span class="dot"></span>How it works</span>
+      <h2 class="lp-h2">File in three simple steps.</h2>
+      <p class="lp-lede">No portals, no jargon. Share your documents and our team handles the rest.</p>
+      <div class="lp-steps">
+        <div class="lp-step"><div class="lp-step-n">1</div><h3>Share your documents</h3><p>Message us on WhatsApp with your CNIC, salary certificate, and bank or tax statements &mdash; in English or Urdu.</p></div>
+        <div class="lp-step"><div class="lp-step-n">2</div><h3>We prepare &amp; compute</h3><p>Your return is computed to the rupee, withholding is matched, and the wealth statement is reconciled &mdash; with sixty-one automated checks.</p></div>
+        <div class="lp-step"><div class="lp-step-n">3</div><h3>You review, we file</h3><p>You approve the numbers, we file with FBR through an authorized e-intermediary, and send you the proof of filing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- why file -->
+  <section class="lp-sec alt">
+    <div class="lp-wrap">
+      <span class="lp-eyebrow"><span class="dot"></span>Why file with BIG1</span>
+      <h2 class="lp-h2">Done properly, the first time.</h2>
+      <div class="lp-grid">
+        <div class="lp-ben"><span class="lp-bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/></svg></span><div><h3>Stay on the Active Taxpayer List</h3><p>Filers pay lower withholding tax on vehicles, property and banking. We keep you on the ATL.</p></div></div>
+        <div class="lp-ben"><span class="lp-bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8L15 10"/></svg></span><div><h3>Your data stays private</h3><p>Encrypted end to end, and your IRIS password is never asked for or stored &mdash; it stays between you and FBR.</p></div></div>
+        <div class="lp-ben"><span class="lp-bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7M8.5 11.5h7M8.5 16h4"/></svg></span><div><h3>Computed to the rupee</h3><p>Every figure traces back to the law applied. Nothing is filed until you have reviewed and approved it.</p></div></div>
+        <div class="lp-ben"><span class="lp-bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span><div><h3>A real team, in your language</h3><p>Talk to people who know Pakistani tax &mdash; on WhatsApp or the phone, in English or Urdu.</p></div></div>
+      </div>
+      <div class="lp-chips">
+        <span class="lp-chip">Salaried</span>
+        <span class="lp-chip">Business &amp; self-employed</span>
+        <span class="lp-chip">Freelancers &amp; IT exports</span>
+        <span class="lp-chip">Rental &amp; capital gains</span>
+        <span class="lp-chip">First-time filers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="lp-sec">
+    <div class="lp-wrap lp-center">
+      <span class="lp-eyebrow"><span class="dot"></span>Questions</span>
+      <h2 class="lp-h2">Good to know before you file.</h2>
+    </div>
+    <div class="lp-wrap">
+      <div class="lp-faq">
+        <div class="lp-qa"><h3>How much does it cost?</h3><p>Income tax returns start from Rs&nbsp;3,900. We confirm the exact fee for your case before you pay anything &mdash; no surprises.</p></div>
+        <div class="lp-qa"><h3>Is my information safe?</h3><p>Yes. Your documents are encrypted, and we never ask for or store your IRIS password. Returns are filed through an authorized FBR e-intermediary channel.</p></div>
+        <div class="lp-qa"><h3>What documents do I need?</h3><p>Usually your CNIC, salary certificate (for salaried), bank statements for the year, and any tax-deduction certificates. We tell you exactly what applies to your case.</p></div>
+        <div class="lp-qa"><h3>How long does it take?</h3><p>Often the same day once your documents are in. We prepare the return, you review it, and we file &mdash; then share the proof.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- final cta -->
+  <section class="lp-sec lp-final">
+    <div class="lp-wrap lp-center">
+      <h2 class="lp-h2">Ready to become a filer?</h2>
+      <p class="lp-lede">Start on WhatsApp now &mdash; a real person picks it up and guides you from there.</p>
+      <div class="lp-cta">
+        <a class="lp-btn lp-btn-wa" href="{{WA_FILE}}" target="_blank" rel="noopener" data-conv="whatsapp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          File on WhatsApp
+        </a>
+        <a class="lp-btn lp-btn-ghost" href="{{PHONE_TEL}}" data-conv="call">Call {{PHONE}}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="lp-foot">
+    <div class="lp-wrap">
+      <span>&copy; 2026 BIG1 &middot; FilePak &mdash; income tax filing in Pakistan</span>
+      <span><a href="{{PHONE_TEL}}">{{PHONE}}</a> &middot; <a href="https://big1.com.pk">big1.com.pk</a></span>
+      <p class="lp-fdisc">BIG1 operates FilePak, a private tax-technology service, and is not a government body. Returns are filed through an authorized FBR e-intermediary. Nothing on this page is tax advice for your particular circumstances; the fee shown is a starting point and is confirmed before you pay.</p>
+    </div>
+  </footer>
+
+  <!-- sticky mobile bar -->
+  <div class="lp-sticky">
+    <a class="s-call" href="{{PHONE_TEL}}" data-conv="call">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1z"/></svg>Call now</a>
+    <a class="s-wa" href="{{WA_FILE}}" target="_blank" rel="noopener" data-conv="whatsapp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+  </div>
+  <a class="lp-fab" href="{{WA_FILE}}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-conv="whatsapp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+  </a>
+
+</div>
+
+<script>
+(function () {
+  var WA = "https://wa.me/923399999611?text=";
+  // Build the WhatsApp message from the lead form, then open chat.
+  window.lpSubmit = function (e) {
+    e.preventDefault();
+    var name = (document.getElementById("lpName").value || "").trim();
+    var phone = (document.getElementById("lpPhone").value || "").trim();
+    var type = document.getElementById("lpType").value || "";
+    var msg = "Assalam o Alaikum, I want to file my income tax return.";
+    if (name) msg += "\nName: " + name;
+    if (phone) msg += "\nPhone: " + phone;
+    if (type) msg += "\nFiling: " + type;
+    track("lead");
+    window.open(WA + encodeURIComponent(msg), "_blank", "noopener");
+    return false;
+  };
+  // Conversion tracking hook: fires a Google Ads / GA4 event if gtag is present.
+  // To enable, paste your gtag snippet in the head and set LP_CONVERSION below.
+  var LP_CONVERSION = "";   // e.g. "AW-XXXXXXXXX/abcDEF..."
+  function track(kind) {
+    try {
+      if (typeof window.gtag === "function") {
+        if (LP_CONVERSION) window.gtag("event", "conversion", { send_to: LP_CONVERSION, event_label: kind });
+        else window.gtag("event", "generate_lead", { method: kind });
+      }
+    } catch (err) {}
+  }
+  var links = document.querySelectorAll("[data-conv]");
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function () { track(this.getAttribute("data-conv")); });
+  }
+})();
+</script>
+</body>
+</html>
