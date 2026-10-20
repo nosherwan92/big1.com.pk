@@ -1311,9 +1311,9 @@ for _it in INSIGHTS:
 # ---- Google Ads landing page ------------------------------------------------
 # Standalone conversion page for paid traffic. Deliberately NOT in NAVLINKS, the
 # footer, or sitemap.xml, and carries <meta robots=noindex> so it never surfaces
-# in organic search -- it exists only as the ad's final URL (file-tax-return.html).
-_lp = read("landing-tax-src.html")
-_WA_FILE = WA + "?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20file%20my%20income%20tax%20return."
+# in organic search -- it exists only as the ad's final URL (business-registration.html).
+_lp = read("landing-business-src.html")
+_WA_FILE = WA + "?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20register%20my%20business."
 _lp_css = re.search(r"<style>(.*?)</style>", _lp, re.S).group(1)
 _lp_body = re.search(r"<body[^>]*>(.*?)</body>", _lp, re.S).group(1)
 _lp_body = (_lp_body
@@ -1322,11 +1322,11 @@ _lp_body = (_lp_body
     .replace("{{WA_FILE}}", _WA_FILE)
     .replace("{{APP}}", APP_URL))
 _lp_head = head_for(
-    "File Your Income Tax Return in Pakistan | BIG1 FilePak",
-    "File your Pakistani income tax return from Rs 3,900 &mdash; guided filing by a real team, computed to the rupee and submitted through an authorized FBR e-intermediary. Start on WhatsApp.",
-    "file-tax-return.html", extra_css=_lp_css)
+    "Business Registration in Pakistan | BIG1 FilePak",
+    "Register your business in Pakistan from Rs 6,000 &mdash; sole proprietorship, partnership / AOP or SECP company incorporation, plus NTN and sales-tax registration, by a real team. Start on WhatsApp.",
+    "business-registration.html", extra_css=_lp_css)
 _lp_head = _lp_head.replace("</head>", '<meta name="robots" content="noindex, nofollow" />\n</head>')
-PAGES["file-tax-return.html"] = _lp_head + "\n<body>\n" + _lp_body + "\n</body>\n</html>"
+PAGES["business-registration.html"] = _lp_head + "\n<body>\n" + _lp_body + "\n</body>\n</html>"
 
 def build():
     for name, html in PAGES.items():
