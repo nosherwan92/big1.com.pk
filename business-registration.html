@@ -1785,9 +1785,14 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 .lp-sticky a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:750;font-size:.95rem;padding:13px;border-radius:12px;text-decoration:none}
 .lp-sticky .s-call{background:var(--gold-500);color:#1a1205}
 .lp-sticky .s-wa{background:#25D366;color:#05331c}
-.lp-fab{position:fixed;right:20px;bottom:22px;z-index:55;width:56px;height:56px;border-radius:50%;background:#25D366;
-  display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6)}
-.lp-fab svg{width:30px;height:30px;color:#fff}
+.lp-fab{position:fixed;right:22px;bottom:24px;z-index:55;width:62px;height:62px;border-radius:50%;background:#25D366;
+  display:grid;place-items:center;border:2px solid rgba(255,255,255,.9);
+  box-shadow:0 14px 34px -6px rgba(37,211,102,.75);animation:lp-fabpulse 2.4s ease-in-out infinite}
+.lp-fab:hover{filter:brightness(1.06)}
+.lp-fab svg{width:32px;height:32px;color:#fff}
+@keyframes lp-fabpulse{0%,100%{box-shadow:0 14px 34px -6px rgba(37,211,102,.75),0 0 0 0 rgba(37,211,102,.5)}
+  50%{box-shadow:0 14px 34px -6px rgba(37,211,102,.75),0 0 0 13px rgba(37,211,102,0)}}
+@media (prefers-reduced-motion:reduce){.lp-fab{animation:none}}
 @media (max-width:760px){
   .lp-sticky{display:flex}.lp-fab{display:none}
   .lp{padding-bottom:76px}                 /* clear the fixed Call/WhatsApp bar */
@@ -1835,7 +1840,7 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
         <div class="lp-cta">
           <a class="lp-btn lp-btn-wa" href="https://wa.me/923399999611?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20register%20my%20business." target="_blank" rel="noopener" data-conv="whatsapp">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
-            Register on WhatsApp
+            WhatsApp Us
           </a>
           <a class="lp-btn lp-btn-call" href="tel:+923399999611" data-conv="call">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1z"/></svg>
@@ -1903,7 +1908,7 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
     <a class="s-call" href="tel:+923399999611" data-conv="call">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1z"/></svg>Call now</a>
     <a class="s-wa" href="https://wa.me/923399999611?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20register%20my%20business." target="_blank" rel="noopener" data-conv="whatsapp">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>WhatsApp Us</a>
   </div>
   <a class="lp-fab" href="https://wa.me/923399999611?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20register%20my%20business." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-conv="whatsapp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
