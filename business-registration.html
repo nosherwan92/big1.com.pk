@@ -1710,6 +1710,11 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 .lp-h1 .hi{color:var(--gold-500)}
 .lp-sub{font-size:clamp(1rem,1.5vw,1.14rem);line-height:1.6;color:rgba(255,255,255,.82);max-width:560px;margin:0 0 18px}
 .lp-sub b{color:#fff;font-weight:700}
+.lp-opts{list-style:none;display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;padding:0}
+.lp-opts li{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 15px}
+.lp-opts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--emerald-500);flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(16,185,129,.18)}
 .lp-fee{display:inline-flex;align-items:baseline;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
   border-radius:100px;padding:7px 16px;margin-bottom:24px;font-size:.8rem;color:rgba(255,255,255,.7)}
 .lp-fee b{font-size:1.05rem;color:#fff;font-weight:800;letter-spacing:-.01em}
@@ -1808,7 +1813,14 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
       <div class="lp-hero-copy">
         <span class="lp-badge"><span class="dot"></span>SECP &amp; FBR registrations &middot; Pakistan</span>
         <h1 class="lp-h1">Register your business, <span class="hi">done right.</span></h1>
-        <p class="lp-sub">Sole proprietorship, partnership / AOP, or a private limited company with SECP &mdash; plus your <b>NTN</b> and sales-tax registration. Handled end to end by a real team, with the <b>exact documents listed up front</b>.</p>
+        <p class="lp-sub">Pick what you need &mdash; handled end to end by a real team, with the <b>exact documents for your case listed up front</b>.</p>
+        <ul class="lp-opts">
+          <li>Sole proprietorship</li>
+          <li>Partnership / AOP</li>
+          <li>Private limited company &middot; SECP</li>
+          <li>NTN registration</li>
+          <li>Sales tax &middot; GST / PST</li>
+        </ul>
         <span class="lp-fee">Business registration <b>from Rs&nbsp;6,000</b> &middot; fee confirmed before you pay</span>
         <div class="lp-cta">
           <a class="lp-btn lp-btn-wa" href="https://wa.me/923399999611?text=Assalam%20o%20Alaikum%2C%20I%20want%20to%20register%20my%20business." target="_blank" rel="noopener" data-conv="whatsapp">
