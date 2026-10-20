@@ -40,14 +40,16 @@
 .lp-h1 .hi{color:var(--gold-500)}
 .lp-sub{font-size:clamp(1rem,1.5vw,1.14rem);line-height:1.6;color:rgba(255,255,255,.82);max-width:560px;margin:0 0 18px}
 .lp-sub b{color:#fff;font-weight:700}
-.lp-opts{list-style:none;display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;padding:0}
-.lp-opts li{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;color:#fff;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 15px}
-.lp-opts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--emerald-500);flex-shrink:0;
-  box-shadow:0 0 0 3px rgba(16,185,129,.18)}
-.lp-fee{display:inline-flex;align-items:baseline;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
-  border-radius:100px;padding:7px 16px;margin-bottom:24px;font-size:.8rem;color:rgba(255,255,255,.7)}
-.lp-fee b{font-size:1.05rem;color:#fff;font-weight:800;letter-spacing:-.01em}
+.lp-opts{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;padding:0}
+.lp-opt{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.85rem;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 15px;cursor:pointer;transition:.18s}
+.lp-opt::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--emerald-500);flex-shrink:0;box-shadow:0 0 0 3px rgba(16,185,129,.18)}
+.lp-opt:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.38)}
+.lp-opt.active{background:var(--emerald-500);border-color:transparent;color:#05331c}
+.lp-opt.active::before{background:#05331c;box-shadow:none}
+.lp-fee{display:inline-flex;align-items:center;flex-wrap:wrap;gap:3px 8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:100px;padding:8px 16px;margin-bottom:24px;font-size:.8rem;color:rgba(255,255,255,.7)}
+.lp-fee b{font-size:1rem;color:#fff;font-weight:800;letter-spacing:-.01em}
 .lp-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
 .lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-weight:750;
   font-size:1rem;padding:15px 26px;border-radius:14px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .15s,filter .2s}
@@ -114,7 +116,14 @@
 .lp-fab{position:fixed;right:20px;bottom:22px;z-index:55;width:56px;height:56px;border-radius:50%;background:#25D366;
   display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6)}
 .lp-fab svg{width:30px;height:30px;color:#fff}
-@media (max-width:760px){.lp-sticky{display:flex}.lp-fab{display:none}}
+@media (max-width:760px){
+  .lp-sticky{display:flex}.lp-fab{display:none}
+  .lp{padding-bottom:76px}                 /* clear the fixed Call/WhatsApp bar */
+  .lp-h1{font-size:clamp(2.15rem,8.5vw,2.8rem)}
+  .lp-cta{gap:10px}
+  .lp-cta .lp-btn{flex:1 1 100%}           /* full-width stacked CTAs */
+  .lp-card{padding:22px 18px}
+}
 </style>
 </head>
 <body>
@@ -139,14 +148,14 @@
         <span class="lp-badge"><span class="dot"></span>SECP &amp; FBR registrations &middot; Pakistan</span>
         <h1 class="lp-h1">Register your business, <span class="hi">done right.</span></h1>
         <p class="lp-sub">Pick what you need &mdash; handled end to end by a real team, with the <b>exact documents for your case listed up front</b>.</p>
-        <ul class="lp-opts">
-          <li>Sole proprietorship</li>
-          <li>Partnership / AOP</li>
-          <li>Private limited company &middot; SECP</li>
-          <li>NTN registration</li>
-          <li>Sales tax &middot; GST / PST</li>
-        </ul>
-        <span class="lp-fee">Business registration <b>from Rs&nbsp;6,000</b> &middot; fee confirmed before you pay</span>
+        <div class="lp-opts" role="group" aria-label="What do you want to register?">
+          <button class="lp-opt" type="button" data-opt="Sole proprietorship">Sole proprietorship</button>
+          <button class="lp-opt" type="button" data-opt="Partnership / AOP">Partnership / AOP</button>
+          <button class="lp-opt" type="button" data-opt="Private limited company (SECP)">Private limited company &middot; SECP</button>
+          <button class="lp-opt" type="button" data-opt="NTN registration">NTN registration</button>
+          <button class="lp-opt" type="button" data-opt="Sales tax (GST / PST)">Sales tax &middot; GST / PST</button>
+        </div>
+        <span class="lp-fee"><b>From Rs&nbsp;6,000</b> &middot; fee confirmed before you pay</span>
         <div class="lp-cta">
           <a class="lp-btn lp-btn-wa" href="{{WA_FILE}}" target="_blank" rel="noopener" data-conv="whatsapp">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
@@ -171,7 +180,8 @@
               <option>Sole proprietorship</option>
               <option>Partnership / AOP</option>
               <option>Private limited company (SECP)</option>
-              <option>NTN only</option>
+              <option>NTN registration</option>
+              <option>Sales tax (GST / PST)</option>
               <option>Not sure &mdash; please advise</option>
             </select>
           </label>
@@ -256,6 +266,32 @@
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener("click", function () { track(this.getAttribute("data-conv")); });
   }
+
+  // Clickable option chips -> pre-select the form dropdown and jump to it.
+  var sel = document.getElementById("lpType");
+  var chips = document.querySelectorAll(".lp-opt");
+  function syncChips(val) {
+    for (var c = 0; c < chips.length; c++) {
+      chips[c].classList.toggle("active", chips[c].getAttribute("data-opt") === val);
+    }
+  }
+  for (var k = 0; k < chips.length; k++) {
+    chips[k].addEventListener("click", function () {
+      var val = this.getAttribute("data-opt");
+      for (var j = 0; j < sel.options.length; j++) {
+        if (sel.options[j].value === val || sel.options[j].text === val) { sel.selectedIndex = j; break; }
+      }
+      syncChips(val);
+      var card = document.querySelector(".lp-card");
+      if (window.innerWidth <= 900 && card) {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(function () { try { document.getElementById("lpName").focus({ preventScroll: true }); } catch (e) {} }, 500);
+      } else {
+        try { document.getElementById("lpName").focus({ preventScroll: true }); } catch (e) {}
+      }
+    });
+  }
+  if (sel) sel.addEventListener("change", function () { syncChips(this.value); });
 })();
 </script>
 </body>
