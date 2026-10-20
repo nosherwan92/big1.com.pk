@@ -1693,7 +1693,9 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 @media (max-width:620px){.lp-callnum .lp-ntxt span{display:none}.lp-tag{display:none}}
 
 /* hero */
-.lp-hero{position:relative;background:var(--graphite);color:#fff;overflow:hidden;padding:clamp(40px,6vw,74px) 0 clamp(44px,6vw,70px)}
+.lp-hero{position:relative;background:radial-gradient(55% 75% at 6% 42%,rgba(201,151,28,.1),transparent 60%),var(--graphite);
+  color:#fff;overflow:hidden;padding:clamp(40px,5.2vw,68px) 0 clamp(40px,5vw,62px)}
+.lp-hero .lp-wrap{max-width:1240px}
 .lp-hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
   background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
   background-size:52px 52px;mask-image:radial-gradient(ellipse 80% 70% at 30% 20%,#000,transparent)}
@@ -1728,9 +1730,8 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 .lp-btn-call:hover{filter:brightness(1.06)}
 .lp-btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
 .lp-btn-ghost:hover{border-color:#fff}
-.lp-ticks{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.84rem;color:rgba(255,255,255,.72)}
-.lp-ticks span{display:inline-flex;align-items:center;gap:7px}
-.lp-ticks svg{color:var(--emerald-500);flex-shrink:0}
+.lp-reassure{display:inline-flex;align-items:center;gap:8px;font-size:.84rem;color:rgba(255,255,255,.58);margin:0}
+.lp-reassure svg{color:var(--emerald-500);flex-shrink:0}
 
 /* hero form card */
 .lp-card{background:#fff;color:var(--text);border-radius:20px;padding:26px 24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
@@ -1832,12 +1833,7 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
             Call for details
           </a>
         </div>
-        <div class="lp-ticks">
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SECP &amp; FBR filings</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Exact documents up front</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>English &amp; &#1575;&#1585;&#1583;&#1608;</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Same-day start</span>
-        </div>
+        <p class="lp-reassure"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Same-day start &middot; English &amp; &#1575;&#1585;&#1583;&#1608; &middot; we reply fast on WhatsApp</p>
       </div>
 
       <div class="lp-card">
