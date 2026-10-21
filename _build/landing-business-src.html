@@ -123,11 +123,15 @@
 @media (prefers-reduced-motion:reduce){.lp-fab{animation:none}}
 @media (max-width:760px){
   .lp-sticky{display:flex}.lp-fab{display:none}
-  .lp{padding-bottom:76px}                 /* clear the fixed Call/WhatsApp bar */
-  .lp-h1{font-size:clamp(2.15rem,8.5vw,2.8rem)}
-  .lp-cta{gap:10px}
-  .lp-cta .lp-btn{flex:1 1 100%}           /* full-width stacked CTAs */
-  .lp-card{padding:22px 18px}
+  .lp{padding-bottom:78px}                 /* clear the fixed Call/WhatsApp bar */
+  .lp-hero{padding:26px 0 30px}
+  .lp-h1{font-size:clamp(2.1rem,8.5vw,2.7rem);margin-bottom:14px}
+  .lp-sub{margin-bottom:16px}
+  .lp-opts{margin-bottom:18px}
+  .lp-hero .lp-cta{display:none}           /* dedupe: the sticky Call/WhatsApp bar carries these on mobile */
+  .lp-reassure{margin-bottom:4px}
+  .lp-card{padding:22px 18px;margin-top:6px}
+  .lp-card h2{font-size:1.28rem}
 }
 </style>
 </head>
@@ -152,7 +156,7 @@
       <div class="lp-hero-copy">
         <span class="lp-badge"><span class="dot"></span>SECP &amp; FBR registrations &middot; Pakistan</span>
         <h1 class="lp-h1">Register your business, <span class="hi">done right.</span></h1>
-        <p class="lp-sub">Pick what you need &mdash; handled end to end by a real team, with the <b>exact documents for your case listed up front</b>.</p>
+        <p class="lp-sub">Pick what you need &mdash; handled end to end, with the <b>exact documents listed up front</b>.</p>
         <div class="lp-opts" role="group" aria-label="What do you want to register?">
           <button class="lp-opt" type="button" data-opt="Sole proprietorship">Sole proprietorship</button>
           <button class="lp-opt" type="button" data-opt="Partnership / AOP">Partnership / AOP</button>
