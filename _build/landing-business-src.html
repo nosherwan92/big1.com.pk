@@ -21,8 +21,12 @@
 @media (max-width:620px){.lp-callnum .lp-ntxt span{display:none}.lp-tag{display:none}}
 
 /* hero */
-.lp-hero{position:relative;background:radial-gradient(55% 75% at 6% 42%,rgba(201,151,28,.1),transparent 60%),var(--graphite);
-  color:#fff;overflow:hidden;padding:clamp(40px,5.2vw,68px) 0 clamp(40px,5vw,62px)}
+.lp-hero{position:relative;color:#fff;overflow:hidden;padding:clamp(40px,5.2vw,68px) 0 clamp(40px,5vw,62px);
+  background:
+    radial-gradient(55% 75% at 6% 42%,rgba(201,151,28,.12),transparent 60%),
+    linear-gradient(100deg,rgba(5,7,10,.97) 0%,rgba(5,7,10,.9) 44%,rgba(5,7,10,.58) 100%),
+    url('assets/img-corporate.webp') center/cover no-repeat,
+    var(--graphite)}
 .lp-hero .lp-wrap{max-width:1240px}
 .lp-hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
   background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
@@ -124,7 +128,11 @@
 @media (max-width:760px){
   .lp-sticky{display:flex}.lp-fab{display:none}
   .lp{padding-bottom:78px}                 /* clear the fixed Call/WhatsApp bar */
-  .lp-hero{padding:26px 0 30px}
+  .lp-hero{padding:26px 0 30px;
+    background:
+      linear-gradient(175deg,rgba(5,7,10,.86) 0%,rgba(5,7,10,.93) 52%,rgba(5,7,10,.97) 100%),
+      url('assets/img-corporate.webp') top center/cover no-repeat,
+      var(--graphite)}
   .lp-h1{font-size:clamp(2.1rem,8.5vw,2.7rem);margin-bottom:14px}
   .lp-sub{margin-bottom:16px}
   .lp-opts{margin-bottom:18px}
