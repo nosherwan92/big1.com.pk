@@ -1326,6 +1326,17 @@ _lp_head = head_for(
     "Register your business in Pakistan from Rs 6,000 &mdash; sole proprietorship, partnership / AOP or SECP company incorporation, plus NTN and sales-tax registration, by a real team. Start on WhatsApp.",
     "business-registration.html", extra_css=_lp_css)
 _lp_head = _lp_head.replace("</head>", '<meta name="robots" content="noindex, nofollow" />\n</head>')
+# Google Ads tag (gtag.js) -- installed verbatim at the top of <head> for this page only.
+_GTAG = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18527391742"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18527391742');
+</script>"""
+_lp_head = _lp_head.replace("<head>", "<head>\n" + _GTAG, 1)
 PAGES["business-registration.html"] = _lp_head + "\n<body>\n" + _lp_body + "\n</body>\n</html>"
 
 def build():
