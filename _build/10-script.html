@@ -445,13 +445,13 @@
   var APP = "https://app.big1.com.pk";
   var WA = "https://wa.me/923399999611?text=I%20want%20to%20file%20my%20tax%20return.";
   // Fees come from the FilePak rate card: baked at build into window.BIG1_FEES, refreshed live from the API.
-  function feeTxt(kind){ var f=(window.BIG1_FEES&&window.BIG1_FEES.fees)||{}; var v=f[kind]; return v?Number(v).toLocaleString('en-PK'):'?'; }
+  function feeTxt(kind){ var F=window.BIG1_FEES||{}, f=F.fees||{}; var v=f[kind]; if((F.free||[]).indexOf(kind)>=0) return 'Free'; return v?Number(v).toLocaleString('en-PK'):'?'; }
   function feeSpan(kind){ return '<span data-fee="'+kind+'">'+feeTxt(kind)+'</span>'; }
   (function refreshFees(){
     try{
       fetch(APP+'/api/v1/pricing',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
         if(!d||!d.fees) return;
-        window.BIG1_FEES={currency:d.currency||'PKR',fees:d.fees};
+        window.BIG1_FEES={currency:d.currency||'PKR',fees:d.fees,free:d.free||[],govt:d.govt||{},no_govt:d.no_govt||[]};
         var els=document.querySelectorAll('[data-fee]');
         for(var i=0;i<els.length;i++){ var t=feeTxt(els[i].getAttribute('data-fee')); if(t!=='?') els[i].textContent=t; }
       }).catch(function(){});

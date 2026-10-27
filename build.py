@@ -636,30 +636,38 @@ def _load_fees():
                               headers={"User-Agent": "Mozilla/5.0 (big1.com.pk site build)", "Accept": "application/json"})
         with _urlreq.urlopen(req, timeout=10) as r:
             data = _json.loads(r.read().decode("utf-8"))
-        fees = {k: int(v) for k, v in (data.get("fees") or {}).items() if int(v) > 0}
+        fees = {k: int(v) for k, v in (data.get("fees") or {}).items() if int(v) >= 0}
         if fees:
+            card = {"currency": "PKR", "fees": fees, "free": sorted(data.get("free") or []),
+                    "govt": dict(data.get("govt") or {}), "no_govt": sorted(data.get("no_govt") or [])}
             with io.open(_FEES_SNAPSHOT, "w", encoding="utf-8", newline="\n") as f:
-                _json.dump({"currency": "PKR", "fees": fees}, f, indent=2, sort_keys=True)
+                _json.dump(card, f, indent=2, sort_keys=True)
             print("  fees: %d kinds from the live rate card" % len(fees))
-            return fees
+            return card
     except Exception as e:  # noqa: BLE001
         sys.stderr.write("  fees: live rate card unavailable (%s) -- using pricing.json snapshot\n" % e)
     try:
         with io.open(_FEES_SNAPSHOT, "r", encoding="utf-8") as f:
-            return {k: int(v) for k, v in _json.load(f)["fees"].items()}
+            snap = _json.load(f)
+        return {"currency": "PKR", "fees": {k: int(v) for k, v in snap["fees"].items()},
+                "free": list(snap.get("free") or []), "govt": dict(snap.get("govt") or {}),
+                "no_govt": list(snap.get("no_govt") or [])}
     except Exception:  # noqa: BLE001
         sys.stderr.write("  fees: NO snapshot either -- fee tokens will render as '?'\n")
-        return {}
+        return {"currency": "PKR", "fees": {}, "free": [], "govt": {}, "no_govt": []}
 
-FEES = _load_fees()
+CARD = _load_fees()          # the whole rate card: fees, which kinds are free, the owner's approximate government charges
+FEES = CARD["fees"]
 
 def fee_txt(kind):
+    if kind in CARD["free"]:
+        return "Free"
     v = FEES.get(kind)
     return "{:,}".format(v) if v else "?"
 
 def _apply_fees(html):
     html = re.sub(r"\{\{FEE:([a-z_]+)\}\}", lambda m: fee_txt(m.group(1)), html)
-    script = "<script>window.BIG1_FEES=%s;</script>" % _json.dumps({"currency": "PKR", "fees": FEES}, sort_keys=True)
+    script = "<script>window.BIG1_FEES=%s;</script>" % _json.dumps(CARD, sort_keys=True)
     return html.replace(BODY_OPEN, BODY_OPEN + "\n" + script, 1) if BODY_OPEN in html else html
 
 # ---- shared footer + whatsapp float + scripts ----
@@ -1323,7 +1331,7 @@ _lp_body = (_lp_body
     .replace("{{APP}}", APP_URL))
 _lp_head = head_for(
     "Business Registration in Pakistan | BIG1 FilePak",
-    "Register your business in Pakistan from Rs 6,000 &mdash; sole proprietorship, partnership / AOP or SECP company incorporation, plus NTN and sales-tax registration, by a real team. Start on WhatsApp.",
+    "Register your business in Pakistan from Rs 1,999 &mdash; sole proprietorship, partnership / AOP or SECP company incorporation, plus NTN and sales-tax registration, by a real team. Start on WhatsApp.",
     "business-registration.html", extra_css=_lp_css)
 _lp_head = _lp_head.replace("</head>", '<meta name="robots" content="noindex, nofollow" />\n</head>')
 # Google Ads tag (gtag.js) -- installed verbatim at the top of <head> for this page only.

@@ -1680,7 +1680,7 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
-<script>window.BIG1_FEES={"currency": "PKR", "fees": {"business_registration": 6000, "company_incorporation": 10000, "copyright_artistic": 60000, "copyright_cinematographic": 60000, "copyright_literary": 60000, "copyright_record": 60000, "design_registration": 140000, "dnfbp_registration": 5000, "income_tax_return": 3900, "iris_profile_update": 1000, "ntn_aop": 5000, "ntn_business": 1500, "ntn_company": 5000, "ntn_individual": 500, "ntn_npo": 5000, "ntn_registration": 500, "patent_registration": 140000, "priority_filing_complex": 10000, "priority_filing_salary": 8000, "pseb_call_center": 10000, "pseb_freelancer": 5000, "pseb_software_house": 10000, "pst_aop": 3000, "pst_company": 3000, "pst_individual": 3000, "sales_tax_registration": 20000, "secp_compliance": 10000, "trademark_registration": 60000}};</script>
+<script>window.BIG1_FEES={"currency": "PKR", "fees": {"aop_registration": 6999, "business_registration": 6999, "company_incorporation": 4999, "copyright_artistic": 60000, "copyright_cinematographic": 60000, "copyright_literary": 60000, "copyright_record": 60000, "design_registration": 140000, "dnfbp_registration": 5000, "income_tax_return": 3900, "iris_profile_update": 1000, "ntn_aop": 0, "ntn_business": 0, "ntn_company": 0, "ntn_individual": 0, "ntn_npo": 0, "ntn_registration": 0, "patent_registration": 140000, "priority_filing_complex": 10000, "priority_filing_salary": 8000, "pseb_call_center": 9999, "pseb_freelancer": 1499, "pseb_software_house": 2999, "pst_aop": 1999, "pst_company": 1999, "pst_individual": 1999, "sales_tax_registration": 20000, "secp_compliance": 10000, "sole_proprietor_registration": 1999, "trademark_registration": 60000}, "free": ["ntn_aop", "ntn_business", "ntn_company", "ntn_individual", "ntn_npo", "ntn_registration"], "govt": {"aop_registration": "approx. Rs 6,000", "business_registration": "approx. Rs 6,000", "company_incorporation": "approx. Rs 12,000 (SECP)", "pseb_call_center": "approx. Rs 20,000 (PSEB)", "pseb_freelancer": "approx. Rs 2,000 (PSEB)", "pseb_software_house": "approx. Rs 5,000\u201310,000 (PSEB), more in some cases"}, "no_govt": ["ntn_aop", "ntn_business", "ntn_company", "ntn_individual", "ntn_npo", "ntn_registration", "pst_aop", "pst_company", "pst_individual", "sole_proprietor_registration"]};</script>
 <!-- ============================== NAV ============================== -->
 <header class="nav has-mega" id="nav">
   <div class="wrap">
@@ -2527,13 +2527,13 @@ html[data-theme="dark"] .amb-mesh::after,html[data-theme="dark"] .amb-grid::afte
   var APP = "https://app.big1.com.pk";
   var WA = "https://wa.me/923399999611?text=I%20want%20to%20file%20my%20tax%20return.";
   // Fees come from the FilePak rate card: baked at build into window.BIG1_FEES, refreshed live from the API.
-  function feeTxt(kind){ var f=(window.BIG1_FEES&&window.BIG1_FEES.fees)||{}; var v=f[kind]; return v?Number(v).toLocaleString('en-PK'):'?'; }
+  function feeTxt(kind){ var F=window.BIG1_FEES||{}, f=F.fees||{}; var v=f[kind]; if((F.free||[]).indexOf(kind)>=0) return 'Free'; return v?Number(v).toLocaleString('en-PK'):'?'; }
   function feeSpan(kind){ return '<span data-fee="'+kind+'">'+feeTxt(kind)+'</span>'; }
   (function refreshFees(){
     try{
       fetch(APP+'/api/v1/pricing',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
         if(!d||!d.fees) return;
-        window.BIG1_FEES={currency:d.currency||'PKR',fees:d.fees};
+        window.BIG1_FEES={currency:d.currency||'PKR',fees:d.fees,free:d.free||[],govt:d.govt||{},no_govt:d.no_govt||[]};
         var els=document.querySelectorAll('[data-fee]');
         for(var i=0;i<els.length;i++){ var t=feeTxt(els[i].getAttribute('data-fee')); if(t!=='?') els[i].textContent=t; }
       }).catch(function(){});

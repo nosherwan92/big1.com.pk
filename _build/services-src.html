@@ -173,9 +173,13 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></svg></span>
         <span class="tl">Company Incorporation</span><span class="more">View details</span>
       </button>
-      <button class="tile" data-svc="bizreg" data-cat="corp">
+      <button class="tile" data-svc="soleprop" data-cat="corp">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.6-5h14.8L21 9"/><path d="M4.5 9.5V20h15V9.5"/><path d="M9.5 20v-5h5v5"/><path d="M3 9h18"/></svg></span>
-        <span class="tl">Business Registration</span><span class="more">View details</span>
+        <span class="tl">Sole Proprietorship</span><span class="more">View details</span>
+      </button>
+      <button class="tile" data-svc="aopreg" data-cat="corp">
+        <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.6-5h14.8L21 9"/><path d="M4.5 9.5V20h15V9.5"/><path d="M9.5 20v-5h5v5"/><path d="M3 9h18"/></svg></span>
+        <span class="tl">AOP / Partnership</span><span class="more">View details</span>
       </button>
       <button class="tile" data-svc="secp" data-cat="corp">
         <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8.5 13l2.2 2.2L15 11"/></svg></span>
@@ -248,17 +252,17 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       desc:'Your National Tax Number and IRIS account, the first step to becoming a filer.',
       wa:'NTN registration',
       options:[
-        {id:'individual',label:'Individual / salaried',fee:feeTxt('ntn_individual'),
+        {id:'individual',label:'Individual / salaried',k:'ntn_individual',fee:feeTxt('ntn_individual'),
           docs:['CNIC (front &amp; back)'],
           info:['A mobile number registered on your own CNIC','Email address'],
           note:'FBR sends a verification PIN to the mobile registered on your CNIC and to your email to complete IRIS enrolment.'},
-        {id:'business',label:'Business (sole proprietor)',fee:feeTxt('ntn_business'),
+        {id:'business',label:'Business (sole proprietor)',k:'ntn_business',fee:feeTxt('ntn_business'),
           docs:['CNIC (front &amp; back)','Business letterhead / registration proof','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
           info:['Business name','Principal line of business','Business address']},
-        {id:'aop',label:'Partnership / AOP',fee:feeTxt('ntn_aop'),
+        {id:'aop',label:'Partnership / AOP',k:'ntn_aop',fee:feeTxt('ntn_aop'),
           docs:['Partnership deed','Partnership registration certificate','Authorisation of the principal officer','Colour CNICs of all partners','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
           info:['AOP / firm name']},
-        {id:'company',label:'Company',fee:feeTxt('ntn_company'),
+        {id:'company',label:'Company',k:'ntn_company',fee:feeTxt('ntn_company'),
           docs:['Incorporation certificate','Memorandum &amp; Articles of Association','Authorisation of the principal officer','Colour CNICs of all directors','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill'],
           info:['Company name']},
         {id:'npo',label:'NPO / trust',fee:feeTxt('ntn_npo'),
@@ -275,13 +279,13 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       desc:'Provincial sales tax on services.',
       wa:'PST registration',
       options:[
-        {id:'individual',label:'Individual',fee:feeTxt('pst_individual'),
+        {id:'individual',label:'Individual',k:'pst_individual',fee:feeTxt('pst_individual'),
           docs:['Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Particulars of all branches (if any)','Signed application form'],
           info:['Full name (as per CNIC)','Business / service activity','Commencement date']},
-        {id:'aop',label:'Partnership / AOP',fee:feeTxt('pst_aop'),
+        {id:'aop',label:'Partnership / AOP',k:'pst_aop',fee:feeTxt('pst_aop'),
           docs:['Partnership certificate','Partnership deed','Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Signed application form'],
           info:['AOP / firm name','Business / service activity']},
-        {id:'company',label:'Company',fee:feeTxt('pst_company'),
+        {id:'company',label:'Company',k:'pst_company',fee:feeTxt('pst_company'),
           docs:['Incorporation certificate','Memorandum of Association','Articles of Association','Incorporation Form / Form A &amp; 29','Colour copy of CNIC','Bank account certificate','Authorisation of the principal officer','Rent agreement OR ownership proof of office premises','Letterhead','Latest paid electricity bill','Signed application form'],
           info:['Company name','Business / service activity']}
       ]},
@@ -331,17 +335,22 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       wa:'industrial design registration',fee:feeTxt('design_registration'),gov:1,
       docs:['CNIC (front &amp; back)','Images of the design, front, back, sides, top and an angled view','Earlier foreign application document (if you filed abroad first)'],
       info:['Applicant name','Title of the design','The product it applies to','What is new about it']},
-    incorp:{cat:'corp',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
+    incorp:{cat:'corp',k:'company_incorporation',title:'Company Incorporation',sub:'SECP &middot; private / SMC / public',
       desc:'Incorporate your company with SECP, from name reservation to certificate.',
       wa:'company incorporation (SECP)',fee:feeTxt('company_incorporation'),gov:1,
       docs:['Colour CNICs of all directors / subscribers','Registered office proof (rent / ownership)','Draft Memorandum of Association (we can draft)','Draft Articles of Association (we can draft)'],
       info:['Proposed company name','Principal business activity','Number of directors / subscribers'],
       note:'SECP reserves the company name first, and directors obtain an SECP e-signature PIN to sign the incorporation filing.'},
-    bizreg:{cat:'corp',title:'Business / AOP Registration',sub:'Sole proprietorship &middot; partnership',
-      desc:'Register a sole proprietorship, partnership or AOP and start operating formally.',
-      wa:'business / AOP registration',fee:feeTxt('business_registration'),
-      docs:['CNIC (front &amp; back)','Business proof / partnership deed','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
-      info:['Business / firm name']},
+    soleprop:{cat:'corp',k:'sole_proprietor_registration',title:'Sole Proprietorship Registration',sub:'One owner &middot; no government fee',
+      desc:'Register a business you own alone, under your own name, and start operating formally.',
+      wa:'sole proprietorship registration',fee:feeTxt('sole_proprietor_registration'),
+      docs:['CNIC (front &amp; back)','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
+      info:['Business name','Nature of business']},
+    aopreg:{cat:'corp',k:'aop_registration',title:'AOP / Partnership Registration',sub:'Two or more partners',
+      desc:'Register a partnership firm (Association of Persons) and start operating formally.',
+      wa:'AOP / partnership registration',fee:feeTxt('aop_registration'),
+      docs:['CNICs of all partners (front &amp; back)','Partnership deed','Utility bill of the business premises','Rent agreement OR ownership proof of premises'],
+      info:['Firm name']},
     secp:{cat:'corp',title:'SECP Filings &amp; Compliance',sub:'Annual returns &middot; Form 29 / A &middot; changes',
       desc:'Annual returns, director changes, charges and every other SECP filing, on time, every time.',
       wa:'SECP filings / compliance',fee:feeTxt('secp_compliance'),gov:1,
@@ -366,21 +375,21 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
   var APP_LIVE=true, elApp=document.getElementById('svcApp');
   var APP_BASE='https://app.big1.com.pk';
   // Fees: single source = FilePak rate card (window.BIG1_FEES, baked at build + refreshed live by 10-script)
-  function feeTxt(kind){ var f=(window.BIG1_FEES&&window.BIG1_FEES.fees)||{}; var v=f[kind]; return v?('Rs. '+Number(v).toLocaleString('en-PK')):'See app'; }   // app origin (extracted JS is not template-substituted; keep in sync with APP_URL)
+  function feeTxt(kind){ var F=window.BIG1_FEES||{}, f=F.fees||{}; var v=f[kind]; if((F.free||[]).indexOf(kind)>=0) return 'Free'; return v?('Rs. '+Number(v).toLocaleString('en-PK')):'See app'; }   // app origin (extracted JS is not template-substituted; keep in sync with APP_URL)
   // Map each service tile to the app's ?service= deep-link token (understood by the app's routeToService).
   // '' = the income-tax-return flow (no service param -- the app opens on the dashboard / File Return).
   var APP_SVC={itr:'', ntn:'ntn', gst:'gst', pst:'pst', iris:'iris', notice:'notice', taxadv:'advisory',
     trademark:'trademark', copyright:'copyright', patent:'patent', design:'design',
-    incorp:'company', bizreg:'business_reg', secp:'secp', corpadv:'corporate_advisory'};
+    incorp:'company', soleprop:'sole_proprietor', aopreg:'aop', secp:'secp', corpadv:'corporate_advisory'};
   if(!APP_LIVE && elApp){
     elApp.classList.add('svc-soon'); elApp.removeAttribute('href'); elApp.removeAttribute('target');
     elApp.setAttribute('aria-disabled','true'); elApp.innerHTML='In the app &middot; coming soon';
   }
 
   function tk(){return '<span class="tk"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';}
-  function renderDetail(docs,info,note,fee,gov){
-    var h='';
-    if(fee){h+='<div class="svc-fee"><span>Professional fee</span><b>'+fee+'</b></div>'+(gov?'<span class="svc-fee-gov">+ government / IPO fee, billed separately at actuals</span>':'');}
+  function renderDetail(docs,info,note,fee,gov,kind){
+    var h='', F=window.BIG1_FEES||{}, gt=(F.govt||{})[kind], ng=(F.no_govt||[]).indexOf(kind)>=0;
+    if(fee){h+='<div class="svc-fee"><span>Professional fee</span><b>'+fee+'</b></div>'+(gt?'<span class="svc-fee-gov">+ government charges '+gt+', paid separately at actuals</span>':gov?'<span class="svc-fee-gov">+ government / IPO fee, billed separately at actuals</span>':ng?'<span class="svc-fee-gov">No government fee</span>':'');}
     var hasDocs=docs&&docs.length;
     if(hasDocs){
       h+='<div class="svc-dh">What you&rsquo;ll need</div><ul class="svc-docs">';
@@ -406,7 +415,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
     var chips=elChips.querySelectorAll('.svc-chip');
     for(var i=0;i<chips.length;i++){chips[i].setAttribute('aria-pressed', i===idx?'true':'false');}
     if(opts[idx].tiers){ selectTier(opts[idx], 0); return; }   // tiered option: the tier drives checklist + app link
-    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note, opts[idx].fee, opts[idx].gov||cur.gov);
+    renderDetail(opts[idx].docs, opts[idx].info, opts[idx].note, opts[idx].fee, opts[idx].gov||cur.gov, opts[idx].k||cur.k);
     setWa(opts[idx].label);
     if(elApp && opts[idx].app){   // option-level deep link (e.g. income tax: self_filing) -- the app opens that way directly
       elApp.setAttribute('href', APP_BASE+'/?service='+encodeURIComponent(opts[idx].app));
@@ -442,7 +451,7 @@ html[data-theme="dark"] .svc-docs .tk{color:var(--emerald-300)}
       selectOpt(0);
     } else {
       elOptWrap.hidden=true;
-      renderDetail(cur.docs, cur.info, cur.note, cur.fee, cur.gov);
+      renderDetail(cur.docs, cur.info, cur.note, cur.fee, cur.gov, cur.k);
       setWa('');
     }
     if(elApp){   // "Start in the app" -> live deep-link to this exact service (app routes there after sign-in)
